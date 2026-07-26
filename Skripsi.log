@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.26)  26 JUL 2026 19:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.26)  26 JUL 2026 19:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1066,7 +1066,7 @@ Package hyperref Info: Link coloring OFF on input line 181.
 \@outlinefile=\write4
 \openout4 = `Skripsi.out'.
 
-<placeholder.pdf, id=335, 191.5165pt x 148.83707pt>
+<placeholder.pdf, id=295, 191.5165pt x 148.83707pt>
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
 Package pdftex.def Info: placeholder.pdf  used on input line 214.
@@ -1115,15 +1115,15 @@ les/MiKTeX/fonts/enc/dvips/base/8r.enc} <./placeholder.pdf>] [2] [3] [4] [5] [6
 \tf@toc=\write5
 \openout5 = `Skripsi.toc'.
 
- [11] (Skripsi.lof [12])
+ [11] (Skripsi.lof)
 \tf@lof=\write6
 \openout6 = `Skripsi.lof'.
 
- [13] (Skripsi.lot)
+ [12] (Skripsi.lot)
 \tf@lot=\write7
 \openout7 = `Skripsi.lot'.
 
- [14]
+ [13]
 Bab I.
 [2
 
@@ -1140,385 +1140,221 @@ Package pdftex.def Info: placeholder.pdf  used on input line 663.
 Bab III.
 [22
 
-] [23]
-ignored error: Infinite glue shrinkage found in box being split [24]
-ignored error: Infinite glue shrinkage found in box being split [25] [26]
-[27] [28]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 846.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 846.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 846.
- [29] [30] [31] [32] [33] [34] [35] [36] [37]
+] [23] [24] [25] [26] [27] [28] [29] [30]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 996.
+Package pdftex.def Info: placeholder.pdf  used on input line 871.
 (pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
- [38] [39] [40]
+ [31]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1012.
-(pdftex.def)             Requested size: 613.58171pt x 476.8833pt.
-
-
-LaTeX Warning: Float too large for page by 102.1447pt on input line 1015.
-
-[41]
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1046--1046
- []|\T1/ptm/b/n/12 No.| 
- []
-
-
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1043--1048
- [] [] [] 
- []
-
-
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1050--1050
- []|\T1/ptm/b/n/12 No.| 
- []
-
-
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1048--1052
- [] [] [] 
- []
-
-
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1052--1055
- [] [] [] 
- []
-
-
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1055--1057
- [] [] [] 
- []
-
-
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1057--1091
- [] [] [] 
- []
-
-ignored error: Infinite glue shrinkage found in box being split [42
-
-
-] [43]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1100.
+Package pdftex.def Info: placeholder.pdf  used on input line 883.
 (pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
-
-[44] [45] [46]
+ [32] [33]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1119.
-(pdftex.def)             Requested size: 366.47076pt x 284.82593pt.
- [47]
+Package pdftex.def Info: placeholder.pdf  used on input line 898.
+(pdftex.def)             Requested size: 278.83578pt x 216.71434pt.
+ [34]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1145.
-(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
- [48]
+Package pdftex.def Info: placeholder.pdf  used on input line 908.
+(pdftex.def)             Requested size: 298.75394pt x 232.19394pt.
+ [35]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1157.
-(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
- [49]
+Package pdftex.def Info: placeholder.pdf  used on input line 918.
+(pdftex.def)             Requested size: 298.75394pt x 232.19394pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1172.
-(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
- [50]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1184.
-(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
- [51] [52]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1196.
-(pdftex.def)             Requested size: 471.63333pt x 366.52986pt.
- [53] [54
-
-
-]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1293.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1293.
- [55]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-303.
+Package pdftex.def Info: placeholder.pdf  used on input line 924.
+(pdftex.def)             Requested size: 298.75394pt x 232.19394pt.
+ [36]
+[37] [38] [39] [40]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
+82.
 
 (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [56]
-[57] [58] [59] [60] [61]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1375.
-(pdftex.def)             Requested size: 139.42093pt x 108.35036pt.
- [62]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1388.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1399.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1410.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
- [63]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1421.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1432.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
- [64]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1443.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1454.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
- [65]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1465.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1476.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
- [66]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1487.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1498.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
- [67]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1509.
-(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
- [68] [69]
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1536--1536
- []|\T1/ptm/b/n/12 No.| 
- []
-
-
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1533--1538
- [] [] [] [] 
- []
-
-
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1541--1541
- []|\T1/ptm/b/n/12 No.| 
- []
-
-
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1538--1543
- [] [] [] [] 
- []
-
-
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1543--1546
- [] [] [] [] 
- []
-
-
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1546--1548
- [] [] [] [] 
- []
-
-
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1548--1578
- [] [] [] [] 
- []
-
-ignored error: Infinite glue shrinkage found in box being split [70]
-ignored error: Infinite glue shrinkage found in box being split [71] [72]
-[73] [74]
+) [41]
 Bab IV.
-[75
+[42
 
 ]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1623.
+Package pdftex.def Info: placeholder.pdf  used on input line 1018.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [76]
+ [43]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1634.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1645.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [77]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1656.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [78]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1667.
+Package pdftex.def Info: placeholder.pdf  used on input line 1029.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1680.
+Package pdftex.def Info: placeholder.pdf  used on input line 1040.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [44]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1051.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [45]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1062.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1687.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [79]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1701.
+Package pdftex.def Info: placeholder.pdf  used on input line 1075.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1714.
+Package pdftex.def Info: placeholder.pdf  used on input line 1082.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [46]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1096.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1721.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [80]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1735.
+Package pdftex.def Info: placeholder.pdf  used on input line 1109.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1748.
+Package pdftex.def Info: placeholder.pdf  used on input line 1116.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [47]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1130.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1755.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [81]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1769.
+Package pdftex.def Info: placeholder.pdf  used on input line 1143.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1780.
+Package pdftex.def Info: placeholder.pdf  used on input line 1150.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [82]
+ [48]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1791.
-(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1804.
+Package pdftex.def Info: placeholder.pdf  used on input line 1164.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1811.
+Package pdftex.def Info: placeholder.pdf  used on input line 1175.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [83]
+ [49]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1827.
+Package pdftex.def Info: placeholder.pdf  used on input line 1186.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1834.
+Package pdftex.def Info: placeholder.pdf  used on input line 1199.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [84]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 1844.
+Package pdftex.def Info: placeholder.pdf  used on input line 1206.
 (pdftex.def)             Requested size: 159.333pt x 123.82541pt.
- [85] [86] [87]
+ [50]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1222.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1229.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [51]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1239.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [52] [53] [54]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 1882.
+nput line 1277.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 1891.
- [88] [89]
-[90] [91] [92] [93] [94] [95]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 2036.
-(pdftex.def)             Requested size: 278.83578pt x 216.71434pt.
- [96] [97] [98] [99] [100] [101] [102] [103]
-File: placeholder.pdf Graphic file (type pdf)
-<use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 2167.
-(pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 1286.
+ [55] [56]
+[57] [58] [59] [60] [61]
 
-[104] [105] [106]
+LaTeX Warning: Reference `fig:lstm_alur' on page 62 undefined on input line 142
+7.
+
+[62]
 File: placeholder.pdf Graphic file (type pdf)
 <use placeholder.pdf>
-Package pdftex.def Info: placeholder.pdf  used on input line 2220.
+Package pdftex.def Info: placeholder.pdf  used on input line 1431.
+(pdftex.def)             Requested size: 278.83578pt x 216.71434pt.
+ [63] [64] [65] [66] [67] [68] [69] [70]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1562.
+(pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
+ [71] [72] [73]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1615.
 (pdftex.def)             Requested size: 298.75394pt x 232.19394pt.
- [107]
-Overfull \hbox (13.71461pt too wide) in paragraph at lines 2234--2242
+ [74]
+Overfull \hbox (13.71461pt too wide) in paragraph at lines 1629--1637
  [][] 
  []
 
-[108] [109] [110]
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 2264--2264
+[75] [76]
+
+LaTeX Warning: Reference `tab:blackbox' on page 77 undefined on input line 1649
+.
+
+[77]
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 1659--1659
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2261--2266
+Overfull \hbox (14.03032pt too wide) in alignment at lines 1656--1661
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 2268--2268
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 1663--1663
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2266--2270
+Overfull \hbox (14.03032pt too wide) in alignment at lines 1661--1665
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2270--2272
+Overfull \hbox (14.03032pt too wide) in alignment at lines 1665--1667
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2272--2274
+Overfull \hbox (14.03032pt too wide) in alignment at lines 1667--1669
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2274--2303
+Overfull \hbox (14.03032pt too wide) in alignment at lines 1669--1698
  [] [] [] [] [] 
  []
 
-ignored error: Infinite glue shrinkage found in box being split [111] [112]
-[113] [114]
+ignored error: Infinite glue shrinkage found in box being split [78] [79]
+[80] [81]
 Overfull \vbox (32.04378pt too high) has occurred while \output is active []
 
 
-[115] [116] [117] [118] [119] [120] [121] [122] [123]
+[82] [83] [84] [85] [86] [87] [88] [89] [90]
 Bab V.
-[124
+[91
 
-] [125] [126] [127] [128] [129] [130] [131] [132]
+] [92] [93] [94] [95] [96] [97] [98] [99]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -1552,52 +1388,51 @@ Bab V.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Overfull \hbox (28.45274pt too wide) in paragraph at lines 2684--2685
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 2079--2080
 [][] 
  []
 
-[133
+[100
 
 ]
-Overfull \hbox (28.45274pt too wide) in paragraph at lines 2722--2723
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 2117--2118
 [][] 
  []
 
-[134] (Skripsi.aux)
+[101] (Skripsi.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Skripsi.out' has not changed.
-(rerunfilecheck)             Checksum: EA9D705F2F64D313072917648FEDA0AD;15205.
+(rerunfilecheck)             Checksum: 6A0685F96054877768F705D8BD450CFA;12999.
  ) 
 Here is how much of TeX's memory you used:
- 30991 strings out of 467871
- 572297 string characters out of 5428443
- 1061951 words of memory out of 5000000
- 58610 multiletter control sequences out of 15000+600000
- 712348 words of font info for 172 fonts, out of 8000000 for 9000
+ 30442 strings out of 467871
+ 560669 string characters out of 5428443
+ 1059840 words of memory out of 5000000
+ 58188 multiletter control sequences out of 15000+600000
+ 688705 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,17n,94p,1888b,2584s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
-, replaced by a fixed one
-
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
-Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbol
-s/msam10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Pr
-ogram Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX/
-fonts/type1/urw/courier/ucrro8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/sy
-mbol/usyr.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fo
-nts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/u
-tmri8a.pfb>
-Output written on Skripsi.pdf (147 pages, 596349 bytes).
+ 88i,13n,94p,1888b,2516s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
+m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrb8a.p
+fb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program File
+s/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Program Files/MiKTeX/fonts/typ
+e1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pf
+b><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/
+MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on Skripsi.pdf (113 pages, 492330 bytes).
 PDF statistics:
- 1764 PDF objects out of 2073 (max. 8388607)
- 631 named destinations out of 1000 (max. 500000)
- 694 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1462 PDF objects out of 1728 (max. 8388607)
+ 546 named destinations out of 1000 (max. 500000)
+ 614 words of extra memory for PDF output out of 10000 (max. 10000000)
 

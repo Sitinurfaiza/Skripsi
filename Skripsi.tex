@@ -726,875 +726,270 @@ Melalui kombinasi fungsi objektif dan perhitungan gain tersebut, LightGBM mampu 
 
 
 %%=============================================================
+%%=============================================================
+%%=============================================================
+%%=============================================================
 %% BAB III - METODOLOGI PENELITIAN
 %%=============================================================
 \chapter[METODOLOGI PENELITIAN]{\\ METODOLOGI PENELITIAN}
 
-\section{Data dan Pengumpulan Data}
+\section{Data dan Pengumpulan data}
+Tahap pengumpulan data merupakan langkah awal yang penting dalam penelitian untuk memastikan ketersediaan data yang relevan dalam proses klasifikasi kelayakan penerima subsidi listrik rumah tangga. Data yang digunakan dalam penelitian ini merupakan kombinasi antara data sekunder dan data sintetis. Data sekunder diperoleh dari Dinas Sosial dan berjumlah 1.000 data rumah tangga yang memuat informasi mengenai kondisi sosial ekonomi masyarakat. Sementara itu, data sintetis digunakan untuk melengkapi atribut teknis kelistrikan yang tidak tersedia pada data Dinas Sosial.
 
-Bagian ini menguraikan tahapan pengumpulan data yang menjadi dasar perancangan dan pelatihan model prediksi pada penelitian ini, mencakup lokasi dan periode pelaksanaan penelitian, alat serta bahan yang digunakan, variabel dan sumber data yang diolah, hingga proses analisis kebutuhan dan \textit{preprocessing} data sebelum digunakan pada tahap pemodelan.
+Data sintetis merupakan data buatan yang dibangkitkan secara sistematis sehingga memiliki karakteristik yang menyerupai data nyata. Dalam penelitian ini, pembangkitan data sintetis dilakukan menggunakan pendekatan \textit{rule-based synthetic data generation}, yaitu menghasilkan data berdasarkan aturan yang mengacu pada karakteristik sosial ekonomi yang tersedia pada data Dinas Sosial serta ketentuan penerima subsidi listrik yang diatur dalam regulasi Kementerian Energi dan Sumber Daya Mineral (ESDM). Atribut yang dibangkitkan meliputi daya listrik terpasang (VA), golongan tarif, dan penggunaan listrik per bulan (kWh). Proses ini dilakukan agar dataset memiliki informasi yang lebih lengkap sehingga dapat digunakan dalam proses pelatihan model klasifikasi.
 
-\subsection{Tempat Penelitian}
-
-Penelitian dan pengembangan sistem \textit{Point of Sale} (POS) dengan fitur prediksi penjualan harian menggunakan metode LSTM ini dilaksanakan pada beberapa lokasi yang mendukung proses perancangan, implementasi, dan pengujian, yaitu:
+Data yang digunakan dalam penelitian ini terdiri atas beberapa komponen sebagai berikut:
 \begin{enumerate}
-    \item \textbf{Jurusan Teknologi Informasi dan Komputer, Politeknik Negeri Lhokseumawe:} Menjadi lokasi utama dalam perancangan arsitektur sistem, penulisan kode program (aplikasi mobile Flutter dan REST API Python), pelatihan model LSTM, serta penyusunan laporan skripsi.
-    \item \textbf{Departemen Teknik Elektro dan Informatika (DTEDI), Universitas Gadjah Mada:} Sebagai penyedia dataset transaksi riil platform EatsTEDI UGM yang digunakan sebagai data latih dan data uji utama untuk mengevaluasi performa model prediksi LSTM.
-    \item \textbf{Pelaku UMKM di Kota Lhokseumawe:} Sebagai konteks sasaran pengguna yang melatarbelakangi analisis kebutuhan awal aplikasi kasir. Adapun pengumpulan data empiris (observasi, wawancara, dan dataset transaksi) serta pengujian sistem dilakukan pada mitra EatsTEDI DTEDI UGM, yang karakteristik operasionalnya (usaha kuliner skala mikro) dipandang merepresentasikan kebutuhan UMKM sejenis.
+    \item \textbf{Data Sosial Ekonomi} \\
+    Data sosial ekonomi merupakan data sekunder yang diperoleh dari Dinas Sosial. Variabel yang digunakan meliputi:
+    \begin{enumerate}
+        \item Penghasilan keluarga.
+        \item Jumlah anggota keluarga.
+        \item Pekerjaan kepala keluarga.
+        \item Status kepemilikan rumah.
+        \item Luas bangunan.
+        \item Status penerima bantuan sosial (PKH/BPNT).
+    \end{enumerate}
+    \item \textbf{Data Karakteristik Kelistrikan} \\
+    Data karakteristik kelistrikan merupakan data sintetis yang dibangkitkan berdasarkan karakteristik pelanggan rumah tangga dan mengacu pada regulasi Kementerian ESDM mengenai penerima subsidi listrik. Variabel yang digunakan meliputi:
+    \begin{enumerate}
+        \item Daya listrik terpasang (VA).
+        \item Golongan tarif listrik.
+        \item Penggunaan listrik per bulan (kWh).
+    \end{enumerate}
+    \item \textbf{Data Label Klasifikasi} \\
+    Data label digunakan sebagai variabel target (\textit{output}) dalam proses pembelajaran algoritma Light Gradient Boosting Machine (LightGBM). Label menunjukkan status kelayakan pelanggan dalam menerima subsidi listrik yang ditentukan berdasarkan kombinasi karakteristik sosial ekonomi dan karakteristik kelistrikan sesuai kriteria yang mengacu pada regulasi Kementerian ESDM. Label klasifikasi terdiri atas:
+    \begin{enumerate}
+        \item Layak menerima subsidi.
+        \item Tidak layak menerima subsidi.
+    \end{enumerate}
 \end{enumerate}
-
-\subsection{Waktu Penelitian}
-
-Penelitian ini dilaksanakan selama 4 (empat) bulan, terhitung mulai bulan Maret 2026 sampai dengan bulan Juni 2026. Alokasi waktu pelaksanaan untuk setiap tahapan penelitian disajikan pada Tabel~\ref{tab:jadwal_penelitian}.
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Jadwal Pelaksanaan Penelitian}
-\label{tab:jadwal_penelitian}
-\begin{tabularx}{\textwidth}{|c|X|c|c|c|c|}
-\hline
-\textbf{No} & \textbf{Kegiatan} & \textbf{Maret 2026} & \textbf{April 2026} & \textbf{Mei 2026} & \textbf{Juni 2026} \\ \hline
-1 & Persiapan dan Studi Literatur & \checkmark & & & \\ \hline
-2 & Pengumpulan dan Analisis Data & \checkmark & \checkmark & & \\ \hline
-3 & Perancangan Sistem dan UI/UX & & \checkmark & & \\ \hline
-4 & Pengembangan Aplikasi POS Mobile & & \checkmark & \checkmark & \\ \hline
-5 & Pelatihan dan Optimasi Model LSTM & & & \checkmark & \\ \hline
-6 & Integrasi Sistem dan Pengujian & & & \checkmark & \checkmark \\ \hline
-7 & Evaluasi dan Penyusunan Laporan & & & & \checkmark \\ \hline
-\end{tabularx}
-\end{table}
-
-\subsection{Alat dan Bahan}
-
-Untuk mendukung kelancaran pelaksanaan penelitian dan pengembangan sistem POS mobile, dibutuhkan alat (perangkat keras dan perangkat lunak) serta bahan penelitian dengan rincian yang disajikan pada Tabel~\ref{tab:alat_bahan}.
-
-{\setstretch{1.15}
-\begin{xltabular}{\textwidth}{|c|p{2.8cm}|p{3.5cm}|X|}
-\caption{Daftar Alat dan Bahan Penelitian} \label{tab:alat_bahan} \\
-\hline
-\textbf{No} & \textbf{Kategori} & \textbf{Nama Alat/Bahan} & \textbf{Spesifikasi / Deskripsi} \\ \hline
-\endfirsthead
-
-\hline
-\textbf{No} & \textbf{Kategori} & \textbf{Nama Alat/Bahan} & \textbf{Spesifikasi / Deskripsi} \\ \hline
-\endhead
-
-\hline
-\endfoot
-
-\hline
-\endlastfoot
-
-1 & Perangkat Keras (\textit{Hardware}) & Laptop Acer Nitro 5 & Intel Core i5 Gen 12, RAM 16 GB, SSD 512 GB, NVIDIA GeForce RTX 3050. Digunakan sebagai perangkat utama pengembangan aplikasi dan pelatihan model. \\ \cline{2-4}
-& & Smartphone Android & OS Android 11. Digunakan untuk pengujian operasional aplikasi POS secara langsung di perangkat mobile. \\ \cline{2-4}
-& & Printer Thermal & Bluetooth 58mm. Digunakan untuk menguji fungsionalitas cetak struk transaksi fisik. \\ \hline
-2 & Perangkat Lunak (\textit{Software}) & Windows 11 & Sistem Operasi Laptop (Home Single Language). \\ \cline{2-4}
-& & VS Code \& Android Studio & \textit{Integrated Development Environment} (IDE) utama untuk penulisan kode program. \\ \cline{2-4}
-& & Flutter SDK (Dart) & \textit{Framework} lintas platform untuk membangun aplikasi kasir mobile. \\ \cline{2-4}
-& & Python 3.10 & Bahasa pemrograman dengan TensorFlow, Keras, PyTorch, Pandas, NumPy, Scikit-Learn, dan Flask untuk melatih model LSTM, membangun modul augmentasi data sintetis TimeGAN, dan membuat REST API prediksi. \\ \cline{2-4}
-& & Supabase Cloud & Basis data \textit{cloud} terpusat (PostgreSQL) untuk sinkronisasi data transaksi. \\ \cline{2-4}
-& & Isar Database & Basis data lokal terbenam (\textit{embedded}) pada perangkat Android (\textit{offline-first}). \\ \cline{2-4}
-& & Firebase & Layanan Google untuk \textit{push notification} (FCM) dan telemetri (Analytics). \\ \cline{2-4}
-& & Jupyter Notebook & Lingkungan \textit{pipeline} riset untuk eksplorasi data dan pelatihan model prediksi. \\ \cline{2-4}
-& & Hugging Face & Platform \textit{hosting} tempat layanan API prediksi Flask di-\textit{deploy}. \\ \cline{2-4}
-& & Draw.io \& Mermaid.js & Alat pemodelan sistem untuk membuat diagram UML, ERD, dan arsitektur. \\ \hline
-3 & Bahan Penelitian & Dataset EatsTEDI UGM & Berkas transaksi riil platform EatsTEDI DTEDI UGM dalam format SQL dump dan CSV (periode Agustus 2024 s.d. Juni 2026). \\ \hline
-\end{xltabular}
-}
-
-\subsection{Variabel Data}
-
-Variabel penelitian yang digunakan dalam proses prediksi penjualan harian dikelompokkan menjadi tiga:
-\begin{enumerate}
-    \item \textbf{Variabel \textit{Input} (Fitur):} Deret waktu transaksi harian EatsTEDI yang terdiri atas \textit{log-return} pendapatan, pengodean siklik (sinus--kosinus) untuk hari, minggu, dan bulan, serta penanda biner periode Ramadan. Variabel jumlah transaksi (\textit{transactions}) dan kuantitas terjual (\textit{qty\_sold}) sengaja tidak digunakan sebagai fitur untuk menghindari kebocoran data (\textit{data leakage}), karena keduanya belum tersedia saat memprediksi hari mendatang.
-    \item \textbf{Variabel \textit{Output} (Target):} Nilai prediksi \textit{log-return} pendapatan, yang direkonstruksi kembali ke nominal Rupiah sebagai acuan estimasi omzet harian dan kebutuhan stok produk.
-    \item \textbf{Variabel Evaluasi:} Kinerja model diukur dengan empat metrik evaluasi (MAE, RMSE, sMAPE, dan MASE). MAPE konvensional dihindari karena menghasilkan nilai tak terhingga saat dihadapkan pada hari dengan pendapatan mendekati nol. Rincian formula masing-masing metrik dijabarkan pada Subbab 2.6.
-\end{enumerate}
+Seluruh variabel tersebut digunakan sebagai fitur masukan dalam proses pelatihan dan pengujian model menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Dengan mengombinasikan data sosial ekonomi dari Dinas Sosial dan data kelistrikan sintetis yang dibangkitkan berdasarkan regulasi Kementerian ESDM, diharapkan model mampu mempelajari pola hubungan antara karakteristik pelanggan dengan status kelayakan penerima subsidi listrik secara objektif dan menghasilkan performa klasifikasi yang baik.
 
 \subsection{Sumber Data}
-
-Data utama yang digunakan dalam penelitian ini adalah basis data transaksi penjualan harian yang bersumber dari platform katalog menu digital interaktif \textbf{EatsTEDI} pada Departemen Teknik Elektro dan Informatika (DTEDI) Universitas Gadjah Mada (UGM). \textit{Dataset} ini berupa \textit{dump} basis data relasional dalam format SQL (\textit{eatstedi-20260621-010820.sql}) berukuran 32,15 MB dengan total sekitar 395.090 baris data.
-
-Rentang waktu transaksi riil yang digunakan adalah dari tanggal \textbf{24 Agustus 2024 s.d. 20 Juni 2026} (mencakup periode 666 hari kalender secara inklusif, atau sekitar 22 bulan). Adapun hari aktif pertama dengan transaksi tercatat setelah penyaringan adalah \textbf{26 Agustus 2024}, sehingga Bab IV menyebut rentang efektif 26 Agustus 2024 s.d. 20 Juni 2026. Data yang diekstrak berfokus pada transaksi dengan status lunas (\textit{is\_paid = 1}) dari tabel \textit{invoices} serta rincian item produk terjual dari tabel \textit{product\_sold} yang dihubungkan dengan tabel master \textit{products} dan \textit{categories}.
-
-Secara umum, karakteristik data deret waktu (\textit{time series}) EatsTEDI UGM memiliki pola musiman unik yang sangat dipengaruhi oleh kalender akademis kampus, antara lain:
+Sumber data penelitian ini terbagi menjadi dua jenis:
 \begin{enumerate}
-    \item \textbf{Pola Mingguan (\textit{weekly profile}):} Penjualan aktif hampir 100\% terkonsentrasi pada hari kerja (Senin s.d. Jumat) dengan rata-rata 195,41 transaksi per hari aktif. Sedangkan pada hari Sabtu dan Minggu, transaksi umumnya bernilai Rp 0 karena kantin kampus tutup, dengan pengecualian sejumlah kecil transaksi insidental pada hari non-kerja.
-    \item \textbf{Pola Libur Akademis (\textit{academic holiday profile}):} Pada masa libur semester mahasiswa (sepanjang bulan Januari dan Juli), transaksi bernilai Rp 0 karena aktivitas perkuliahan dan operasional kantin berhenti total.
-    \item \textbf{Pola Bulan Ramadan:} Omzet harian merosot tajam secara signifikan karena penutupan atau pembatasan jam operasional kantin selama bulan puasa (misalnya total omzet Maret 2025 hanya Rp 1.427.000,00 dan Maret 2026 sebesar Rp 3.531.000,00).
+    \item \textbf{Data Sekunder} \\
+    Data sekunder merupakan data yang diperoleh dari sumber yang telah tersedia tanpa melakukan pengumpulan data secara langsung dari objek penelitian. Pada penelitian ini, data sekunder terdiri atas dua jenis, yaitu:
+    \begin{enumerate}
+        \item Data sosial ekonomi masyarakat yang diperoleh dari Dinas Sosial, meliputi informasi seperti penghasilan keluarga, jumlah anggota keluarga, pekerjaan kepala keluarga, status kepemilikan rumah, luas bangunan, dan status penerima bantuan sosial (PKH/BPNT).
+        \item Literatur pendukung yang diperoleh dari jurnal ilmiah, buku, penelitian terdahulu, serta regulasi Kementerian Energi dan Sumber Daya Mineral (ESDM) yang berkaitan dengan subsidi listrik dan penerapan algoritma Light Gradient Boosting Machine (LightGBM).
+    \end{enumerate}
+    \item \textbf{Data Sintetis} \\
+    Data sintetis merupakan data buatan yang dibangkitkan untuk melengkapi atribut yang tidak tersedia pada data sekunder. Dalam penelitian ini, data sintetis dibentuk menggunakan pendekatan \textit{rule-based synthetic data generation}, yaitu pembangkitan data berdasarkan aturan yang mengacu pada karakteristik data sosial ekonomi dari Dinas Sosial dan regulasi Kementerian ESDM mengenai penerima subsidi listrik. Atribut yang dibangkitkan meliputi daya listrik terpasang (VA), golongan tarif, penggunaan listrik per bulan (kWh), serta label kelayakan penerima subsidi listrik (Layak/Tidak Layak). Data sintetis tersebut digunakan sebagai dataset pelatihan dan pengujian model klasifikasi menggunakan algoritma LightGBM.
 \end{enumerate}
 
-Selama periode transaksi tersebut, tercatat sebanyak \textbf{61.749 transaksi} lunas dengan total produk terjual sebanyak \textbf{150.709 unit} dan menghasilkan total akumulasi omzet sebesar \textbf{Rp 501.440.492,00}. Statistik agregat tersebut dihitung dari seluruh transaksi mentah pada rentang penuh, sebelum penyaringan kalender hari kerja diterapkan. Setelah penyaringan hanya pada hari kerja aktif (tanpa akhir pekan dan libur semester Januari/Juli), analisis model pada Bab IV menggunakan \textbf{313 hari aktif} dengan total omzet sebesar \textbf{Rp 471.200.494,00} dan rata-rata pendapatan sebesar \textbf{Rp 1.505.433,00 per hari aktif}. Selisih total omzet sebesar Rp 30.239.998,00 berasal dari transaksi insidental yang terjadi pada hari-hari di luar kalender hari kerja aktif (misalnya akhir pekan atau masa libur semester yang tetap mencatat penjualan), yang ikut tereliminasi oleh penyaringan kalender pada tahap pemodelan.
+\section{Analisis Kebutuhan Sistem}
+Analisis kebutuhan sistem dilakukan untuk mengidentifikasi kebutuhan yang diperlukan dalam pembangunan sistem klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM). Tahap ini bertujuan untuk memastikan sistem yang dikembangkan mampu mendukung seluruh proses penelitian mulai dari pengolahan data, pelatihan model, hingga penyajian hasil klasifikasi secara efektif dan terstruktur.
 
-Selain statistik agregat di atas, sebaran penjualan berdasarkan kategori produk pada platform EatsTEDI disajikan pada Tabel \ref{tab:kategori_sales}.
+Kebutuhan sistem pada penelitian ini dibagi menjadi dua kategori utama, yaitu kebutuhan fungsional dan kebutuhan non-fungsional. Kebutuhan fungsional menjelaskan layanan sistem yang harus tersedia, sedangkan kebutuhan non-fungsional berkaitan dengan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam proses pengembangan dan pengujian sistem.
 
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Sebaran Penjualan Berdasarkan Kategori Produk}
-\label{tab:kategori_sales}
-\begin{tabular}{|c|l|r|c|c|}
-\hline
-\textbf{No} & \textbf{Kategori} & \textbf{Total Penjualan (Rp)} & \textbf{Total Unit} & \textbf{Kontribusi (\%)} \\ \hline
-1 & Makanan Basah & 242.770.500,00 & 82.134 & 48,42\% \\ \hline
-2 & Minuman & 82.122.500,00 & 16.861 & 16,38\% \\ \hline
-3 & Makanan Kering & 41.969.500,00 & 10.361 & 8,37\% \\ \hline
-4 & Ice Cream & 33.802.500,00 & 10.942 & 6,74\% \\ \hline
-5 & Snacks & 26.671.500,00 & 10.847 & 5,32\% \\ \hline
-6 & Merch & 496.000,00 & 110 & 0,10\% \\ \hline
-7 & Lainnya\footnote{Produk tanpa \texttt{category\_id} pada basis data transaksi (mis. produk yang telah dihapus dari katalog kategori namun riwayat transaksinya tetap tercatat).} & 73.607.992,00 & 19.454 & 14,68\% \\ \hline
-\textbf{} & \textbf{Total} & \textbf{501.440.492,00} & \textbf{150.709} & \textbf{100,00\%} \\ \hline
-\end{tabular}
-\end{table}
-
-Berdasarkan sebaran tersebut, kategori \textbf{Makanan Basah} menyumbang kontribusi terbesar yakni sebesar 48,42\% dari total akumulasi omzet. Karena sifat produk makanan basah yang memiliki masa simpan sangat singkat (\textit{shelf life} pendek) dan cepat basi, ketidakpastian permintaan harian dapat berakibat langsung pada kerugian usaha akibat produk sisa yang terbuang. Oleh karena itu, prediksi penjualan harian dalam penelitian ini diprioritaskan pada kategori tersebut untuk membantu pelaku usaha dalam mengoptimalkan persediaan barang.
-
-Adapun sepuluh produk terlaris berdasarkan kuantitas penjualan harian pada platform EatsTEDI dirinci pada Tabel \ref{tab:top_products}.
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Daftar 10 Produk Terlaris EatsTEDI UGM}
-\label{tab:top_products}
-\begin{tabular}{|c|l|c|r|}
-\hline
-\textbf{No} & \textbf{Nama Produk} & \textbf{Kuantitas Terjual (Unit)} & \textbf{Total Omzet (Rp)} \\ \hline
-1 & Tahu Bakso & 23.097 & 57.742.500,00 \\ \hline
-2 & Tahu Bakso Balado & 16.688 & 42.020.500,00 \\ \hline
-3 & Risol Mayo \& Sosis & 8.489 & 21.717.000,00 \\ \hline
-4 & Cheese/Banana Roll & 3.417 & 3.417.000,00 \\ \hline
-5 & Larist Air Mineral & 3.020 & 12.080.000,00 \\ \hline
-6 & Sandwich Crispy & 2.796 & 11.184.000,00 \\ \hline
-7 & Piscok & 2.524 & 7.572.000,00 \\ \hline
-8 & Ayam Krispi & 2.495 & 6.237.500,00 \\ \hline
-9 & Nasi Rames/Uduk & 2.382 & 11.910.000,00 \\ \hline
-10 & Donat & 2.233 & 5.582.500,00 \\ \hline
-\end{tabular}
-\end{table}
-
-Adapun data dikumpulkan melalui tiga saluran utama:
+\subsection{Kebutuhan Fungsional}
+Kebutuhan fungsional menggambarkan kemampuan atau layanan utama yang harus dimiliki sistem agar dapat menjalankan proses klasifikasi kelayakan penerima subsidi listrik secara optimal. Sistem yang dikembangkan berfungsi sebagai alat analisis data berbasis machine learning yang digunakan oleh peneliti dalam melakukan pengolahan dan evaluasi model. Kebutuhan fungsional ini dirancang agar seluruh tahapan pengolahan data hingga penyajian hasil analisis dapat berjalan secara sistematis dan terintegrasi. Berikut merupakan kebutuhan fungsional sistem yang meliputi:
 \begin{enumerate}
-    \item \textbf{Observasi dan Wawancara:} Dilakukan terhadap pengelola divisi kewirausahaan mahasiswa platform EatsTEDI di Departemen Teknik Elektro dan Informatika UGM untuk memahami alur operasional kasir fisik, pencatatan menu harian, status stok, serta tantangan dalam mengantisipasi sisa stok makanan.
-    \item \textbf{Dokumentasi Transaksi:} Mengunduh dan mengekstrak basis data transaksi digital EatsTEDI dari file \textit{dump} SQL untuk tabel \textit{invoices}, \textit{product\_sold}, \textit{products}, dan \textit{categories} sebagai data latihan (\textit{training data}) dan data uji (\textit{testing data}) model prediksi LSTM.
-    \item \textbf{Studi Pustaka:} Mengkaji referensi jurnal ilmiah, buku manajemen operasi (Heizer \& Render), serta dokumentasi teknis \textit{framework} Flutter, TensorFlow LSTM, dan layanan Supabase sebagai landasan implementasi.
+    \item \textbf{Import Dataset} \\
+    Sistem mampu menerima dan membaca dataset pelanggan listrik dalam format file digital seperti CSV atau Microsoft Excel. Dataset yang diimpor berisi data administratif pelanggan serta data konsumsi listrik yang akan digunakan sebagai bahan utama dalam proses analisis dan pelatihan model klasifikasi. Sistem juga harus mampu memastikan bahwa struktur data sesuai dengan format yang dibutuhkan sehingga data dapat diproses pada tahap selanjutnya tanpa kesalahan pembacaan.
+    \item \textbf{Preprocessing Data} \\
+    Sistem mampu melakukan proses persiapan data sebelum digunakan dalam pelatihan model machine learning. Tahap preprocessing bertujuan untuk meningkatkan kualitas data agar menghasilkan model yang lebih akurat dan stabil. Proses preprocessing meliputi:
+    \begin{enumerate}
+        \item Pembersihan data (\textit{data cleaning}) untuk menghapus data duplikat atau data tidak valid.
+        \item Penanganan data kosong (\textit{missing value handling}).
+        \item Transformasi data agar sesuai dengan format analisis.
+        \item Encoding variabel kategorikal menjadi bentuk numerik yang dapat diproses oleh algoritma.
+        \item Pembagian dataset menjadi data training dan data testing sebagai dasar pelatihan dan pengujian model.
+    \end{enumerate}
+    \item \textbf{Pelatihan Model (Training Model)} \\
+    Sistem mampu melakukan proses pelatihan model klasifikasi menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Pada tahap ini, sistem mempelajari pola hubungan antara karakteristik pelanggan listrik dengan status kelayakan subsidi berdasarkan data training yang telah diproses sebelumnya, sehingga model dapat digunakan untuk melakukan prediksi terhadap data baru.
+    \item \textbf{Prediksi Klasifikasi} \\
+    Sistem mampu melakukan prediksi status kelayakan subsidi listrik pelanggan secara otomatis menggunakan model yang telah dilatih. Hasil prediksi berupa kategori pelanggan yang diklasifikasikan sebagai layak atau tidak layak menerima subsidi listrik berdasarkan karakteristik data pelanggan.
+    \item \textbf{Evaluasi Model} \\
+    Sistem mampu melakukan evaluasi performa model klasifikasi untuk mengetahui tingkat akurasi dan kualitas prediksi yang dihasilkan. Evaluasi dilakukan menggunakan beberapa metrik pengukuran performa, yaitu:
+    \begin{enumerate}
+        \item Accuracy untuk mengukur tingkat ketepatan prediksi secara keseluruhan.
+        \item Precision untuk mengukur ketepatan prediksi pada kelas tertentu.
+        \item Recall untuk mengukur kemampuan model dalam menemukan data yang relevan.
+        \item F1-Score sebagai kombinasi nilai precision dan recall.
+        \item Confusion Matrix untuk menampilkan perbandingan antara hasil prediksi dan data aktual secara detail.
+    \end{enumerate}
+    \item \textbf{Menampilkan Hasil Analisis} \\
+    Sistem mampu menampilkan hasil klasifikasi pelanggan beserta nilai evaluasi model dalam bentuk tabel, grafik, atau laporan analisis sehingga memudahkan pengguna dalam memahami hasil pengolahan data dan performa model yang telah dibangun.
+    \item \textbf{Penyimpanan Hasil} \\
+    Sistem mampu menyimpan dataset hasil pengolahan, model yang telah dilatih, serta hasil prediksi klasifikasi ke dalam media penyimpanan atau database.
 \end{enumerate}
 
-\subsubsection{Ekstraksi dan Agregasi Data (Format CSV)}
+\subsection{Kebutuhan Non-Fungsional}
+Kebutuhan non-fungsional merupakan kebutuhan pendukung yang berkaitan dengan spesifikasi teknis sistem agar proses pengembangan dan pengujian model dapat berjalan dengan baik. Kebutuhan ini mencakup perangkat keras dan perangkat lunak yang digunakan dalam penelitian.
 
-Proses transformasi data mentah dari basis data relasional \textit{dump} SQL menjadi berkas terstruktur siap latih disebut sebagai proses \textbf{\textit{Extract, Transform, and Load} (ETL)} atau \textbf{Ekstraksi dan Agregasi Data}. Tahapan ini dilakukan untuk mengubah granularitas data dari log transaksi individu (tingkat item terjual) menjadi deret waktu pendapatan harian, mingguan, dan bulanan yang sesuai dengan karakteristik input jaringan saraf LSTM.
-
-Proses ekstraksi ini menghasilkan empat berkas dataset utama sebagai berikut:
 \begin{enumerate}
-    \item \textbf{\textit{raw\_transactions.csv}}: Berisi log transaksi gabungan hasil \textit{join} tabel \textit{invoices}, \textit{product\_sold}, \textit{products}, dan \textit{categories}.
-    \item \textbf{\textit{daily\_sales.csv}}: Hasil agregasi harian yang menjadi dataset utama untuk model prediksi harian.
-    \item \textbf{\textit{weekly\_sales.csv}}: Hasil agregasi mingguan untuk visualisasi tren mingguan.
-    \item \textbf{\textit{monthly\_sales.csv}}: Hasil agregasi bulanan untuk analisis musiman jangka panjang.
+    \item \textbf{Kebutuhan Perangkat Keras (Hardware)} \\
+    Perangkat keras digunakan untuk menjalankan proses pengolahan data dan pelatihan model machine learning yang membutuhkan kemampuan komputasi tertentu.
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Kebutuhan Perangkat Keras (Hardware)}
+    \label{tab:hardware_req}
+    \begin{tabularx}{\textwidth}{|c|p{2.8cm}|p{5cm}|X|}
+    \hline
+    \textbf{No} & \textbf{Nama Perangkat} & \textbf{Spesifikasi} & \textbf{Keterangan} \\ \hline
+    1 & Laptop / PC & Processor Intel Core i5 / setara & Perangkat utama pengembangan sistem \\ \hline
+    2 & RAM & 8 GB & Mendukung proses training model \\ \hline
+    3 & Penyimpanan & 256 GB SSD & Penyimpanan dataset dan hasil model \\ \hline
+    \end{tabularx}
+    \end{table}
+
+    \item \textbf{Kebutuhan Perangkat Lunak (Software)} \\
+    Perangkat lunak digunakan sebagai lingkungan utama dalam proses pengembangan sistem, pengolahan data, serta implementasi algoritma Light Gradient Boosting Machine (LightGBM) pada penelitian ini.
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Kebutuhan Perangkat Lunak (Software)}
+    \label{tab:software_req}
+    \begin{tabularx}{\textwidth}{|c|p{3.5cm}|p{5.5cm}|X|}
+    \hline
+    \textbf{No} & \textbf{Software} & \textbf{Spesifikasi} & \textbf{Fungsi} \\ \hline
+    1 & Sistem Operasi & Windows / Linux & Platform menjalankan sistem \\ \hline
+    2 & Python & Bahasa pemrograman utama & - \\ \hline
+    3 & Jupyter Notebook / Colab & Lingkungan eksperimen machine learning & - \\ \hline
+    4 & Library Pandas \& NumPy & Pengolahan dan manipulasi data & - \\ \hline
+    5 & Scikit-Learn & Preprocessing dan evaluasi model & - \\ \hline
+    6 & LightGBM Library & Implementasi algoritma LightGBM & - \\ \hline
+    7 & Visual Studio Code & Editor kode program & - \\ \hline
+    8 & Microsoft Excel & Pengolahan awal dataset & - \\ \hline
+    9 & Draw.io & Perancangan diagram sistem & - \\ \hline
+    \end{tabularx}
+    \end{table}
 \end{enumerate}
-
-Struktur skema data dan deskripsi kolom dari berkas \textit{daily\_sales.csv} sebagai dataset utama pelatihan model LSTM dirinci pada Tabel \ref{tab:daily_sales_schema}.
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Struktur Skema Dataset \textit{daily\_sales.csv}}
-\label{tab:daily_sales_schema}
-\begin{tabularx}{\textwidth}{|l|l|X|}
-\hline
-\textbf{Nama Kolom} & \textbf{Tipe Data} & \textbf{Deskripsi} \\ \hline
-\textit{date} & Date & Tanggal transaksi (format YYYY-MM-DD). \\ \hline
-\textit{revenue} & Float & Total omzet pendapatan harian (nominal Rupiah). \\ \hline
-\textit{transactions} & Integer & Total volume transaksi/nota lunas harian. \\ \hline
-\textit{qty\_sold} & Integer & Total kuantitas unit produk terjual harian. \\ \hline
-\textit{day\_of\_week} & Integer & Indeks hari dalam minggu (0 = Senin s.d. 6 = Minggu). Penyaringan hari kerja aktif (0 s.d. 4) dilakukan pada tahap pemodelan. \\ \hline
-\textit{week\_of\_year} & Integer & Nomor minggu dalam setahun berdasarkan standar ISO. \\ \hline
-\textit{month} & Integer & Nomor bulan kalender (1 s.d. 12). \\ \hline
-\textit{is\_weekend} & Integer & Penanda biner akhir pekan (1 jika Sabtu/Minggu, 0 jika lainnya). \\ \hline
-\textit{is\_holiday} & Integer & Penanda biner libur akademik (1 jika Januari/Juli, 0 jika aktif). \\ \hline
-\textit{is\_ramadan} & Integer & Penanda biner bulan Ramadan (1 jika Ramadan, 0 jika lainnya). \\ \hline
-\end{tabularx}
-\end{table}
-
-Sementara itu, skema data untuk berkas agregasi mingguan \textit{weekly\_sales.csv} dan agregasi bulanan \textit{monthly\_sales.csv} masing-masing dijelaskan pada Tabel \ref{tab:weekly_sales_schema} dan Tabel \ref{tab:monthly_sales_schema}.
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Struktur Skema Dataset \textit{weekly\_sales.csv}}
-\label{tab:weekly_sales_schema}
-\begin{tabularx}{\textwidth}{|l|l|X|}
-\hline
-\textbf{Nama Kolom} & \textbf{Tipe Data} & \textbf{Deskripsi} \\ \hline
-\textit{year\_week} & String & Periode tahun dan nomor minggu ISO (format YYYY-WW). \\ \hline
-\textit{week\_start} & Date & Tanggal awal hari Senin pada minggu tersebut (format YYYY-MM-DD). \\ \hline
-\textit{revenue} & Float & Total omzet pendapatan mingguan (nominal Rupiah). \\ \hline
-\textit{transactions} & Integer & Total volume transaksi/nota lunas mingguan. \\ \hline
-\textit{qty\_sold} & Integer & Total kuantitas unit produk terjual mingguan. \\ \hline
-\textit{active\_days} & Integer & Jumlah hari aktif beroperasi dalam minggu tersebut. \\ \hline
-\end{tabularx}
-\end{table}
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Struktur Skema Dataset \textit{monthly\_sales.csv}}
-\label{tab:monthly_sales_schema}
-\begin{tabularx}{\textwidth}{|l|l|X|}
-\hline
-\textbf{Nama Kolom} & \textbf{Tipe Data} & \textbf{Deskripsi} \\ \hline
-\textit{year\_month} & String & Periode tahun dan bulan kalender (format YYYY-MM). \\ \hline
-\textit{revenue} & Float & Total omzet pendapatan bulanan (nominal Rupiah). \\ \hline
-\textit{transactions} & Integer & Total volume transaksi/nota lunas bulanan. \\ \hline
-\textit{qty\_sold} & Integer & Total kuantitas unit produk terjual bulanan. \\ \hline
-\textit{active\_days} & Integer & Jumlah hari aktif beroperasi dalam bulan tersebut. \\ \hline
-\end{tabularx}
-\end{table}
-
-\subsection{Analisis Kebutuhan Data}
-
-Analisis kebutuhan data dilakukan untuk mengidentifikasi karakteristik dan kebutuhan pemrosesan data agar model prediksi LSTM dan aplikasi POS dapat berintegrasi secara optimal:
-\begin{enumerate}
-    \item \textbf{Volume Data Minimum (\textit{Cold Start Mitigation}):} Model LSTM memerlukan data runtun waktu yang kontinu. Penelitian ini membedakan dua ambang batas yang berbeda tujuan: (1) \textbf{7 hari aktif} merupakan syarat teknis minimum agar model dapat dijalankan sama sekali, sesuai panjang \textit{sequence} \texttt{LOOK\_BACK} pada arsitektur LSTM (lihat Subbab 3.2.7); dan (2) \textbf{30 hari aktif} merupakan ambang batas kualitas (\textit{warm-up period}) agar hasil prediksi dianggap cukup andal untuk ditampilkan tanpa peringatan \textit{cold start} kepada pengguna. Toko dengan riwayat transaksi kurang dari 7 hari tidak dapat memperoleh estimasi model sama sekali dan diberikan estimasi berbasis pola bisnis retail/kafe umum, sedangkan toko dengan riwayat antara 7--30 hari tetap memperoleh estimasi namun disertai peringatan \textit{cold start} bahwa keandalannya masih terbatas.
-    \item \textbf{Pembersihan dan Imputasi Data:} Karena data mentah transaksi sering kali memiliki hari luring atau libur, diperlukan aturan pembersihan data. Hari non-aktif (Sabtu, Minggu, dan libur semester) disaring agar tidak mengacaukan analisis pola musiman bisnis harian.
-    \item \textbf{Keamanan Data (Minimalisasi Data):} \textit{Payload} yang dikirimkan ke layanan REST API prediksi secara desain hanya berisi data agregat numerik penjualan (total omzet harian, kuantitas terjual, dan indeks waktu kalender) tanpa menyertakan informasi identitas pelanggan seperti nama, nomor telepon, maupun detail pembayaran spesifik, sehingga privasi pelanggan tetap terjaga.
-    \item \textbf{Struktur Payload Data API:} Data runtun waktu harus dikirimkan dalam format terstruktur JSON melalui protokol HTTPS. Payload berisi larik nominal omzet harian 7 hari terakhir beserta indeks waktu kalender yang relevan.
-\end{enumerate}
-
-\subsection{Preprocessing Data}
-
-Data transaksi yang terkumpul dari basis data EatsTEDI melalui beberapa tahap penyiapan berikut sebelum digunakan untuk pelatihan model:
-\begin{enumerate}
-    \item \textbf{Pembersihan dan Penyaringan Hari Aktif:} Menghapus data duplikat dan menyelaraskan format tanggal, serta menyaring hari non-aktif (Sabtu, Minggu, dan libur semester pada Januari dan Juli). Pada implementasinya, penyaringan diwujudkan dengan hanya mempertahankan hari kerja aktif yang memiliki pendapatan positif (\textit{revenue} $> 0$). Penyaringan ini mencegah \textit{gap} panjang pada deret waktu yang dapat mengaburkan pola musiman harian.
-    \item \textbf{Transformasi Target:} Nilai pendapatan ditransformasikan ke skala logaritma untuk menstabilkan variansi, kemudian diubah menjadi bentuk \textit{log-return} (selisih logaritmik antar hari aktif) agar model mempelajari deviasi pendapatan relatif, bukan nilai nominal mentah.
-    \item \textbf{Normalisasi:} Seluruh fitur masukan diskalakan ke rentang $[0, 1]$ menggunakan \textit{Min-Max Scaling}, dengan \textit{fitting} parameter \textit{scaler} hanya pada data latih untuk mencegah kebocoran informasi (\textit{data leakage}).
-    \item \textbf{Pembentukan \textit{Sequence} (\textit{Windowing}):} Data diubah ke format \textit{input}--label menggunakan \textit{sliding window} sepanjang 7 hari kerja aktif ($LOOK\_BACK = 7$) untuk memprediksi penjualan hari aktif berikutnya.
-    \item \textbf{Pembagian Data (\textit{Time-Based Split}):} Dataset dibagi secara kronologis agar urutan temporal terjaga dan tidak terjadi kebocoran data masa depan ke masa lalu.
-\end{enumerate}
-
-Rincian teknis rumus \textit{log-return}, \textit{cyclical encoding}, dan arsitektur model dijabarkan secara lengkap pada Subbagian~\ref{subsec:lstm_alg}.
 
 \section{Rancangan Sistem}
-
-Perancangan sistem dalam penelitian ini dilakukan menggunakan pendekatan arsitektur terdistribusi dan pemodelan \textit{Unified Modeling Language} (UML) untuk memberikan gambaran yang jelas mengenai arsitektur sistem, alur proses, dan interaksi pengguna. Pemodelan rancangan sistem direpresentasikan melalui arsitektur sistem, \textit{Use Case Diagram}, \textit{Class Diagram}, \textit{Activity Diagram}, serta \textit{Entity Relationship Diagram} (ERD).
-
-\subsection{Metode Penelitian}
-
-Penelitian ini merupakan jenis penelitian pengembangan (\textit{Research and Development}) dengan pendekatan kuantitatif untuk pengujian model prediksi dan kualitatif untuk analisis kebutuhan pengguna. Model pengembangan yang digunakan adalah \textbf{\textit{Agile} (Tangkas)} dengan pendekatan kombinasi antara \textbf{\textit{Iterative} (Berulang)} dan \textbf{\textit{Incremental} (Bertahap)}, serta mengadopsi prinsip \textbf{\textit{Lean Software Development}}. Metode ini diterapkan melalui fase-fase berikut:
-\begin{enumerate}
-    \item \textbf{Fokus pada \textit{Minimum Viable Product} (MVP):} Pengembangan difokuskan pada penyelesaian fitur inti sistem kasir terlebih dahulu (\textit{Core POS}, autentikasi pengguna, manajemen produk, dan integrasi \textit{hardware} printer) agar produk minimal dapat segera berfungsi untuk mempercepat waktu rilis ke pasar (\textit{time-to-market}). Fitur lanjutan seperti analisis cerdas (\textit{Smart Analytics}) dan notifikasi \textit{push} direncanakan pada fase pasca-MVP.
-    \item \textbf{Pengembangan Berbasis Sesi/Iterasi Pendek (\textit{sprints}):} Proses pengembangan dipecah menjadi siklus iterasi pendek dalam bentuk sesi-sesi harian terfokus. Setiap sesi ditujukan untuk menambahkan fungsionalitas baru (\textit{increment}) secara bertahap atau melakukan optimasi spesifik, seperti perbaikan antarmuka dasbor, optimasi navigasi \textit{sidebar}, dan penataan ulang modul \textit{database}.
-    \item \textbf{Refaktorisasi Kode dan Adaptasi Perubahan:} Pengembangan bersifat adaptif dan responsif terhadap kendala teknis atau perubahan kebutuhan yang ditemui di tengah proses pengembangan. Siklus mencakup proses refaktorisasi kode mengikuti pembaruan standar \textit{framework} Flutter, penyelarasan skema \textit{database} (\textit{schema alignment}), optimasi sinkronisasi data lokal-\textit{cloud}, serta mitigasi kebocoran memori (\textit{memory leaks}).
-    \item \textbf{Uji Coba Berulang (\textit{Iterative Testing}):} Melakukan pengujian fungsionalitas menggunakan metode \textit{Black Box Testing} secara berkala untuk setiap penambahan fitur baru untuk memastikan integritas dan stabilitas aplikasi kasir serta modul prediksi penjualan berbasis LSTM tetap terjaga.
-\end{enumerate}
-
-\subsubsection{Alur Penelitian}
-
-Alur penelitian ini dirancang secara sistematis untuk membangun sistem \textit{Point of Sale} (POS) berbasis \textit{mobile} yang dilengkapi fitur prediksi penjualan harian menggunakan metode LSTM. Sebagaimana diilustrasikan pada Gambar \ref{fig:alur_penelitian}, tahapan penelitian dibagi menjadi dua fase utama yang saling berkaitan.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\textwidth]{alur_penelitian}
-    \caption{Alur Penelitian}
-    \label{fig:alur_penelitian}
-\end{figure}
-
-Pada \textbf{Fase Pengembangan dan Implementasi Sistem POS}, penelitian diawali dengan analisis kebutuhan melalui observasi langsung dan identifikasi permasalahan pada mitra EatsTEDI. Selanjutnya dilakukan perancangan sistem meliputi arsitektur \textit{offline-first}, desain basis data relasional (Supabase PostgreSQL dan Isar DB), serta perancangan \textit{Use Case Diagram}, \textit{Activity Diagram}, ERD, dan antarmuka pengguna. Setelah tahap perancangan, sistem POS dikembangkan menggunakan Flutter sebagai \textit{frontend}, Supabase sebagai basis data \textit{cloud}, Isar DB sebagai basis data lokal, dan layanan prediksi penjualan Python berbasis Flask yang di-\textit{deploy} pada platform Hugging Face untuk pengolahan modul AI. Aplikasi yang telah dibangun kemudian diimplementasikan dan diujicobakan secara fungsional pada mitra EatsTEDI untuk menguji kesesuaian alur transaksi kasir dan penyajian hasil prediksi kepada pengguna. Perlu ditegaskan bahwa data yang digunakan untuk melatih dan mengevaluasi model prediksi pada penelitian ini \textbf{bukan} berasal dari aplikasi Parzello POS yang baru dibangun tersebut, melainkan berupa data sekunder historis yang bersumber dari platform EatsTEDI yang telah beroperasi sebelumnya (\textit{dump} SQL \texttt{eatstedi-20260621-010820.sql}), mencakup rentang waktu 24 Agustus 2024 s.d. 20 Juni 2026. Dengan demikian, aplikasi yang dibangun dalam penelitian ini berperan sebagai wadah penyajian hasil prediksi dan objek pengujian fungsional, sedangkan data latih model prediksi diperoleh dari riwayat transaksi mitra yang sudah ada jauh sebelum penelitian ini dimulai.
-
-Pada \textbf{Fase Pengembangan Model Prediksi Penjualan}, data transaksi historis sekunder tersebut selanjutnya melalui tahap pra-pemrosesan meliputi pembersihan data, agregasi harian, normalisasi, dan pembentukan data deret waktu (\textit{time series}). \textit{Dataset} kemudian dibagi menjadi data latih dan data uji. Model LSTM dilatih menggunakan data latih untuk mempelajari pola penjualan jangka pendek maupun jangka panjang. Setelah pelatihan, model dievaluasi menggunakan metrik regresi deret waktu, yaitu MAE, RMSE, sMAPE, dan MASE, kemudian layanan prediksi produksi diintegrasikan ke dalam sistem POS sehingga aplikasi mampu menampilkan hasil prediksi penjualan harian kepada pengguna melalui \textit{REST API}.
-
-\subsection{Diagram Use Case}
-
-Sistem POS melibatkan dua aktor utama, yaitu \textbf{Owner (Pemilik Toko)} dan \textbf{Kasir (Karyawan)}. \textit{Use Case Diagram} menggambarkan fungsi-fungsi yang dapat diakses oleh masing-masing aktor. Pembatasan hak akses berbasis peran (\textit{Role-Based Access Control}/RBAC) ditegakkan pada lapisan navigasi aplikasi (\textit{router.dart}), di mana hanya rute Manajemen Karyawan dan Pengaturan Profil Toko yang dibatasi eksklusif untuk Owner, sedangkan fungsi operasional lainnya dapat diakses oleh seluruh staf toko. Rancangan \textit{use case} diilustrasikan pada Gambar \ref{fig:use_case}.
-
-\begin{landscape}
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=0.95\linewidth]{use_case_drawio}
-    \caption{\textit{Use Case Diagram} Sistem POS}
-    \label{fig:use_case}
-\end{figure}
-\end{landscape}
-
-\noindent\textbf{1. Definisi Aktor}
-
-Definisi aktor pada sistem POS diilustrasikan pada Tabel \ref{tab:aktor} berikut:
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Definisi Aktor}
-\label{tab:aktor}
-\begin{tabularx}{\textwidth}{|c|l|X|}
-\hline
-\textbf{No.} & \textbf{Aktor} & \textbf{Deskripsi} \\
-\hline
-1 & Owner (Pemilik) & Aktor dengan hak akses penuh terhadap seluruh sistem. Hak eksklusif Owner pada lapisan navigasi adalah manajemen data karyawan dan pengaturan identitas toko. Owner juga menjadi penanggung jawab utama konfigurasi toko dan pengambilan keputusan strategis berbasis laporan serta fitur AI \textit{Smart Analytics}. \\
-\hline
-2 & Kasir (Karyawan) & Staf operasional harian toko dengan akses mencakup pelayanan penjualan (POS), pencetakan struk, manajemen produk dan kategori, audit riwayat stok, \textit{dashboard}, laporan penjualan, \textit{broadcast} notifikasi, serta AI \textit{Smart Analytics}, kecuali manajemen karyawan dan pengaturan profil toko yang tetap eksklusif Owner. \\
-\hline
-\end{tabularx}
-\end{table}
-
-\noindent\textbf{2. Definisi \textit{Use Case}}
-
-Definisi \textit{use case} pada sistem POS diilustrasikan pada Tabel \ref{tab:usecase} berikut:
-
-{\setstretch{1.2}
-\begin{longtable}{|>{\centering\arraybackslash}p{0.6cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{8.4cm}|}
-\caption{Definisi \textit{Use Case}} \label{tab:usecase} \\
-\hline
-\textbf{No.} & \textbf{\textit{Use Case}} & \textbf{Deskripsi} \\
-\hline
-\endfirsthead
-\hline
-\textbf{No.} & \textbf{\textit{Use Case}} & \textbf{Deskripsi} \\
-\hline
-\endhead
-
-\hline
-\endfoot
-\hline
-\endlastfoot
-
-1 & Registrasi Toko Baru & Mendaftarkan akun toko baru saat inisialisasi awal sistem (Owner). \\
-\hline
-2 & \textit{Login} Akun & Autentikasi pengguna menggunakan email dan kata sandi via Supabase Auth. \\
-\hline
-3 & Melakukan \textit{Checkout} & Memasukkan produk ke keranjang dan memproses transaksi pembayaran. \\
-\hline
-4 & Menerapkan \textit{Voucher}/Diskon & Memasukkan kode promosi untuk memotong total tagihan transaksi. \\
-\hline
-5 & Melakukan \textit{Split Bill} & Memecah pembayaran satu nota belanja menjadi beberapa bagian tagihan, terintegrasi di lembar keranjang dan layar pembayaran. \\
-\hline
-6 & Mencetak Struk & Mencetak struk transaksi fisik via printer \textit{thermal} Bluetooth. \\
-\hline
-7 & Memonitor Status Meja & Memantau keterisian meja secara visual, terintegrasi di dalam alur POS. \\
-\hline
-8 & Mengelola Katalog Produk & Menambah, menyunting, dan menghapus produk/stok barang. \\
-\hline
-9 & Mengelola Kategori & Mengatur pengelompokan menu katalog produk toko. \\
-\hline
-10 & Mengaudit Riwayat Stok & Melihat \textit{log} mutasi stok untuk keperluan audit inventaris. \\
-\hline
-11 & Melihat \textit{Dashboard} & Memantau performa keuangan dan statistik penjualan toko. \\
-\hline
-12 & Melihat AI \textit{Smart Analytics} & Mengakses proyeksi penjualan berbasis Model LSTM beserta riwayat hasil analitik sebelumnya. \\
-\hline
-13 & Kirim \textit{Broadcast} Notifikasi & Mengirim pemberitahuan \textit{real-time} ke staf toko. \\
-\hline
-14 & Sinkronisasi Data & Menyinkronkan transaksi \textit{offline} lokal ke \textit{cloud} Supabase secara otomatis. \\
-\hline
-15 & Mengelola Karyawan & Mendaftarkan atau mengubah peran staf kasir (Owner). \\
-\hline
-16 & Mengatur Profil Toko & Mengubah nama toko, alamat, dan logo outlet (Owner). \\
-\hline
-\end{longtable}
-}
+Rancangan sistem merupakan tahap perencanaan yang dilakukan untuk menggambarkan alur kerja sistem klasifikasi kelayakan penerima subsidi listrik menggunakan metode Light Gradient Boosting Machine (LightGBM). Perancangan ini bertujuan untuk memberikan gambaran mengenai proses pengolahan data, interaksi pengguna dengan sistem, serta tahapan analisis yang dilakukan mulai dari input data hingga menghasilkan output klasifikasi. Rancangan sistem divisualisasikan menggunakan diagram UML agar alur sistem dapat dipahami secara jelas sebelum tahap implementasi dilakukan.
 
 \subsection{Arsitektur Sistem}
-
-Sistem Parzello POS Mobile dirancang menggunakan pendekatan arsitektur \textit{hybrid-cloud} yang membagi pemrosesan antara perangkat lokal dan infrastruktur \textit{cloud}. Secara keseluruhan, sistem terdiri dari empat komponen utama yang saling terintegrasi, yaitu \textit{Flutter Mobile App}, \textit{Supabase Cloud}, \textit{Firebase}, dan \textit{Layanan Inferensi Model LSTM} (Hugging Face). Rancangan arsitektur sistem diilustrasikan pada Gambar \ref{fig:arsitektur_sistem}.
+Arsitektur sistem menggambarkan struktur dan alur kerja utama sistem dalam mengolah data pelanggan listrik hingga menghasilkan hasil klasifikasi kelayakan subsidi. Sistem dirancang dalam beberapa tahapan, yaitu proses input data, preprocessing data, pelatihan model LightGBM, penyimpanan data, serta penyajian output hasil analisis. Arsitektur ini menunjukkan hubungan antar komponen sistem yang saling terintegrasi dalam proses klasifikasi.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{arsitektur_sistem}
-    \caption{Arsitektur Sistem POS}
+    \caption{Arsitektur Sistem}
     \label{fig:arsitektur_sistem}
 \end{figure}
 
-Penjelasan mengenai empat komponen utama dalam arsitektur sistem adalah sebagai berikut:
-\begin{enumerate}
-    \item \textbf{Sisi Klien (\textit{Client-Side}):} Aplikasi dibangun menggunakan \textit{framework} Flutter dengan manajemen \textit{state} Riverpod dan navigasi GoRouter. Komponen inti dari sisi klien adalah Isar DB, sebuah database NoSQL lokal yang berperan sebagai \textit{cache offline-first}, memungkinkan kasir tetap dapat melakukan transaksi penuh meskipun koneksi internet terputus. \textit{Sync Engine} kemudian bekerja di latar belakang untuk menyinkronkan data lokal ke \textit{cloud} secara otomatis ketika koneksi terdeteksi kembali aktif, menggunakan penanda \textit{isSynced} pada setiap \textit{record} untuk menghindari duplikasi data. Selain itu, sisi klien juga mengelola integrasi perangkat keras berupa printer \textit{thermal} Bluetooth/USB untuk mencetak struk dan kamera untuk pemindaian \textit{barcode} produk.
-    \item \textbf{Infrastruktur \textit{Cloud} (Supabase):} Sebagai tulang punggung infrastruktur \textit{cloud}, Supabase menyediakan empat layanan utama. Supabase Auth menangani autentikasi pengguna melalui protokol JWT dan Google OAuth. Supabase PostgreSQL menjadi basis data relasional terpusat yang dilengkapi kebijakan \textit{Row Level Security} (RLS) untuk mengisolasi data antar \textit{merchant}, pemicu database (\textit{triggers}), serta prosedur tersimpan (\textit{RPC}) untuk memproses transaksi secara aman. Supabase Storage menyimpan aset media seperti gambar produk dan logo toko. Sedangkan \textit{Edge Functions} digunakan untuk memproses \textit{webhook} basis data yang bersifat sensitif, seperti pemicu pengiriman \textit{push notification} peringatan stok menipis kepada pemilik toko.
-    \item \textbf{Telemetri dan Notifikasi (Firebase):} Untuk kebutuhan telemetri dan notifikasi, sistem terintegrasi dengan Firebase. \textit{Firebase Cloud Messaging} (FCM) bertugas menyampaikan \textit{push notification} secara \textit{real-time} kepada pemilik toko, misalnya peringatan stok habis atau pembatalan transaksi oleh kasir. \textit{Firebase Analytics} digunakan untuk mencatat perilaku penggunaan aplikasi, seperti volume transaksi harian, penggunaan fitur \textit{split bill}, dan inisiasi kalibrasi model AI.
-    \item \textbf{Layanan Inferensi Model LSTM (Hugging Face):} Komponen terakhir adalah layanan inferensi untuk mendukung fitur analitik prediktif. Pada penelitian ini, dikembangkan sebuah model \textit{deep learning} berbasis \textbf{Long Short-Term Memory (LSTM)} secara mandiri, yang dirancang khusus untuk memproyeksikan data runtun waktu (\textit{time-series}) penjualan harian pada usaha berskala UMKM. Model prediksi tersebut kemudian dikemas dalam layanan prediksi penjualan berbasis \textit{REST API} (\textit{framework} Flask) yang di-\textit{deploy} pada platform Hugging Face, sehingga dapat diakses oleh sistem secara efisien tanpa memerlukan infrastruktur \textit{server} komputasi tersendiri. Ketika pengguna mengakses fitur \textit{Smart Analytics}, aplikasi Flutter memanggil \textit{endpoint} layanan prediksi tersebut secara langsung melalui protokol HTTPS (dikonfigurasi pada berkas \textit{env.dart} dan dapat dioverride saat \textit{build} melalui \textit{--dart-define}), dengan \textit{payload} berupa data agregat penjualan tanpa informasi identitas pelanggan. Model memproses data tersebut dan mengembalikan hasil prediksi dalam format JSON, mencakup estimasi omzet harian, prediksi produk terlaris, serta rekomendasi promosi berbasis stok, yang selanjutnya divisualisasikan melalui antarmuka grafik interaktif menggunakan pustaka \textit{fl\_chart}. Aplikasi juga menangani kondisi \textit{cold start}, yaitu menampilkan peringatan pemuatan ketika \textit{server} inferensi baru aktif kembali dari kondisi \textit{idle}. Setiap hasil analisis disimpan sebagai \textit{snapshot} pada tabel \textit{smart\_analytics\_snapshots} di Supabase, sehingga riwayat analitik dapat ditinjau kembali tanpa perlu memanggil ulang model.
-\end{enumerate}
+Gambar \ref{fig:arsitektur_sistem} menunjukkan arsitektur sistem klasifikasi kelayakan penerima subsidi listrik yang terdiri dari empat tahapan utama. Pada tahap input, sistem menerima dataset pelanggan listrik yang kemudian melalui proses cleaning data untuk menghasilkan dataset yang terstruktur. Tahap proses meliputi preprocessing data serta pelatihan model menggunakan algoritma Light Gradient Boosting Machine (LightGBM) untuk menghasilkan prediksi kelayakan subsidi listrik. Hasil pengolahan data dan model selanjutnya disimpan pada database sebagai tahap penyimpanan. Pada tahap output, sistem menampilkan hasil analisis berupa dashboard, hasil klasifikasi pelanggan layak atau tidak layak menerima subsidi, serta laporan evaluasi performa model.
 
-\subsection{Class Diagram}
-
-\textit{Class Diagram} menggambarkan struktur sistem dari segi pendefinisian kelas-kelas yang akan dibangun beserta atribut dan metodenya, serta hubungan relasi asosiasi antar-kelas. Pada aplikasi Parzello POS Mobile, rancangan kelas didasarkan pada koleksi basis data lokal Isar DB yang digunakan untuk mendukung penyimpanan \textit{offline-first}. Struktur kelas-kelas ini disajikan pada Gambar~\ref{fig:class_diagram}.
+\subsection{Use Case Diagram}
+Use Case Diagram digunakan untuk menggambarkan fungsi utama sistem serta interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik yang dikembangkan. Diagram ini memberikan gambaran umum mengenai layanan yang disediakan sistem serta aktivitas yang dapat dilakukan oleh pengguna selama proses pengolahan data hingga memperoleh hasil klasifikasi.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.92\textwidth]{../Rancangan/Class Diagram/Class Diagram.drawio.png}
-    \caption{Class Diagram Sistem POS}
-    \label{fig:class_diagram}
+    \includegraphics[width=0.85\textwidth]{use_case_diagram}
+    \caption{Use Case Diagram}
+    \label{fig:use_case_diagram}
 \end{figure}
 
-Penjelasan mengenai kelas-kelas utama dalam sistem adalah sebagai berikut:
-\begin{enumerate}
-    \item \textbf{Store}: Merepresentasikan informasi toko/outlet, memiliki relasi satu-ke-banyak dengan Kategori, Produk, dan Transaksi.
-    \item \textbf{Category}: Mengelompokkan produk ke dalam kategori tertentu.
-    \item \textbf{Product}: Menyimpan informasi detail produk termasuk nama, harga jual, harga modal, dan stok.
-    \item \textbf{TransactionLocal}: Menyimpan rangkuman transaksi penjualan kasir di perangkat klien.
-    \item \textbf{TransactionItemLocal}: Menyimpan baris item produk detail dari setiap transaksi belanja.
-\end{enumerate}
+Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik. Pengguna dapat melakukan beberapa aktivitas utama, yaitu login ke dalam sistem, mengimpor dataset pelanggan listrik, melakukan preprocessing data, menjalankan proses pelatihan model menggunakan algoritma LightGBM, melakukan pengujian model, serta melihat hasil akurasi klasifikasi yang dihasilkan. Setelah seluruh proses selesai, pengguna dapat keluar dari sistem melalui fitur logout. Diagram ini menunjukkan fungsi-fungsi utama sistem yang mendukung proses analisis data secara terstruktur dan sistematis.
 
 \subsection{Activity Diagram}
-
-\textit{Activity Diagram} merupakan gambaran visual dalam bentuk diagram yang digunakan untuk menggambarkan serangkaian aktivitas atau proses yang terjadi di dalam sistem. Diagram ini memudahkan dalam menjelaskan logika prosedural, proses bisnis, serta alur kerja sistem Parzello POS Mobile yang dilengkapi dengan fitur prediksi penjualan harian. Adapun \textit{Activity Diagram} pada sistem ini dijelaskan sebagai berikut.
-
-\begin{enumerate}
-    \item \textbf{Activity Diagram Alur Kerja Transaksi Kasir (POS Checkout)} \\
-    Gambar \ref{fig:act-checkout} menggambarkan alur kerja kasir atau \textit{owner} dalam memproses transaksi belanja pelanggan di kasir, termasuk opsi penerapan kupon/voucher diskon dan pemisahan tagihan (\textit{split bill}) yang terintegrasi langsung di dalam lembar keranjang belanja dan layar pembayaran, sebelum data disimpan di penyimpanan lokal Isar DB.
-    
-% TODO (dilengkapi sebelum sidang): re-ekspor Rancangan/Activity Diagram.md bagian 1
-% (kini format mxGraphModel) melalui draw.io menjadi Rancangan/Mermaid/activity_checkout.png
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.65\textwidth,height=0.45\textheight,keepaspectratio]{activity_checkout.png}
-        \caption{Activity Diagram Alur Kerja Transaksi Kasir}
-        \label{fig:act-checkout}
-    \end{figure}
-
-    \item \textbf{Activity Diagram Sinkronisasi Latar Belakang (Offline-First Sync Engine)} \\
-    Gambar \ref{fig:act-sync} menggambarkan logika sinkronisasi data dari \textit{local database} (Isar DB) ke cloud database (Supabase) secara otomatis saat status konektivitas terdeteksi \textit{online}. Alur data dilakukan berdasarkan ketergantungan relasi tabel (kategori, produk, transaksi, riwayat stok) untuk menjaga konsistensi, di mana pengunggahan transaksi dilakukan melalui pemanggilan prosedur RPC \textit{create\_transaction\_v4} pada PostgreSQL agar pencatatan nota dan pemotongan stok di \textit{cloud} berlangsung dalam satu transaksi basis data yang aman.
-    
-% TODO (dilengkapi sebelum sidang): re-ekspor Rancangan/Activity Diagram.md bagian 2
-% (kini format mxGraphModel) melalui draw.io menjadi Rancangan/Mermaid/activity_sync.png
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.65\textwidth,height=0.45\textheight,keepaspectratio]{activity_sync.png}
-        \caption{Activity Diagram Sinkronisasi Latar Belakang}
-        \label{fig:act-sync}
-    \end{figure}
-
-    \item \textbf{Activity Diagram Proses AI Smart Analytics} \\
-    Gambar \ref{fig:act-ai} menggambarkan alur kerja fitur analitik prediktif: pengguna membuka layar \textit{Smart Analytics}, sistem mengagregasi data penjualan historis dari Isar DB lokal, lalu memanggil \textit{endpoint} model LSTM yang di-\textit{hosting} di Hugging Face secara langsung melalui HTTPS. Selama pemrosesan, sistem menampilkan status pemuatan (termasuk peringatan \textit{cold start} bila \textit{server} inferensi baru aktif dari kondisi \textit{idle}), kemudian merender visualisasi analitik omzet beserta rekomendasi promosi, dan menyimpan hasilnya sebagai \textit{snapshot} riwayat analitik di tabel \textit{smart\_analytics\_snapshots}.
-    
-% TODO (dilengkapi sebelum sidang): activity_ai.png SAAT INI MASIH ALUR LAMA
-% (Gemini/PII scrubbing/consent modal) -- sudah TIDAK sesuai teks & kode.
-% Re-ekspor Rancangan/Activity Diagram.md bagian 3 (mxGraphModel, alur baru
-% panggilan langsung ke model LSTM Hugging Face) melalui draw.io menjadi
-% Rancangan/Mermaid/activity_ai.png sebelum sidang.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.65\textwidth,height=0.45\textheight,keepaspectratio]{activity_ai.png}
-        \caption{Activity Diagram Proses AI Smart Analytics}
-        \label{fig:act-ai}
-    \end{figure}
-
-    \item \textbf{Activity Diagram Kelola Produk (Tambah/Ubah/Hapus)} \\
-    Gambar \ref{fig:act-produk} menggambarkan alur kerja staf toko dalam mengelola katalog produk yang menjadi sumber data transaksi bagi model prediksi penjualan. Proses tambah/ubah data disimpan terlebih dahulu ke basis data lokal Isar DB (\textit{offline-first}) beserta pencatatan riwayat perubahan stok, sebelum disinkronkan ke Supabase saat koneksi \textit{online} tersedia. Proses hapus produk diterapkan melalui skema \textit{soft delete} lokal (penanda \textit{isDeleted=true}) yang baru dihapus permanen dari basis data setelah sinkronisasi ke \textit{cloud} berhasil, guna menjaga konsistensi data penjualan yang menjadi masukan pemodelan LSTM.
-
-% TODO (dilengkapi sebelum sidang): ekspor Rancangan/Activity Diagram.md bagian 4
-% (XML mxGraphModel) melalui draw.io menjadi Rancangan/Mermaid/activity_produk.png
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.65\textwidth,height=0.45\textheight,keepaspectratio]{activity_produk.png}
-        \caption{Activity Diagram Kelola Produk (Tambah/Ubah/Hapus)}
-        \label{fig:act-produk}
-    \end{figure}
-\end{enumerate}
-
-\subsection{\textit{Entity Relationship Diagram} (ERD)}
-
-Basis data sistem POS dirancang secara hibrida menggunakan Supabase PostgreSQL untuk penyimpanan \textit{cloud} dan Isar DB untuk penyimpanan lokal di perangkat \textit{mobile}. Skema basis data \textit{cloud} terdiri dari sembilan entitas utama yang saling berelasi sebagaimana diilustrasikan pada Gambar \ref{fig:erd}.
-\begin{landscape}
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=1.0\linewidth, height=0.92\textheight, keepaspectratio]{erd_new}
-    \caption{\textit{Entity Relationship Diagram} (ERD) Sistem POS}
-    \label{fig:erd}
-\end{figure}
-\end{landscape}
-
-Entitas \textit{stores} menjadi entitas induk yang berelasi dengan seluruh entitas lainnya. Entitas \textit{store\_members} mengelola hak akses berbasis peran (\textit{Role-Based Access Control}/RBAC) untuk Owner dan Kasir. Katalog produk dikelola melalui entitas \textit{products} dan \textit{categories}, sedangkan data transaksi disimpan pada entitas \textit{transactions} dan \textit{transaction\_items}. Riwayat perubahan stok dicatat pada entitas \textit{stock\_history}, sementara entitas \textit{notifications} mendukung sistem notifikasi. Adapun hasil analisis fitur AI \textit{Smart Analytics} disimpan sebagai riwayat \textit{snapshot} pada entitas \textit{smart\_analytics\_snapshots}. Daftar seluruh tabel basis data yang digunakan dirangkum pada Tabel \ref{tab:database}.
-
-\begin{table}[H]
-\setstretch{1.2}
-\centering
-\caption{Daftar Tabel Basis Data POS}
-\label{tab:database}
-\begin{tabularx}{\textwidth}{|c|l|X|}
-\hline
-\textbf{No.} & \textbf{Nama Tabel} & \textbf{Deskripsi} \\
-\hline
-1 & \textit{stores} & Menyimpan data identitas dan konfigurasi outlet toko \textit{merchant}. \\
-\hline
-2 & \textit{store\_members} & Mengelola hak akses dan peran staf (Owner/Kasir) pada setiap toko. \\
-\hline
-3 & \textit{categories} & Menyimpan kategori pengelompokan produk atau menu dagangan. \\
-\hline
-4 & \textit{products} & Menyimpan katalog produk beserta harga, stok, dan data SKU/\textit{barcode}. \\
-\hline
-5 & \textit{transactions} & Menyimpan data nota transaksi penjualan kasir sebagai tabel induk. \\
-\hline
-6 & \textit{transaction\_items} & Menyimpan rincian produk yang dibeli dalam setiap transaksi. \\
-\hline
-7 & \textit{stock\_history} & Mencatat \textit{log} audit perubahan stok masuk dan keluar produk. \\
-\hline
-8 & \textit{notifications} & Menyimpan pesan notifikasi sistem dan \textit{broadcast} antar staf toko. \\
-\hline
-9 & \textit{smart\_analytics\_snapshots} & Menyimpan riwayat \textit{snapshot} hasil analitik prediksi LSTM setiap kali fitur \textit{Smart Analytics} dijalankan. \\
-\hline
-\end{tabularx}
-\end{table}
-
-\subsection{Rancangan Algoritma \textit{Long Short-Term Memory} (LSTM)}
-\label{subsec:lstm_alg}
-
-Desain metode LSTM memberikan gambaran mengenai alur kerja algoritma yang digunakan dalam proses prediksi penjualan harian pada sistem POS. Alur kerja algoritma diilustrasikan pada Gambar \ref{fig:lstm_alur}.
-
-\begin{figure}[H]
-    \centering
-    \resizebox{0.92\textwidth}{!}{%
-    \begin{tikzpicture}[
-        node distance=0.6cm,
-        every node/.style={align=center},
-        startstop/.style={
-            rectangle, rounded corners=8pt,
-            minimum width=9cm, minimum height=1cm,
-            text centered, draw=black, fill=gray!20, font=\small
-        },
-        process/.style={
-            rectangle,
-            minimum width=9cm, minimum height=1cm,
-            text centered, draw=black, fill=white, font=\small
-        },
-        decision/.style={
-            diamond, aspect=2.8,
-            text centered, draw=black, fill=white, font=\small,
-            inner sep=3pt
-        },
-        arr/.style={->, >=Stealth, thick},
-    ]
-
-    \node (data)   [startstop] {Data Transaksi Harian (Supabase)};
-    \node (pre)    [process, below=of data]   {Pra-pemrosesan: Filtering Hari Non-Aktif, \\ \textit{Log-Return Target}, \& Normalisasi \textit{Scaling}};
-    \node (window) [process, below=of pre]    {Pembentukan \textit{Time Series} ($LOOK\_BACK=7$ hari aktif)};
-    \node (split)  [process, below=of window] {Pembagian Dataset Kronologis (70\% \textit{Train}, 15\% \textit{Val}, 15\% \textit{Test})};
-    \node (build)  [process, below=of split]  {Pembangunan Arsitektur LSTM Tersederhanakan\\(1 LSTM Layer 24 Units $\to$ Dropout $\to$ Dense)};
-    \node (timegan) [process, minimum width=4.6cm, right=2.0cm of split]
-                   {Augmentasi Data Sintetis\\TimeGAN\\(Skenario Eksperimen)};
-    \node (train)  [process, below=of build]  {Pelatihan Model (Adam $5 \times 10^{-4}$, Early Stopping)};
-    \node (eval)   [process, below=of train]  {Evaluasi Model: MAE, RMSE, sMAPE, MASE\\(Evaluasi \textit{Multi-Seed} \& Baseline)};
-    \node (dec)    [decision, below=0.8cm of eval] {Akurasi\\Memenuhi\\Kriteria?};
-    \node (tune)   [process, minimum width=3.8cm, right=2.8cm of dec]
-                   {\textit{Hyperparameter Tuning}\\(\textit{epoch}, \textit{batch size},\\neuron, \textit{learning rate})};
-    \node (api)    [process, below=0.8cm of dec]  {Integrasi Model ke Sistem POS via \textit{REST API}};
-    \node (end)    [startstop, below=of api]  {Prediksi Harian \& Prakiraan Rekursif 7 Hari\\Ditampilkan kepada Pengguna};
-
-    \draw [arr] (data)   -- (pre);
-    \draw [arr] (pre)    -- (window);
-    \draw [arr] (window) -- (split);
-    \draw [arr] (split)  -- (build);
-    \draw [arr] (build)  -- (train);
-    \draw [arr] (train)  -- (eval);
-    \draw [arr] (eval)   -- (dec);
-    \draw [arr] (dec)    -- node[left,  font=\small] {Ya}    (api);
-    \draw [arr] (dec)    -- node[above, font=\small] {Tidak} (tune);
-    \draw [arr] (tune.north) |- (train.east);
-    \draw [arr] (api)    -- (end);
-    \draw [arr, dashed] (split) -- (timegan);
-    \draw [arr, dashed] (timegan.south) |- (build.east);
-
-    \end{tikzpicture}%
-    }
-    \caption{Alur Kerja Algoritma \textit{Long Short-Term Memory} (LSTM)}
-    \label{fig:lstm_alur}
-\end{figure}
-
-Gambar \ref{fig:lstm_alur} menggambarkan alur kerja model LSTM dari \textit{input} data transaksi harian hingga proses evaluasi model. Adapun penjelasan rinci mengenai tahapan algoritma LSTM yang dirancang dalam penelitian ini adalah sebagai berikut:
-\begin{enumerate}
-    \item \textbf{Pra-pemrosesan Data dan Transformasi Target:}
-    Data transaksi harian ditarik dari database cloud Supabase. Langkah-langkah pra-pemrosesan yang dilakukan meliputi:
-    \begin{itemize}
-        \item \textit{Filtering hari non-aktif (Zero Days)}: Menghapus hari Sabtu, Minggu, serta bulan Januari dan Juli (libur semester kampus) untuk menghindari distorsi gap yang panjang pada deret waktu. Model dilatih murni menggunakan indeks hari kerja aktif (\textit{business days}).
-        \item \textit{Transformasi Logaritma}: Data nominal pendapatan $Y_t$ ditransformasikan ke skala logaritma menggunakan $Y'_t = \log(Y_t + 1)$ untuk menstabilkan variansi.
-        \item \textit{Transformasi Target (Log-Return)}: Model tidak memprediksi pendapatan logaritmik secara langsung, melainkan memprediksi perubahan pendapatan relatif (\textit{log-return}) $r_t$ menggunakan pendekatan \textit{hybrid residual} sebagaimana dirumuskan pada Subbab 2.4.1, agar model mewarisi sifat autokorelasi jangka pendek yang dominan pada data penjualan.
-        \item \textit{Pengodean Siklik}: Fitur waktu (\textit{day of week}, \textit{week of year}, \textit{month}) diubah menjadi nilai sinus dan kosinus untuk merepresentasikan sifat periodik kalender.
-        \item \textit{Normalisasi}: Fitur-fitur masukan dinormalisasi menggunakan \textit{Min-Max Scaling} ke rentang $[0, 1]$, di mana proses pemasangan (\textit{fitting}) parameter \textit{scaler} hanya dilakukan pada data latih (\textit{training set}) untuk mencegah kebocoran informasi (\textit{data leakage}).
-    \end{itemize}
-
-    \item \textbf{Pembentukan Sequence (Sliding Window):}
-    Dataset deret waktu diubah menjadi bentuk urutan berpasangan (\textit{sequence pairs}) menggunakan metode \textit{sliding window}. Ukuran \textit{window} masukan (\textit{look-back}) ditetapkan sebesar 7 hari aktif terakhir ($LOOK\_BACK = 7$) untuk memprediksi target 1 hari aktif berikutnya ($HORIZON = 1$). Dengan demikian, model dilatih dengan format prediksi satu langkah ke depan (\textit{one-step-ahead prediction}).
-
-    \item \textbf{Pembagian Dataset Kronologis:}
-    Dataset dibagi secara kronologis (\textit{time-based split}) untuk menjaga integritas temporal deret waktu, dengan proporsi pembagian sebagai berikut:
-    \begin{itemize}
-        \item \textit{Data Latih (Training Set)}: Sebesar 70\% dari total data aktif (periode Agustus 2024 s.d. Agustus 2025).
-        \item \textit{Data Validasi (Validation Set)}: Sebesar 15\% (periode September s.d. Desember 2025) digunakan untuk pemantauan proses latih dan \textit{early stopping}.
-        \item \textit{Data Uji (Testing Set)}: Sebesar 15\% (efektif periode Februari s.d. Juni 2026, karena Januari tersaring sebagai libur semester) digunakan untuk pengujian akhir model.
-    \end{itemize}
-
-    \item \textbf{Pembangunan Arsitektur LSTM Tersederhanakan:}
-    Untuk menghindari masalah \textit{overfitting} dan \textit{model collapse} pada dataset yang relatif kecil, arsitektur LSTM dirancang secara minimalis (\textit{shallow network}):
-    \begin{itemize}
-        \item \textit{Input Layer}: Menerima matriks berukuran $7 \times 8$ (panjang \textit{sequence} 7 dan total 8 fitur masukan).
-        \item \textit{LSTM Layer}: Terdiri atas 1 \textit{layer} LSTM dengan 24 \textit{hidden units}.
-        \item \textit{Dropout Layer}: Dengan laju 0,1 untuk mencegah ketergantungan berlebih antar-node.
-        \item \textit{Dense Layer}: Terdiri atas 16 neuron dengan fungsi aktivasi \textit{Rectified Linear Unit} (ReLU).
-        \item \textit{Output Layer}: Terdiri atas 1 neuron (\textit{Dense} dengan aktivasi linear) untuk memprediksi nilai \textit{log-return} $\hat{r}_t$.
-    \end{itemize}
-    Model ini memiliki total parameter terlatih sebanyak 3.585 parameter, yang sebanding dengan ukuran data latih.
-
-    \item \textbf{Pelatihan Model:}
-    Model dilatih menggunakan algoritma optimasi Adam dengan \textit{learning rate} awal sebesar $5 \times 10^{-4}$ dan fungsi kerugian (\textit{loss function}) \textit{Mean Squared Error} (MSE). Untuk mengoptimalkan konvergensi, diterapkan dua mekanisme \textit{callback}:
-    \begin{itemize}
-        \item \textit{Early Stopping}: Menghentikan pelatihan jika loss validasi tidak membaik selama 20 \textit{epoch} berturut-turut untuk mencegah \textit{overfitting}, serta mengembalikan bobot terbaik (\textit{restore best weights}).
-        \item \textit{Reduce Learning Rate on Plateau}: Mengurangi \textit{learning rate} sebesar faktor 0,5 jika loss validasi mendatar selama 8 \textit{epoch}.
-    \end{itemize}
-    Ukuran \textit{batch} pelatihan diatur sebesar 16 dengan jumlah maksimum pelatihan 200 \textit{epoch}.
-
-    \item \textbf{Evaluasi Komparatif dan Multi-Seed:}
-    Untuk membuktikan keandalan model LSTM, kinerjanya dibandingkan dengan empat model pembanding (\textit{baseline}):
-    \begin{itemize}
-        \item \textit{Naive (Kemarin)}: Prediksi hari ini dianggap sama dengan nilai penjualan riil hari aktif sebelumnya.
-        \item \textit{Mean-7}: Prediksi berupa rata-rata bergerak dari 7 hari aktif terakhir.
-        \item \textit{SARIMA}: Model statistik klasik Seasonal Autoregressive Integrated Moving Average untuk mendeteksi pola autokorelasi deret waktu.
-        \item \textit{Seasonal-Naive}: Prediksi berupa rata-rata beberapa kemunculan terakhir dari hari yang sama dalam minggu (Senin dengan Senin, Selasa dengan Selasa, dan seterusnya), untuk menangkap pola musiman mingguan.
-    \end{itemize}
-    Dari keempat \textit{baseline} tersebut, \textit{Naive}, \textit{Mean-7}, dan SARIMA dievaluasi pada skema satu langkah ke depan (\textit{one-step-ahead}), sedangkan \textit{Seasonal-Naive} dievaluasi pada skema prediksi multi-langkah dan menjadi kandidat metode penyaji pada layanan API produksi. Notasi parameter \textit{Seasonal-Naive} dilambangkan dengan $k$, yaitu jumlah kemunculan terakhir hari sejenis yang dirata-ratakan. Selain prediksi harian sebagai fokus evaluasi ilmiah, layanan API produksi juga menyajikan angka proyeksi mingguan dan bulanan menggunakan metode rata-rata sederhana (\textit{Mean-4} untuk empat minggu terakhir dan \textit{Mean-3} untuk tiga bulan terakhir). Keduanya merupakan fitur pelengkap visualisasi aplikasi di luar lingkup evaluasi ilmiah penelitian ini, sejalan dengan Batasan Masalah yang memfokuskan prediksi pada rentang harian.
-
-    Mengingat inisialisasi bobot awal jaringan saraf bersifat acak dan dapat memengaruhi stabilitas pada data kecil, evaluasi dilakukan menggunakan metode \textbf{\textit{Multi-Seed Evaluation}}. Model dilatih sebanyak 10 kali menggunakan \textit{seed} acak yang berbeda. Hasil evaluasi dilaporkan dalam bentuk rata-rata $\pm$ standar deviasi dari metrik MAE, RMSE, sMAPE, dan MASE guna memperoleh estimasi performa yang kokoh dan dapat dipertanggungjawabkan.
-
-    \item \textbf{Eksperimen Augmentasi Data Sintetis (TimeGAN):}
-    Sebagai upaya mitigasi terhadap keterbatasan jumlah data latih, dirancang skenario eksperimen augmentasi data sintetis menggunakan \textbf{TimeGAN} (\textit{Time-series Generative Adversarial Networks}), yaitu arsitektur GAN khusus deret waktu yang diusulkan oleh Yoon et al. (2019). TimeGAN diimplementasikan menggunakan \textit{framework} PyTorch dan terdiri atas lima jaringan saraf (\textit{embedder}, \textit{recovery}, \textit{generator}, \textit{supervisor}, dan \textit{discriminator}) yang dilatih dalam tiga fase: (1) pelatihan \textit{autoencoder} (embedder--recovery), (2) pelatihan \textit{supervised} pada ruang laten, dan (3) pelatihan gabungan (\textit{joint training}) secara \textit{adversarial}. Model dilatih pada jendela deret waktu sepanjang 24 hari aktif dengan tiga fitur numerik (omzet, jumlah transaksi, dan kuantitas terjual), kemudian menghasilkan 298 sekuens data harian sintetis dari 199 sekuens data riil (rasio augmentasi 1,5). Data sintetis tersebut digabungkan dengan data riil untuk melatih ulang model LSTM (skenario \textit{augmented}), lalu performanya dibandingkan terhadap model LSTM tanpa augmentasi dan \textit{baseline} \textit{Seasonal-Naive} guna mengukur seberapa besar augmentasi data mampu memperbaiki akurasi prediksi pada data terbatas.
-
-    \item \textbf{Rekonstruksi dan Prakiraan Rekursif Multi-Langkah:}
-    Output model berupa \textit{log-return} prediksi ($\hat{r}_t$) direkonstruksi kembali ke skala nominal Rupiah ($\hat{Y}_t$) menggunakan nilai penjualan hari sebelumnya ($Y_{t-1}$) sesuai formula rekonstruksi pada Subbab 2.4.1. Untuk menyajikan proyeksi 7 hari aktif ke depan pada aplikasi POS, diterapkan metode \textbf{\textit{Recursive Forecasting}} (memasukkan hasil prediksi langkah sebelumnya sebagai input untuk langkah berikutnya). Untuk mencegah masalah akumulasi bias (\textit{error propagation}) yang dapat menyebabkan nilai prediksi meluruh atau meledak, diimplementasikan tiga teknik pengaman:
-    \begin{itemize}
-        \item \textit{Clipping log-return}: Membatasi nilai prediksi \textit{log-return} pada rentang persentil 10--90 dari data pelatihan untuk mencegah nilai ekstrem.
-        \item \textit{Damping factor}: Meredam prediksi perubahan \textit{log-return} pada langkah ke-$h$ menuju nilai 0 dengan faktor peredam $\phi^h$ (di mana $\phi = 0.7$). Hal ini membuat ramalan jangka panjang stabil dan kembali ke nilai rata-rata historis (sifat \textit{mean-reverting}).
-        \item \textit{Safety rail}: Membatasi hasil akhir nominal pendapatan berada dalam rentang pendapatan terkecil dan terbesar yang pernah tercatat secara historis pada hari aktif.
-    \end{itemize}
-\end{enumerate}
-\subsection{Perancangan \textit{Wireframe}}
-
-Perancangan \textit{wireframe} dalam penelitian ini mencakup rancangan antarmuka pengguna untuk semua layar utama yang menjadi bagian dari alur operasional aplikasi POS. \textit{Wireframe} dirancang dengan mempertimbangkan kebutuhan pengguna, aksesibilitas, dan alur kerja yang efisien. Terdapat 13 rancangan layar yang melayani kebutuhan berbeda sesuai dengan peran pengguna, sebagaimana diuraikan berikut ini.
+Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Adapun Activity Diagram pada sistem adalah sebagai berikut:
 
 \begin{enumerate}
-
-    \item \textbf{Halaman Registrasi Toko Baru}
-
-    Halaman pendaftaran akun dan toko baru yang digunakan saat inisialisasi awal sistem oleh Owner, mencakup pengisian data identitas pengguna dan informasi outlet toko.
-
+    \item \textbf{Activity Diagram Login} \\
+    Activity Diagram Login adalah gambaran proses login ke dalam sistem dapat dilihat pada Gambar \ref{fig:act_login} berikut.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.35\textwidth]{wireframe_register}
-        \caption{\textit{Wireframe} Halaman Registrasi Toko Baru}
-        \label{fig:wf_register}
+        \includegraphics[width=0.7\textwidth]{act_login}
+        \caption{Activity Diagram Login}
+        \label{fig:act_login}
     \end{figure}
+    Gambar \ref{fig:act_login} menggambarkan Activity Diagram untuk proses login. Pada tahap awal, admin memasukkan username dan password ke dalam sistem. Setelah itu, admin menekan tombol login. Sistem kemudian melakukan verifikasi terhadap username dan password yang dimasukkan dengan melakukan pencarian pada database untuk mencocokkan informasi tersebut. Selanjutnya, sistem akan melakukan pengecekan apakah informasi yang dimasukkan benar atau tidak. Jika informasi yang dimasukkan sesuai dengan data yang ada di database, maka sistem akan memberikan hak akses kepada admin dan menampilkan halaman utama sistem klasifikasi. Namun, jika tidak ditemukan informasi yang sesuai, sistem akan menampilkan halaman login gagal.
 
-    \newpage
-
-    \item \textbf{Halaman \textit{Login}}
-
-    Halaman masuk akun untuk Owner maupun Kasir dengan autentikasi berbasis email dan kata sandi melalui Supabase Auth.
-
+    \item \textbf{Activity Diagram Halaman Dashboard} \\
+    Activity Diagram halaman Dashboard menjelaskan alur proses yang terjadi saat pengguna membuka halaman Dashboard. Sistem mengambil data dari database, mengolah informasi yang diperlukan, kemudian menampilkan ringkasan hasil klasifikasi beserta informasi pendukung kepada pengguna.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_login}
-        \caption{\textit{Wireframe} Halaman \textit{Login}}
-        \label{fig:wf_login}
+        \includegraphics[width=0.75\textwidth]{act_dashboard}
+        \caption{Activity Diagram Dashboard}
+        \label{fig:act_dashboard}
     \end{figure}
+    Pada Gambar \ref{fig:act_dashboard} di atas menampilkan activity diagram halaman Dashboard yang menggambarkan alur aktivitas ketika pengguna mengakses halaman Dashboard setelah berhasil melakukan login. Proses diawali dengan pengguna membuka halaman Dashboard, kemudian sistem mengirimkan permintaan untuk mengambil data ringkasan dari database. Selanjutnya, database mengembalikan data yang dibutuhkan kepada sistem untuk diproses. Jika proses pengambilan data berhasil, sistem mengolah data tersebut menjadi informasi berupa total pelanggan yang dianalisis, rasio kelayakan subsidi, total laporan yang tersimpan, distribusi hasil klasifikasi, serta aktivitas terbaru. Setelah seluruh data selesai diproses, sistem menampilkan seluruh komponen Dashboard sehingga pengguna dapat melihat ringkasan informasi secara lengkap. Apabila terjadi kegagalan dalam proses pengambilan data, sistem akan menampilkan pesan kesalahan kepada pengguna.
 
-    \item \textbf{Halaman Pemilihan Toko}
-
-    Memungkinkan pengguna yang telah \textit{login} untuk memilih toko aktif yang akan dioperasikan, terutama bagi pengguna yang terdaftar di lebih dari satu outlet.
-
+    \item \textbf{Activity Diagram Halaman Klasifikasi} \\
+    Activity Diagram pada halaman Klasifikasi Baru menggambarkan alur proses klasifikasi kelayakan penerima subsidi listrik melalui dua metode, yaitu Input Manual dan Upload Batch. Diagram ini menunjukkan interaksi antara pengguna, sistem, dan database.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_store_list}
-        \caption{\textit{Wireframe} Halaman Pemilihan Toko}
-        \label{fig:wf_store_list}
+        \includegraphics[width=0.75\textwidth]{act_klasifikasi_manual}
+        \caption{Activity Diagram Klasifikasi Manual}
+        \label{fig:act_klasifikasi_manual}
     \end{figure}
-
-    \item \textbf{Halaman Dasbor Owner}
-
-    Ringkasan performa toko yang menampilkan statistik penjualan harian, grafik tren omzet, pintasan fitur penting, dan akses cepat ke modul utama khusus Owner.
-
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_dashboard_owner}
-        \caption{\textit{Wireframe} Halaman Dasbor Owner}
-        \label{fig:wf_dashboard_owner}
+        \includegraphics[width=0.75\textwidth]{act_klasifikasi_batch}
+        \caption{Activity Diagram Klasifikasi Batch}
+        \label{fig:act_klasifikasi_batch}
     \end{figure}
-
-    \item \textbf{Halaman POS (Pembayaran)}
-
-    Layar utama kasir untuk mencari produk, menyusun keranjang pesanan, menerapkan \textit{voucher} diskon, memilih metode pembayaran, dan memproses transaksi.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_payment}
-        \caption{\textit{Wireframe} Halaman POS (Pembayaran)}
-        \label{fig:wf_payment}
-    \end{figure}
-
-    \item \textbf{Halaman Riwayat Transaksi}
-
-    Menampilkan daftar transaksi yang telah dilakukan lengkap dengan fitur pencarian dan \textit{filter} berdasarkan tanggal, berguna untuk keperluan verifikasi dan audit oleh semua staf toko.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_transaction_history}
-        \caption{\textit{Wireframe} Halaman Riwayat Transaksi}
-        \label{fig:wf_transaction_history}
-    \end{figure}
-
-    \item \textbf{Halaman Kelola Produk}
-
-    Memungkinkan staf toko untuk menambah, menyunting, dan menghapus produk yang dijual, lengkap dengan harga, stok, SKU/\textit{barcode}, gambar produk, dan kategori.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_add_product}
-        \caption{\textit{Wireframe} Halaman Kelola Produk}
-        \label{fig:wf_add_product}
-    \end{figure}
-
-    \item \textbf{Halaman Kelola Kategori}
-
-    Memungkinkan staf toko untuk membuat, mengedit, dan menghapus kategori produk guna mengorganisasi katalog dagangan toko dengan lebih terstruktur.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_manage_categories}
-        \caption{\textit{Wireframe} Halaman Kelola Kategori}
-        \label{fig:wf_manage_categories}
-    \end{figure}
-
-    \item \textbf{Halaman Laporan}
-
-    Layar yang dapat diakses seluruh staf toko untuk menampilkan laporan penjualan, tren bisnis, proyeksi penjualan harian berbasis model LSTM, dan ringkasan performa operasional toko.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_reports}
-        \caption{\textit{Wireframe} Halaman Laporan}
-        \label{fig:wf_reports}
-    \end{figure}
-
-    \item \textbf{Halaman Pengaturan}
-
-    Pusat konfigurasi aplikasi dan toko yang dapat diakses oleh semua staf, dengan sejumlah menu yang hanya tersedia bagi Owner seperti pengaturan profil toko dan integrasi pembayaran.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_settings}
-        \caption{\textit{Wireframe} Halaman Pengaturan}
-        \label{fig:wf_settings}
-    \end{figure}
-
-    \item \textbf{Halaman Informasi Toko}
-
-    Memungkinkan Owner untuk mengubah nama toko, alamat, logo outlet, dan informasi operasional lainnya yang ditampilkan kepada pelanggan.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_store_info}
-        \caption{\textit{Wireframe} Halaman Informasi Toko}
-        \label{fig:wf_store_info}
-    \end{figure}
-
-    \item \textbf{Halaman Struk Digital}
-
-    Menampilkan pratinjau struk transaksi dalam format digital yang dapat dibagikan kepada pelanggan, mencakup rincian produk, total pembayaran, dan informasi toko.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_digital_receipt}
-        \caption{\textit{Wireframe} Halaman Struk Digital}
-        \label{fig:wf_digital_receipt}
-    \end{figure}
-
-    \item \textbf{Halaman Katalog Produk}
-
-    Beranda mode pelanggan yang menampilkan katalog produk toko beserta kategori menu, informasi harga, dan fitur pencarian produk secara mandiri.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\textwidth]{wireframe_product_catalog}
-        \caption{\textit{Wireframe} Halaman Katalog Produk}
-        \label{fig:wf_product_catalog}
-    \end{figure}
-
+    Gambar \ref{fig:act_klasifikasi_manual} and Gambar \ref{fig:act_klasifikasi_batch} menunjukkan alur aktivitas untuk masing-masing metode input manual dan upload batch secara lengkap dari awal penginputan/upload hingga hasil prediksi kelayakan ditampilkan dan disimpan ke database.
 \end{enumerate}
 
-\subsection{Teknik Pengujian}
+\section{Metode dan Variabel Penelitian}
+Metode dan variabel penelitian digunakan sebagai dasar dalam proses pembangunan model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh. Pada penelitian ini digunakan pendekatan machine learning berbasis supervised learning dengan algoritma Light Gradient Boosting Machine (LightGBM). Metode tersebut dipilih karena memiliki kemampuan klasifikasi yang baik serta efisien dalam menangani data berukuran besar dan hubungan nonlinier antar variabel. Proses penelitian dilakukan dengan memanfaatkan data pelanggan listrik sebagai variabel input untuk menghasilkan prediksi status kelayakan subsidi listrik sebagai variabel output.
 
-Pengujian sistem pada penelitian ini mencakup dua pendekatan utama untuk memastikan kualitas fungsional aplikasi dan keandalan model prediksi yang diintegrasikan. Pendekatan pengujian tersebut dibagi menjadi pengujian evaluasi model prediksi penjualan dan pengujian fungsionalitas sistem secara keseluruhan menggunakan metode \textit{black box testing}.
+\section{Teknik Pengujian}
+Teknik pengujian sistem pada penelitian ini dilakukan untuk memastikan bahwa sistem klasifikasi kelayakan penerima subsidi listrik dapat berjalan sesuai dengan fungsi yang telah dirancang serta mampu menghasilkan prediksi yang akurat. Pengujian dilakukan terhadap fungsi sistem maupun performa model klasifikasi yang dibangun menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Pengujian dalam penelitian ini menggunakan dua pendekatan utama, yaitu pengujian fungsional sistem menggunakan metode Blackbox Testing dan pengujian performa model menggunakan metrik evaluasi klasifikasi.
 
-\subsubsection{Rancangan Pengujian Evaluasi Model Prediksi}
+\subsection{Pengujian Black Box}
+Pengujian Blackbox merupakan metode pengujian perangkat lunak yang berfokus pada pengujian fungsi sistem tanpa melihat struktur kode program di dalamnya. Pengujian dilakukan dengan cara memberikan input tertentu pada sistem dan mengamati apakah output yang dihasilkan telah sesuai dengan kebutuhan fungsional yang telah ditentukan.
 
-Pengujian model prediksi dilakukan untuk mengukur kinerja dan tingkat akurasi dari algoritma \textit{Long Short-Term Memory} (LSTM) yang dikembangkan. Pengujian ini menggunakan data pengujian (\textit{testing data}) yang diambil dari data histori transaksi penjualan harian mitra UMKM. Evaluasi akurasi model diukur berdasarkan tingkat kesalahan (\textit{error}) prediksi menggunakan empat metrik utama, yaitu MAE, RMSE, sMAPE, dan MASE, yang formula lengkapnya telah dijabarkan pada Subbab 2.6. Sebagai konvensi implementasi metrik sMAPE, apabila penyebut bernilai nol (nilai aktual dan prediksi sama-sama nol), penyebut diganti dengan nilai 1 agar tidak terjadi galat pembagian dengan nol (\textit{division by zero}). Konvensi inilah yang diverifikasi pada pengujian \textit{white box}.
-
-Sebagai kriteria keberhasilan model pada diagram alur (Gambar \ref{fig:lstm_alur}), ditetapkan kriteria kelayakan yang bersifat \textbf{relatif terhadap baseline}, yaitu model dinyatakan layak apabila \textbf{MASE model $<$ MASE \textit{baseline} \textit{Naive}} pada data uji yang sama. Kriteria relatif ini dipilih karena nilai MASE dinormalisasi terhadap galat naif satu langkah pada data latih (\textit{in-sample}), sehingga nilai MASE $> 1$ pada data uji hanya menandakan bahwa periode uji lebih bergejolak dibandingkan periode latih, bukan berarti model secara otomatis lebih buruk daripada metode naif; perbandingan yang bermakna secara metodologis adalah antar metode pada data uji yang identik. Apabila kriteria tersebut belum terpenuhi, dilakukan iterasi penyetelan konfigurasi (\textit{hyperparameter tuning}) meliputi jumlah neuron, \textit{learning rate}, \textit{batch size}, dan bentuk target prediksi. Pengujian evaluasi ini dilakukan dengan mengukur kinerja model menggunakan pendekatan \textit{multi-seed evaluation} (10 \textit{seeds} acak) untuk memastikan stabilitas performa model LSTM terhadap variasi inisialisasi bobot awal jaringan saraf. Hasil pengujian akhir tersebut selanjutnya dibandingkan dengan model pembanding (\textit{baselines}) untuk menentukan kelayakan model LSTM. Selain itu, diuji pula skenario perbandingan performa model LSTM yang dilatih dengan dan tanpa tambahan data sintetis hasil augmentasi TimeGAN terhadap \textit{baseline} \textit{Seasonal-Naive}, guna mengukur efektivitas augmentasi data dalam memitigasi keterbatasan ukuran dataset.
-
-\subsubsection{Rancangan Analisis Pengujian \textit{Black Box}}
-
-Pengujian fungsional sistem pada penelitian ini menggunakan metode \textit{black box testing}, yaitu metode pengujian perangkat lunak yang berfokus pada validasi fungsional sistem dengan mengamati kesesuaian antara masukan (\textit{input}) dan keluaran (\textit{output}) yang dihasilkan, tanpa memperhatikan struktur internal kode program. Pengujian diterapkan pada fitur-fitur utama sistem untuk memastikan aplikasi berjalan sesuai dengan kebutuhan operasional pengguna.
-
-Rancangan skenario pengujian \textit{black box} untuk fitur-fitur utama sistem POS ini dijabarkan pada Tabel \ref{tab:blackbox} berikut:
-
-{\setstretch{1.15}
-\begin{longtable}{|>{\centering\arraybackslash}p{0.6cm}|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{4.7cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
-\caption{Skenario Pengujian \textit{Black Box}} \label{tab:blackbox} \\
-\hline
-\textbf{No.} & \textbf{Fitur / Fungsi} & \textbf{Skenario Pengujian} & \textbf{Hasil yang Diharapkan} \\
-\hline
-\endfirsthead
-
-\hline
-\textbf{No.} & \textbf{Fitur / Fungsi} & \textbf{Skenario Pengujian} & \textbf{Hasil yang Diharapkan} \\
-\hline
-\endhead
-
-\hline
-\endfoot
-\hline
-\endlastfoot
-
-1 & Registrasi Toko Baru & Mengisi \textit{form} registrasi dengan email baru, kata sandi, nama toko, alamat, dan nomor HP. & Akun Owner berhasil dibuat, data toko tersimpan di \textit{database} Supabase \textit{cloud}, dan beralih ke halaman utama. \\
-\hline
-2 & \textit{Login} Akun & Memasukkan email dan kata sandi yang \textit{valid}/\textit{invalid} pada layar \textit{login}. & Jika \textit{valid}, pengguna masuk ke dasbor sesuai hak akses peran. Jika \textit{invalid}, sistem menampilkan pesan \textit{error} autentikasi. \\
-\hline
-3 & \textit{Checkout} Transaksi & Memasukkan produk ke keranjang, memilih metode bayar, dan mengonfirmasi nominal bayar. & Transaksi berhasil disimpan di \textit{database} lokal Isar DB, jumlah stok produk berkurang otomatis, dan dialihkan ke struk sukses. \\
-\hline
-4 & Terapkan Diskon & Memasukkan kode \textit{voucher}/nilai diskon pada keranjang belanja sebelum pembayaran. & Total belanja terpotong sesuai nilai nominal diskon/\textit{voucher} dan tercatat pada rincian nota. \\
-\hline
-5 & Mencetak Struk & Menghubungkan printer Bluetooth \textit{thermal} dan menekan tombol cetak struk dari riwayat transaksi. & Printer \textit{thermal} mencetak struk fisik transaksi secara lengkap (nama produk, total, tanggal, metode bayar). \\
-\hline
-6 & Kelola Produk & Menambah produk baru dengan nama, harga, stok, foto, dan kategori serta mengubah/menghapus produk. & Data produk baru tersimpan di \textit{database} lokal Isar DB, terdaftar pada \textit{list} produk, dan dapat diubah/dihapus. \\
-\hline
-7 & Kelola Kategori & Menambahkan kategori baru, menyunting nama kategori, atau menghapus kategori produk. & Kategori berhasil dibuat, muncul sebagai opsi \textit{filter} menu, dan diperbarui secara \textit{real-time}. \\
-\hline
-8 & Audit Mutasi Stok & Melakukan transaksi/penyesuaian stok, lalu membuka halaman riwayat mutasi stok. & Riwayat keluar-masuk barang tercatat pada \textit{log} \textit{stock\_history} dengan jenis mutasi yang sesuai. \\
-\hline
-9 & Dasbor Ringkasan & Membuka dasbor laporan penjualan harian, mingguan, dan grafik visualisasi omzet. & Menampilkan statistik ringkasan omzet, total transaksi harian, dan grafik visualisasi garis yang akurat. \\
-\hline
-10 & \textit{Smart Analytics} & Membuka layar \textit{Smart Analytics} dengan koneksi internet aktif. & Grafik prediksi penjualan 7 hari ke depan dari layanan API prediksi berhasil ditampilkan dan tersimpan sebagai \textit{snapshot}. \\
-\hline
-11 & \textit{Broadcast} Notifikasi & Owner mengirim pesan \textit{broadcast} kepada staf toko melalui menu notifikasi. & Notifikasi \textit{broadcast} diterima dan muncul di perangkat kasir secara \textit{real-time}. \\
-\hline
-12 & Sinkronisasi \textit{Offline} & Mematikan koneksi internet (luring), membuat transaksi lokal, lalu mengaktifkan internet kembali (daring). & Transaksi disimpan secara lokal di Isar DB (\textit{offline-first}), lalu terunggah otomatis ke Supabase \textit{cloud} saat internet aktif kembali. \\
-\hline
-13 & Kelola Staf Karyawan & Owner menambahkan akun staf kasir baru dan mengubah peran staf. & Akun staf berhasil terdaftar pada toko dengan peran yang sesuai. Menu ini tidak dapat diakses oleh Kasir. \\
-\hline
-14 & Atur Profil Toko & Owner mengubah nama, alamat, dan logo toko pada menu pengaturan. & Informasi profil toko berhasil diperbarui dan tampil pada struk serta katalog. Menu ini eksklusif untuk Owner. \\
-\hline
-\end{longtable}
-}
-
-\subsubsection{Rancangan Analisis Pengujian \textit{White Box}}
-
-Selain pengujian fungsional \textit{black box}, penelitian ini turut menerapkan pengujian \textit{white box} secara terbatas (\textit{lightweight}) yang berfokus pada verifikasi kebenaran logika internal dan jalur eksekusi kode (\textit{code path}) pada fungsi-fungsi kritis di layanan API prediksi, tanpa memandang antarmuka luarnya. Pengujian ini dilakukan dengan menelusuri (\textit{trace}) jalur logika kode secara manual menggunakan data masukan yang telah diketahui nilai keluarannya, kemudian membandingkan hasil eksekusi aktual terhadap hasil kalkulasi manual sebagai acuan kebenaran (\textit{ground truth}). Tiga fungsi inti yang menjadi target pengujian \textit{white box} adalah:
+Tujuan pengujian Blackbox dalam penelitian ini adalah untuk memastikan bahwa setiap fitur sistem dapat berjalan dengan baik sesuai dengan skenario penggunaan. Adapun aspek yang diuji meliputi:
 \begin{enumerate}
-    \item Fungsi perhitungan \textit{Seasonal-Naive} (\textit{by\_dow}), untuk memverifikasi jalur percabangan logika ketika jumlah data historis per hari kerja mencukupi ($\geq k$), tidak mencukupi ($<k$), maupun tidak tersedia sama sekali (\textit{fallback}).
-    \item Fungsi metrik evaluasi sMAPE dan MASE, untuk memverifikasi jalur penanganan kasus pembagian dengan nilai penyebut nol atau mendekati nol agar tidak menghasilkan galat pembagian (\textit{division by zero}).
-    \item Fungsi prediksi rekursif (\textit{forecast\_hybrid\_stable}), untuk memverifikasi jalur eksekusi tiga mekanisme pengaman secara berurutan, yaitu \textit{clipping} \textit{log-return}, \textit{damping factor}, dan \textit{safety rail} nominal omzet.
+    \item Proses import dataset pelanggan listrik.
+    \item Proses preprocessing data.
+    \item Proses pelatihan model LightGBM.
+    \item Proses prediksi klasifikasi pelanggan.
+    \item Proses evaluasi model.
+    \item Tampilan hasil analisis.
+    \item Penyimpanan hasil pengolahan data.
 \end{enumerate}
+Setiap pengujian dinyatakan berhasil apabila sistem mampu menghasilkan keluaran sesuai dengan hasil yang diharapkan tanpa terjadi kesalahan proses.
 
-\subsection{Indikator Keberhasilan Penelitian}
+\subsection{Pengujian Performa Model}
+Selain pengujian fungsi sistem, dilakukan juga pengujian performa model klasifikasi untuk mengetahui tingkat akurasi dan kualitas prediksi model LightGBM dalam menentukan kelayakan penerima subsidi listrik. Pengujian dilakukan menggunakan data testing yang tidak digunakan pada tahap pelatihan model. Evaluasi model dilakukan menggunakan beberapa metrik pengukuran, yaitu:
 
-Keberhasilan penelitian ini diukur melalui indikator-indikator berikut, yang pencapaiannya dijawab pada Bab IV dan Bab V:
 \begin{enumerate}
-    \item Aplikasi \textit{Point of Sale} (POS) \textit{mobile} berfungsi membantu pelaku UMKM dalam mengelola transaksi penjualan, inventaris produk, dan laporan keuangan secara efisien dengan kemampuan operasional \textit{offline-first}, yang divalidasi melalui pengujian fungsional \textit{Black Box}.
-    \item Metode LSTM terimplementasi pada sistem dan kinerjanya terukur secara objektif menggunakan metrik evaluasi kesalahan prediksi terhadap model pembanding (\textit{baseline}).
-    \item Sistem mampu menyajikan informasi prediksi dan laporan penjualan dalam bentuk visualisasi grafik yang mudah dipahami oleh pengguna, khususnya pelaku UMKM.
+    \item \textbf{Accuracy} \\
+    Accuracy digunakan untuk mengukur tingkat ketepatan prediksi model secara keseluruhan.
+    \begin{equation}
+        Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+    \end{equation}
+
+    \item \textbf{Precision} \\
+    Precision menunjukkan tingkat ketepatan prediksi positif yang dihasilkan oleh model.
+    \begin{equation}
+        Precision = \frac{TP}{TP + FP}
+    \end{equation}
+
+    \item \textbf{Recall} \\
+    Recall mengukur kemampuan model dalam menemukan seluruh data yang benar-benar termasuk ke dalam kelas positif.
+    \begin{equation}
+        Recall = \frac{TP}{TP + FN}
+    \end{equation}
+
+    \item \textbf{F1-Score} \\
+    F1-Score merupakan rata-rata harmonik antara precision dan recall yang digunakan untuk menyeimbangkan kedua nilai tersebut.
+    \begin{equation}
+        F1\text{-}Score = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+    \end{equation}
 \end{enumerate}
+Keterangan:
+\begin{itemize}
+    \item TP (True Positive) : Data layak subsidi yang diprediksi layak
+    \item TN (True Negative) : Data tidak layak yang diprediksi tidak layak
+    \item FP (False Positive) : Data tidak layak tetapi diprediksi layak
+    \item FN (False Negative) : Data layak tetapi diprediksi tidak layak
+\end{itemize}
+
+\subsection{Confusion Matrix}
+Confusion Matrix digunakan untuk menampilkan perbandingan antara hasil prediksi model dan data aktual dalam bentuk tabel klasifikasi. Matriks ini membantu dalam memahami performa model secara lebih rinci terhadap masing-masing kelas prediksi. Melalui teknik pengujian ini, diharapkan sistem yang dibangun mampu bekerja sesuai fungsi serta menghasilkan model klasifikasi dengan performa yang optimal dalam menentukan kelayakan penerima subsidi listrik.
+
+
+
 
 %%=============================================================
 %% BAB IV - HASIL DAN PEMBAHASAN
