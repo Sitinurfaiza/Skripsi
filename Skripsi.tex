@@ -926,6 +926,36 @@ Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Ad
         \label{fig:act_klasifikasi_batch}
     \end{figure}
     Gambar \ref{fig:act_klasifikasi_manual} and Gambar \ref{fig:act_klasifikasi_batch} menunjukkan alur aktivitas untuk masing-masing metode input manual dan upload batch secara lengkap dari awal penginputan/upload hingga hasil prediksi kelayakan ditampilkan dan disimpan ke database.
+
+    \item \textbf{Activity Diagram Halaman Riwayat Klasifikasi} \\
+    Activity Diagram pada halaman Riwayat Klasifikasi menggambarkan alur aktivitas untuk menelusuri, memfilter, dan mengekspor laporan hasil klasifikasi kelayakan penerima subsidi listrik yang telah dilakukan sebelumnya. Alur ini dapat dilihat pada Gambar \ref{fig:act_riwayat_klasifikasi} berikut.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{act_riwayat_klasifikasi}
+        \caption{Activity Diagram Riwayat Klasifikasi}
+        \label{fig:act_riwayat_klasifikasi}
+    \end{figure}
+    Pada Gambar \ref{fig:act_riwayat_klasifikasi} di atas menunjukkan aliran proses di mana admin membuka halaman laporan, kemudian sistem memanggil database untuk menyajikan daftar data riwayat kelayakan. Admin dapat melakukan penyaringan (filtering) berdasarkan kategori tertentu atau mengekspor laporan tersebut menjadi dokumen PDF/Excel yang kemudian diunduh secara lokal.
+
+    \item \textbf{Activity Diagram Halaman Laporan} \\
+    Activity Diagram pada halaman Laporan menggambarkan alur proses penyajian ringkasan statistik dan grafik distribusi hasil klasifikasi penerima subsidi listrik dalam bentuk laporan berkala. Alur ini dapat dilihat pada Gambar \ref{fig:act_halaman_laporan} berikut.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{act_halaman_laporan}
+        \caption{Activity Diagram Halaman Laporan}
+        \label{fig:act_halaman_laporan}
+    \end{figure}
+    Pada Gambar \ref{fig:act_halaman_laporan} di atas menunjukkan alur aktivitas ketika admin membuka menu laporan. Sistem akan memproses dan menampilkan rekapitulasi data kelayakan subsidi listrik, visualisasi grafik tren bulanan, serta menyediakan opsi ekspor laporan cetak bagi admin.
+
+    \item \textbf{Activity Diagram Halaman Pengaturan} \\
+    Activity Diagram pada halaman Pengaturan Model menggambarkan alur kerja verifikasi status model aktif, konfigurasi parameter LightGBM, serta proses pelatihan ulang (\textit{retraining}) model klasifikasi secara dinamis. Alur ini dapat dilihat pada Gambar \ref{fig:act_halaman_pengaturan} berikut.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{act_halaman_pengaturan}
+        \caption{Activity Diagram Halaman Pengaturan Model}
+        \label{fig:act_halaman_pengaturan}
+    \end{figure}
+    Pada Gambar \ref{fig:act_halaman_pengaturan} di atas menunjukkan proses ketika admin masuk ke menu pengaturan model. Sistem menampilkan konfigurasi parameter dan performa model saat ini. Admin dapat menginisiasi proses training model baru dengan data tambahan, di mana sistem mengirimkan instruksi ke server API Flask untuk melatih kembali model LightGBM secara asinkron.
 \end{enumerate}
 
 \section{Metode dan Variabel Penelitian}
