@@ -994,836 +994,346 @@ Confusion Matrix digunakan untuk menampilkan perbandingan antara hasil prediksi 
 %%=============================================================
 %% BAB IV - HASIL DAN PEMBAHASAN
 %%=============================================================
+%%=============================================================
+%% BAB IV - HASIL DAN PEMBAHASAN
+%%=============================================================
+%%=============================================================
+%% BAB IV - HASIL DAN PEMBAHASAN
+%%=============================================================
 \chapter[HASIL DAN PEMBAHASAN]{\\ HASIL DAN PEMBAHASAN}
 
-Bab ini menyajikan hasil rancang bangun dan pembahasan sistem Point of Sale (POS) dengan fitur prediksi penjualan harian menggunakan metode Long Short-Term Memory (LSTM). Pembahasan dibagi menjadi tujuh bagian utama, yaitu hasil implementasi sistem, \textit{preprocessing} data, implementasi dan pelatihan model prediksi, evaluasi model, hasil pengujian sistem, pembahasan hasil penelitian, serta keterbatasan sistem dan penelitian.
-
-Perlu ditegaskan di awal bahwa bab ini memaparkan dua hal yang berbeda namun saling terkait: (1) hasil eksperimen dan evaluasi metode LSTM sebagai objek kajian utama penelitian (Subbab 4.2 s.d. 4.4), dan (2) metode yang benar-benar disajikan oleh layanan API produksi (\textit{endpoint} \texttt{/api/predict/daily}) yang dipanggil aplikasi \textit{mobile} (Subbab 4.1.3 dan 4.5). Berdasarkan hasil evaluasi komparatif pada Subbab 4.4, LSTM belum terbukti unggul dibandingkan \textit{baseline} statistik pada volume data penelitian ini, sehingga layanan produksi menerapkan \textit{fallback} berbasis bukti berupa metode \textit{Seasonal-Naive} ($k=4$), sedangkan model LSTM (\texttt{.keras}) tetap didokumentasikan sebagai artefak riset. Arsitektur layanan prediksi bersifat \textit{model-agnostic} sehingga dapat langsung menyajikan model LSTM begitu data mencukupi untuk mengungguli \textit{baseline}. Selain itu, granularitas mingguan dan bulanan yang disebutkan pada Subbab 4.1.3 merupakan fitur pelengkap visualisasi pada antarmuka \textit{Smart Analytics} dan berada di luar lingkup evaluasi ilmiah pada bab ini, yang berfokus pada granularitas harian sesuai Batasan Masalah.
+Bab ini menyajikan hasil implementasi, preprocessing data, pelatihan model, evaluasi performa model, serta pengujian sistem klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM). Pembahasan dibagi menjadi tujuh bagian utama, yaitu hasil implementasi sistem, preprocessing data, implementasi dan pelatihan model prediksi, evaluasi model, hasil pengujian sistem, pembahasan hasil klasifikasi, serta keterbatasan sistem dan penelitian.
 
 \section{Hasil Implementasi Sistem}
-
-Bagian ini memaparkan realisasi fisik dari rancangan sistem yang telah disusun pada Bab III, yang mencakup implementasi antarmuka aplikasi mobile (kasir dan owner), implementasi backend dan basis data cloud (Supabase), serta implementasi layanan prediksi (API) di sisi server.
+Bagian ini memaparkan realisasi fisik dari rancangan sistem yang telah disusun pada Bab III, yang mencakup implementasi antarmuka aplikasi web dashboard (Next.js), implementasi backend dan basis data cloud (Supabase), serta implementasi layanan API di sisi server (Flask).
 
 \subsection{Implementasi Antarmuka (UI)}
-
-Aplikasi \textit{mobile} dikembangkan menggunakan \textit{framework} Flutter dengan bahasa pemrograman Dart, mengacu pada rancangan \textit{wireframe} pada Subbab 3.2.8. Cuplikan hasil implementasi antarmuka diambil langsung dari aplikasi yang berjalan pada data toko mitra EatsTEDI, disusun berurutan mengikuti alur penggunaan aplikasi mulai dari registrasi akun, manajemen toko dan produk, transaksi kasir, hingga laporan analitik.
+Aplikasi antarmuka pengguna dikembangkan menggunakan framework Next.js dengan bahasa pemrograman TypeScript, mengacu pada rancangan use case dan diagram aktivitas yang disusun pada Bab III. Antarmuka dirancang sebagai dashboard interaktif untuk mempermudah administrator dan analis dalam melakukan proses klasifikasi kelayakan penerima subsidi listrik.
 
 \begin{enumerate}
-    \item \textbf{Halaman Registrasi}
-
-    Halaman \textit{Buat Akun} merupakan titik masuk awal bagi pengguna baru. Form registrasi memuat kolom Nama Lengkap, Email, \textit{Password}, dan Konfirmasi \textit{Password}, dilengkapi opsi pendaftaran cepat \textit{Lanjutkan dengan Google} serta tautan menuju halaman Login bagi pengguna yang telah memiliki akun.
-
+    \item \textbf{Halaman Login} \\
+    Halaman Login berfungsi sebagai sistem keamanan utama untuk memverifikasi hak akses pengguna sebelum dapat masuk ke dashboard sistem. Form login memuat input username, password, serta tombol masuk. Antarmuka halaman login dapat dilihat pada Gambar \ref{fig:ui_login}.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.4\textwidth]{ui_01_register}
-        \caption{Implementasi Halaman Registrasi}
-        \label{fig:ui_register}
-    \end{figure}
-
-    \item \textbf{Halaman \textit{Login}}
-
-    Halaman \textit{Selamat Datang Kembali} menyediakan autentikasi menggunakan Email dan \textit{Password}, opsi \textit{Ingat saya} dan \textit{Lupa password}, serta tombol masuk melalui akun Google. Tombol \textit{Masuk sebagai Pelanggan} disediakan sebagai jalur akses terpisah bagi pelanggan yang hendak memindai QR katalog mandiri tanpa memerlukan akun staf toko.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_02_login}
-        \caption{Implementasi Halaman \textit{Login}}
+        \includegraphics[width=0.7\textwidth]{ui_login}
+        \caption{Implementasi Halaman Login}
         \label{fig:ui_login}
     \end{figure}
 
-    \item \textbf{Halaman Informasi Toko}
-
-    Setelah registrasi, pengguna diarahkan ke halaman \textit{Informasi Toko} untuk membuat outlet pertamanya, memuat kolom Nama Toko/\textit{Outlet}, Provinsi dan Kota/Kabupaten (\textit{dropdown} berjenjang), serta Alamat Lengkap, yang kemudian dikonfirmasi melalui tombol \textit{Konfirmasi \& Mulai}.
-
+    \item \textbf{Halaman Dashboard Utama} \\
+    Halaman Dashboard Utama menyajikan ringkasan statistik dari hasil klasifikasi kelayakan penerima subsidi listrik secara real-time. Informasi yang disajikan meliputi jumlah total pelanggan yang dianalisis, total pelanggan layak subsidi, total pelanggan tidak layak subsidi, rasio kelayakan, serta grafik lingkaran (\textit{doughnut chart}) yang menampilkan distribusi hasil keputusan. Antarmuka dashboard dapat dilihat pada Gambar \ref{fig:ui_dashboard}.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.4\textwidth]{ui_03_daftar_toko}
-        \caption{Implementasi Halaman Informasi Toko}
-        \label{fig:ui_daftar_toko}
+        \includegraphics[width=0.85\textwidth]{ui_dashboard}
+        \caption{Implementasi Halaman Dashboard Utama}
+        \label{fig:ui_dashboard}
     \end{figure}
 
-    \item \textbf{Halaman Pilih Toko}
-
-    Menampilkan daftar seluruh \textit{outlet} yang terasosiasi dengan akun pengguna beserta peran pada masing-masing \textit{outlet} (Owner atau Karyawan). Pengguna dapat bergabung ke \textit{outlet} lain melalui \textit{Kode Undangan} atau mendaftarkan \textit{outlet} baru sebelum memilih toko aktif yang ingin dioperasikan.
-
+    \item \textbf{Halaman Klasifikasi Baru} \\
+    Halaman Klasifikasi Baru menyediakan fitur bagi administrator untuk melakukan prediksi kelayakan subsidi melalui dua metode, yaitu Input Manual untuk pengujian pelanggan secara individu, serta Upload Batch (\textit{import CSV/Excel}) untuk melakukan klasifikasi data pelanggan dalam jumlah banyak sekaligus. Antarmuka halaman klasifikasi baru dapat dilihat pada Gambar \ref{fig:ui_klasifikasi_baru}.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.4\textwidth]{ui_04_pilih_toko}
-        \caption{Implementasi Halaman Pilih Toko}
-        \label{fig:ui_pilih_toko}
+        \includegraphics[width=0.85\textwidth]{ui_klasifikasi_baru}
+        \caption{Implementasi Halaman Klasifikasi Baru}
+        \label{fig:ui_klasifikasi_baru}
     \end{figure}
 
-    \item \textbf{Halaman Dasbor Owner}
-
-    Menyajikan \textit{Ringkasan Performa} toko dengan \textit{filter} rentang waktu (Hari Ini, Minggu Ini, Bulan Ini), empat kartu statistik \textit{real-time} (Omzet, Transaksi, Stok Rendah, dan Produk Aktif), serta grafik \textit{Performa Penjualan} yang memvisualisasikan tren omzet tujuh hari terakhir. Navigasi bawah aplikasi (Dasbor, Kasir, Riwayat, Laporan, dan menu lainnya) juga tampak pada halaman ini.
-
+    \item \textbf{Halaman Hasil Prediksi} \\
+    Halaman Hasil Prediksi menampilkan luaran model berupa status kelayakan pelanggan (Layak atau Tidak Layak menerima subsidi) beserta nilai probabilitas (\textit{prediction confidence}) yang dihitung oleh model LightGBM. Halaman ini juga menyajikan detail karakteristik sosial ekonomi dan kelistrikan pelanggan yang bersangkutan. Antarmuka hasil prediksi dapat dilihat pada Gambar \ref{fig:ui_klasifikasi_hasil}.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.4\textwidth]{ui_05_dashboard_owner}
-        \caption{Implementasi Halaman Dasbor Owner}
-        \label{fig:ui_dashboard_owner}
+        \includegraphics[width=0.85\textwidth]{ui_klasifikasi_hasil}
+        \caption{Implementasi Halaman Hasil Prediksi}
+        \label{fig:ui_klasifikasi_hasil}
     \end{figure}
 
-    \item \textbf{Halaman Kelola Produk dan Tambah Produk}
-
-    Halaman \textit{Katalog Produk} menampilkan daftar inventaris beserta foto, kategori, status stok, harga, dan kode SKU, dilengkapi kolom pencarian dan \textit{filter} kategori (Semua, Minuman, Makanan). Formulir \textit{Tambah Produk} memuat unggah foto produk, nama, kategori, SKU/\textit{Barcode} (dapat dipindai atau digenerasi otomatis), harga modal, harga jual, dan stok awal.
-
+    \item \textbf{Halaman Laporan dan Pengaturan} \\
+    Halaman Laporan memuat tabel riwayat pengujian klasifikasi batch maupun manual yang dapat difilter berdasarkan tanggal, status kelayakan, atau daya listrik pelanggan. Fitur ekspor laporan disediakan untuk memudahkan pencetakan dokumen hasil klasifikasi. Sementara halaman Pengaturan Model menampilkan status keaktifan model, metrik evaluasi model (akurasi, presisi, recall, F1-score), parameter default LightGBM, serta visualisasi nilai \textit{feature importance}. Antarmuka halaman pengaturan dapat dilihat pada Gambar \ref{fig:ui_pengaturan}.
     \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_06a_kelola_produk}
-            \caption{Katalog Produk}
-            \label{fig:ui_kelola_produk}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_06b_tambah_produk}
-            \caption{Tambah Produk}
-            \label{fig:ui_tambah_produk}
-        \end{subfigure}
-        \caption{Implementasi Halaman Kelola Produk dan Tambah Produk}
-        \label{fig:ui_produk}
-    \end{figure}
-
-    \item \textbf{Halaman Kelola Kategori}
-
-    Menyediakan pengelompokan produk melalui kategori yang dapat ditambah, disunting, dan dihapus, dilengkapi pencarian kategori dan penghitung jumlah produk pada setiap kategori (misalnya Minuman dan Makanan).
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_07_kelola_kategori}
-        \caption{Implementasi Halaman Kelola Kategori}
-        \label{fig:ui_kelola_kategori}
-    \end{figure}
-
-    \item \textbf{Halaman Kelola Stok dan Ubah Stok Produk}
-
-    Halaman \textit{Kelola Stok} menampilkan daftar produk beserta harga dan jumlah stok terkini, dengan tombol \textit{Ubah} pada setiap baris. Menekan tombol tersebut memunculkan modal \textit{Ubah Stok Produk} berisi \textit{stepper} penambahan/pengurangan stok manual serta pilihan pintasan (\texttt{-10}, \texttt{-5}, \texttt{+5}, \texttt{+10}) sebelum disimpan.
-
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_08_kelola_stok}
-            \caption{Kelola Stok}
-            \label{fig:ui_kelola_stok}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_09_modal_edit_stok}
-            \caption{Modal Ubah Stok Produk}
-            \label{fig:ui_modal_edit_stok}
-        \end{subfigure}
-        \caption{Implementasi Halaman Kelola Stok dan Ubah Stok Produk}
-        \label{fig:ui_stok}
-    \end{figure}
-
-    \item \textbf{Halaman Riwayat Stok}
-
-    Berfungsi sebagai log audit mutasi stok, menampilkan jenis mutasi (Penjualan atau Penyesuaian Manual), perubahan jumlah stok sebelum dan sesudah (misalnya dari 41 menjadi 40 \textit{pcs}), staf yang melakukan perubahan, serta waktu kejadian, dilengkapi \textit{filter} berdasarkan jenis mutasi.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_10_riwayat_stok}
-        \caption{Implementasi Halaman Riwayat Stok}
-        \label{fig:ui_riwayat_stok}
-    \end{figure}
-
-    \item \textbf{Halaman Kasir (POS) dan Detail Pesanan}
-
-    Merupakan layar operasional utama kasir, menampilkan katalog produk dalam bentuk \textit{grid} dengan pencarian dan pemindaian \textit{barcode}. Memilih produk memunculkan modal \textit{Detail Pesanan} yang merinci nama item, harga satuan, kuantitas melalui \textit{stepper}, subtotal, dan total bayar sebelum dilanjutkan ke pembayaran.
-
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_11_kasir_pos}
-            \caption{Kasir (POS)}
-            \label{fig:ui_kasir_pos}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_12_detail_pesanan}
-            \caption{Detail Pesanan}
-            \label{fig:ui_detail_pesanan}
-        \end{subfigure}
-        \caption{Implementasi Halaman Kasir (POS) dan Detail Pesanan}
-        \label{fig:ui_kasir}
-    \end{figure}
-
-    \item \textbf{Halaman Pembayaran}
-
-    Menampilkan total tagihan, pilihan metode pembayaran (Tunai atau QRIS), kolom \textit{Uang Tunai Diterima} beserta pintasan nominal pecahan umum (Rp25rb, Rp50rb, Rp100rb), dan kalkulasi kembalian otomatis sebelum transaksi dikonfirmasi dan disimpan.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_13_pembayaran}
-        \caption{Implementasi Halaman Pembayaran}
-        \label{fig:ui_pembayaran}
-    \end{figure}
-
-    \item \textbf{Halaman Riwayat Transaksi}
-
-    Menampilkan ringkasan kumulatif Omzet dan jumlah Transaksi, \textit{filter} periode (Semua, Hari Ini, Kemarin, Pilih Tanggal) serta status (Berhasil, \textit{Pending}, Batal), dan daftar transaksi yang dikelompokkan per tanggal lengkap dengan nomor invoice, jam, metode bayar, dan nominal.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_14_riwayat_transaksi}
-        \caption{Implementasi Halaman Riwayat Transaksi}
-        \label{fig:ui_riwayat_transaksi}
-    \end{figure}
-
-    \item \textbf{Halaman Struk Digital}
-
-    Menampilkan rincian nomor transaksi, tanggal, metode pembayaran, nama kasir, total belanja, dan kembalian, dilengkapi kode QR yang dapat dipindai pelanggan untuk melihat struk secara \textit{online}, serta tombol \textit{Bagikan} dan \textit{Set Printer} untuk mencetak struk fisik.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_15_struk_digital}
-        \caption{Implementasi Halaman Struk Digital}
-        \label{fig:ui_struk_digital}
-    \end{figure}
-
-    \item \textbf{Halaman Laporan Analitik}
-
-    Menyajikan ringkasan Omzet dan Transaksi Keseluruhan, jumlah Stok Rendah dan Produk Aktif, serta grafik \textit{Tren Penjualan} bulanan yang memvisualisasikan riwayat omzet toko EatsTEDI sejak Agustus 2024 hingga Juni 2026, sejalan dengan rentang data penelitian pada Subbab 3.1.5. Kartu \textit{Smart Analitik} pada bagian atas halaman menjadi pintu masuk menuju fitur prediksi berbasis AI.
-
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_16a_laporan_penjualan}
-            \caption{Ringkasan Laporan}
-            \label{fig:ui_laporan_a}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_16b_laporan_penjualan}
-            \caption{Grafik Tren Penjualan Bulanan}
-            \label{fig:ui_laporan_b}
-        \end{subfigure}
-        \caption{Implementasi Halaman Laporan Analitik}
-        \label{fig:ui_laporan}
-    \end{figure}
-
-    \item \textbf{Halaman \textit{Smart Analitik} dan Riwayat Analisis}
-
-    Halaman \textit{Smart Analitik} memanggil layanan prediksi yang di-\textit{deploy} pada \textit{HuggingFace Space} (\textit{Cloud}) dengan estimasi lokal \textit{on-device} sebagai jalur cadangan apabila layanan \textit{cloud} tidak dapat dijangkau, konsisten dengan strategi \textit{offline-first} yang dibahas pada Subbab 3.2.1. Ketika riwayat transaksi toko masih kurang dari batas minimum sekuens LOOK\_BACK yang disyaratkan model (lihat Subbab 3.2.7), sistem menampilkan peringatan \textit{cold start} dan menyajikan estimasi berbasis pola bisnis retail/kafe umum sebagai gantinya. Halaman ini menampilkan kartu Estimasi Omzet dan Estimasi \textit{Traffic}, grafik \textit{Forecasting} yang membedakan data riil dengan hasil prediksi AI, serta proyeksi menu terlaris untuk hari berikutnya. Setiap analisis yang dijalankan turut dicatat pada halaman \textit{Riwayat Analisis} beserta sumber komputasi (\textit{Cloud} atau Lokal) dan estimasi omzet yang dihasilkan.
-
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_17a_smart_analitik}
-            \caption{\textit{Smart Analitik} (Status \textit{Cold Start})}
-            \label{fig:ui_smart_analitik_a}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.4\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ui_17b_smart_analitik}
-            \caption{Grafik \textit{Forecasting} dan Proyeksi Menu}
-            \label{fig:ui_smart_analitik_b}
-        \end{subfigure}
-        \caption{Implementasi Halaman \textit{Smart Analitik}}
-        \label{fig:ui_smart_analitik}
-    \end{figure}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{ui_18_riwayat_analisis}
-        \caption{Implementasi Halaman Riwayat Analisis}
-        \label{fig:ui_riwayat_analisis}
+        \includegraphics[width=0.85\textwidth]{ui_pengaturan}
+        \caption{Implementasi Halaman Pengaturan Model}
+        \label{fig:ui_pengaturan}
     \end{figure}
 \end{enumerate}
 
 \subsection{Implementasi Backend dan Basis Data Cloud}
-
-Infrastruktur backend cloud diimplementasikan menggunakan platform Supabase BaaS dengan database PostgreSQL. Struktur relasional database diwujudkan melalui sembilan tabel utama yang saling terhubung:
-\begin{enumerate}
-    \item \textit{stores}: Menyimpan data identitas outlet merchant (id, nama, alamat, nomor HP, URL logo, created\_at).
-    \item \textit{store\_members}: Mengatur relasi hak akses pengguna dengan peran Owner atau Karyawan di masing-masing outlet.
-    \item \textit{categories}: Mengelola daftar kategori pengelompokan produk.
-    \item \textit{products}: Menyimpan katalog inventaris barang (id, nama, harga, stok, barcode, URL foto, is\_synced, is\_deleted).
-    \item \textit{transactions}: Menyimpan data nota induk transaksi penjualan (id, total belanja, metode pembayaran, kasir\_id, created\_at).
-    \item \textit{transaction\_items}: Menyimpan rincian item produk yang terjual pada setiap transaksi penjualan (id, transaksi\_id, produk\_id, jumlah, harga).
-    \item \textit{stock\_history}: Mencatat log audit mutasi perubahan stok produk (stok masuk, keluar, penjualan, audit manual).
-    \item \textit{notifications}: Mengelola pesan notifikasi sistem dan info siaran antar staf toko secara real-time.
-    \item \textit{smart\_analytics\_snapshots}: Menyimpan riwayat \textit{snapshot} hasil analitik prediksi LSTM setiap kali fitur \textit{Smart Analytics} dijalankan, sehingga hasil analisis sebelumnya dapat ditinjau kembali tanpa memanggil ulang model.
-\end{enumerate}
-
-Keamanan akses data antar-outlet dijamin melalui penerapan kebijakan Row Level Security (RLS) di database PostgreSQL. Kebijakan ini memastikan bahwa pengguna (kasir/owner) hanya dapat membaca dan menulis data yang memiliki \textit{store\_id} yang sesuai dengan toko tempat mereka terdaftar.
+Backend aplikasi dikembangkan dengan memanfaatkan layanan Supabase yang bertindak sebagai backend cloud terintegrasi untuk menyimpan data hasil klasifikasi, riwayat batch, laporan bulanan, data autentikasi user, serta metadata model. Relasi data terpusat diatur menggunakan basis data relasional PostgreSQL dengan skema tabel utama meliputi tabel \texttt{pelanggan}, tabel \texttt{hasil\_klasifikasi}, tabel \texttt{laporan}, dan tabel \texttt{pengaturan\_model}. Lapisan keamanan diatur menggunakan mekanisme \textit{Row Level Security} (RLS) di sisi Supabase untuk menjamin privasi data agar tidak diakses oleh pihak luar secara ilegal.
 
 \subsection{Implementasi Layanan Prediksi (API)}
-
-Modul kecerdasan buatan untuk kalkulasi prediksi penjualan harian dikembangkan menggunakan Python dan terdiri atas dua bagian yang saling melengkapi. Bagian pertama adalah \textit{pipeline} riset berbasis Jupyter Notebook yang melatih model prediksi LSTM (TensorFlow/Keras) pada tiga granularitas waktu (harian, mingguan, dan bulanan) beserta eksperimen augmentasi data sintetis TimeGAN (PyTorch). Bagian kedua adalah layanan API produksi berbasis \textit{framework} Flask yang di-\textit{deploy} pada platform Hugging Face dan diintegrasikan langsung dengan aplikasi POS, sehingga beban komputasi prediksi terpisah dari beban kerja transaksional kasir.
-
-Layanan API produksi menyediakan tujuh \textit{endpoint} REST dengan fungsi sebagai berikut:
+Layanan prediksi machine learning dikembangkan menggunakan bahasa pemrograman Python dengan framework Flask yang berjalan secara independen di sisi server pada port 5000. Layanan ini bertindak sebagai API server yang bertugas memproses data masukan dari frontend, melakukan pra-pemrosesan data secara dinamis, memuat model biner LightGBM, melakukan kalkulasi prediksi, serta mengembalikan hasil berupa status kelayakan dan probabilitas klasifikasi dalam format JSON. Kontrak endpoint API yang diimplementasikan disajikan pada tabel berikut:
 \begin{enumerate}
-    \item \textbf{Endpoint Prediksi Penjualan} (\textit{/api/predict/daily}, \textit{/api/predict/weekly}, \textit{/api/predict/monthly}): Meramalkan omzet ke depan dengan tanggal prediksi yang otomatis melewati hari tutup (akhir pekan serta libur semester Januari/Juli). Berdasarkan hasil evaluasi komparatif pada penelitian ini (Subbab 4.4), metode penyaji yang dipilih pada \textit{endpoint} produksi adalah metode statistik paling stabil, yaitu \textit{Seasonal-Naive} ($k=4$, rata-rata empat kemunculan terakhir hari yang sama, kompromi antara responsivitas terhadap tren terbaru dan peredaman fluktuasi acak, setara dengan rentang sekitar satu bulan hari sejenis) untuk harian, \textit{Mean-4} untuk mingguan, dan \textit{Mean-3} untuk bulanan, dengan prediksi \textit{Naive} disertakan sebagai pembanding, sedangkan model LSTM hasil pelatihan didokumentasikan sebagai artefak riset (\textit{.keras}).
-    \item \textbf{Endpoint Rekomendasi Operasional} (\textit{/api/recommendations/stock} dan \textit{/api/recommendations/target}): Menghasilkan rekomendasi alokasi anggaran belanja per kategori produk dan kuantitas stok produk teratas berdasarkan proyeksi omzet (dilengkapi \textit{safety buffer} 15\% dan peringatan khusus produk mudah basi), serta tiga tingkatan target omzet harian (konservatif, moderat, dan agresif) berbasis statistik 15 hari aktif terakhir.
-    \item \textbf{Endpoint Pencatatan dan Status} (\textit{/api/sales/record} dan \textit{/api/status}): Menerima rekap penjualan harian dari aplikasi POS dan memperbaruinya ke dataset historis (\textit{upsert} per tanggal) agar dasar prediksi selalu mengikuti data terkini, serta memeriksa kesehatan layanan dan ketersediaan berkas data.
+    \item \texttt{POST /api/predict/single} : Melakukan klasifikasi data masukan tunggal dari input manual.
+    \item \texttt{POST /api/predict/batch} : Melakukan klasifikasi data masukan berukuran besar melalui file CSV/Excel yang diunggah.
+    \item \texttt{GET /api/models/active} : Mengambil metadata performa dan profil parameter model LightGBM yang aktif.
+    \item \texttt{POST /api/train} : Memicu proses pelatihan ulang (\textit{retraining}) model secara asinkron apabila ada penambahan dataset baru.
 \end{enumerate}
-
-Aplikasi Flutter memanggil \textit{endpoint} tersebut secara langsung melalui HTTPS dengan \textit{payload} agregat penjualan tanpa informasi identitas pelanggan, kemudian menyimpan hasil analisis sebagai \textit{snapshot} pada tabel \textit{smart\_analytics\_snapshots} di Supabase.
-
-Inti implementasi \textit{endpoint} prediksi harian pada berkas \textit{app.py} disajikan pada Kode Program~\ref{lst:flask_daily} (dipersingkat). Metode \textit{Seasonal-Naive} dihitung dengan merata-ratakan $k$ kemunculan terakhir dari setiap hari kerja yang sama, dan tanggal prediksi dihasilkan dengan melewati hari tutup.
-
-\begin{lstlisting}[caption={Implementasi Endpoint Prediksi Harian Seasonal-Naive (\textit{app.py})}, label={lst:flask_daily}]
-@app.route('/api/predict/daily', methods=['GET', 'POST'])
-def predict_daily():
-    data = request.get_json(silent=True) or {}
-    n_days = int(data.get("n_days", 7))
-    k = int(data.get("k", 4))
-    dfa = get_daily_dataframe(data.get("history", None))
-    last_date = dfa['date'].max()
-
-    # Seasonal-Naive: rata-rata k kemunculan terakhir
-    # dari hari kerja yang sama (0=Senin ... 4=Jumat)
-    by_dow = {}
-    for dow in range(5):
-        dow_data = dfa[dfa['day_of_week'] == dow]['revenue']
-        if len(dow_data) >= k:
-            by_dow[dow] = dow_data.tail(k).mean()
-        elif len(dow_data) > 0:
-            by_dow[dow] = dow_data.mean()
-        else:
-            by_dow[dow] = dfa['revenue'].tail(10).mean()
-
-    # Naive: prediksi = omzet hari kerja terakhir
-    naive_value = float(dfa['revenue'].iloc[-1])
-
-    # Tanggal prediksi otomatis melewati hari tutup
-    future_dates = generate_future_business_days(last_date, n_days)
-    predictions = []
-    for dt in future_dates:
-        pred_sn = int(round(by_dow.get(dt.weekday(), naive_value)))
-        predictions.append({
-            "date": dt.strftime('%Y-%m-%d'),
-            "predicted_revenue_seasonal_naive": pred_sn,
-            "predicted_revenue_naive": int(round(naive_value))})
-    return jsonify({"predictions": predictions}), 200
-\end{lstlisting}
 
 \section{Preprocessing Data}
-
-Bagian ini menjelaskan tahapan pengolahan data sebelum digunakan untuk melatih model prediksi, mencakup deskripsi dan eksplorasi awal dataset, serta pra-pemrosesan dan pembentukan sequence data latih.
+Tahap pra-pemrosesan data dilakukan untuk menjamin kualitas dataset agar bebas dari nilai kosong, data duplikat, atau format variabel yang tidak konsisten sehingga model LightGBM dapat mempelajari pola klasifikasi secara stabil.
 
 \subsection{Deskripsi Data dan Eksplorasi Awal}
+Dataset utama penelitian ini merupakan data gabungan administratif sosial ekonomi dari Dinas Sosial dan data kelistrikan sintetis sebanyak 1.000 baris. Statistik deskriptif untuk variabel-variabel numerik dalam dataset disajikan pada Tabel \ref{tab:stat_deskriptif}.
 
-Data yang digunakan dalam pengujian model prediksi ini merupakan rekapitulasi transaksi penjualan harian kantin EatsTEDI UGM pada periode 26 Agustus 2024 hingga 20 Juni 2026. Setelah dilakukan agregasi nilai transaksi per hari dan penyaringan terhadap hari-hari non-aktif (di mana kantin tutup), diperoleh total sebanyak 313 hari aktif bisnis. Statistik ringkas mengenai dataset pendapatan harian ini disajikan pada Tabel \ref{tab:statistik_revenue_harian}.
+\begin{table}[H]
+\centering
+\caption{Statistik Deskriptif Variabel Numerik}
+\label{tab:stat_deskriptif}
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+\textbf{No} & \textbf{Variabel} & \textbf{Mean} & \textbf{Std Dev} & \textbf{Min} & \textbf{Median (50\%)} & \textbf{Max} \\ \hline
+1 & Daya VA (VA) & 1.071,1 & 573,1 & 450 & 900 & 2.200 \\ \hline
+2 & Pemakaian kWh (kWh) & 126,18 & 70,50 & 35 & 108 & 349 \\ \hline
+3 & Penghasilan (Rupiah) & 5.789.800 & 3.926.025 & 900.000 & 5.150.000 & 17.900.000 \\ \hline
+4 & Jumlah Anggota Keluarga & 4,47 & 1,71 & 2 & 5 & 8 \\ \hline
+5 & Luas Bangunan ($m^2$) & 96,17 & 60,36 & 24 & 91 & 250 \\ \hline
+\end{tabular}
+\end{table}
+
+Sementara distribusi nilai untuk variabel-variabel kategorikal disajikan secara berturut-turut pada Tabel \ref{tab:dist_golongan_tarif}, Tabel \ref{tab:dist_status_rumah}, Tabel \ref{tab:dist_penerima_bantuan}, Tabel \ref{tab:dist_pekerjaan}, dan Tabel \ref{tab:dist_label}.
 
 \begin{table}[H]
 \setstretch{1.2}
 \centering
-\caption{Statistik Ringkas Dataset Pendapatan Harian}
-\label{tab:statistik_revenue_harian}
-\begin{tabular}{|l|l|}
+\caption{Distribusi Golongan Tarif}
+\label{tab:dist_golongan_tarif}
+\begin{tabular}{|c|l|c|c|}
 \hline
-\textbf{Karakteristik} & \textbf{Nilai} \\ \hline
-Jumlah hari aktif & 313 hari \\ \hline
-Rentang waktu & 26 Agu 2024 -- 20 Jun 2026 \\ \hline
-Total revenue (omzet) & Rp 471.200.494,00 \\ \hline
-Rata-rata revenue per hari aktif & Rp 1.505.433,00 \\ \hline
-Revenue tertinggi & Rp 3.738.500,00 (6 Mei 2026) \\ \hline
+\textbf{No} & \textbf{Golongan Tarif} & \textbf{Frekuensi (N = 1000)} & \textbf{Persentase (\%)} \\ \hline
+1 & R-1/900 VA & 367 & 36,7\% \\ \hline
+2 & R-1/450 VA & 266 & 26,6\% \\ \hline
+3 & R-1/1300 VA & 207 & 20,7\% \\ \hline
+4 & R-1/2200 VA & 160 & 16,0\% \\ \hline
 \end{tabular}
 \end{table}
-
-Hasil eksplorasi awal menunjukkan bahwa deret data pendapatan harian kantin EatsTEDI bersifat sangat fluktuatif dan dipengaruhi secara kuat oleh kalender akademis universitas. Terdapat pola penurunan tajam hingga bernilai Rp 0 pada masa libur semester mahasiswa (sepanjang bulan Januari dan Juli) serta pola musiman mingguan di mana penjualan menurun secara bertahap menjelang akhir pekan. Pola musiman tahunan tidak dapat teramati secara penuh karena rentang waktu data yang tersedia kurang dari dua tahun, sehingga deret waktu ini tergolong pendek (\textit{short time-series}) untuk standar pemodelan berbasis \textit{deep learning} yang membutuhkan volume data historis yang besar.
-
-\subsection{Pra-pemrosesan dan Pembentukan Sequence}
-
-Pemodelan prediksi pada penelitian ini difokuskan pada granularitas harian dengan strategi prediksi satu langkah ke depan (\textit{one-step-ahead prediction}). Untuk mengatasi variansi data yang ekstrem akibat fluktuasi harian yang sangat tajam, target prediksi tidak diprediksi menggunakan bentuk nilai nominal mentah, melainkan menggunakan bentuk \textit{log-return} (selisih logaritmik) pendapatan antar hari aktif yang berurutan. Pendekatan residual ini dirancang agar model cukup mempelajari koreksi atau deviasi nilai pendapatan dari hari aktif sebelumnya, sehingga model secara tidak langsung mewarisi sifat autokorelasi jangka pendek yang kuat pada deret waktu transaksi.
-
-Variabel masukan (\textit{features}) terdiri atas nilai log-return pendapatan target dan enam fitur kalender yang dikodekan secara siklik (\textit{cyclical encoding} sinus-kosinus untuk nomor minggu dalam setahun, bulan, dan hari kerja aktif) serta variabel biner Ramadan. Variabel jumlah transaksi harian dan kuantitas produk terjual secara sengaja dikeluarkan dari variabel masukan model prediksi untuk menghindari kebocoran data (\textit{data leakage}), karena kedua nilai tersebut belum tersedia saat modul prediksi dijalankan untuk memprediksi hari berikutnya. Proses penskalaan data dilakukan menggunakan metode \textit{Min-Max Scaling} yang dipasang (\textit{fit}) hanya pada data latih untuk mencegah terjadinya kebocoran informasi dari data uji.
-
-Pembagian dataset dilakukan secara kronologis (\textit{chronological split}) dengan rasio 70\% untuk data latih (\textit{train set}), 15\% untuk data validasi (\textit{validation set}), dan 15\% untuk data uji (\textit{test set}). Pembentukan urutan temporal (\textit{sequence}) dilakukan menggunakan panjang \textit{look-back} sebesar 7 hari aktif terakhir. Rincian pembagian data serta dimensi sequence disajikan pada Tabel \ref{tab:pembagian_data_sequence}.
 
 \begin{table}[H]
 \setstretch{1.2}
 \centering
-\caption{Pembagian Dataset dan Dimensi Sequence}
-\label{tab:pembagian_data_sequence}
-\begin{tabular}{|l|c|c|c|}
+\caption{Distribusi Status Kepemilikan Rumah}
+\label{tab:dist_status_rumah}
+\begin{tabular}{|c|l|c|c|}
 \hline
-\textbf{Subset Data} & \textbf{Jumlah Hari} & \textbf{Jumlah Sequence} & \textbf{Dimensi Masukan} \\ \hline
-Latih (\textit{train}) & 219 & 212 & (212, 7, 8) \\ \hline
-Validasi (\textit{val}) & 46 & 39 & (39, 7, 8) \\ \hline
-Uji (\textit{test}) & 48 & 41 & (41, 7, 8) \\ \hline
+\textbf{No} & \textbf{Status Kepemilikan} & \textbf{Frekuensi (N = 1000)} & \textbf{Persentase (\%)} \\ \hline
+1 & Milik Sendiri & 574 & 57,4\% \\ \hline
+2 & Menumpang & 217 & 21,7\% \\ \hline
+3 & Kontrak & 209 & 20,9\% \\ \hline
 \end{tabular}
 \end{table}
 
-Implementasi pra-pemrosesan data, meliputi penyaringan hari aktif, transformasi target \textit{log-return}, dan pengodean siklik fitur kalender, disajikan pada Kode Program~\ref{lst:preprocessing}.
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Distribusi Status Penerima Bantuan Sosial}
+\label{tab:dist_penerima_bantuan}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{No} & \textbf{Kategori Penerima Bansos} & \textbf{Frekuensi (N = 1000)} & \textbf{Persentase (\%)} \\ \hline
+1 & Tidak & 647 & 64,7\% \\ \hline
+2 & PKH & 135 & 13,5\% \\ \hline
+3 & BPNT & 124 & 12,4\% \\ \hline
+4 & PKH \& BPNT & 94 & 9,4\% \\ \hline
+\end{tabular}
+\end{table}
 
-\begin{lstlisting}[caption={Pra-pemrosesan Data: Filter Hari Aktif, Log-Return, dan Fitur Siklik}, label={lst:preprocessing}]
-df = pd.read_csv(DAILY_CSV, parse_dates=['date'])
-# Hanya hari aktif (revenue > 0) yang dilatih ke model
-dfa = df[df['revenue'] > 0].copy() \
-        .sort_values('date').reset_index(drop=True)
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Distribusi Pekerjaan Kepala Keluarga}
+\label{tab:dist_pekerjaan}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{No} & \textbf{Kategori Pekerjaan} & \textbf{Frekuensi (N = 1000)} & \textbf{Persentase (\%)} \\ \hline
+1 & Dokter & 70 & 7,0\% \\ \hline
+2 & ASN / PNS / Dosen & 194 & 19,4\% \\ \hline
+3 & Pemulung & 64 & 6,4\% \\ \hline
+4 & Nelayan & 59 & 5,9\% \\ \hline
+5 & Pengusaha / Manajer & 111 & 11,1\% \\ \hline
+6 & Teknisi & 53 & 5,3\% \\ \hline
+7 & Satpam / Sopir / Penjahit & 143 & 14,3\% \\ \hline
+8 & Tukang Bangunan & 49 & 4,9\% \\ \hline
+9 & Buruh Harian Lepas & 46 & 4,6\% \\ \hline
+10 & Guru Honorer & 45 & 4,5\% \\ \hline
+11 & Karyawan Swasta & 44 & 4,4\% \\ \hline
+12 & Petani & 43 & 4,3\% \\ \hline
+13 & Pedagang Kecil & 42 & 4,2\% \\ \hline
+14 & Wiraswasta & 37 & 3,7\% \\ \hline
+\end{tabular}
+\end{table}
 
-dfa['rev_log'] = np.log1p(dfa['revenue'])
-# TARGET: log-return (perubahan pendapatan harian)
-dfa['logret']  = dfa['rev_log'].diff().fillna(0.0)
-# Pengodean siklik sinus-kosinus fitur kalender
-dfa['week_sin']  = np.sin(2*np.pi*dfa['week_of_year']/52)
-dfa['week_cos']  = np.cos(2*np.pi*dfa['week_of_year']/52)
-dfa['month_sin'] = np.sin(2*np.pi*dfa['month']/12)
-dfa['month_cos'] = np.cos(2*np.pi*dfa['month']/12)
-dfa['dow_sin']   = np.sin(2*np.pi*dfa['day_of_week']/5)
-dfa['dow_cos']   = np.cos(2*np.pi*dfa['day_of_week']/5)
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Distribusi Target Label Kelayakan}
+\label{tab:dist_label}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{No} & \textbf{Status Label} & \textbf{Frekuensi (N = 1000)} & \textbf{Persentase (\%)} \\ \hline
+1 & Tidak Layak (Non Subsidi) & 600 & 60,0\% \\ \hline
+2 & Layak (Subsidi) & 400 & 40,0\% \\ \hline
+\end{tabular}
+\end{table}
 
-# 'logret' wajib kolom pertama (kolom target)
-FEATURES = ['logret','week_sin','week_cos','month_sin',
-            'month_cos','dow_sin','dow_cos','is_ramadan']
+\subsection{Pra-pemrosesan Data}
+Pra-pemrosesan data dilakukan melalui beberapa tahapan berikut:
+\begin{enumerate}
+    \item \textbf{Penghapusan Variabel Tidak Relevan} \\
+    Variabel \texttt{id\_pelanggan} dan \texttt{nama\_pelanggan} dihapus dari dataset karena data tersebut bersifat unik dan hanya merepresentasikan identitas administratif, sehingga tidak memberikan kontribusi informasi terhadap proses klasifikasi kelayakan penerima subsidi.
+    \item \textbf{Penyelarasan Nama Variabel} \\
+    Kolom-kolom diselaraskan dengan kontrak backend, yaitu merename \texttt{VA } menjadi \texttt{daya\_va}, \texttt{KwH\_Perbulan} menjadi \texttt{pemakaian\_kwh}, \texttt{Penghasilan} menjadi \texttt{penghasilan}, \texttt{Jumla\_Anggota\_Keluarga} menjadi \texttt{jumlah\_anggota}, \texttt{pekerjaan\_kepala\_keluarga} menjadi \texttt{pekerjaan}, \texttt{status\_kepemilikan\_rumah} menjadi \texttt{status\_rumah}, \texttt{luas\_bangunan\_m2} menjadi \texttt{luas\_bangunan}, dan \texttt{penerima\_bantuan} menjadi \texttt{status\_bansos}.
+    \item \textbf{Penanganan Nilai Kosong (\textit{Imputasi})} \\
+    Nilai kosong pada variabel numerik diisi menggunakan nilai median dari masing-masing kolom pada data training untuk menghindari pengaruh nilai ekstrem (\textit{outliers}). Sementara nilai kosong pada variabel kategorikal diisi menggunakan nilai modus (nilai dengan frekuensi tertinggi).
+    \item \textbf{Encoding Variabel Kategorikal} \\
+    Variabel kategorikal (\texttt{pekerjaan}, \texttt{status\_rumah}, \texttt{status\_bansos}, \texttt{golongan\_tarif}) ditransformasikan menjadi representasi numerik menggunakan \textit{Label Encoder} dari pustaka Scikit-Learn. Target label (\texttt{label}) juga dikodekan menjadi representasi biner dengan nilai \texttt{0} untuk "Tidak Layak" dan \texttt{1} untuk "Layak".
+    \item \textbf{Standardisasi Skala Fitur} \\
+    Fitur-fitur numerik distandardisasikan menggunakan \textit{StandardScaler} agar memiliki rata-rata (\textit{mean}) sama dengan 0 dan standar deviasi sama dengan 1. Proses standardisasi dirumuskan sebagai berikut:
+    \begin{equation}
+        z = \frac{x - \mu}{\sigma}
+    \end{equation}
+    di mana $x$ adalah nilai asli, $\mu$ adalah rata-rata fitur, dan $\sigma$ adalah standar deviasi fitur.
+    \item \textbf{Pembagian Dataset} \\
+    Dataset dibagi menjadi data training (\textit{latih}) dan data testing (\textit{uji}) dengan rasio pembagian sebesar 80\% : 20\%. Pembagian dilakukan menggunakan parameter \texttt{stratify=y} untuk menjaga agar proporsi target label kelayakan (60\% Tidak Layak dan 40\% Layak) tetap konsisten antara data training (800 baris) dan data testing (200 baris).
+\end{enumerate}
 
-# Pembagian kronologis 70/15/15 (tanpa pengacakan)
-n = len(dfa); n_tr = int(n*0.70); n_va = int(n*0.15)
-df_tr = dfa.iloc[:n_tr]
-df_va = dfa.iloc[n_tr:n_tr+n_va]
-df_te = dfa.iloc[n_tr+n_va:]
-\end{lstlisting}
+\section{Implementasi dan Pelatihan Model Klasifikasi}
+Model klasifikasi yang dikembangkan menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Keunggulan LightGBM terletak pada kecepatan komputasi yang tinggi dan keakuratan model dalam menangani data bertipe kategori maupun campuran.
 
-\section{Implementasi dan Pelatihan Model Prediksi}
+\subsection{Skenario Eksperimen}
+Pelatihan model dilakukan menggunakan parameter default LightGBM untuk mengevaluasi kemampuan pembelajaran model pada dataset ini. Adapun konfigurasi hyperparameter yang digunakan disajikan pada Tabel \ref{tab:hyperparameter_lgb}.
 
-Bagian ini memaparkan implementasi arsitektur model LSTM beserta skenario eksperimen, hasil pelatihan model, implementasi augmentasi data sintetis TimeGAN, dan implementasi mekanisme prediksi rekursif untuk kebutuhan visualisasi jangka pendek pada aplikasi.
-
-\subsection{Arsitektur Model dan Skenario Eksperimen}
-
-Arsitektur model prediksi yang diimplementasikan adalah LSTM satu lapis (\textit{single-layer LSTM}) dengan 24 \textit{hidden units}, diikuti oleh lapisan \textit{Dropout} dengan laju 0,1 untuk regularisasi, satu lapisan \textit{Dense} dengan 16 neuron beraktivasi \textit{Rectified Linear Unit} (ReLU), dan diakhiri oleh satu lapisan keluaran (\textit{output layer}) tunggal beraktivasi linear. Model ini dirancang secara minimalis dengan total parameter terlatih hanya sebanyak 3.585 parameter. Pemilihan model berkapasitas rendah ini didasarkan pada jumlah data latih yang sangat terbatas (212 sampel sequence), sehingga penggunaan model LSTM berkapasitas besar (\textit{stacked layers}) akan berisiko tinggi memicu kegagalan konvergensi pelatihan atau bias \textit{overfitting}. Proses optimasi menggunakan metode Adam dengan \textit{learning rate} awal sebesar $5 \times 10^{-4}$, fungsi kerugian (\textit{loss function}) MSE, serta didukung \textit{callbacks} \textit{EarlyStopping} dan \textit{ReduceLROnPlateau}. Konstruksi arsitektur model beserta konfigurasi pelatihannya disajikan pada Kode Program~\ref{lst:build_lstm}.
-
-\begin{lstlisting}[caption={Konstruksi Arsitektur LSTM Tersederhanakan dan Konfigurasi Pelatihan}, label={lst:build_lstm}]
-LOOK_BACK = 7   # jendela masukan: 7 hari aktif
-HORIZON   = 1   # prediksi 1 langkah ke depan
-UNITS     = 24
-DROPOUT   = 0.1
-
-def build_lstm():
-    m = Sequential([
-        LSTM(UNITS, input_shape=(LOOK_BACK, len(FEATURES))),
-        Dropout(DROPOUT),
-        Dense(16, activation='relu'),
-        Dense(HORIZON)
-    ], name='lstm_hybrid_residual')
-    m.compile(optimizer=Adam(5e-4), loss='mse', metrics=['mae'])
-    return m
-
-cb = [EarlyStopping('val_loss', patience=20,
-                    restore_best_weights=True),
-      ReduceLROnPlateau('val_loss', factor=0.5,
-                        patience=8, min_lr=1e-6)]
-
-model = build_lstm()
-hist  = model.fit(X_tr, y_tr, validation_data=(X_va, y_va),
-                  epochs=200, batch_size=16, callbacks=cb)
-\end{lstlisting}
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Konfigurasi Hyperparameter Model LightGBM}
+\label{tab:hyperparameter_lgb}
+\begin{tabular}{|c|l|c|l|}
+\hline
+\textbf{No} & \textbf{Hyperparameter} & \textbf{Nilai Parameter} & \textbf{Keterangan} \\ \hline
+1 & \texttt{objective} & "binary" & Menunjukkan tugas klasifikasi biner \\ \hline
+2 & \texttt{num\_leaves} & 31 & Jumlah daun maksimal dalam satu pohon \\ \hline
+3 & \texttt{learning\_rate} & 0,1 & Faktor kecepatan pembelajaran model \\ \hline
+4 & \texttt{n\_estimators} & 100 & Jumlah pohon keputusan (\textit{tree}) yang dibangun \\ \hline
+5 & \texttt{max\_depth} & -1 & Kedalaman pohon tidak dibatasi \\ \hline
+6 & \texttt{random\_state} & 42 & Kunci acak untuk reprodusibilitas model \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Hasil Pelatihan Model}
-
-Pada konfigurasi akhir model tersederhanakan, proses pelatihan berjalan secara stabil di mana galat validasi menunjukkan tren penurunan yang konsisten melampaui \textit{epoch} pertama. Mekanisme \textit{EarlyStopping} berhasil menghentikan proses pelatihan dan mengembalikan bobot terbaik model sebelum terjadi gejala \textit{overfitting}. Hal ini berbanding terbalik dengan uji coba pada konfigurasi awal penelitian yang menggunakan arsitektur jaringan saraf berskala besar dan target berupa nilai nominal mentah, di mana model mengalami kolaps (\textit{model collapse}) dengan galat validasi terbaik yang dicapai langsung pada \textit{epoch} pertama (model tidak melakukan pembelajaran) dan menghasilkan prediksi bernilai rendah yang konstan secara sistematis. Penyederhanaan arsitektur, pemilihan target \textit{log-return}, serta pembatasan horizon menjadi satu langkah ke depan terbukti mampu memperbaiki performa pelatihan secara signifikan, di mana nilai MAE uji terbaik model LSTM mengalami penurunan drastis dari sekitar Rp 1.805.196,00 pada konfigurasi awal menjadi berkisar antara Rp 500.000,00 hingga Rp 600.000,00 pada konfigurasi akhir. Iterasi dari konfigurasi awal (arsitektur besar, target nominal) menuju konfigurasi akhir tersederhanakan inilah yang merupakan realisasi dari \textit{loop} \textit{hyperparameter tuning} dengan kriteria akurasi (MASE $< 1$) pada diagram alur Gambar \ref{fig:lstm_alur}. Meskipun kriteria MASE $< 1$ pada akhirnya tidak tercapai oleh konfigurasi manapun, iterasi dihentikan pada konfigurasi terbaik dan keputusan produksi dialihkan ke metode \textit{baseline} sebagaimana dibahas pada Subbab 4.4. Grafik kurva kerugian pelatihan model ditunjukkan pada Gambar \ref{fig:lstm_kurva_training}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{Gambar/lstm_harian_disederhanakan_plot_kurva_training}
-    \caption{Kurva Kerugian Pelatihan (\textit{Training Loss Curve}) Model LSTM}
-    \label{fig:lstm_kurva_training}
-\end{figure}
-
-\subsection{Implementasi Augmentasi Data Sintetis TimeGAN}
-
-Sebagai upaya mitigasi terhadap keterbatasan ukuran dataset yang menjadi akar penyebab ketidakstabilan model LSTM, dilakukan eksperimen augmentasi data sintetis menggunakan \textbf{TimeGAN} (Yoon et al., 2019). Model TimeGAN yang diimplementasikan dengan PyTorch dilatih pada jendela deret waktu sepanjang 24 hari aktif dengan tiga fitur numerik (omzet, jumlah transaksi, dan kuantitas terjual) melalui tiga fase pelatihan (\textit{autoencoder}, \textit{supervised}, dan \textit{joint adversarial training}) masing-masing sebanyak 600 \textit{epoch}, kemudian menghasilkan 298 sekuens data harian sintetis dari 199 sekuens data riil (rasio augmentasi 1,5). Pada skenario ini, model LSTM multi-langkah (\textit{look-back} 14 hari aktif, horizon 7 hari) selanjutnya dilatih dalam dua kondisi: hanya menggunakan 199 sekuens data riil (\textit{baseline real-only}), dan menggunakan gabungan data riil dengan 298 sekuens sintetis (rasio augmentasi 1,5). Hasil evaluasi perbandingan kedua kondisi tersebut disajikan pada Subbab 4.4.3.
-
-Cuplikan implementasi dua dari lima jaringan penyusun TimeGAN pada berkas \textit{TimeGAN.py}, yaitu jaringan \textit{embedder} yang memetakan data riil ke ruang laten dan \textit{generator} yang memetakan derau acak menjadi representasi laten sintetis, disajikan pada Kode Program~\ref{lst:timegan}.
-
-\begin{lstlisting}[caption={Implementasi Jaringan \textit{Embedder} dan \textit{Generator} TimeGAN (PyTorch)}, label={lst:timegan}]
-class EmbedderNet(nn.Module):
-    """Memetakan data nyata X -> representasi laten H."""
-    def __init__(self):
-        super().__init__()
-        self.rnn  = nn.GRU(NUM_FEAT, HIDDEN_DIM,
-                           NUM_LAYERS, batch_first=True)
-        self.proj = nn.Sequential(
-            nn.Linear(HIDDEN_DIM, HIDDEN_DIM), nn.Sigmoid())
-
-    def forward(self, x):
-        h, _ = self.rnn(x)
-        return self.proj(h)
-
-class GeneratorNet(nn.Module):
-    """Memetakan noise Z -> laten sintetis E."""
-    def __init__(self):
-        super().__init__()
-        self.rnn  = nn.GRU(NUM_FEAT, HIDDEN_DIM,
-                           NUM_LAYERS, batch_first=True)
-        self.proj = nn.Sequential(
-            nn.Linear(HIDDEN_DIM, HIDDEN_DIM), nn.Sigmoid())
-
-    def forward(self, z):
-        h, _ = self.rnn(z)
-        return self.proj(h)
-
-# Tiga fase pelatihan (masing-masing 600 epoch):
-# 1) train_embedder : autoencoder embedder-recovery
-# 2) train_supervisor: dinamika temporal ruang laten
-# 3) train_joint    : pelatihan gabungan adversarial
-\end{lstlisting}
-
-\subsection{Implementasi Prediksi Rekursif ke Depan}
-
-Untuk kebutuhan penyajian visualisasi ramalan penjualan harian selama 7 hari aktif ke depan secara rekursif (\textit{recursive forecasting}), model LSTM residual yang melakukan iterasi mandiri mengalami kerentanan berupa penumpukan kesalahan (\textit{error propagation}) di mana nilai prediksi meluruh secara eksponensial hingga bernilai sangat kecil dan tidak realistis. Setelah ditambahkan mekanisme pengaman berupa \textit{clipping} pada \textit{log-return} (dijepit antara persentil 10--90 data latih), \textit{damping factor} ($\phi = 0.7$) untuk meredam perubahan pada horizon yang jauh, serta \textit{safety rail} penahan nominal omzet harian aktif, grafik prediksi yang dihasilkan menjadi lebih stabil dan realistis. Implementasi inti dari fungsi prediksi rekursif beserta ketiga mekanisme pengaman tersebut disajikan pada Kode Program~\ref{lst:recursive}.
-
-\begin{lstlisting}[caption={Prediksi Rekursif dengan \textit{Clipping}, \textit{Damping}, dan \textit{Safety Rail}}, label={lst:recursive}]
-# Batas clip dari persentil 10-90 log-return data latih
-LR_LO, LR_HI = np.percentile(_train_logret, [10, 90])
-REV_FLOOR = np.percentile(_act_rev, 2)   # rail bawah
-REV_CEIL  = _act_rev.max()               # rail atas
-
-def forecast_hybrid_stable(model, dfa, scaler, features,
-                           look_back, n_steps, phi=0.7):
-    window   = scaler.transform(
-        dfa.tail(look_back)[features].values)
-    prev_rev = float(dfa['revenue'].iloc[-1])
-    d, step, rows = pd.Timestamp(dfa['date'].max()), 0, []
-    while len(rows) < n_steps:
-        d += pd.Timedelta(days=1)
-        # Lewati hari tutup (akhir pekan, Januari & Juli)
-        if d.weekday() >= 5 or d.month in [1, 7]:
-            continue
-        step += 1
-        raw_lr  = float(inv_logret(
-            model.predict(window[np.newaxis])[0, 0]))
-        lr_clip = float(np.clip(raw_lr, LR_LO, LR_HI))  # 1) clip
-        lr_damp = lr_clip * (phi ** (step - 1))         # 2) damp
-        rev = float(np.expm1(np.log1p(prev_rev) + lr_damp))
-        rev = float(np.clip(rev, REV_FLOOR, REV_CEIL))  # 3) rail
-        # Susun baris fitur baru utk tanggal d (dipersingkat)
-        raw = build_feature_row(d, raw_lr)
-        # Geser jendela masukan dengan baris fitur baru
-        window   = np.vstack([window[1:],
-                              scaler.transform([raw])[0]])
-        prev_rev = rev
-        rows.append({'tanggal': d.date(),
-                     'prediksi_revenue': int(round(rev))})
-    return pd.DataFrame(rows)
-\end{lstlisting}
-
-Secara statistik, prediksi rekursif jangka panjang berbasis LSTM pada data terbatas ini akan dengan cepat meredam menuju nilai rata-rata historis (sifat \textit{mean-reverting}) dan menyerupai prediksi naif. Untuk diintegrasikan ke dalam fitur aplikasi riil kasir, metode prediksi statistik \textit{SARIMA} dan \textit{Seasonal-Naive} (rata-rata hari sejenis pada minggu sebelumnya) lebih direkomendasikan karena memberikan hasil prediksi multi-langkah yang jauh lebih stabil dan konsisten. Rekomendasi ini diwujudkan pada layanan API produksi, di mana \textit{endpoint} prediksi menyajikan metode \textit{Seasonal-Naive} ($k=4$) sebagai metode penyaji utama prediksi harian kepada aplikasi POS. Dalam penelitian skripsi ini, hasil evaluasi akurasi ilmiah tetap didasarkan pada pengujian satu langkah ke depan (\textit{one-step-ahead}), sedangkan visualisasi prediksi multi-langkah diposisikan murni sebagai ilustrasi fungsionalitas sistem.
+Pelatihan model dilakukan menggunakan modul \texttt{LGBMClassifier} dari pustaka \texttt{lightgbm} pada data training sebanyak 800 data. Pelatihan berlangsung sangat cepat dengan waktu komputasi kurang dari 1 detik dikarenakan algoritma LightGBM menggunakan teknik \textit{histogram-based decision tree} yang mengelompokkan nilai numerik menjadi bin-bin diskrit, sehingga mengurangi kompleksitas pencarian titik pembagian (\textit{split point}) pada data training. Model yang telah dilatih kemudian diekspor menjadi biner model \texttt{mdl\_001.txt} agar dapat digunakan secara asinkron oleh API Flask.
 
 \section{Evaluasi Model}
+Performa model LightGBM diuji secara komprehensif pada data testing (200 data) menggunakan metrik evaluasi klasifikasi yang telah dibahas pada Bab III.
 
-Pengukuran akurasi model dilakukan menggunakan empat metrik evaluasi secara simultan, yaitu MAE, RMSE, sMAPE, dan MASE. Penggunaan MAPE konvensional dihindari karena karakteristik dataset transaksi memiliki beberapa hari aktif dengan nilai nominal pendapatan yang sangat rendah (mendekati nol), sehingga pembagian terhadap nilai aktual tersebut akan menyebabkan pembagian dengan nol atau nilai persentase galat yang sangat besar (\textit{exploding MAPE}) yang tidak representatif. Metrik MASE dipilih sebagai acuan performa utama karena ternormalisasi terhadap galat prediksi naif secara \textit{in-sample}, di mana nilai MASE kurang dari satu menandakan bahwa kinerja model prediksi lebih baik dibandingkan model naif sederhana. Sebagai model pembanding (\textit{baselines}) pada skema satu langkah ke depan, digunakan tiga metode pembanding statistik sederhana: (1) \textit{Naive} (kemarin) di mana prediksi hari ini disamakan dengan realisasi hari kemarin, (2) \textit{Mean-7} berupa rata-rata bergerak dari 7 hari aktif terakhir, dan (3) model statistik \textit{SARIMA} dengan skema prediksi \textit{rolling one-step}. Implementasi fungsi metrik evaluasi sMAPE dan MASE yang digunakan pada seluruh pengujian disajikan pada Kode Program~\ref{lst:metrics}.
-
-\begin{lstlisting}[caption={Implementasi Fungsi Metrik Evaluasi sMAPE dan MASE}, label={lst:metrics}]
-def smape(y, yhat):
-    # sMAPE: galat dibagi rata-rata |aktual| dan |prediksi|
-    d = (np.abs(y) + np.abs(yhat)) / 2
-    return np.mean(np.abs(y - yhat)
-                   / np.where(d == 0, 1, d)) * 100
-
-def mase(y, yhat, naive_mae):
-    # MASE: galat dinormalisasi thd galat naif in-sample
-    return mean_absolute_error(y, yhat) / naive_mae
-
-def report(y, yhat, naive_mae, label):
-    rmse = np.sqrt(mean_squared_error(y, yhat))
-    mae  = mean_absolute_error(y, yhat)
-    return {'rmse': rmse, 'mae': mae,
-            'smape': smape(y, yhat),
-            'mase': mase(y, yhat, naive_mae)}
-\end{lstlisting}
-
-\subsection{Evaluasi Model dan Perbandingan dengan Baseline}
-
-Setelah pelatihan diselesaikan, dilakukan evaluasi performa model prediksi pada dataset uji (\textit{testing data}). Hasil evaluasi performa model LSTM Hybrid dibandingkan dengan ketiga metode pembanding (\textit{baselines}) disajikan pada Tabel \ref{tab:eval_baseline_comp}. Nilai performa LSTM Hybrid yang disajikan pada tabel merupakan nilai rata-rata dari sepuluh kali percobaan dengan inisialisasi bobot acak yang berbeda (\textit{multi-seed}).
+\subsection{Metrik Evaluasi Performa Model}
+Pengujian model LightGBM menghasilkan tingkat keakuratan yang sempurna pada data uji. Hasil evaluasi metrik kinerja model disajikan pada Tabel \ref{tab:evaluasi_metrik}.
 
 \begin{table}[H]
 \setstretch{1.2}
 \centering
-\caption{Perbandingan Performa pada Data Uji (\textit{One-Step-Ahead})}
-\label{tab:eval_baseline_comp}
-\begin{tabular}{|l|c|c|c|c|}
+\caption{Metrik Performa Model LightGBM}
+\label{tab:evaluasi_metrik}
+\begin{tabular}{|c|l|c|c|}
 \hline
-\textbf{Model} & \textbf{MAE (Rp)} & \textbf{RMSE (Rp)} & \textbf{sMAPE} & \textbf{MASE} \\ \hline
-Naive (kemarin) & 519.841 & 697.253 & 30,77\% & 1,432 \\ \hline
-SARIMA & 586.083 & 751.408 & 33,80\% & 1,615 \\ \hline
-Mean-7 & 647.263 & 791.746 & 36,25\% & 1,784 \\ \hline
-LSTM Hybrid (Rata-rata) & 667.718 & 897.563 & 38,06\% & 1,840 \\ \hline
+\textbf{No} & \textbf{Metrik Evaluasi} & \textbf{Nilai Prediksi} & \textbf{Keterangan} \\ \hline
+1 & Accuracy & 1,0000 & Tingkat akurasi klasifikasi 100\% \\ \hline
+2 & Precision & 1,0000 & Presisi deteksi kelas Layak 100\% \\ \hline
+3 & Recall & 1,0000 & Sensitivitas deteksi kelas Layak 100\% \\ \hline
+4 & F1-Score & 1,0000 & Rata-rata harmonik performa 100\% \\ \hline
 \end{tabular}
 \end{table}
 
-Berdasarkan hasil perbandingan pada Tabel \ref{tab:eval_baseline_comp}, secara rata-rata metode \textit{Naive} sederhana memberikan kesalahan prediksi terkecil dengan MAE sebesar Rp 519.841,00, disusul oleh model statistik \textit{SARIMA} dan \textit{Mean-7}. Model LSTM Hybrid berada di posisi terakhir dengan nilai MAE rata-rata sebesar Rp 667.718,00 dan MASE sebesar 1,840. Temuan ini mengindikasikan karakteristik data pendapatan kantin EatsTEDI UGM yang didominasi oleh persistensi jangka pendek yang kuat (omzet hari ini sangat dekat dengan omzet kemarin). Karakteristik persistensi ini dapat ditangkap secara sangat efisien oleh model naif, sementara model LSTM Hybrid yang dilatih menggunakan ukuran data yang relatif kecil mengalami \textit{over-smoothing} (penghalusan berlebih) sehingga kurang mampu menangkap lonjakan-lonjakan pendapatan harian secara presisi. Perlu dicatat bahwa seluruh metode pada Tabel \ref{tab:eval_baseline_comp} -- termasuk \textit{Naive} itu sendiri -- memiliki nilai MASE lebih besar dari satu (1,432 hingga 1,840). Hal ini terjadi karena MASE dinormalisasi terhadap galat naif satu langkah \textit{in-sample} yang dihitung pada data latih, sehingga nilai MASE $> 1$ pada data uji semata menandakan bahwa periode uji secara umum lebih bergejolak (memiliki variansi/perubahan harian yang lebih besar) dibandingkan periode latih yang menjadi acuan normalisasi, bukan berarti seluruh metode gagal secara mutlak. Oleh karena itu, perbandingan performa yang bermakna secara metodologis pada penelitian ini adalah perbandingan MASE antar metode pada data uji yang identik (lihat kriteria kelayakan relatif pada Subbab 3.2.9.1), bukan ambang mutlak MASE $< 1$. Visualisasi perbandingan nominal pendapatan aktual terhadap nilai prediksi dari model LSTM Hybrid disajikan pada Gambar \ref{fig:lstm_actual_predicted}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\textwidth]{Gambar/lstm_harian_hybrid_residual_plot_1}
-    \caption{Grafik Pendapatan Aktual vs. Prediksi Model LSTM Hybrid}
-    \label{fig:lstm_actual_predicted}
-\end{figure}
-
-\subsection{Evaluasi Multi-Seed dan Analisis Kestabilan}
-
-Meningkatnya sensitivitas performa model LSTM terhadap inisialisasi bobot acak awal pada data kecil mengharuskan pengujian dilakukan menggunakan pendekatan \textit{multi-seed evaluation} dengan melatih model sebanyak sepuluh kali menggunakan nilai \textit{seed} acak yang berbeda. Prosedur pengujian diimplementasikan sebagai perulangan pelatihan dengan pengaturan \textit{seed} eksplisit pada seluruh sumber keacakan (Python, NumPy, dan TensorFlow) sebagaimana disajikan pada Kode Program~\ref{lst:multiseed}. Ringkasan statistik hasil pengujian sepuluh \textit{seeds} tersebut disajikan pada Tabel \ref{tab:statistik_multiseed}.
-
-\begin{lstlisting}[caption={Prosedur Evaluasi \textit{Multi-Seed} (10 Kali Pelatihan Ulang)}, label={lst:multiseed}]
-def set_seed(s):
-    os.environ['PYTHONHASHSEED'] = str(s)
-    random.seed(s); np.random.seed(s); tf.random.set_seed(s)
-
-rows = []
-for s in range(N_SEEDS):   # N_SEEDS = 10
-    set_seed(s)
-    cb = [EarlyStopping('val_loss', patience=20,
-                        restore_best_weights=True, verbose=0),
-          ReduceLROnPlateau('val_loss', factor=0.5,
-                            patience=8, min_lr=1e-6, verbose=0)]
-    mdl = build()
-    mdl.fit(X_tr, y_tr, validation_data=(X_va, y_va),
-            epochs=200, batch_size=16, callbacks=cb, verbose=0)
-    # Rekonstruksi log-return prediksi ke nominal Rupiah
-    logret_hat = inv_logret(
-        mdl.predict(X_te, verbose=0).flatten())
-    y_lstm = np.expm1(np.log1p(rev_prev) + logret_hat)
-    r = metrics(rev_true, y_lstm); r['seed'] = s
-    rows.append(r)
-
-res = pd.DataFrame(rows)   # rata-rata +- deviasi per metrik
-\end{lstlisting}
+While the classification matrix is presented in Table \ref{tab:confusion_matrix_actual}.
 
 \begin{table}[H]
-\setstretch{1.2}
 \centering
-\caption{Statistik Performa LSTM Hybrid pada 10 Seed}
-\label{tab:statistik_multiseed}
-\begin{tabular}{|l|c|c|}
+\caption{Confusion Matrix Hasil Pengujian}
+\label{tab:confusion_matrix_actual}
+\begin{tabular}{|c|l|c|c|}
 \hline
-\textbf{Metrik} & \textbf{Rata-rata $\pm$ Simpangan baku} & \textbf{Rentang (min -- maks)} \\ \hline
-MAE (Rp) & 667.718 $\pm$ 145.024 & 495.527 -- 1.048.967 \\ \hline
-RMSE (Rp) & 897.563 $\pm$ 165.804 & 703.721 -- 1.320.587 \\ \hline
-sMAPE & 38,06\% $\pm$ 3,96\% & 29,16\% -- 44,63\% \\ \hline
-MASE & 1,840 $\pm$ 0,400 & 1,365 -- 2,891 \\ \hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{Confusion Matrix}} & \multicolumn{2}{c|}{\textbf{Data Aktual}} \\ \cline{3-4}
+\multicolumn{2}{|c|}{} & \textbf{Layak (Subsidi)} & \textbf{Tidak Layak (Non Subsidi)} \\ \hline
+\multirow{2}{*}{\textbf{Prediksi}} & \textbf{Layak (Subsidi)} & TP = 80 & FP = 0 \\ \cline{2-4}
+ & \textbf{Tidak Layak} & FN = 0 & TN = 120 \\ \hline
 \end{tabular}
 \end{table}
 
-Hasil pada Tabel \ref{tab:statistik_multiseed} menunjukkan nilai simpangan baku (\textit{standard deviation}) yang cukup signifikan (MAE $\pm$Rp 145.024,00 dan MASE $\pm$0,400). Hal ini membuktikan adanya ketidakstabilan performa model LSTM yang disebabkan oleh ukuran data yang terbatas, performa model sangat bergantung pada keberuntungan inisialisasi parameter awal. Selain itu, sebaran data menunjukkan bahwa hanya terdapat 1 dari 10 percobaan (10\%) yang berhasil mengungguli performa model pembanding \textit{Naive} dan \textit{SARIMA}, yaitu pada \textit{seed} ke-7 dengan MAE sebesar Rp 495.527,00. Oleh karena itu, pelaporan kinerja model LSTM berdasarkan uji coba tunggal (\textit{single run}) berisiko memberikan kesimpulan yang kurang valid atau menyesatkan. Distribusi nilai MAE dari sepuluh \textit{seeds} tersebut divisualisasikan dalam bentuk \textit{boxplot} pada Gambar \ref{fig:boxplot_multiseed}.
+Berdasarkan Confusion Matrix pada Tabel \ref{tab:confusion_matrix_actual}, dari total 200 data pengujian, model LightGBM mampu mengklasifikasikan seluruh data secara benar tanpa terjadi kesalahan prediksi. Hal ini ditunjukkan dengan nilai False Positive (FP) sebesar 0 dan False Negative (FN) sebesar 0.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{Gambar/evaluasi_multiseed_standalone_plot_1}
-    \caption{Boxplot Distribusi MAE Hasil Pengujian \textit{Multi-Seed}}
-    \label{fig:boxplot_multiseed}
-\end{figure}
-
-\subsection{Evaluasi Augmentasi Data Sintetis TimeGAN}
-
-Sebagai upaya mitigasi terhadap keterbatasan ukuran dataset yang menjadi akar penyebab ketidakstabilan model LSTM, hasil implementasi augmentasi data sintetis TimeGAN (lihat Subbab 4.3.3) dievaluasi dengan membandingkan performa model LSTM multi-langkah (\textit{look-back} 14 hari aktif, horizon 7 hari) yang dilatih dalam dua kondisi: hanya menggunakan 199 sekuens data riil (\textit{baseline real-only}), dan menggunakan gabungan data riil dengan 298 sekuens sintetis (rasio augmentasi 1,5). Hasil perbandingan pada data uji disajikan pada Tabel \ref{tab:eval_timegan}.
+\subsection{Analisis Fitur Penting (Feature Importance)}
+Nilai \textit{feature importance} menunjukkan kontribusi relatif setiap variabel dalam membantu model menentukan kelayakan penerima subsidi listrik. Skor dihitung berdasarkan jumlah kumulatif pembagian (\textit{split}) yang dilakukan oleh variabel tersebut di seluruh pohon keputusan. Skor \textit{feature importance} disajikan pada Tabel \ref{tab:feature_importance_actual}.
 
 \begin{table}[H]
-\setstretch{1.2}
 \centering
-\caption{Perbandingan Performa Eksperimen Augmentasi TimeGAN (\textit{Multi-Step}, Horizon 7)}
-\label{tab:eval_timegan}
-\begin{tabular}{|l|c|c|c|c|}
+\caption{Nilai Feature Importance Model LightGBM}
+\label{tab:feature_importance_actual}
+\begin{tabular}{|c|l|c|}
 \hline
-\textbf{Model} & \textbf{MAE (Rp)} & \textbf{RMSE (Rp)} & \textbf{sMAPE} & \textbf{MASE} \\ \hline
-Seasonal-Naive ($k=5$) & 755.403 & 975.130 & 37,58\% & 2,082 \\ \hline
-Seasonal-Naive ($k=7$) & 783.179 & 985.180 & 38,24\% & 2,158 \\ \hline
-LSTM + Augmentasi TimeGAN & 860.695 & 1.047.842 & 41,49\% & 2,372 \\ \hline
-LSTM Tanpa Augmentasi & 1.750.355 & 1.935.119 & 115,40\% & 4,823 \\ \hline
+\textbf{No} & \textbf{Nama Fitur (Variabel)} & \textbf{Skor Splits} \\ \hline
+1 & Penghasilan & 877 \\ \hline
+2 & Luas Bangunan & 359 \\ \hline
+3 & Pemakaian kWh & 186 \\ \hline
+4 & Daya VA & 150 \\ \hline
+5 & Jumlah Anggota Keluarga & 30 \\ \hline
+6 & Status Kepemilikan Rumah & 11 \\ \hline
+7 & Pekerjaan Kepala Keluarga & 0 \\ \hline
+8 & Status Penerima Bansos & 0 \\ \hline
+9 & Golongan Tarif & 0 \\ \hline
 \end{tabular}
 \end{table}
 
-Perlu dicatat bahwa nilai galat pada Tabel \ref{tab:eval_timegan} tidak dapat dibandingkan secara langsung dengan Tabel \ref{tab:eval_baseline_comp}, karena eksperimen augmentasi ini menggunakan skema prediksi multi-langkah langsung (\textit{direct multi-step}, horizon 7 hari sekaligus) yang secara inheren lebih sulit daripada skema satu langkah ke depan (\textit{one-step-ahead}).
-
-Hasil eksperimen menunjukkan dua temuan penting. Pertama, augmentasi TimeGAN terbukti efektif memperbaiki kualitas pelatihan LSTM pada data terbatas: nilai MAE model turun drastis dari Rp 1.750.355,00 menjadi Rp 860.695,00 (perbaikan sekitar 50,8\%), dan nilai MASE membaik dari 4,823 menjadi 2,372. Kedua, meskipun mengalami perbaikan signifikan, model LSTM teraugmentasi tetap belum mampu mengungguli \textit{baseline} \textit{Seasonal-Naive} ($k=5$, MAE Rp 755.403,00) yang memanfaatkan pola musiman mingguan secara sederhana. Perlu dicatat bahwa evaluasi multi-langkah ini menguji \textit{Seasonal-Naive} pada konfigurasi $k=5$ dan $k=7$, sedangkan layanan produksi memakai $k=4$ sebagai kompromi responsivitas--stabilitas. Ketiganya menunjukkan karakteristik performa yang serupa karena sama-sama merata-ratakan beberapa kemunculan terakhir hari sejenis. Temuan ini memperkuat kesimpulan sebelumnya bahwa pada volume data saat ini, metode statistik musiman sederhana masih menjadi pilihan paling andal untuk disajikan kepada pengguna, sekaligus menunjukkan bahwa augmentasi data sintetis merupakan arah yang menjanjikan apabila dikombinasikan dengan data riil yang lebih panjang di masa mendatang.
+Berdasarkan Tabel \ref{tab:feature_importance_actual}, variabel \texttt{penghasilan} memiliki nilai kontribusi tertinggi dengan skor splits sebesar 877, diikuti oleh \texttt{luas\_bangunan} (359), \texttt{pemakaian\_kwh} (186), dan \texttt{daya\_va} (150). Hal ini menunjukkan bahwa karakteristik sosial ekonomi (penghasilan dan luas bangunan) merupakan indikator yang paling dinamis dan krusial bagi model dalam menentukan kelas kelayakan, sementara variabel teknis kelistrikan (pemakaian kWh dan daya terpasang) bertindak sebagai cross-reference aturan utama yang mengacu pada ketentuan Kementerian ESDM.
 
 \section{Hasil Pengujian Sistem}
-
-Pengujian sistem dilakukan untuk memvalidasi fungsionalitas aplikasi dan memeriksa kebenaran logika internal komponen kritis pada layanan API prediksi yang telah diintegrasikan. Pengujian mencakup uji coba fungsional \textit{Black Box}, uji telusur logika kode \textit{White Box}, serta rekapitulasi evaluasi kinerja model prediksi yang telah dibahas pada Subbab 4.4.
-
-\subsection{Skenario Pengujian}
-
-Rancangan skenario pengujian fungsional \textit{black box} disusun untuk 14 kasus penggunaan utama yang melibatkan peran Owner dan Kasir, sebagaimana telah dijabarkan pada Tabel \ref{tab:blackbox} (Bab III), meliputi antara lain registrasi toko, autentikasi pengguna, pengelolaan produk dan kategori, proses \textit{checkout} transaksi, pencetakan struk, sinkronisasi \textit{offline-first}, serta dasbor laporan analitik. Skenario pengujian \textit{white box} disusun secara terpisah dengan menelusuri jalur logika kode pada tiga fungsi kritis di layanan API prediksi, yaitu fungsi \textit{Seasonal-Naive} (\textit{by\_dow}), fungsi metrik evaluasi sMAPE dan MASE, serta fungsi prediksi rekursif ({\small\textit{forecast\_hybrid\_\allowbreak stable}}), sebagaimana telah dirancang pada Subbab 3.2.9.3. Kedua rancangan pengujian ini bersifat saling melengkapi: pengujian \textit{black box} memvalidasi kesesuaian antara masukan dan keluaran pada level antarmuka pengguna, sedangkan pengujian \textit{white box} memvalidasi kebenaran perhitungan pada level kode program.
+Pengujian sistem dilakukan terhadap fungsi antarmuka aplikasi web dan kebenaran komputasi layanan API prediksi.
 
 \subsection{Hasil Black Box Testing}
-
-Pengujian fungsionalitas sistem menggunakan metode Black Box diterapkan pada 14 skenario kasus penggunaan utama yang melibatkan peran Owner dan Kasir. Hasil pengujian diringkas pada Tabel~\ref{tab:hasil_blackbox}.
-
-{\setstretch{1.15}
-\begin{longtable}{|>{\centering\arraybackslash}p{0.6cm}|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{4.7cm}|>{\centering\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{2.0cm}|}
-\caption{Hasil Pengujian Black Box} \label{tab:hasil_blackbox} \\
-\hline
-\textbf{No.} & \textbf{Fitur / Skenario} & \textbf{Hasil yang Diharapkan} & \textbf{Hasil Riil} & \textbf{Status} \\
-\hline
-\endfirsthead
-\hline
-\textbf{No.} & \textbf{Fitur / Skenario} & \textbf{Hasil yang Diharapkan} & \textbf{Hasil Riil} & \textbf{Status} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\endlastfoot
-1 & Registrasi Toko & Akun owner baru dan data toko berhasil didaftarkan di cloud database. & Sesuai Harapan & Berhasil \\
-\hline
-2 & Login Pengguna & Masuk ke dasbor utama sesuai hak akses peran (Owner/Kasir). & Sesuai Harapan & Berhasil \\
-\hline
-3 & Checkout Belanja & Transaksi tersimpan, stok barang berkurang otomatis di lokal. & Sesuai Harapan & Berhasil \\
-\hline
-4 & Terapkan Diskon & Total belanja terpotong sesuai nilai nominal diskon/voucher. & Sesuai Harapan & Berhasil \\
-\hline
-5 & Cetak Struk Fisik & Printer thermal mencetak detail nota transaksi via Bluetooth. & Sesuai Harapan & Berhasil \\
-\hline
-6 & Kelola Produk & Menambah, mengedit, dan menghapus katalog produk di basis data. & Sesuai Harapan & Berhasil \\
-\hline
-7 & Kelola Kategori & Mengatur kategori produk untuk pengelompokan menu kasir. & Sesuai Harapan & Berhasil \\
-\hline
-8 & Audit Mutasi Stok & Riwayat keluar masuk barang tercatat di log stock\_history. & Sesuai Harapan & Berhasil \\
-\hline
-9 & Dasbor Ringkasan & Menampilkan ringkasan omzet dan grafik penjualan aktual. & Sesuai Harapan & Berhasil \\
-\hline
-10 & Smart Analytics & Grafik prediksi LSTM untuk 7 hari ke depan dapat ditampilkan. & Sesuai Harapan & Berhasil \\
-\hline
-11 & Broadcast Notif & Pengiriman notifikasi broadcast dari owner muncul di layar kasir. & Sesuai Harapan & Berhasil \\
-\hline
-12 & Sinkronisasi Data & Data transaksi offline terunggah otomatis ke cloud saat online. & Sesuai Harapan & Berhasil \\
-\hline
-13 & Kelola Staf Karyawan & Owner dapat menambah dan mengatur peran staf kasir. & Sesuai Harapan & Berhasil \\
-\hline
-14 & Atur Profil Toko & Informasi nama, alamat, dan logo toko berhasil diubah. & Sesuai Harapan & Berhasil \\
-\hline
-\end{longtable}
-}
-
-Berdasarkan hasil uji coba pada Tabel~\ref{tab:hasil_blackbox}, seluruh fungsi utama aplikasi POS mobile dan server-side API berjalan dengan status sukses ("Berhasil"), membuktikan kelayakan operasional sistem untuk penggunaan harian.
-
-Sebagai bagian dari skenario \#12 (Sinkronisasi Data), pengujian fitur \textit{offline-first} dilakukan lebih rinci untuk memastikan keandalan penyimpanan lokal menggunakan Isar DB ketika koneksi internet terputus dan proses sinkronisasi otomatis ketika koneksi terhubung kembali. Rincian skenario pengujian sinkronisasi tersebut dijabarkan pada Tabel~\ref{tab:hasil_sync}.
+Pengujian fungsionalitas sistem dilakukan menggunakan metode Black Box Testing. Pengujian ini berfokus pada verifikasi input-output sistem tanpa meninjau struktur internal kode. Hasil pengujian fungsionalitas disajikan pada Tabel \ref{tab:blackbox_testing_results}.
 
 \begin{table}[H]
 \setstretch{1.2}
 \centering
-\caption{Hasil Pengujian Mekanisme Sinkronisasi}
-\label{tab:hasil_sync}
-\begin{tabularx}{\textwidth}{|c|X|X|c|}
+\caption{Hasil Pengujian Black Box Dashboard Klasifikasi}
+\label{tab:blackbox_testing_results}
+\begin{tabularx}{\textwidth}{|c|p{3.5cm}|p{5.5cm}|X|}
 \hline
-\textbf{No} & \textbf{Skenario Pengujian} & \textbf{Hasil Pengujian} & \textbf{Status} \\
-\hline
-1 & Melakukan transaksi checkout saat jaringan terputus (Luring). & Transaksi tersimpan di Isar DB lokal dengan status \textit{is\_synced = false} (penanda yang sama dinamai \textit{isSynced} pada lapisan kode Dart, mengikuti konvensi penamaan masing-masing platform). Stok produk berkurang di lokal. & Berhasil \\
-\hline
-2 & Membuka riwayat transaksi kasir saat luring. & Menampilkan daftar transaksi lokal secara instan tanpa memicu error atau halaman kosong. & Berhasil \\
-\hline
-3 & Menghubungkan perangkat kembali ke internet (Daring). & Mesin \textit{SyncNotifier} mendeteksi koneksi dan mengunggah data transaksi ke Supabase. & Berhasil \\
-\hline
-4 & Memeriksa status database cloud setelah sinkronisasi. & Data transaksi masuk ke Supabase, dan status di lokal berubah menjadi \textit{is\_synced = true}. & Berhasil \\
-\hline
+\textbf{No} & \textbf{Modul / Fitur} & \textbf{Skenario Pengujian} & \textbf{Hasil yang Diharapkan} \\ \hline
+1 & Login Admin & Memasukkan username dan password benar & Masuk ke dashboard utama \\ \hline
+2 & Dashboard Utama & Menampilkan ringkasan total data, rasio, dan grafik & Data terintegrasi dengan database Supabase \\ \hline
+3 & Input Manual & Menginput data pelanggan tunggal valid & Prediksi kelayakan dan probabilitas tampil \\ \hline
+4 & Upload Batch & Mengunggah file Excel berisi 200 data & Seluruh data terklasifikasi dan tersimpan \\ \hline
+5 & Pengaturan Model & Membuka grafik metrik dan feature importance & Visualisasi model aktif dimuat dari Flask \\ \hline
+6 & Riwayat Laporan & Mencari riwayat batch dan mengekspor ke PDF & File PDF laporan klasifikasi terunduh \\ \hline
 \end{tabularx}
 \end{table}
 
-Hasil uji coba membuktikan bahwa arsitektur offline-first menjamin operasional POS kasir tetap berjalan tanpa kendala saat konektivitas internet tidak stabil, serta menjaga konsistensi data transaksi saat online kembali.
+Berdasarkan hasil pengujian Black Box pada Tabel \ref{tab:blackbox_testing_results}, seluruh skenario fungsionalitas yang diuji pada aplikasi web berjalan dengan sukses tanpa kegagalan (tingkat keberhasilan 100\%).
 
 \subsection{Hasil White Box Testing}
-
-Pengujian \textit{white box} dilakukan dengan menelusuri jalur logika (\textit{code path}) dari tiga fungsi kritis pada layanan API prediksi menggunakan data masukan yang telah diketahui nilai keluarannya secara manual, kemudian membandingkan hasil eksekusi aktual terhadap hasil kalkulasi \textit{ground truth}. Ringkasan hasil penelusuran jalur logika disajikan pada Tabel \ref{tab:hasil_whitebox}.
-
-\begin{table}[H]
-\setstretch{1.15}
-\centering
-\caption{Hasil Pengujian White Box}
-\label{tab:hasil_whitebox}
-\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
-\hline
-\textbf{No} & \textbf{Fungsi / Jalur Logika} & \textbf{Kondisi Uji} & \textbf{Hasil yang Diharapkan} & \textbf{Status} \\
-\hline
-1 & \textit{by\_dow} (Seasonal-Naive) & Data historis hari kerja tersedia $\geq k$ (jalur utama) & Nilai prediksi merupakan rata-rata $k$ kemunculan terakhir hari kerja yang sama & Berhasil \\
-\hline
-2 & \textit{by\_dow} (Seasonal-Naive) & Data historis hari kerja tersedia $<k$ (jalur cabang \textit{partial}) & Nilai prediksi merupakan rata-rata dari seluruh data hari kerja yang tersedia & Berhasil \\
-\hline
-3 & \textit{by\_dow} (Seasonal-Naive) & Data historis hari kerja tidak tersedia sama sekali (jalur \textit{fallback}) & Nilai prediksi menggunakan rata-rata 10 hari aktif terakhir keseluruhan & Berhasil \\
-\hline
-4 & \textit{smape} & Nilai aktual dan prediksi sama-sama bernilai 0 (jalur penyebut nol) & Fungsi tidak menghasilkan galat pembagian dengan nol (\textit{division by zero}) & Berhasil \\
-\hline
-5 & \textit{mase} & Galat naif \textit{in-sample} bernilai positif normal (jalur utama) & Nilai MASE terhitung sesuai rasio MAE model terhadap MAE naif & Berhasil \\
-\hline
-6 & {\small\textit{forecast\_hybrid\_\allowbreak stable}} & Nilai \textit{log-return} mentah melebihi persentil 90 data latih (jalur \textit{clipping}) & Nilai \textit{log-return} dipotong tepat pada batas atas persentil 90 & Berhasil \\
-\hline
-7 & {\small\textit{forecast\_hybrid\_\allowbreak stable}} & Iterasi horizon ke-$n$ dengan $n>1$ (jalur \textit{damping}) & Besaran perubahan \textit{log-return} teredam sesuai faktor $\phi^{(n-1)}$ & Berhasil \\
-\hline
-8 & {\small\textit{forecast\_hybrid\_\allowbreak stable}} & Nilai omzet hasil rekonstruksi melampaui nilai maksimum historis (jalur \textit{safety rail}) & Nilai omzet dipotong tepat pada batas \textit{REV\_CEIL} & Berhasil \\
-\hline
-\end{tabularx}
-\end{table}
-
-Berdasarkan hasil pada Tabel \ref{tab:hasil_whitebox}, seluruh jalur logika kritis pada ketiga fungsi yang diuji, yaitu perhitungan \textit{Seasonal-Naive}, metrik evaluasi sMAPE/MASE, dan prediksi rekursif, telah tervalidasi menghasilkan keluaran yang sesuai dengan perhitungan manual, sehingga tidak ditemukan kesalahan logika (\textit{logic error}) pada percabangan kode yang diuji.
-
-\subsection{Evaluasi Kinerja Model}
-
-Evaluasi kinerja model telah dipaparkan secara rinci pada Subbab 4.4.
+Pengujian logika internal (White Box Testing) dilakukan secara terbatas untuk menguji kebenaran algoritma preprocessing dinamis dan pemanggilan model LightGBM pada layanan API Flask (\texttt{app.py}). Pengujian dilakukan dengan menelusuri jalur percabangan eksekusi ketika sistem menerima format JSON data masukan yang tidak lengkap, data dengan tipe data salah, serta file batch kosong. Pengujian logika penanganan kesalahan menunjukkan bahwa layanan API secara tepat mengembalikan kode respon HTTP 400 (\textit{Bad Request}) dan deskripsi pesan error yang selaras dengan spesifikasi penanganan kesalahan API.
 
 \section{Pembahasan}
+Bagian ini membahas keterkaitan antara hasil pelatihan model LightGBM, implementasi sistem web dashboard, serta kesesuaian hasil prediksi dengan aturan penyaluran subsidi listrik PLN.
 
-Bagian ini membahas temuan hasil implementasi, kontribusi fitur offline-first terhadap kelancaran operasional kasir, serta kemampuan analitik prediksi LSTM dalam meminimalkan masalah persediaan barang.
+\subsection{Pembahasan Pengujian Fungsional Web Dashboard}
+Hasil pengujian fungsionalitas menunjukkan bahwa aplikasi web dashboard klasifikasi berbasis Next.js yang terintegrasi dengan backend Supabase dan layanan prediksi Flask mampu membantu PT PLN Aceh dalam mengevaluasi status pelanggan secara efisien. Administrator dapat menggunakan fitur Upload Batch untuk memproses ribuan data pelanggan dalam hitungan detik tanpa harus mengevaluasi satu per satu secara manual. Hal ini menghemat waktu operasional dan mengurangi potensi kesalahan penulisan data administratif.
 
-\subsection{Pembahasan Pengujian Fungsional dan Arsitektur Offline-First}
+\subsection{Pembahasan Akurasi Model Klasifikasi LightGBM}
+Model LightGBM yang dibangun menghasilkan akurasi sempurna sebesar 1,0000 (100\%) pada data pengujian. Meskipun secara teoritis akurasi sempurna pada model machine learning dapat disebabkan oleh indikasi overfitting, namun dalam konteks dataset penelitian ini, hasil akurasi 100\% disebabkan oleh pembentukan dataset sintetis kelistrikan yang menggunakan aturan deterministic berbasis aturan regulasi Kementerian ESDM.
 
-Hasil pengujian Black Box pada 14 skenario menunjukkan tingkat kesuksesan 100\% ("Berhasil"). Integrasi antara basis data lokal Isar DB dan basis data cloud Supabase terbukti sangat andal. Melalui skema sinkronisasi yang dirancang, kasir tidak perlu bergantung pada koneksi internet saat menginput transaksi. Hal ini menghilangkan risiko terhambatnya antrean kasir akibat koneksi internet yang lambat atau terputus secara tiba-tiba.
-
-Penggunaan local database Isar DB juga memberikan performa loading data yang sangat cepat. Secara observasi, operasi baca-tulis produk dan transaksi lokal terasa hampir seketika (\textit{near-instant}) dan jauh lebih responsif dibandingkan operasi yang bergantung pada pemanggilan REST API database cloud secara langsung, yang turut dipengaruhi oleh kondisi dan latensi jaringan. Hal ini meningkatkan efisiensi kerja kasir secara signifikan. Perlu dicatat bahwa perbandingan ini bersifat observasi kualitatif, bukan hasil pengukuran latensi terstruktur (mis. jumlah sampel, alat ukur, dan kondisi jaringan yang terkendali), sehingga angka waktu tempuh kuantitatif belum dapat dilaporkan pada penelitian ini.
-
-\subsection{Pembahasan Hasil Prediksi Penjualan LSTM}
-
-Secara keseluruhan, hasil pengujian menunjukkan bahwa pada dataset transaksi penjualan kantin EatsTEDI UGM dengan 313 hari aktif, model LSTM, termasuk varian hybrid residual yang merupakan konfigurasi terbaik, tidak mengungguli metode pembanding sederhana (\textit{Naive} dan \textit{Mean-7}) maupun model statistik \textit{SARIMA} secara rata-rata, dan hanya mampu kompetitif pada kasus terbaiknya (1 dari 10 percobaan \textit{multi-seed}). Hasil evaluasi ini bukan merupakan suatu kegagalan atau anomali sistem, melainkan sejalan dengan temuan luas dalam berbagai literatur prediksi deret waktu komersial ritel (seperti pada kompetisi prediksi global M3 dan M4). Literatur tersebut membuktikan bahwa metode statistik klasik dan naif kerap mengungguli pendekatan pembelajaran mendalam (\textit{deep learning}) ketika data historis yang tersedia relatif terbatas dan deret waktu didominasi secara kuat oleh komponen persistensi jangka pendek.
-
-Dalam konteks operasional kantin kampus EatsTEDI UGM, dominasi komponen persistensi ini sangat nyata karena nilai pendapatan harian sangat berkorelasi kuat dengan nilai pendapatan hari aktif sebelumnya. Pola ketergantungan jangka pendek ini ditangkap dengan sangat presisi oleh model \textit{Naive} (kemarin) yang memiliki kesalahan MAE terendah sebesar Rp 519.841,00. Di sisi lain, model LSTM Hybrid yang memiliki kapasitas parameter lebih besar cenderung melakukan penghalusan nilai prediksi secara berlebihan (\textit{over-smoothing}) pada data latih yang pendek, sehingga tidak mampu menangkap lonjakan-lonjakan ekstrem omzet harian yang dipicu oleh dinamika aktivitas mahasiswa di lapangan.
-
-Sebagai upaya mengatasi akar permasalahan keterbatasan data tersebut, penelitian ini turut menguji peran augmentasi data sintetis menggunakan TimeGAN. Hasil eksperimen menunjukkan bahwa penambahan sekuens sintetis mampu memperbaiki kualitas pembelajaran model LSTM secara substansial (penurunan MAE sekitar 50,8\% dibandingkan model tanpa augmentasi pada skema multi-langkah), yang menandakan bahwa kegagalan LSTM pada penelitian ini memang bersumber dari kelangkaan data, bukan dari kesalahan arsitektur semata. Namun demikian, model LSTM teraugmentasi tetap belum melampaui \textit{baseline} \textit{Seasonal-Naive}, sehingga augmentasi sintetis diposisikan sebagai pelengkap yang menjanjikan, bukan pengganti, dari akumulasi data transaksi riil jangka panjang.
-
-Kontribusi ilmiah dari penelitian ini terletak pada ketelitian metodologis evaluasi model yang diterapkan, yaitu:
-\begin{enumerate}
-    \item \textbf{Penggunaan Model Pembanding (\textit{Baselines}) yang Tepat:} Menyandingkan model LSTM dengan metode naif, rata-rata bergerak, dan SARIMA untuk memvalidasi apakah penambahan kompleksitas komputasi model AI memberikan nilai tambah akurasi prediksi yang sepadan.
-    \item \textbf{Pemilihan Metrik Evaluasi yang Valid:} Menggunakan sMAPE dan MASE yang tahan terhadap pembagian bernilai nol atau sangat kecil pada hari-hari libur, menghindari kesalahan \textit{exploding MAPE} yang menyesatkan.
-    \item \textbf{Pengujian Kestabilan melalui Multi-Seed:} Melaporkan sebaran nilai performa model dari sepuluh kali pelatihan secara acak, sehingga mengungkap ketidakstabilan model LSTM pada ukuran data yang kecil secara transparan.
-    \item \textbf{Eksplorasi Augmentasi Data Sintetis:} Menguji efektivitas TimeGAN sebagai strategi mitigasi keterbatasan data pada prediksi penjualan UMKM, lengkap dengan kuantifikasi perbaikan galat terhadap model tanpa augmentasi dan posisinya relatif terhadap \textit{baseline} musiman.
-\end{enumerate}
-
-Kerangka evaluasi ini menghasilkan kesimpulan analisis yang jujur, objektif, dan dapat dipertanggungjawabkan secara akademik, sekaligus memberikan rekomendasi praktis bagi pengelola bisnis: untuk skala volume data transaksi harian UMKM saat ini, metode \textit{Naive}, \textit{Seasonal-Naive}, atau \textit{SARIMA} lebih direkomendasikan untuk diintegrasikan sebagai fitur visualisasi dasbor prediksi penjualan harian pada aplikasi POS, sedangkan penerapan algoritma LSTM baru relevan untuk ditinjau kembali di masa depan apabila volume data transaksi historis telah bertambah secara signifikan (mencakup minimal 3--5 tahun operasional). Rekomendasi tersebut telah diimplementasikan secara nyata pada penelitian ini: layanan API prediksi produksi yang terhubung ke aplikasi POS menyajikan metode \textit{Seasonal-Naive} ($k=4$) untuk prediksi harian, \textit{Mean-4} untuk mingguan, dan \textit{Mean-3} untuk bulanan, sementara model LSTM beserta hasil eksperimen augmentasi TimeGAN didokumentasikan sebagai artefak riset yang siap diaktifkan kembali ketika data telah memadai.
-
+Algoritma berbasis pohon keputusan (\textit{decision tree ensemble}) seperti LightGBM sangat efektif dalam memetakan batas keputusan deterministic yang bersifat linear maupun bercabang. Dikarenakan batas antara kelas "Layak" dan "Tidak Layak" ditentukan oleh kombinasi kriteria (seperti daya $\le$ 900 VA, pemakaian bulanan di bawah rata-rata nasional, penghasilan di bawah ambang batas prasejahtera, dan kepemilikan status bansos), model LightGBM mampu merekonstruksi aturan tersebut secara sempurna melalui struktur percabangan pohon keputusan. Analisis \textit{feature importance} mendukung argumen ini, di mana variabel penghasilan dan luas bangunan yang memiliki ambang batas numerik ketat menjadi pemisah utama pada level teratas pohon keputusan.
 
 \section{Keterbatasan Sistem dan Penelitian}
-
-Meskipun sistem POS mobile dengan fitur prediksi penjualan harian ini telah berhasil diimplementasikan dan diuji, terdapat beberapa keterbatasan operasional maupun metodologi penelitian yang harus diperhatikan.
-
-\subsection{Keterbatasan Sistem POS}
-
-Beberapa keterbatasan operasional dari sistem POS mobile yang dikembangkan meliputi:
+Meskipun sistem telah selesai dibangun dan model klasifikasi memiliki performa yang sangat baik, terdapat beberapa keterbatasan dalam penelitian ini:
 \begin{enumerate}
-    \item \textbf{Keterbatasan Cold Start pada Toko Baru}:
-    Model prediksi LSTM memerlukan data transaksi historis runtun waktu yang kontinu. Sebagaimana dijelaskan pada Subbab 3.1.6, model secara teknis membutuhkan minimal 7 hari aktif transaksi (panjang \textit{sequence} \texttt{LOOK\_BACK}) agar dapat dijalankan sama sekali, namun hasil proyeksi baru dianggap cukup andal untuk ditampilkan tanpa peringatan \textit{cold start} setelah data transaksi terkumpul minimal selama 30 hari sebagai periode pemanasan awal (\textit{warm-up period}).
-    
-    \item \textbf{Ketergantungan Data Terkini}:
-    Meskipun operasional transaksi kasir dapat berjalan tanpa internet (offline), kualitas proyeksi modul prediksi LSTM bergantung pada kelengkapan data transaksi aktual yang menjadi \textit{payload} permintaan analisis. Jika data transaksi terbaru belum tercatat atau tersinkronkan, akurasi hasil proyeksi prediksi untuk hari berikutnya dapat menurun karena tidak menangkap tren transaksi paling akhir.
-    
-    \item \textbf{Ketergantungan Akses Server untuk Hasil Prediksi}:
-    Karena keterbatasan sumber daya komputasi dan konsumsi baterai perangkat mobile, proses kalkulasi prediksi model LSTM yang berat dialihkan sepenuhnya ke layanan inferensi Python yang di-\textit{hosting} pada platform Hugging Face. Akibatnya, meskipun kasir dapat bertransaksi secara offline, pengguna tetap memerlukan koneksi internet aktif untuk memperbarui visualisasi prediksi analitik terbaru dari API inferensi ke dasbor aplikasi. Selain itu, layanan inferensi gratis pada Hugging Face dapat mengalami kondisi \textit{cold start} (jeda pemuatan saat \textit{server} baru aktif kembali dari \textit{idle}) yang memperlambat respons analisis pertama.
+    \item \textbf{Ukuran Dataset Penelitian} \\
+    Dataset yang digunakan terbatas pada 1.000 data pelanggan rumah tangga. Untuk penggunaan pada skala wilayah provinsi Aceh secara utuh, diperlukan dataset dengan volume jutaan data pelanggan agar model dapat dilatih menghadapi variasi sebaran data yang lebih beragam.
+    \item \textbf{Ketergantungan pada Kualitas Data Sintetis} \\
+    Atribut kelistrikan dibentuk menggunakan pembangkitan sintetis rule-based. Karakteristik ini memiliki batasan di mana data riil di lapangan cenderung memiliki tingkat derau (\textit{noise}) dan anomali pembacaan meteran yang lebih tinggi, yang dapat mempengaruhi akurasi prediksi model pada kondisi nyata.
+    \item \textbf{Penyebaran Layanan (\textit{Deployment})} \\
+    Layanan API Flask dan frontend Next.js saat ini masih berjalan pada lingkungan lokal (\textit{localhost}) sebagai purwarupa (\textit{prototype}). Untuk penggunaan skala komersial, sistem perlu disebarkan pada layanan cloud server berskala besar dengan jaminan keamanan data pelanggan yang terlindungi.
 \end{enumerate}
 
-\subsection{Keterbatasan Penelitian Model Prediksi}
 
-Keterbatasan utama dalam pemodelan prediksi pada penelitian ini meliputi:
-\begin{enumerate}
-    \item \textbf{Keterbatasan Volume Dataset}: Jumlah data transaksi aktif riil dari platform EatsTEDI UGM relatif sedikit untuk standar pemodelan pembelajaran mendalam (\textit{deep learning}), yakni hanya 313 hari aktif yang menyusut menjadi sekitar 212 sampel latih setelah pembentukan sequence. Keterbatasan ini berdampak langsung pada tingginya sensitivitas model terhadap inisialisasi bobot acak awal (\textit{seed variance}) yang memicu ketidakstabilan akurasi model.
-    
-    \item \textbf{Keterbatasan Pengamatan Pola Musiman Jangka Panjang}: Rentang waktu transaksi yang kurang dari dua tahun belum memungkinkan model LSTM untuk mempelajari pola musiman tahunan (\textit{annual seasonality}) secara utuh dan komprehensif.
-    
-    \item \textbf{Deret Waktu yang Terputus-putus}: Banyaknya hari non-aktif transaksi akibat libur kalender akademik kampus (seperti sepanjang bulan Januari dan Juli) serta akhir pekan menyebabkan deret waktu menjadi patah dan terputus-putus, yang menyulitkan jaringan saraf dalam mempelajari dependensi keterkaitan temporal jangka panjang secara kontinu.
-
-    \item \textbf{Bias Penyaringan Hari Aktif (\texttt{revenue > 0})}: Penyaringan data pada tahap \textit{preprocessing} hanya mempertahankan hari kerja yang memiliki pendapatan positif (\texttt{revenue > 0}), sebagaimana dijelaskan pada Subbab 3.1.7. Konsekuensinya, hari kerja aktif dengan penjualan nol yang sebenarnya nyata turut terbuang dari dataset, bukan hanya akhir pekan atau libur kalender akademik. Akibat lanjutannya, deret \textit{log-return} $r_t$ yang menjadi target model dihitung antar hari aktif berurutan yang jarak kalender riilnya tidak seragam -- dapat berupa 1 hari, namun juga dapat mencapai lebih dari 10 hari setelah masa libur panjang. Ketidakseragaman interval waktu ini melanggar sebagian asumsi keteraturan deret waktu (\textit{regular time-series}) yang mendasari arsitektur LSTM, dan diduga turut menjadi salah satu faktor yang memperberat kesulitan model dalam mempelajari pola dependensi temporal secara konsisten.
-\end{enumerate}
-
-%%=============================================================
-%% BAB V - KESIMPULAN DAN SARAN
 %%=============================================================
 \chapter[PENUTUP]{\\ PENUTUP}
 

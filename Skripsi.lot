@@ -7,12 +7,15 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Kebutuhan Perangkat Keras (Hardware)}}{29}{table.caption.11}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan Perangkat Lunak (Software)}}{30}{table.caption.12}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Statistik Ringkas Dataset Pendapatan Harian}}{57}{table.caption.35}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Pembagian Dataset dan Dimensi Sequence}}{59}{table.caption.36}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Perbandingan Performa pada Data Uji (\textit {One-Step-Ahead})}}{70}{table.caption.38}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Statistik Performa LSTM Hybrid pada 10 Seed}}{74}{table.caption.40}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Perbandingan Performa Eksperimen Augmentasi TimeGAN (\textit {Multi-Step}, Horizon 7)}}{76}{table.caption.42}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Hasil Pengujian Black Box}}{78}{table.4.6}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Hasil Pengujian Mekanisme Sinkronisasi}}{80}{table.caption.43}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Hasil Pengujian White Box}}{82}{table.caption.44}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Statistik Deskriptif Variabel Numerik}}{49}{table.caption.24}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Distribusi Golongan Tarif}}{49}{table.caption.25}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Distribusi Status Kepemilikan Rumah}}{50}{table.caption.26}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Distribusi Status Penerima Bantuan Sosial}}{50}{table.caption.27}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Distribusi Pekerjaan Kepala Keluarga}}{50}{table.caption.28}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Distribusi Target Label Kelayakan}}{50}{table.caption.29}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Konfigurasi Hyperparameter Model LightGBM}}{53}{table.caption.30}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Metrik Performa Model LightGBM}}{54}{table.caption.31}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Confusion Matrix Hasil Pengujian}}{54}{table.caption.32}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Nilai Feature Importance Model LightGBM}}{55}{table.caption.33}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Hasil Pengujian Black Box Dashboard Klasifikasi}}{57}{table.caption.34}%
 \addvspace {10\p@ }
