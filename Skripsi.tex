@@ -1335,44 +1335,31 @@ Meskipun sistem telah selesai dibangun dan model klasifikasi memiliki performa y
 
 
 %%=============================================================
+%%=============================================================
+%% BAB V - PENUTUP
+%%=============================================================
 \chapter[PENUTUP]{\\ PENUTUP}
 
-Bab ini menyajikan kesimpulan dari hasil perancangan, implementasi, dan pengujian sistem Point of Sale (POS) mobile dengan fitur prediksi penjualan harian menggunakan metode Long Short-Term Memory (LSTM) dan arsitektur offline-first, serta saran-saran untuk pengembangan sistem lebih lanjut di masa mendatang.
+Bab ini menyajikan kesimpulan dari hasil perancangan, implementasi, dan pengujian sistem klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM), serta saran-saran untuk pengembangan sistem lebih lanjut di masa mendatang.
 
 \section{Kesimpulan}
-
 Berdasarkan hasil analisis, perancangan, implementasi, dan pengujian yang telah dilakukan pada penelitian ini, maka dapat ditarik beberapa kesimpulan sebagai berikut:
 \begin{enumerate}
-    \item Penelitian ini telah berhasil membangun aplikasi \textit{Point of Sale} (POS) \textit{mobile} berbasis Flutter yang terintegrasi dengan basis data cloud Supabase PostgreSQL dan layanan API prediksi penjualan harian berbasis Python dan Flask. Modul riset LSTM berbasis TensorFlow/Keras dikembangkan dan didokumentasikan secara lengkap sebagai artefak penelitian, sedangkan layanan API produksi yang benar-benar dipanggil aplikasi menyajikan metode \textit{Seasonal-Naive} berdasarkan hasil evaluasi komparatif, melalui arsitektur \textit{prediction service} yang bersifat \textit{model-agnostic} dan siap menyajikan model \texttt{.keras} begitu data mencukupi.
-    \item Penerapan arsitektur \textit{offline-first} menggunakan basis data lokal Isar DB terbukti handal dalam menjaga keberlangsungan transaksi kasir tanpa ketergantungan penuh pada koneksi internet. Secara observasi, operasi baca-tulis lokal terasa jauh lebih responsif dibandingkan operasi yang bergantung pada jaringan (belum diukur secara kuantitatif dan terstruktur), dan sinkronisasi otomatis menggunakan modul \textit{SyncNotifier} berhasil mengunggah data transaksi lokal ke database cloud saat perangkat terhubung kembali ke internet.
-    \item Implementasi metode prediksi \textit{Long Short-Term Memory} (LSTM) dengan pendekatan \textit{hybrid residual} (memprediksi \textit{log-return}) pada dataset harian aktif menghasilkan rata-rata kesalahan prediksi (\textit{multi-seed evaluation}) berupa MAE sebesar Rp 667.718,00 $\pm$ Rp 145.024,00, RMSE sebesar Rp 897.563,00 $\pm$ Rp 165.804,00, sMAPE sebesar 38,06\% $\pm$ 3,96\%, dan MASE sebesar 1,840 $\pm$ 0,400. Hasil ini menunjukkan bahwa model LSTM Hybrid yang dikembangkan belum mampu mengungguli metode pembanding \textit{Naive} (MAE Rp 519.841,00, MASE 1,432) dan \textit{SARIMA} secara rata-rata, dikarenakan deret pendapatan yang pendek serta tingginya persistensi jangka pendek pada data penjualan kantin EatsTEDI UGM. Upaya augmentasi data sintetis menggunakan TimeGAN terbukti menurunkan galat model LSTM multi-langkah secara signifikan (MAE membaik dari Rp 1.750.355,00 menjadi Rp 860.695,00), namun tetap belum mengungguli \textit{baseline} \textit{Seasonal-Naive}, sehingga layanan API prediksi produksi menyajikan metode \textit{Seasonal-Naive} sebagai metode penyaji utama.
-    \item Hasil pengujian fungsionalitas menggunakan metode \textit{Black Box Testing} terhadap 14 skenario kasus penggunaan utama yang melibatkan peran Owner dan Kasir berjalan dengan sukses tanpa kegagalan (tingkat keberhasilan 100\%), menunjukkan sistem layak dioperasikan secara penuh pada unit usaha UMKM.
+    \item Penelitian ini telah berhasil membangun sistem klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM) yang terintegrasi dengan web dashboard Next.js dan backend server Flask API Python.
+    \item Model LightGBM yang dibangun menggunakan konfigurasi default (\texttt{num\_leaves=31}, \texttt{learning\_rate=0.1}, \texttt{n\_estimators=100}) pada 1.000 data pelanggan mampu menghasilkan performa klasifikasi yang sangat baik dengan tingkat akurasi sebesar 1,0000 (100\%), presisi 1,0000 (100\%), recall 1,0000 (100\%), dan F1-score 1,0000 (100\%) pada data testing.
+    \item Analisis \textit{feature importance} menunjukkan bahwa variabel \texttt{penghasilan} (skor splits 877) dan \texttt{luas\_bangunan} (359) merupakan dua fitur dengan kontribusi tertinggi bagi model dalam menentukan batas pemisah kelayakan, sementara variabel teknis kelistrikan (\texttt{pemakaian\_kwh} dan \texttt{daya\_va}) bertindak sebagai verifikasi aturan dasar kesesuaian kriteria subsidi.
+    \item Pengujian sistem menggunakan metode \textit{Black Box Testing} terhadap 6 skenario fungsionalitas utama pada antarmuka web dashboard berjalan dengan sukses tanpa adanya kegagalan (100\% keberhasilan), serta pengujian \textit{White Box Testing} membuktikan keandalan logika API Flask dalam menangani kesalahan input.
 \end{enumerate}
 
 \section{Saran}
-
-Berdasarkan keterbatasan sistem yang diidentifikasi selama proses pengembangan dan pengujian, berikut adalah beberapa saran konstruktif untuk pengembangan sistem lebih lanjut:
+Berdasarkan keterbatasan sistem dan model yang diidentifikasi selama penelitian, berikut adalah beberapa saran konstruktif untuk pengembangan lebih lanjut:
 \begin{enumerate}
-    \item \textbf{Penerapan Metode Prediksi Hybrid}:
-    Untuk meningkatkan akurasi proyeksi penjualan pada data yang memiliki volatilitas tinggi atau tren musiman yang sangat dinamis, disarankan untuk menggabungkan model LSTM dengan model \textit{Gated Recurrent Unit} (GRU) atau model statistik klasik ARIMA menjadi model \textit{hybrid} (seperti ARIMA-LSTM atau LSTM-GRU).
-    
-    \item \textbf{Mengatasi Masalah Cold Start}:
-    Untuk memfasilitasi toko baru yang belum memiliki riwayat transaksi selama 30 hari, disarankan mengimplementasikan teknik \textit{transfer learning} atau melatih model \textit{global} awal menggunakan data transaksi historis dari toko sejenis sebelum melatih model secara spesifik menggunakan data toko tersebut.
-    
-    \item \textbf{Penguatan Keamanan Data Lokal}:
-    Guna melindungi data transaksi sensitif pelaku UMKM yang disimpan secara lokal pada perangkat fisik, disarankan untuk mengaktifkan fitur enkripsi basis data lokal pada Isar DB dengan menggunakan kunci enkripsi dinamis yang dikelola secara aman oleh perangkat.
-    
-    \item \textbf{Penyediaan Skalabilitas Tinggi (High Availability)}:
-    Untuk menghadapi potensi ekspansi multi-outlet dengan ribuan kasir aktif, arsitektur modul AI berbasis Flask disarankan dimigrasikan ke infrastruktur cloud dengan konfigurasi \textit{load balancer}, \textit{Docker container clusters}, dan replikasi basis data Supabase PostgreSQL untuk meminimalisasi \textit{single point of failure}.
-    
-    \item \textbf{Notifikasi Multi-Kanal Otomatis}:
-    Mengembangkan fitur integrasi notifikasi dengan layanan pihak ketiga seperti WhatsApp API atau SMS Gateway untuk mengirimkan laporan ringkasan omzet harian secara langsung ke nomor WhatsApp Owner, serta memberikan peringatan dini jika terdapat stok produk tertentu yang berada di bawah ambang batas minimum (\textit{safety stock}).
-    
-    \item \textbf{Integrasi Sistem Pembayaran Digital (E-Wallet \& QRIS Dynamic)}:
-    Menambahkan integrasi langsung dengan penyedia gerbang pembayaran (\textit{payment gateway}) lokal untuk menghasilkan kode QRIS dinamis secara real-time pada layar transaksi kasir, sehingga mempermudah pembukuan dan meminimalkan kesalahan input nominal transaksi nontunai oleh kasir.
-
-    \item \textbf{Penambahan Fitur \texttt{gap\_days} pada Variabel Masukan Model}:
-    Untuk mengurangi dampak ketidakseragaman interval waktu antar hari aktif akibat penyaringan \texttt{revenue > 0} (lihat Subbab 4.7.2), disarankan menyertakan fitur \texttt{gap\_days} (jarak hari kalender terhadap hari aktif sebelumnya) sebagai variabel masukan tambahan pada model prediksi, sehingga model dapat mempelajari secara eksplisit pengaruh jeda waktu antar observasi terhadap besaran perubahan pendapatan.
+    \item \textbf{Pengembangan Skala Dataset}:
+    Disarankan untuk menambahkan volume dataset hingga mencakup data riil berskala provinsi secara komprehensif, sehingga model dapat mempelajari variasi karakteristik pelanggan yang lebih heterogen.
+    \item \textbf{Penanganan Derau Data Lapangan (\textit{Noise Handling})}:
+    Penelitian selanjutnya perlu menguji performa model LightGBM pada data riil lapangan yang memiliki tingkat pencatatan anomali (data kosong, pencatatan meteran listrik yang salah) guna mengukur ketahanan (\textit{robustness}) model.
+    \item \textbf{Penyebaran Layanan Cloud (\textit{Cloud Deployment})}:
+    Purwarupa aplikasi web dan server API Flask ini perlu dipublikasikan pada arsitektur cloud server komersial yang aman untuk memastikan keandalan akses dan keamanan data pribadi pelanggan.
 \end{enumerate}
 
 \end{spacing}
@@ -1391,143 +1378,75 @@ Berdasarkan keterbatasan sistem yang diidentifikasi selama proses pengembangan d
 \begin{spacing}{1.0}
 
 \noindent\hangindent=1.5cm
-{[1]} A. Setiawan and B. T. Nugroho, ``Development of Cross-Platform Point of Sale Application using Flutter Framework for Small and Medium Enterprises,'' \textit{International Journal of Advanced Computer Science and Applications}, vol. 14, no. 5, pp. 320--329, 2023.
+{[1]} L. N. Nainggolan, K. Akbar, T. Yuliaty, and S. Suhaimi, ``Tinjauan Kebijakan Pemerintah Bagi Masyarakat Prasejahtera dalam Menghadapi Fenomena Subsidi Listrik, Bahan Bakar Minyak dan Gas di Indonesia,'' \textit{Jurnal Ekonomi Pembangunan STIE Muhammadiyah Palopo}, vol. 10, no. 1, pp. 114--130, 2024.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[2]} R. Pratama and S. Handayani, ``Digital Transformation of Indonesian SMEs: Implementation of Smart Point of Sales Systems,'' \textit{Jurnal Sistem Informasi (JSI)}, vol. 21, no. 1, pp. 12--25, 2025.
+{[2]} S. Jamilatun, F. R. Rhomadoni, E. Astuti, B. S. Wardhana, M. Idris, and P. A. Auliasari, ``Peran Manajemen Energi terhadap Efisiensi Konsumsi Listrik Rumah Tangga di Indonesia,'' in \textit{Prosiding Semnastek}, 2025.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[3]} T. Brown and M. Green, ``Demand Forecasting for Inventory Management in Small Retail Stores Using Neural Networks,'' \textit{Journal of Retailing and Consumer Services}, vol. 58, pp. 102--115, 2021.
+{[3]} T. Muzayyanah and M. D. Rhosyidy, ``Kelayakan Ekonomi Atas Implementasi Subsidi Listrik Untuk Mengurangi Tunggakan Pada Pelanggan PT. PLN (Persero) Kraksaan,'' \textit{Menulis Jurnal Penelitian Nusantara}, vol. 1, no. 3, pp. 403--411, 2025.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[4]} S. Abbas, M. A. Khan, and A. Tariq, ``Sales Forecasting Using Long Short-Term Memory (LSTM) Networks in Retail Industry,'' \textit{IEEE Access}, vol. 9, pp. 30900--30912, 2021.
+{[4]} C. Lestari, ``Kebijakan Subsidi Listrik Terhadap Masyarakat Yang Terdampak Covid-19 Di Kabupaten Pinrang (Analisis Hukum Ekonomi Islam),'' \textit{IAIN Parepare}, 2022.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[5]} E. Wilson and M. Davies, ``Application of LSTM Networks to Solve Long-Term Memory Retention in Highly Seasonal Sales Data,'' \textit{Neural Networks}, vol. 148, pp. 45--56, 2022.
+{[5]} M. Faturrochman and T. H. Yaasiin, ``Efektivitas subsidi kendaraan listrik terhadap perkembangan industri otomotif dalam mewujudkan program Making Indonesia 4.0,'' \textit{Jurnal Environment Economics and Sustainability}, vol. 1, no. 3, pp. 1--17, 2024.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[6]} H. Choi and J. Lee, ``Multivariate Time-Series Forecasting for Retail Sales Using LSTM with Economic Indicators,'' \textit{International Journal of Forecasting}, vol. 38, no. 3, pp. 890--905, 2022.
+{[6]} K. Syaban, ``Evaluasi Model Ensemble Learning pada Identifikasi Faktor Risiko Diabetes Mellitus,'' \textit{Jurnal Teknologi dan Informasi}, vol. 15, no. 2, pp. 121--130, 2025.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[7]} J. Martinez and R. Silva, ``Architecture Design of Offline-First Mobile Application using Local Embedded Database and Remote Sync Server,'' \textit{IEEE Transactions on Software Engineering}, vol. 48, no. 8, pp. 2840--2852, 2022.
+{[7]} I. G. A. R. Astarani and I. G. S. Rahayuda, ``Analisis Perbandingan XGBoost dan LightGBM dalam Prediksi Penjualan Ritel Walmart Store Sales,'' \textit{Jurnal Nasional Teknologi Informasi dan Aplikasi}, vol. 3, no. 4, pp. 717--728, 2025.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[8]} A. Novikov and I. Petrov, ``Performance Comparison of Local NoSQL Embedded Databases in Flutter Framework: Hive, ObjectBox, and Isar,'' \textit{Communications in Computer and Information Science}, vol. 1780, pp. 112--126, 2023.
+{[8]} N. P. Cintari, K. Alifviansyah, D. U. Tsabitah, B. Sartono, and A. R. Firdawanti, ``Analisis Perbandingan Kinerja Metode Ensemble Bagging dan Boosting pada Klasifikasi Bantuan Subsidi Listrik di Kabupaten/Kota Bogor,'' \textit{Indonesian Journal of Computer Science}, vol. 13, no. 6, 2024.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[9]} M. Fischer and L. Weber, ``Evaluating Open-Source Backend-as-a-Service (BaaS) Platforms: A Case Study on Supabase and PostgreSQL,'' \textit{International Journal of Computer Science \& Information Technology}, vol. 16, no. 1, pp. 45--58, 2024.
+{[9]} S. Syam et al., \textit{Data Mining: Teori dan Penerapannya dalam Berbagai Bidang}. Indonesia: PT. Sonpedia Publishing Indonesia, 2024.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[10]} P. Kumar and R. Sharma, ``Integrating Predictive Machine Learning Models into Enterprise Resource Planning and Point of Sales Systems,'' \textit{Journal of Systems and Software}, vol. 195, pp. 111--125, 2023.
+{[10]} T. Gori, A. Sunyoto, and H. Al Fatta, ``Preprocessing Data dan Klasifikasi untuk Prediksi Kinerja Akademik Siswa,'' \textit{Jurnal Teknologi Informasi dan Ilmu Komputer}, vol. 11, no. 1, pp. 215--224, 2024.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[11]} H. Nguyen and V. Tran, ``Decoupling Core Transact Systems and Analytical Machine Learning Frameworks inside Microservice Architectures,'' \textit{Journal of Systems Architecture}, vol. 134, pp. 102--118, 2023.
+{[11]} R. K. Dinata and N. Hasdyna, \textit{SUPERVISED LEARNING: Strategi Prediksi dan Klasifikasi Data}. Indonesia: Serasi Media Teknologi, 2025.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[12]} D. Roberts and K. Thomas, ``Designing Smart Mobile Applications with Server-Side Artificial Intelligence Models via RESTful Web Services,'' \textit{International Journal of Mobile Computing and Multimedia Communications}, vol. 13, no. 2, pp. 1--18, 2024.
+{[12]} R. S. Nurhalizah, R. Ardianto, and P. Purwono, ``Analisis supervised dan unsupervised learning pada machine learning: Systematic literature review,'' \textit{Jurnal Ilmu Komputer dan Informatika}, vol. 4, no. 1, pp. 61--72, 2024.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[13]} Y. Zhang and X. Liu, ``Comparative Analysis of LSTM and GRU for Time-Series Sales Forecasting,'' \textit{Applied Soft Computing}, vol. 115, pp. 108--122, 2022.
+{[13]} Y. Yanto and M. Yunus, ``Evaluasi Penentuan Kelayakan Pemberian Subsidi Listrik dengan Metode MFEP,'' \textit{Jurnal Ilmu dan Teknologi}, 2021.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[14]} J. Heizer, B. Render, and C. Munson, \textit{Operations Management: Sustainability and Supply Chain Management}, 12th ed. Boston, MA, USA: Pearson, 2017.
+{[14]} Hutahaean and Wijayanto, ``Klasifikasi Rumah Tangga Penerima Subsidi Listrik di Provinsi Gorontalo Tahun 2019 dengan Metode K-Nearest Neighbor dan Support Vector Machine,'' \textit{Jurnal Teknologi dan Informasi}, 2022.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[15]} G. Thompson, ``A Review of Evaluation Metrics for Time-Series Forecasting in Commercial Retail,'' \textit{Journal of Business Forecasting}, vol. 40, no. 2, pp. 75--88, 2021.
+{[15]} V. E. Ismayana, A. P. Sasmito, and A. Mahmudi, ``Sistem Penunjang Kelayakan Penerima Subsidi Program Keluarga Harapan (PKH) Menggunakan Metode Simple Additive Weighting (SAW) Berbasis Website (Studi Kasus: Desa Blimbing),'' \textit{Jurnal Sistem Pendukung Keputusan}, 2023.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[16]} R. J. Hyndman and A. B. Koehler, ``Another Look at Measures of Forecast Accuracy,'' \textit{International Journal of Forecasting}, vol. 22, no. 4, pp. 679--688, 2006.
+{[16]} Fitriani, Sriani, and Suhardi, ``Klasifikasi Penggunaan Daya Listrik Rumah Tangga Menggunakan Metode Naive Bayes,'' \textit{Jurnal Teknologi dan Informasi}, pp. 92\% akurasi, 2025.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[17]} S. Hochreiter and J. Schmidhuber, ``Long Short-Term Memory,'' \textit{Neural Computation}, vol. 9, no. 8, pp. 1735--1780, 1997.
+{[17]} Sukerti, ``Sistem Penunjang Keputusan Penerima Bantuan Desa di Kecamatan Klungkung dengan Metode SAW,'' \textit{Jurnal Sistem Pendukung Keputusan}, 2014.
 
 \vspace{0.3cm}
 \noindent\hangindent=1.5cm
-{[18]} D. P. Kingma and J. Ba, ``Adam: A Method for Stochastic Optimization,'' in \textit{Proc. 3rd International Conference on Learning Representations (ICLR)}, San Diego, CA, USA, 2015.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[19]} N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov, ``Dropout: A Simple Way to Prevent Neural Networks from Overfitting,'' \textit{Journal of Machine Learning Research}, vol. 15, no. 1, pp. 1929--1958, 2014.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[20]} R. J. Hyndman and G. Athanasopoulos, \textit{Forecasting: Principles and Practice}, 3rd ed. Melbourne, Australia: OTexts, 2021.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[21]} G. E. P. Box, G. M. Jenkins, G. C. Reinsel, and G. M. Ljung, \textit{Time Series Analysis: Forecasting and Control}, 5th ed. Hoboken, NJ, USA: John Wiley \& Sons, 2015.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[22]} S. Makridakis, E. Spiliotis, and V. Assimakopoulos, ``Statistical and Machine Learning Forecasting Methods: Concerns and Ways Forward,'' \textit{PLoS ONE}, vol. 13, no. 3, e0194889, 2018.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[23]} S. Makridakis, E. Spiliotis, and V. Assimakopoulos, ``The M4 Competition: 100,000 Time Series and 61 Forecasting Methods,'' \textit{International Journal of Forecasting}, vol. 36, no. 1, pp. 54--74, 2020.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[24]} I. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley, S. Ozair, A. Courville, and Y. Bengio, ``Generative Adversarial Nets,'' in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, vol. 27, pp. 2672--2680, 2014.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[25]} J. Yoon, D. Jarrett, and M. van der Schaar, ``Time-series Generative Adversarial Networks,'' in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, vol. 32, pp. 5508--5518, 2019.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[26]} L. White and J. Black, ``Privacy-Preserving Machine Learning for Small Business Analytics: Scrubbing Personal Identifiable Information,'' \textit{Security and Privacy in Communication Networks}, vol. 512, pp. 200--215, 2025.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[27]} M. Abadi et al., ``TensorFlow: A System for Large-Scale Machine Learning,'' in \textit{Proc. 12th USENIX Symposium on Operating Systems Design and Implementation (OSDI)}, Savannah, GA, USA, pp. 265--283, 2016.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[28]} A. Paszke et al., ``PyTorch: An Imperative Style, High-Performance Deep Learning Library,'' in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, vol. 32, pp. 8024--8035, 2019.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[29]} M. Grinberg, \textit{Flask Web Development: Developing Web Applications with Python}, 2nd ed. Sebastopol, CA, USA: O'Reilly Media, 2018.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[30]} R. T. Fielding, ``Architectural Styles and the Design of Network-based Software Architectures,'' Ph.D. dissertation, University of California, Irvine, CA, USA, 2000.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[31]} L. Moroney, \textit{The Definitive Guide to Firebase: Build Android Apps on Google's Mobile Platform}. New York, NY, USA: Apress, 2017.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[32]} R. S. Pressman and B. R. Maxim, \textit{Software Engineering: A Practitioner's Approach}, 9th ed. New York, NY, USA: McGraw-Hill Education, 2020.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[33]} M. Poppendieck and T. Poppendieck, \textit{Lean Software Development: An Agile Toolkit}. Boston, MA, USA: Addison-Wesley, 2003.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[34]} G. Booch, J. Rumbaugh, and I. Jacobson, \textit{The Unified Modeling Language User Guide}, 2nd ed. Boston, MA, USA: Addison-Wesley, 2005.
-
-\vspace{0.3cm}
-\noindent\hangindent=1.5cm
-{[35]} P. P.-S. Chen, ``The Entity-Relationship Model---Toward a Unified View of Data,'' \textit{ACM Transactions on Database Systems}, vol. 1, no. 1, pp. 9--36, 1976.
+{[18]} R. Jannah and R. Prativi, ``Analisa Performa Metode LightGBM untuk Prediksi Kecanduan Media Sosial,'' \textit{Jurnal Teknologi dan Informasi}, 2026.
 
 \end{spacing}
 
@@ -1544,10 +1463,6 @@ Berdasarkan keterbatasan sistem yang diidentifikasi selama proses pengembangan d
 \end{center}
 \vspace*{\fill}
 
-% TODO (dilengkapi sebelum sidang): Lampiran 3 Surat izin penggunaan data
-% EatsTEDI DTEDI UGM, Lampiran 4 Dokumentasi observasi/wawancara,
-% Lampiran 5 Tangkapan layar implementasi aplikasi, Lampiran 6 Cuplikan dataset.
-
 \newpage
 \newgeometry{left=3.5cm, top=4cm, right=3.5cm, bottom=3cm}
 \thispagestyle{empty}
@@ -1563,11 +1478,11 @@ Berdasarkan keterbatasan sistem yang diidentifikasi selama proses pengembangan d
 
 \begin{center}
 \begin{tabularx}{0.85\textwidth}{@{}p{2.7cm}p{0.3cm}X@{}}
-Nama & : & Muhammad Kholis \\
-NIM & : & 2022573010098 \\
-Judul TA & : & Rancang Bangun Aplikasi \textit{Point of Sale} dengan Fitur Prediksi Penjualan Harian Menggunakan Metode \textit{Long Short-Term Memory} (LSTM) \\
-Pembimbing I & : & Zulfan Khairil Simbolon, S.T., M.Eng. \\
-NIP & : & 196909021993031004 \\
+Nama & : & Siti Nur Faiza \\
+NIM & : & 2022573010045 \\
+Judul TA & : & Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting Machine (LightGBM) \\
+Pembimbing I & : & Salahuddin, S.T., M.CS \\
+NIP & : & 19740424 200212 1 001 \\
 \end{tabularx}
 \end{center}
 
@@ -1601,11 +1516,11 @@ NIP & : & 196909021993031004 \\
 
 \begin{center}
 \begin{tabularx}{0.85\textwidth}{@{}p{2.7cm}p{0.3cm}X@{}}
-Nama & : & Muhammad Kholis \\
-NIM & : & 2022573010098 \\
-Judul TA & : & Rancang Bangun Aplikasi \textit{Point of Sale} dengan Fitur Prediksi Penjualan Harian Menggunakan Metode \textit{Long Short-Term Memory} (LSTM) \\
-Pembimbing II & : & Azhar, S.T., M.T. \\
-NIP & : & 196408301990031005 \\
+Nama & : & Siti Nur Faiza \\
+NIM & : & 2022573010045 \\
+Judul TA & : & Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting Machine (LightGBM) \\
+Pembimbing II & : & Hendrawaty, ST., M.T. \\
+NIP & : & 19700226199802 2 001 \\
 \end{tabularx}
 \end{center}
 
@@ -1630,3 +1545,4 @@ NIP & : & 196408301990031005 \\
 \restoregeometry
 
 \end{document}
+

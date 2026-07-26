@@ -63,6 +63,6 @@
 \contentsline {section}{\numberline {4.7}Keterbatasan Sistem dan Penelitian}{59}{section.4.7}%
 \contentsline {chapter}{\numberline {V}PENUTUP}{61}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Kesimpulan}{61}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Saran}{63}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{66}{section*.35}%
-\contentsline {chapter}{LAMPIRAN}{69}{section*.36}%
+\contentsline {section}{\numberline {5.2}Saran}{62}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{64}{section*.35}%
+\contentsline {chapter}{LAMPIRAN}{66}{section*.36}%
