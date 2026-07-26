@@ -1119,6 +1119,51 @@ Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Ad
     Pada Gambar \ref{fig:act_halaman_pengaturan} di atas menunjukkan proses ketika admin masuk ke menu pengaturan model. Sistem menampilkan konfigurasi parameter dan performa model saat ini. Admin dapat menginisiasi proses training model baru dengan data tambahan, di mana sistem mengirimkan instruksi ke server API Flask untuk melatih kembali model LightGBM secara asinkron.
 \end{enumerate}
 
+\subsection{Sequence Diagram}
+Sequence Diagram digunakan untuk menggambarkan interaksi antar objek dalam sistem berdasarkan urutan waktu terjadinya suatu proses. Diagram ini menjelaskan pesan (\textit{message}) yang dikirimkan antara pengguna, antarmuka, lapisan logika/prediksi, hingga penyimpanan data pada setiap alur utama sistem klasifikasi kelayakan penerima subsidi listrik. Adapun Sequence Diagram pada sistem adalah sebagai berikut:
+
+\begin{enumerate}
+    \item \textbf{Sequence Diagram Login} \\
+    Sequence Diagram Login menggambarkan interaksi yang terjadi saat admin melakukan proses masuk ke dalam sistem, mulai dari input kredensial hingga sistem mengizinkan akses ke halaman Dashboard, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_login}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{seq_login}
+        \caption{Sequence Diagram Login}
+        \label{fig:seq_login}
+    \end{figure}
+    Pada Gambar \ref{fig:seq_login} di atas, admin memasukkan email dan password pada halaman Login, kemudian sistem melakukan validasi serta pencocokan kredensial. Apabila kredensial sesuai, sistem menyimpan sesi login pada cookie lalu mengarahkan admin ke halaman Dashboard; permintaan akses berikutnya akan diperiksa oleh guard rute sistem berdasarkan keberadaan sesi tersebut sebelum halaman Dashboard ditampilkan.
+
+    \item \textbf{Sequence Diagram Klasifikasi Manual} \\
+    Sequence Diagram Klasifikasi Manual menggambarkan interaksi antar objek pada proses klasifikasi kelayakan subsidi listrik melalui input data pelanggan secara manual, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_klasifikasi_manual}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{seq_klasifikasi_manual}
+        \caption{Sequence Diagram Klasifikasi Manual}
+        \label{fig:seq_klasifikasi_manual}
+    \end{figure}
+    Pada Gambar \ref{fig:seq_klasifikasi_manual} di atas, admin mengisi variabel data pelanggan pada form klasifikasi lalu menjalankan proses klasifikasi. Sistem menghitung skor kelayakan berdasarkan variabel tersebut untuk menentukan label ``Layak'' atau ``Tidak Layak'' beserta nilai keyakinannya (\textit{confidence}), kemudian menyimpan hasil klasifikasi ke penyimpanan data dan mencatat aktivitas terkait, sebelum akhirnya menampilkan hasil klasifikasi kepada admin.
+
+    \item \textbf{Sequence Diagram Klasifikasi Batch (CSV)} \\
+    Sequence Diagram Klasifikasi Batch menggambarkan interaksi antar objek pada proses klasifikasi kelayakan subsidi listrik untuk banyak data pelanggan sekaligus melalui unggah berkas CSV, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_klasifikasi_batch}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{seq_klasifikasi_batch}
+        \caption{Sequence Diagram Klasifikasi Batch (CSV)}
+        \label{fig:seq_klasifikasi_batch}
+    \end{figure}
+    Pada Gambar \ref{fig:seq_klasifikasi_batch} di atas, admin mengunggah berkas CSV berisi data pelanggan, kemudian sistem mengurai (\textit{parsing}) isi berkas tersebut menjadi kumpulan data pelanggan. Setiap baris data selanjutnya diproses satu per satu untuk menghasilkan skor dan label kelayakan, sebelum seluruh hasil klasifikasi batch disimpan ke penyimpanan data dan ditampilkan sebagai ringkasan hasil kepada admin.
+
+    \item \textbf{Sequence Diagram Lihat Laporan} \\
+    Sequence Diagram Lihat Laporan menggambarkan interaksi antar objek pada saat admin menelusuri daftar laporan hasil klasifikasi serta membuka detail salah satu laporan, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_laporan}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.85\textwidth]{seq_laporan}
+        \caption{Sequence Diagram Lihat Laporan}
+        \label{fig:seq_laporan}
+    \end{figure}
+    Pada Gambar \ref{fig:seq_laporan} di atas, admin membuka halaman Laporan sehingga sistem mengambil dan menampilkan daftar laporan yang tersimpan, dengan opsi penyaringan berdasarkan rentang tanggal. Ketika admin memilih salah satu laporan, sistem menavigasikan admin ke halaman detail laporan, mengambil data laporan terkait dari penyimpanan data berdasarkan identitasnya, lalu menampilkan detail laporan tersebut kepada admin.
+\end{enumerate}
+
 \section{Perancangan Metode Penelitian}
 Perancangan metode penelitian menjelaskan pendekatan yang digunakan dalam membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh, mulai dari metode klasifikasi yang diterapkan hingga metrik yang digunakan untuk mengukur performanya sebelum diimplementasikan pada Bab IV.
 

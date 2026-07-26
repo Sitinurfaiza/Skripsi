@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.26)  26 JUL 2026 22:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.26)  26 JUL 2026 23:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -884,7 +884,7 @@ Package hyperref Info: Link coloring OFF on input line 181.
 \@outlinefile=\write4
 \openout4 = `Skripsi.out'.
 
-<gambar/logo-pnl-skripsi.png, id=255, 260.47313pt x 252.945pt>
+<gambar/logo-pnl-skripsi.png, id=259, 260.47313pt x 252.945pt>
 File: gambar/logo-pnl-skripsi.png Graphic file (type png)
 <use gambar/logo-pnl-skripsi.png>
 Package pdftex.def Info: gambar/logo-pnl-skripsi.png  used on input line 214.
@@ -939,7 +939,7 @@ Bab II.
 [7
 
 ] [8] [9] [10] [11] [12] [13] [14] [15] [16]
-<gambar/lightgbm_tree_growth.png, id=539, 803.0pt x 401.5pt>
+<gambar/lightgbm_tree_growth.png, id=552, 803.0pt x 401.5pt>
 File: gambar/lightgbm_tree_growth.png Graphic file (type png)
 <use gambar/lightgbm_tree_growth.png>
 Package pdftex.def Info: gambar/lightgbm_tree_growth.png  used on input line 669.
@@ -949,121 +949,145 @@ Bab III.
 [22
 
 ] [23] [24] [25] [26] [27] [28] [29] [30]
-<gambar/arsitektur_sistem.png, id=647, 269.0415pt x 269.0415pt>
+<gambar/arsitektur_sistem.png, id=660, 269.0415pt x 269.0415pt>
 File: gambar/arsitektur_sistem.png Graphic file (type png)
 <use gambar/arsitektur_sistem.png>
 Package pdftex.def Info: gambar/arsitektur_sistem.png  used on input line 876.
 (pdftex.def)             Requested size: 338.59023pt x 338.59996pt.
  [31 <./gambar/arsitektur_sistem.png>]
-<gambar/use_case_diagram.png, id=654, 216.153pt x 230.607pt>
+<gambar/use_case_diagram.png, id=667, 216.153pt x 230.607pt>
 File: gambar/use_case_diagram.png Graphic file (type png)
 <use gambar/use_case_diagram.png>
 Package pdftex.def Info: gambar/use_case_diagram.png  used on input line 888.
 (pdftex.def)             Requested size: 338.59023pt x 361.27612pt.
  [32] [33 <./gambar/use_case_diagram.png>] [34] [35] [36] [37] [38] [39]
-<gambar/act_login.png, id=699, 433.62pt x 289.08pt>
+<gambar/act_login.png, id=712, 433.62pt x 289.08pt>
 File: gambar/act_login.png Graphic file (type png)
 <use gambar/act_login.png>
 Package pdftex.def Info: gambar/act_login.png  used on input line 1059.
 (pdftex.def)             Requested size: 278.83578pt x 185.89717pt.
  [40]
-<gambar/act_dashboard.png, id=706, 397.8135pt x 265.0995pt>
+<gambar/act_dashboard.png, id=719, 397.8135pt x 265.0995pt>
 File: gambar/act_dashboard.png Graphic file (type png)
 <use gambar/act_dashboard.png>
 Package pdftex.def Info: gambar/act_dashboard.png  used on input line 1069.
 (pdftex.def)             Requested size: 298.75394pt x 199.08705pt.
  [41 <./gambar/act_login.png>] [42 <./gambar/act_dashboard.png>]
-<gambar/act_klasifikasi_manual.png, id=717, 1541.76pt x 1027.84pt>
+<gambar/act_klasifikasi_manual.png, id=730, 1541.76pt x 1027.84pt>
 File: gambar/act_klasifikasi_manual.png Graphic file (type png)
 <use gambar/act_klasifikasi_manual.png>
 Package pdftex.def Info: gambar/act_klasifikasi_manual.png  used on input line 1079.
 (pdftex.def)             Requested size: 298.75394pt x 199.16547pt.
-<gambar/act_klasifikasi_batch.png, id=718, 1541.76pt x 1027.84pt>
+<gambar/act_klasifikasi_batch.png, id=731, 1541.76pt x 1027.84pt>
 File: gambar/act_klasifikasi_batch.png Graphic file (type png)
 <use gambar/act_klasifikasi_batch.png>
 Package pdftex.def Info: gambar/act_klasifikasi_batch.png  used on input line 1085.
 (pdftex.def)             Requested size: 298.75394pt x 199.16547pt.
  [43 <./gambar/act_klasifikasi_manual.png (PNG copy)>]
-<gambar/act_riwayat_klasifikasi.jpeg, id=727, 1541.76pt x 1027.84pt>
+<gambar/act_riwayat_klasifikasi.jpeg, id=740, 1541.76pt x 1027.84pt>
 File: gambar/act_riwayat_klasifikasi.jpeg Graphic file (type jpg)
 <use gambar/act_riwayat_klasifikasi.jpeg>
 Package pdftex.def Info: gambar/act_riwayat_klasifikasi.jpeg  used on input line 1095.
 (pdftex.def)             Requested size: 298.75394pt x 199.16547pt.
  [44 <./gambar/act_klasifikasi_batch.png (PNG copy)>]
-<gambar/act_halaman_laporan.jpeg, id=736, 1541.76pt x 1027.84pt>
+<gambar/act_halaman_laporan.jpeg, id=749, 1541.76pt x 1027.84pt>
 File: gambar/act_halaman_laporan.jpeg Graphic file (type jpg)
 <use gambar/act_halaman_laporan.jpeg>
 Package pdftex.def Info: gambar/act_halaman_laporan.jpeg  used on input line 1105.
 (pdftex.def)             Requested size: 298.75394pt x 199.16547pt.
  [45 <./gambar/act_riwayat_klasifikasi.jpeg>]
-<gambar/act_halaman_pengaturan.jpeg, id=744, 1541.76pt x 1027.84pt>
+<gambar/act_halaman_pengaturan.jpeg, id=757, 1541.76pt x 1027.84pt>
 File: gambar/act_halaman_pengaturan.jpeg Graphic file (type jpg)
 <use gambar/act_halaman_pengaturan.jpeg>
 Package pdftex.def Info: gambar/act_halaman_pengaturan.jpeg  used on input line 1115.
 (pdftex.def)             Requested size: 298.75394pt x 199.16547pt.
- [46 <./gambar/act_halaman_laporan.jpeg>] [47 <./gambar/act_halaman_pengaturan.jpeg>] [48]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1158.
+ [46 <./gambar/act_halaman_laporan.jpeg>]
+<gambar/seq_login.png, id=765, 2007.5pt x 926.46124pt>
+File: gambar/seq_login.png Graphic file (type png)
+<use gambar/seq_login.png>
+Package pdftex.def Info: gambar/seq_login.png  used on input line 1130.
+(pdftex.def)             Requested size: 378.42044pt x 174.62993pt.
+ [47 <./gambar/act_halaman_pengaturan.jpeg>]
+<gambar/seq_klasifikasi_manual.png, id=773, 2007.5pt x 878.28125pt>
+File: gambar/seq_klasifikasi_manual.png Graphic file (type png)
+<use gambar/seq_klasifikasi_manual.png>
+Package pdftex.def Info: gambar/seq_klasifikasi_manual.png  used on input line 1140.
+(pdftex.def)             Requested size: 378.42044pt x 165.54842pt.
+ [48 <./gambar/seq_login.png>]
+<gambar/seq_klasifikasi_batch.png, id=782, 2007.5pt x 849.1725pt>
+File: gambar/seq_klasifikasi_batch.png Graphic file (type png)
+<use gambar/seq_klasifikasi_batch.png>
+Package pdftex.def Info: gambar/seq_klasifikasi_batch.png  used on input line 1150.
+(pdftex.def)             Requested size: 378.42044pt x 160.06168pt.
+ [49 <./gambar/seq_klasifikasi_manual.png>]
+<gambar/seq_laporan.png, id=791, 2007.5pt x 942.52126pt>
+File: gambar/seq_laporan.png Graphic file (type png)
+<use gambar/seq_laporan.png>
+Package pdftex.def Info: gambar/seq_laporan.png  used on input line 1160.
+(pdftex.def)             Requested size: 338.59023pt x 158.9609pt.
+ [50 <./gambar/seq_klasifikasi_batch.png>] [51 <./gambar/seq_laporan.png>] [52]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1203.
  (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [49] [50] [51]
+) [53] [54] [55]
 Bab IV.
-<gambar/ui_login.png, id=788, 1445.4pt x 903.375pt>
+<gambar/ui_login.png, id=837, 1445.4pt x 903.375pt>
 File: gambar/ui_login.png Graphic file (type png)
 <use gambar/ui_login.png>
-Package pdftex.def Info: gambar/ui_login.png  used on input line 1210.
+Package pdftex.def Info: gambar/ui_login.png  used on input line 1255.
 (pdftex.def)             Requested size: 278.83578pt x 174.26205pt.
-[52
+[56
 
 ]
-<gambar/ui_dashboard.png, id=794, 1445.4pt x 903.375pt>
+<gambar/ui_dashboard.png, id=844, 1445.4pt x 903.375pt>
 File: gambar/ui_dashboard.png Graphic file (type png)
 <use gambar/ui_dashboard.png>
-Package pdftex.def Info: gambar/ui_dashboard.png  used on input line 1219.
+Package pdftex.def Info: gambar/ui_dashboard.png  used on input line 1264.
 (pdftex.def)             Requested size: 338.59023pt x 211.61772pt.
- [53 <./gambar/ui_login.png (PNG copy)>]
-<gambar/ui_klasifikasi_baru.png, id=802, 1445.4pt x 903.375pt>
+ [57 <./gambar/ui_login.png (PNG copy)>]
+<gambar/ui_klasifikasi_baru.png, id=852, 1445.4pt x 903.375pt>
 File: gambar/ui_klasifikasi_baru.png Graphic file (type png)
 <use gambar/ui_klasifikasi_baru.png>
-Package pdftex.def Info: gambar/ui_klasifikasi_baru.png  used on input line 1228.
+Package pdftex.def Info: gambar/ui_klasifikasi_baru.png  used on input line 1273.
 (pdftex.def)             Requested size: 338.59023pt x 211.61772pt.
- [54 <./gambar/ui_dashboard.png (PNG copy)>]
-<gambar/ui_klasifikasi_hasil.png, id=809, 1445.4pt x 903.375pt>
+ [58 <./gambar/ui_dashboard.png (PNG copy)>]
+<gambar/ui_klasifikasi_hasil.png, id=859, 1445.4pt x 903.375pt>
 File: gambar/ui_klasifikasi_hasil.png Graphic file (type png)
 <use gambar/ui_klasifikasi_hasil.png>
-Package pdftex.def Info: gambar/ui_klasifikasi_hasil.png  used on input line 1237.
+Package pdftex.def Info: gambar/ui_klasifikasi_hasil.png  used on input line 1282.
 (pdftex.def)             Requested size: 338.59023pt x 211.61772pt.
- [55 <./gambar/ui_klasifikasi_baru.png (PNG copy)>]
-<gambar/ui_laporan.png, id=816, 1445.4pt x 903.375pt>
+ [59 <./gambar/ui_klasifikasi_baru.png (PNG copy)>]
+<gambar/ui_laporan.png, id=866, 1445.4pt x 903.375pt>
 File: gambar/ui_laporan.png Graphic file (type png)
 <use gambar/ui_laporan.png>
-Package pdftex.def Info: gambar/ui_laporan.png  used on input line 1246.
+Package pdftex.def Info: gambar/ui_laporan.png  used on input line 1291.
 (pdftex.def)             Requested size: 338.59023pt x 211.61772pt.
- [56 <./gambar/ui_klasifikasi_hasil.png (PNG copy)>]
-<gambar/ui_pengaturan.png, id=824, 1445.4pt x 903.375pt>
+ [60 <./gambar/ui_klasifikasi_hasil.png (PNG copy)>]
+<gambar/ui_pengaturan.png, id=873, 1445.4pt x 903.375pt>
 File: gambar/ui_pengaturan.png Graphic file (type png)
 <use gambar/ui_pengaturan.png>
-Package pdftex.def Info: gambar/ui_pengaturan.png  used on input line 1255.
+Package pdftex.def Info: gambar/ui_pengaturan.png  used on input line 1300.
 (pdftex.def)             Requested size: 338.59023pt x 211.61772pt.
- [57 <./gambar/ui_laporan.png (PNG copy)>] [58 <./gambar/ui_pengaturan.png (PNG copy)>] [59]
-Overfull \hbox (92.25183pt too wide) in paragraph at lines 1285--1294
+ [61 <./gambar/ui_laporan.png (PNG copy)>] [62 <./gambar/ui_pengaturan.png (PNG copy)>] [63]
+Overfull \hbox (92.25183pt too wide) in paragraph at lines 1330--1339
  [][] 
  []
 
-[60] [61] [62] [63]
-Overfull \hbox (57.43819pt too wide) in paragraph at lines 1410--1420
+[64] [65] [66] [67]
+Overfull \hbox (57.43819pt too wide) in paragraph at lines 1455--1465
  [][] 
  []
 
-[64]
-Overfull \hbox (2.89713pt too wide) in paragraph at lines 1434--1442
+[68]
+Overfull \hbox (2.89713pt too wide) in paragraph at lines 1479--1487
  [][] 
  []
 
-[65] [66] [67] [68] [69] [70] [71] [72]
+[69] [70] [71] [72] [73] [74] [75] [76]
 Bab V.
-[73
+[77
 
-] [74] [75] [76] [77] [78]
+] [78] [79] [80] [81] [82]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -1097,37 +1121,37 @@ Bab V.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Overfull \hbox (28.45274pt too wide) in paragraph at lines 1703--1704
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 1748--1749
 [][] 
  []
 
-[79
+[83
 
 ]
-Overfull \hbox (28.45274pt too wide) in paragraph at lines 1741--1742
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 1786--1787
 [][] 
  []
 
-[80] (Skripsi.aux)
+[84] (Skripsi.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `Skripsi.out' has not changed.
-(rerunfilecheck)             Checksum: 4B3099568D1F770CFFBCC32996073C91;11228.
+(rerunfilecheck)             Checksum: FC48EAFC4FAC398B1563C9022F4F1A18;11373.
  ) 
 Here is how much of TeX's memory you used:
- 29511 strings out of 467871
- 549059 string characters out of 5428443
+ 29593 strings out of 467871
+ 551176 string characters out of 5428443
  976023 words of memory out of 5000000
- 57507 multiletter control sequences out of 15000+600000
+ 57576 multiletter control sequences out of 15000+600000
  673862 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,12n,94p,1594b,1054s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,12n,94p,1594b,1061s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Skripsi.pdf (91 pages, 4669978 bytes).
+Output written on Skripsi.pdf (95 pages, 5077210 bytes).
 PDF statistics:
- 1077 PDF objects out of 1200 (max. 8388607)
- 314 named destinations out of 1000 (max. 500000)
- 614 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1129 PDF objects out of 1200 (max. 8388607)
+ 327 named destinations out of 1000 (max. 500000)
+ 642 words of extra memory for PDF output out of 10000 (max. 10000000)
 

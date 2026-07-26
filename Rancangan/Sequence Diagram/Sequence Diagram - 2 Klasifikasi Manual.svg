@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="700" fill="#ffffff"/>
+<text x="800" y="24" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Sequence Diagram — Klasifikasi Manual</text>
+<line x1="60" y1="94" x2="60" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="271.42857142857144" y1="94" x2="271.42857142857144" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="482.85714285714283" y1="94" x2="482.85714285714283" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="694.2857142857142" y1="94" x2="694.2857142857142" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="905.7142857142857" y1="94" x2="905.7142857142857" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="1117.142857142857" y1="94" x2="1117.142857142857" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="1328.5714285714284" y1="94" x2="1328.5714285714284" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="1540" y1="94" x2="1540" y2="660" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<rect x="-35" y="40" width="190" height="44" rx="4" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+<text x="60" y="66" text-anchor="middle" font-size="11.5" fill="#222">User</text>
+<rect x="176.42857142857144" y="40" width="190" height="44" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="271.42857142857144" y="59" text-anchor="middle" font-size="11.5" fill="#222">KlasifikasiBaruPage</text>
+<text x="271.42857142857144" y="73" text-anchor="middle" font-size="11.5" fill="#222">(runManual)</text>
+<rect x="387.85714285714283" y="40" width="190" height="44" rx="4" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+<text x="482.85714285714283" y="59" text-anchor="middle" font-size="11.5" fill="#222">mock-api.ts</text>
+<text x="482.85714285714283" y="73" text-anchor="middle" font-size="11.5" fill="#222">(predictRow)</text>
+<rect x="599.2857142857142" y="40" width="190" height="44" rx="4" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+<text x="694.2857142857142" y="59" text-anchor="middle" font-size="11.5" fill="#222">mock-api.ts</text>
+<text x="694.2857142857142" y="73" text-anchor="middle" font-size="11.5" fill="#222">(scoreRow)</text>
+<rect x="810.7142857142857" y="40" width="190" height="44" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="905.7142857142857" y="59" text-anchor="middle" font-size="11.5" fill="#222">commitPrediction()</text>
+<text x="905.7142857142857" y="73" text-anchor="middle" font-size="11.5" fill="#222">(dlm page.tsx)</text>
+<rect x="1022.1428571428571" y="40" width="190" height="44" rx="4" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+<text x="1117.142857142857" y="59" text-anchor="middle" font-size="11.5" fill="#222">Store</text>
+<text x="1117.142857142857" y="73" text-anchor="middle" font-size="11.5" fill="#222">(store.tsx, dispatch)</text>
+<rect x="1233.5714285714284" y="40" width="190" height="44" rx="4" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+<text x="1328.5714285714284" y="59" text-anchor="middle" font-size="11.5" fill="#222">localStorage</text>
+<text x="1328.5714285714284" y="73" text-anchor="middle" font-size="11.5" fill="#222">(store-v1)</text>
+<rect x="1445" y="40" width="190" height="44" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="1540" y="66" text-anchor="middle" font-size="11.5" fill="#222">HasilPredictionPage</text>
+<rect x="55" y="104" width="10" height="492" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="266.42857142857144" y="104" width="10" height="252" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="477.85714285714283" y="199" width="10" height="117" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="689.2857142857142" y="234" width="10" height="47" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="900.7142857142857" y="344" width="10" height="182" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="1112.142857142857" y="379" width="10" height="182" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="1323.5714285714284" y="439" width="10" height="12" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="1535" y="514" width="10" height="82" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<line x1="66" y1="110" x2="265.42857142857144" y2="110" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="165.71428571428572" y="104" text-anchor="middle" font-size="10.5" fill="#222">1: isi 9 variabel form, klik 'Jalankan Klasifikasi'</text>
+<text x="271.42857142857144" y="145" text-anchor="middle" font-size="10" fill="#666" font-style="italic">2: validate(form) — cek 9 field wajib</text>
+<text x="271.42857142857144" y="170" text-anchor="middle" font-size="10" fill="#666" font-style="italic">3: bangun CustomerRow (id_pelanggan: MAN-xxxxxx)</text>
+<line x1="277.42857142857144" y1="205" x2="476.85714285714283" y2="205" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="377.1428571428571" y="199" text-anchor="middle" font-size="10.5" fill="#222">4: predictRow(row)</text>
+<line x1="488.85714285714283" y1="240" x2="688.2857142857142" y2="240" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="588.5714285714286" y="234" text-anchor="middle" font-size="10.5" fill="#222">5: scoreRow(row)</text>
+<line x1="688.2857142857142" y1="275" x2="488.85714285714283" y2="275" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="588.5714285714286" y="269" text-anchor="middle" font-size="10.5" fill="#222">6: skor 0..1 (jumlah bobot 5 faktor)</text>
+<line x1="476.85714285714283" y1="310" x2="277.42857142857144" y2="310" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="377.1428571428571" y="304" text-anchor="middle" font-size="10.5" fill="#222">7: label (Layak/Tidak Layak) + confidence</text>
+<line x1="277.42857142857144" y1="350" x2="899.7142857142857" y2="350" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="588.5714285714286" y="344" text-anchor="middle" font-size="10.5" fill="#222">8: commitPrediction([hasil], 'manual')</text>
+<line x1="911.7142857142857" y1="385" x2="1111.142857142857" y2="385" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="1011.4285714285713" y="379" text-anchor="middle" font-size="10.5" fill="#222">9: dispatch({type:'addPrediction', prediction})</text>
+<text x="1117.142857142857" y="410" text-anchor="middle" font-size="10" fill="#666" font-style="italic">10: reducer update state.predictions</text>
+<line x1="1123.142857142857" y1="445" x2="1322.5714285714284" y2="445" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="1222.8571428571427" y="439" text-anchor="middle" font-size="10.5" fill="#222">11: persist state → setItem(store-v1)</text>
+<line x1="911.7142857142857" y1="480" x2="1111.142857142857" y2="480" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="1011.4285714285713" y="474" text-anchor="middle" font-size="10.5" fill="#222">12: addActivity('prediksi', 'Klasifikasi manual 1 pelanggan dijalankan')</text>
+<line x1="911.7142857142857" y1="520" x2="1534" y2="520" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="1222.857142857143" y="514" text-anchor="middle" font-size="10.5" fill="#222">13: router.push('/klasifikasi/hasil/{id}')</text>
+<line x1="1534" y1="555" x2="1123.142857142857" y2="555" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="1328.5714285714284" y="549" text-anchor="middle" font-size="10.5" fill="#222">14: baca prediction by id dari Store</text>
+<line x1="1534" y1="590" x2="66" y2="590" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="800" y="584" text-anchor="middle" font-size="10.5" fill="#222">15: render hasil klasifikasi (label, confidence)</text>
+<defs>
+    <marker id="arrowBlock" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#333"/>
+    </marker>
+    <marker id="arrowOpen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#333" stroke-width="1"/>
+    </marker>
+  </defs>
+</svg>

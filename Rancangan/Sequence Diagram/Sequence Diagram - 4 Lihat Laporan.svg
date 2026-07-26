@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="540" viewBox="0 0 1150 540" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1150" height="540" fill="#ffffff"/>
+<text x="575" y="24" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Sequence Diagram — Lihat Laporan</text>
+<line x1="60" y1="94" x2="60" y2="500" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="317.5" y1="94" x2="317.5" y2="500" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="575" y1="94" x2="575" y2="500" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="832.5" y1="94" x2="832.5" y2="500" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<line x1="1090" y1="94" x2="1090" y2="500" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+<rect x="-35" y="40" width="190" height="44" rx="4" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+<text x="60" y="66" text-anchor="middle" font-size="11.5" fill="#222">User</text>
+<rect x="222.5" y="40" width="190" height="44" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="317.5" y="59" text-anchor="middle" font-size="11.5" fill="#222">LaporanPage</text>
+<text x="317.5" y="73" text-anchor="middle" font-size="11.5" fill="#222">(laporan/page.tsx)</text>
+<rect x="480" y="40" width="190" height="44" rx="4" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+<text x="575" y="59" text-anchor="middle" font-size="11.5" fill="#222">Store</text>
+<text x="575" y="73" text-anchor="middle" font-size="11.5" fill="#222">(useStore, store.tsx)</text>
+<rect x="737.5" y="40" width="190" height="44" rx="4" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+<text x="832.5" y="66" text-anchor="middle" font-size="11.5" fill="#222">Next Router / Link</text>
+<rect x="995" y="40" width="190" height="44" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="1090" y="59" text-anchor="middle" font-size="11.5" fill="#222">LaporanDetailPage</text>
+<text x="1090" y="73" text-anchor="middle" font-size="11.5" fill="#222">(laporan/[id]/page.tsx)</text>
+<rect x="55" y="104" width="10" height="357" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="312.5" y="104" width="10" height="147" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="570" y="139" width="10" height="287" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="827.5" y="279" width="10" height="47" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<rect x="1085" y="314" width="10" height="147" fill="#ffffff" stroke="#666" stroke-width="1"/>
+<line x1="66" y1="110" x2="311.5" y2="110" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="188.75" y="104" text-anchor="middle" font-size="10.5" fill="#222">1: buka halaman /laporan</text>
+<line x1="323.5" y1="145" x2="569" y2="145" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="446.25" y="139" text-anchor="middle" font-size="10.5" fill="#222">2: useStore() → baca state.reports</text>
+<line x1="569" y1="180" x2="323.5" y2="180" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="446.25" y="174" text-anchor="middle" font-size="10.5" fill="#222">3: reports[] (return, hydrated=true)</text>
+<text x="317.5" y="210" text-anchor="middle" font-size="10" fill="#666" font-style="italic">4: filter by dateFrom/dateTo (client-side)</text>
+<line x1="311.5" y1="245" x2="66" y2="245" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="188.75" y="239" text-anchor="middle" font-size="10.5" fill="#222">5: render tabel daftar laporan</text>
+<line x1="66" y1="285" x2="826.5" y2="285" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="446.25" y="279" text-anchor="middle" font-size="10.5" fill="#222">6: klik salah satu baris laporan (Link)</text>
+<line x1="838.5" y1="320" x2="1084" y2="320" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="961.25" y="314" text-anchor="middle" font-size="10.5" fill="#222">7: navigasi ke /laporan/{id}</text>
+<text x="1090" y="350" text-anchor="middle" font-size="10" fill="#666" font-style="italic">8: useParams() → id</text>
+<line x1="1084" y1="385" x2="581" y2="385" stroke="#333" stroke-width="1.3" marker-end="url(#arrowBlock)"/>
+<text x="832.5" y="379" text-anchor="middle" font-size="10.5" fill="#222">9: useStore() → cari report by id</text>
+<line x1="581" y1="420" x2="1084" y2="420" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="832.5" y="414" text-anchor="middle" font-size="10.5" fill="#222">10: report detail (return)</text>
+<line x1="1084" y1="455" x2="66" y2="455" stroke="#333" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+<text x="575" y="449" text-anchor="middle" font-size="10.5" fill="#222">11: render detail laporan (ringkasan, tabel hasil)</text>
+<defs>
+    <marker id="arrowBlock" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#333"/>
+    </marker>
+    <marker id="arrowOpen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#333" stroke-width="1"/>
+    </marker>
+  </defs>
+</svg>
