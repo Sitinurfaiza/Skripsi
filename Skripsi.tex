@@ -606,266 +606,124 @@ Manfaat dari penelitian ini adalah sebagai berikut:
 %%=============================================================
 \chapter[TINJAUAN PUSTAKA]{\\ TINJAUAN PUSTAKA}
 
-\section{\textit{State Of The Art}}
-
-Penelitian terkait prediksi penjualan dan pengembangan sistem \textit{Point of Sale} berbasis \textit{mobile} telah mengalami perkembangan signifikan seiring meningkatnya pemanfaatan teknologi \textit{deep learning} dan komputasi awan. Abbas dkk.~[4] dan Zhang dan Liu [13] membuktikan keunggulan LSTM dibandingkan model statistik konvensional maupun arsitektur \textit{Gated Recurrent Unit} (GRU) dalam menangkap pola non-linier pada data penjualan ritel. Choi dan Lee [6] memperluas pendekatan ini dengan menggunakan model multivariate yang menggabungkan variabel kontekstual seperti frekuensi transaksi harian. Di sisi pengembangan sistem, Setiawan dan Nugroho [1] serta Pratama dan Handayani [2] mengembangkan aplikasi POS berbasis Android untuk UMKM, namun keduanya bersifat murni deskriptif tanpa komponen prediksi analitik.
-
-Meskipun demikian, penelitian yang secara spesifik mengintegrasikan modul prediksi penjualan berbasis LSTM langsung ke dalam sistem POS \textit{mobile} yang beroperasi secara \textit{offline-first} untuk konteks UMKM masih sangat terbatas. Ringkasan penelitian terdahulu tersebut disajikan dalam Tabel~\ref{tab:sota}.
-
-\begin{landscape}
-\setlength{\tabcolsep}{4pt}
-{\small\setstretch{1.1}\hyphenpenalty=50\exhyphenpenalty=50\tolerance=500
-\begin{longtable}{|>{\centering\arraybackslash}p{0.8cm}|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{4.4cm}|}
-
-\caption{\textit{State Of The Art}} \label{tab:sota} \\
-\hline
-\textbf{No} &
-\textbf{Penulis, Tahun dan Judul Artikel} &
-\textbf{Metode yang Digunakan} &
-\textbf{Hasil yang Diperoleh} &
-\textbf{Persamaan} &
-\textbf{Perbedaan} \\
-\hline
-\endfirsthead
-
-\hline
-\textbf{No} &
-\textbf{Penulis, Tahun dan Judul Artikel} &
-\textbf{Metode yang Digunakan} &
-\textbf{Hasil yang Diperoleh} &
-\textbf{Persamaan} &
-\textbf{Perbedaan} \\
-\hline
-\endhead
-
-\hline
-\endfoot
-
-\hline
-\endlastfoot
-
-1 &
-Fischer \& Weber (2024) [9]. \textit{Evaluating Open-Source BaaS Platforms: A Case Study on Supabase and PostgreSQL}. &
-Supabase, PostgreSQL &
-RLS Supabase memangkas waktu pengembangan \textit{backend} hingga 40\%. &
-Sama-sama menggunakan Supabase sebagai infrastruktur \textit{backend cloud}. &
-Belum diuji untuk performa \textit{mobile dynamic sync} berskala harian. Penelitian ini mengujinya dalam konteks UMKM. \\
-\hline
-
-2 &
-Setiawan \& Nugroho (2023) [1]. \textit{Development of Cross-Platform POS Application using Flutter for SMEs}. &
-Flutter, Firebase &
-Aplikasi kasir stabil dan mampu mencatat transaksi secara \textit{real-time}. &
-Sama-sama mengembangkan aplikasi POS berbasis Android untuk UMKM. &
-Aplikasi murni deskriptif tanpa fungsi prediksi analitik. Penelitian ini menambahkan modul LSTM terintegrasi. \\
-\hline
-
-3 &
-Novikov \& Petrov (2023) [8]. \textit{Performance Comparison of Local NoSQL Embedded Databases in Flutter: Hive, ObjectBox, and Isar}. &
-Isar DB, Hive, ObjectBox &
-Isar DB tercepat dalam operasi \textit{batch insert} transaksi pada perangkat Android. &
-Sama-sama menggunakan Isar DB sebagai \textit{local storage} pada aplikasi Flutter. &
-Belum diintegrasikan ke arsitektur sinkronisasi \textit{cloud}. Penelitian ini mengintegrasikan keduanya secara penuh. \\
-\hline
-
-4 &
-Martinez \& Silva (2022) [7]. \textit{Architecture Design of Offline-First Mobile Application using Local Embedded Database}. &
-\textit{Offline-First}, SQLite &
-Data tersinkronisasi aman tanpa tumpang tindih saat kembali \textit{online}. &
-Sama-sama menerapkan arsitektur \textit{offline-first} pada aplikasi \textit{mobile}. &
-Tidak menguji volume data besar dan tidak memiliki komponen AI. Penelitian ini mengintegrasikan keduanya. \\
-\hline
-
-5 &
-Zhang \& Liu (2022) [13]. \textit{Comparative Analysis of LSTM and GRU for Time-Series Sales Forecasting}. &
-LSTM, GRU &
-LSTM memberikan akurasi lebih stabil pada data tren penjualan multi-tahun. &
-Sama-sama membandingkan model \textit{deep learning} untuk prediksi deret waktu penjualan. &
-Memerlukan daya komputasi tinggi. Penelitian ini men-\textit{deploy} model di server \textit{cloud} terpisah agar tidak membebani perangkat. \\
-\hline
-
-6 &
-Choi \& Lee (2022) [6]. \textit{Multivariate Time-Series Forecasting for Retail Sales Using LSTM with Economic Indicators}. &
-Multivariate LSTM &
-Akurasi model naik dengan menambahkan variabel kontekstual seperti hari libur. &
-Sama-sama menggunakan variabel transaksi harian sebagai input model LSTM. &
-Bergantung pada data eksternal yang sulit diakses pelaku UMKM kecil. Penelitian ini menggunakan data transaksi internal saja. \\
-\hline
-
-7 &
-Abbas dkk.~(2021) [4]. \textit{Sales Forecasting Using LSTM Networks in Retail Industry}. &
-LSTM, ARIMA &
-LSTM mengungguli ARIMA pada data penjualan non-linier dengan penurunan \textit{error} hingga 15\%. &
-Sama-sama menggunakan LSTM untuk prediksi data penjualan berbasis deret waktu. &
-Model bersifat \textit{standalone} tanpa integrasi sistem kasir nyata. Penelitian ini mengintegrasikan LSTM ke dalam aplikasi POS. \\
-\hline
-
-8 &
-Brown \& Green (2021) [3]. \textit{Demand Forecasting for Inventory Management in Small Retail Stores Using Neural Networks}. &
-Neural Networks &
-Mampu memprediksi \textit{demand} mingguan dengan MAPE 12\%. &
-Sama-sama menghubungkan prediksi penjualan ke manajemen stok barang. &
-Rentang prediksi mingguan terlalu luas. Penelitian ini berfokus pada prediksi harian yang lebih granular. \\
-\hline
-\end{longtable}
-}
-\end{landscape}
-
-Berdasarkan kajian terhadap penelitian terdahulu pada Tabel~\ref{tab:sota}, dapat disimpulkan bahwa sebagian besar penelitian prediksi penjualan menggunakan LSTM masih bersifat \textit{standalone}, yakni tidak terintegrasi dengan sistem pencatatan transaksi yang aktif digunakan. Sebaliknya, penelitian pengembangan sistem POS \textit{mobile} yang ada belum dilengkapi kemampuan analitik prediktif berbasis \textit{machine learning}. Selain itu, belum ada sistem POS untuk UMKM yang secara bersamaan menerapkan arsitektur \textit{offline-first} sekaligus menyertakan modul prediksi LSTM terintegrasi.
-
-Oleh karena itu, penelitian ini hadir untuk mengisi celah tersebut dengan mengusulkan sistem yang menggabungkan ketiga aspek sekaligus, yaitu: (1) aplikasi POS \textit{mobile} berbasis Flutter dengan kemampuan operasional \textit{offline-first} menggunakan Isar DB dan sinkronisasi otomatis ke Supabase [8], [9], (2) modul prediksi penjualan harian berbasis LSTM yang dilatih dari data transaksi riil platform EatsTEDI DTEDI Universitas Gadjah Mada [4]--[6], dan (3) penyajian hasil prediksi secara langsung kepada pengguna melalui dasbor analitik di dalam aplikasi yang sama [12].
-
-\section{Sistem \textit{Point of Sale} (POS)}
-
-Sistem \textit{Point of Sale} (POS) merupakan kombinasi perangkat keras dan perangkat lunak yang digunakan untuk memproses transaksi penjualan pada titik pembelian. Dalam konteks UMKM, sistem POS berfungsi sebagai alat pencatatan transaksi, pengelolaan stok barang, dan pelaporan keuangan yang menggantikan proses manual berbasis buku catatan. Perkembangan teknologi \textit{mobile} telah mendorong lahirnya aplikasi POS berbasis Android yang lebih fleksibel, murah, dan mudah dioperasikan oleh pelaku usaha kecil tanpa keahlian teknis khusus [1], [2].
-
-Sistem POS modern yang dirancang untuk UMKM memerlukan pendekatan yang berbeda dibandingkan sistem ritel skala besar. Fokus utama harus terletak pada kesederhanaan alur kerja kasir, kecepatan proses transaksi, dan kemampuan beroperasi dalam kondisi konektivitas internet yang tidak stabil. Arsitektur \textit{offline-first} menjadi solusi utama untuk memastikan kelancaran operasional, di mana data transaksi disimpan terlebih dahulu secara lokal dan disinkronkan ke \textit{cloud} secara otomatis ketika koneksi tersedia [7].
-
-\section{Prediksi Penjualan (\textit{Forecasting})}
-
-Prediksi penjualan merupakan proyeksi teknis dari permintaan pelanggan potensial untuk periode waktu tertentu berdasarkan asumsi-asumsi yang ditetapkan. Menurut Heizer dan Render [14], prediksi yang akurat sangat krusial dalam manajemen operasi karena mempengaruhi keputusan strategis di bidang pemasaran, keuangan, dan sumber daya manusia. Terdapat empat prinsip utama dalam prediksi: prediksi jarang sekali sempurna, prediksi jangka pendek biasanya lebih akurat daripada jangka panjang, prediksi agregat lebih akurat daripada prediksi item individu, dan pemilihan metode harus disesuaikan dengan pola data (horizontal, tren, musiman, atau siklis).
-
-Metode kuantitatif dalam prediksi mengandalkan model matematika untuk memproyeksikan data masa lalu ke masa depan. Dalam konteks ritel, tantangan utama adalah menangani variasi musiman, yaitu fluktuasi yang berulang dalam jangka waktu kurang dari satu tahun, seperti lonjakan penjualan menjelang hari raya atau awal bulan. Pendekatan berbasis \textit{deep learning}, khususnya LSTM, terbukti lebih unggul dibandingkan metode statistik konvensional seperti ARIMA dalam menangkap pola jangka panjang pada data penjualan harian yang bersifat nonlinier [4],[13]. Evaluasi akurasi model prediksi umumnya menggunakan kombinasi metrik MAE (\textit{Mean Absolute Error}), RMSE (\textit{Root Mean Square Error}), dan MAPE (\textit{Mean Absolute Percentage Error}) secara bersamaan untuk menghindari bias pembacaan akurasi akibat lonjakan data [15]. Khusus pada data yang memuat nilai aktual mendekati nol, metrik persentase simetris sMAPE dan metrik galat terskala MASE lebih dianjurkan karena tahan terhadap pembagian dengan nol [16]. Brown dan Green [3] menunjukkan bahwa prediksi berbasis jaringan saraf tiruan dapat mencapai MAPE 12\% pada data permintaan ritel kecil, sementara penggunaan pendekatan multivariate dapat meningkatkan presisi tersebut lebih jauh [6].
-
-\section{Arsitektur \textit{Long Short-Term Memory} (LSTM)}
-
-LSTM adalah jenis khusus dari \textit{Recurrent Neural Network} (RNN) yang pertama kali diperkenalkan oleh Hochreiter dan Schmidhuber [17] dan memiliki kemampuan untuk mempelajari ketergantungan jangka panjang dalam urutan data [4],[5]. Arsitektur LSTM dirancang untuk mengatasi masalah \textit{vanishing gradient} yang menghambat RNN standar dalam memproses informasi yang terpisah jauh dalam satu urutan [5]. Komponen inti dari unit LSTM adalah \textit{cell state} (keadaan sel) yang bertindak sebagai jalur informasi utama, serta tiga gerbang fungsional:
+\section{State of the Art}
+State of the Art bertujuan untuk memperkaya pembahasan penelitian serta membedakan penelitian ini dari penelitian-penelitian sebelumnya. Dalam penelitian ini, digunakan beberapa jurnal penelitian terdahulu yang berhubungan dengan klasifikasi dan penentuan kelayakan penerima subsidi listrik maupun bantuan sosial berbasis metode komputasi. Jurnal-jurnal tersebut antara lain:
 \begin{enumerate}
-    \item \textbf{\textit{Forget Gate}:} Menggunakan fungsi aktivasi sigmoid untuk menentukan bagian informasi dari status sel sebelumnya yang harus dibuang.
-    \item \textbf{\textit{Input Gate}:} Memutuskan informasi baru mana yang akan diperbarui ke dalam status sel melalui kombinasi fungsi sigmoid dan tanh.
-    \item \textbf{\textit{Output Gate}:} Menentukan bagian dari status sel yang akan dikeluarkan sebagai \textit{hidden state} untuk langkah waktu berikutnya.
+    \item Penelitian yang dilakukan oleh Yanto dan Yunus (2021) yang berjudul ``Evaluasi Penentuan Kelayakan Pemberian Subsidi Listrik dengan Metode MFEP'' membahas proses evaluasi kelayakan penerima subsidi listrik menggunakan metode Multi Factor Evaluation Process (MFEP). Metode ini melakukan pembobotan terhadap beberapa kriteria untuk menentukan tingkat kelayakan pelanggan. Hasil penelitian menunjukkan bahwa MFEP mampu membantu proses pengambilan keputusan secara sistematis berdasarkan faktor-faktor yang telah ditentukan. Persamaan penelitian tersebut dengan penelitian ini adalah sama-sama membahas penentuan kelayakan penerima subsidi listrik berdasarkan kriteria tertentu. Perbedaannya, penelitian tersebut menggunakan metode pembobotan manual berbasis MFEP, sedangkan penelitian ini menggunakan metode klasifikasi berbasis machine learning yang mampu mempelajari pola data secara otomatis sehingga diharapkan menghasilkan model prediksi yang lebih optimal.
+    \item Hutahaean dan Wijayanto (2022) dalam penelitian berjudul ``Klasifikasi Rumah Tangga Penerima Subsidi Listrik di Provinsi Gorontalo Tahun 2019 dengan Metode K-Nearest Neighbor dan Support Vector Machine'' menerapkan dua algoritma klasifikasi, yaitu K-Nearest Neighbor (KNN) dan Support Vector Machine (SVM), untuk menentukan rumah tangga yang layak menerima subsidi listrik. Penelitian ini membandingkan performa kedua metode dalam menghasilkan tingkat akurasi terbaik. Hasil penelitian menunjukkan bahwa kedua metode mampu melakukan klasifikasi dengan tingkat akurasi yang baik pada dataset yang digunakan. Persamaannya dengan penelitian ini adalah sama-sama menggunakan pendekatan klasifikasi dalam menentukan penerima subsidi listrik. Perbedaannya, penelitian tersebut membandingkan dua metode sekaligus, sedangkan penelitian ini berfokus pada satu metode klasifikasi sehingga analisis dapat dilakukan lebih mendalam dan terfokus pada peningkatan performa model dan juga hasilnya lebih akurat.
+    \item Vionika Emalia Ismayana, Agung Panji Sasmito, dan Ali Mahmudi (2023) dalam penelitian berjudul ``Sistem Penunjang Kelayakan Penerima Subsidi Program Keluarga Harapan (PKH) Menggunakan Metode Simple Additive Weighting (SAW) Berbasis Website (Studi Kasus: Desa Blimbing)'' mengembangkan sistem pendukung keputusan untuk menentukan kelayakan penerima bantuan PKH menggunakan metode Simple Additive Weighting (SAW). Metode SAW digunakan untuk melakukan pembobotan dan perangkingan berdasarkan sejumlah kriteria sosial ekonomi. Hasil penelitian menunjukkan bahwa sistem mampu memberikan rekomendasi penerima bantuan secara terstruktur. Persamaannya dengan penelitian ini adalah sama-sama bertujuan menentukan kelayakan penerima bantuan sosial berbasis kriteria tertentu. Perbedaannya, penelitian tersebut menggunakan metode pembobotan berbasis perhitungan statis, sedangkan penelitian ini menggunakan pendekatan klasifikasi machine learning yang lebih adaptif terhadap pola data.
+    \item Penelitian yang dilakukan oleh Fitriani, Sriani, dan Suhardi (2025) yang berjudul ``Klasifikasi Penggunaan Daya Listrik Rumah Tangga Menggunakan Metode Naïve Bayes'' membahas penerapan algoritma Naïve Bayes dalam mengklasifikasikan pelanggan listrik rumah tangga yang layak menerima subsidi. Penelitian ini menggunakan 720 data latih dengan variabel seperti daya listrik, luas bangunan, jenis lantai, dan kondisi tempat tinggal. Hasil penelitian menunjukkan tingkat akurasi sebesar 92\%. Persamaannya dengan penelitian ini adalah sama-sama menggunakan metode klasifikasi untuk menentukan kelayakan subsidi listrik. Perbedaannya, penelitian tersebut menggunakan Naïve Bayes yang berbasis probabilitas dengan asumsi independensi antar variabel, sedangkan penelitian ini menggunakan metode klasifikasi yang mampu menangkap hubungan antar variabel secara lebih kompleks sehingga berpotensi menghasilkan performa yang lebih baik.
+    \item (Sukerti, 2021) dalam penelitian berjudul ``Sistem Penunjang Keputusan Penerima Bantuan Desa di Kecamatan Klungkung dengan Metode SAW'' membahas perancangan sistem pendukung keputusan untuk menentukan desa yang layak menerima bantuan menggunakan metode Simple Additive Weighting (SAW). Penelitian ini bertujuan membantu pengambil keputusan dalam menentukan prioritas penerima bantuan berdasarkan kriteria tertentu. Hasil penelitian menunjukkan bahwa metode SAW dapat membantu proses seleksi secara lebih objektif. Persamaannya dengan penelitian ini adalah sama-sama membahas sistem penentuan kelayakan penerima bantuan. Perbedaannya, penelitian tersebut berfokus pada sistem pendukung keputusan berbasis pembobotan kriteria, sedangkan penelitian ini menggunakan pendekatan klasifikasi prediktif berbasis machine learning untuk meningkatkan akurasi dan kemampuan generalisasi model terhadap data baru.
+    \item Roudhotul Jannah dan Rastri Prativi (2026) dalam penelitian berjudul ``Analisa Performa Metode LightGBM untuk Prediksi Kecanduan Media Sosial'' membahas penerapan algoritma Light Gradient Boosting Machine (LightGBM) dalam memprediksi tingkat kecanduan media sosial berdasarkan berbagai indikator perilaku pengguna. Penelitian ini bertujuan untuk menganalisis performa model dari segi akurasi, presisi, dan efektivitas dalam menangani dataset. Persamaan penelitian tersebut dengan penelitian ini adalah sama-sama menggunakan metode LightGBM sebagai algoritma klasifikasi/prediksi dalam membangun model berbasis machine learning. Perbedaannya, penelitian tersebut diterapkan pada kasus prediksi kecanduan media sosial, sedangkan penelitian ini berfokus pada klasifikasi penerima subsidi listrik berdasarkan variabel sosial ekonomi sehingga memiliki objek dan tujuan penelitian yang berbeda.
 \end{enumerate}
 
-Secara matematis, ketiga gerbang beserta kandidat status sel pada langkah waktu $t$ dirumuskan sebagai berikut [17]:
-\begin{equation}
-    f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
-\end{equation}
-\begin{equation}
-    i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)
-\end{equation}
-\begin{equation}
-    \tilde{C}_t = \tanh(W_C \cdot [h_{t-1}, x_t] + b_C)
-\end{equation}
-\begin{equation}
-    o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)
-\end{equation}
+\section{Tinjauan Teoritis}
+Tinjauan teoritis merupakan bagian yang menjelaskan konsep, teori, serta pendekatan ilmiah yang menjadi dasar dalam pelaksanaan penelitian. Pada penelitian ini, teori yang digunakan berkaitan dengan konsep klasifikasi dalam machine learning, pendekatan supervised dan unsupervised learning, kebijakan subsidi listrik di Indonesia, peran PT PLN dalam pengelolaan energi listrik, serta metode ensemble learning khususnya model boosting dan algoritma Light Gradient Boosting Machine (LightGBM). Seluruh teori tersebut menjadi landasan dalam membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh secara sistematis dan berbasis data.
 
-\noindent di mana $\sigma$ adalah fungsi aktivasi sigmoid, $x_t$ adalah masukan pada langkah waktu $t$, $h_{t-1}$ adalah \textit{hidden state} sebelumnya, serta $W$ dan $b$ masing-masing adalah matriks bobot dan bias tiap gerbang. Pembaruan status sel $C_t$ dan \textit{hidden state} $h_t$ kemudian dinyatakan sebagai:
-\begin{equation}
-    C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t
-\end{equation}
-\begin{equation}
-    h_t = o_t \odot \tanh(C_t)
-\end{equation}
+\subsection{Klasifikasi Dalam Machine Learning}
+Klasifikasi merupakan salah satu teknik utama dalam bidang data mining dan machine learning yang digunakan untuk mengelompokkan data ke dalam kategori tertentu berdasarkan karakteristik yang dimiliki. Teknik ini bekerja dengan mempelajari pola hubungan antara variabel input dan label keluaran dari data historis, kemudian menggunakan pola tersebut untuk memprediksi kelas pada data baru yang belum diketahui kategorinya [9]. Dalam konteks pengolahan data modern, klasifikasi menjadi metode yang banyak digunakan karena mampu membantu proses pengambilan keputusan secara objektif melalui analisis data. Model klasifikasi dibangun melalui proses pembelajaran (training) menggunakan dataset yang telah memiliki label kelas. Setelah model terbentuk, dilakukan pengujian menggunakan data testing untuk mengetahui kemampuan model dalam melakukan prediksi secara akurat.
 
-\noindent di mana $f_t$ adalah \textit{output} dari \textit{forget gate}, $i_t$ adalah \textit{output} dari \textit{input gate}, $o_t$ adalah \textit{output} dari \textit{output gate}, dan $\tilde{C}_t$ adalah kandidat nilai baru yang akan ditambahkan ke dalam status sel.
+Penerapan klasifikasi telah digunakan pada berbagai bidang, seperti diagnosis penyakit pada sektor kesehatan, analisis risiko kredit pada sektor keuangan, deteksi penipuan transaksi digital, hingga evaluasi kebijakan publik. Pada penelitian ini, teknik klasifikasi digunakan untuk menentukan status kelayakan pelanggan listrik rumah tangga dalam menerima subsidi listrik berdasarkan karakteristik data pelanggan yang tersedia.
 
-Dalam praktiknya, pelatihan jaringan LSTM umumnya menggunakan algoritma optimasi \textbf{Adam} (\textit{Adaptive Moment Estimation}), yaitu metode optimasi berbasis gradien stokastik yang menyesuaikan \textit{learning rate} secara adaptif untuk setiap parameter dan terbukti efisien pada berbagai permasalahan \textit{deep learning} [18]. Untuk mencegah \textit{overfitting} pada data latih berukuran kecil, diterapkan teknik regularisasi \textbf{Dropout}, yaitu menonaktifkan sebagian neuron secara acak selama pelatihan agar jaringan tidak bergantung berlebihan pada neuron tertentu [19].
+Proses klasifikasi umumnya melibatkan beberapa tahapan utama, yaitu pengumpulan data, preprocessing data, pembentukan model, pengujian model, serta evaluasi performa menggunakan metrik tertentu. Kualitas hasil klasifikasi sangat dipengaruhi oleh kualitas data, pemilihan fitur, serta algoritma yang digunakan dalam proses pembelajaran mesin [10].
 
-\subsection{Transformasi Target \textit{Log-Return} dan Rekonstruksi Nominal}
+\subsection{Supervised Learning dan Unsupervised Learning}
+Supervised learning merupakan metode pembelajaran mesin yang menggunakan data berlabel sebagai dasar pelatihan model. Pada metode ini, setiap data memiliki pasangan input dan output yang telah diketahui sebelumnya, sehingga algoritma dapat mempelajari hubungan antara keduanya. Model yang dihasilkan kemudian digunakan untuk memprediksi output dari data baru [11]. Pendekatan supervised learning banyak digunakan pada permasalahan klasifikasi dan regresi karena mampu menghasilkan prediksi yang terarah sesuai target yang diinginkan. Dalam penelitian ini, pendekatan supervised learning digunakan karena data pelanggan PLN memiliki label kelayakan subsidi yang menjadi target prediksi. Model akan belajar dari data historis pelanggan untuk mengenali pola tertentu yang menunjukkan apakah seorang pelanggan layak atau tidak layak menerima subsidi listrik.
 
-Pendekatan \textit{hybrid residual} digunakan agar model LSTM tidak memprediksi nilai pendapatan logaritmik $Y'_t$ secara langsung, melainkan memprediksi perubahan pendapatan relatif (\textit{log-return}) $r_t$, yang dirumuskan sebagai:
-\begin{equation}
-    r_t = Y'_t - Y'_{t-1} = \log(Y_t + 1) - \log(Y_{t-1} + 1)
-\end{equation}
-\noindent di mana $Y_t$ adalah nilai nominal pendapatan pada hari ke-$t$. Pendekatan ini bertujuan agar model mewarisi sifat autokorelasi jangka pendek yang dominan pada data penjualan.
+Sebaliknya, unsupervised learning merupakan metode pembelajaran mesin yang tidak menggunakan label kelas dalam proses pelatihannya. Algoritma pada pendekatan ini bertujuan menemukan pola tersembunyi atau struktur alami dalam data, seperti pengelompokan data berdasarkan kemiripan karakteristik. Metode ini umumnya digunakan untuk clustering, segmentasi pelanggan, dan analisis pola data. Meskipun unsupervised learning memiliki peran penting dalam eksplorasi data, pendekatan ini tidak digunakan dalam penelitian karena tujuan utama penelitian adalah melakukan klasifikasi berbasis label kelayakan subsidi yang telah ditentukan [12].
 
-Sebaliknya, keluaran model berupa \textit{log-return} prediksi ($\hat{r}_t$) direkonstruksi kembali ke skala nominal Rupiah ($\hat{Y}_t$) menggunakan nilai penjualan hari sebelumnya ($Y_{t-1}$), sebagai berikut:
-\begin{equation}
-    \hat{Y}_{t} = \exp(\log(Y_{t-1} + 1) + \hat{r}_{t}) - 1
-\end{equation}
+\subsection{Subsidi Listrik di Indonesia}
+Subsidi listrik merupakan salah satu bentuk kebijakan pemerintah Indonesia dalam rangka meningkatkan kesejahteraan masyarakat serta menjamin akses energi listrik yang merata. Kebijakan ini diberikan melalui penyesuaian tarif listrik sehingga masyarakat dengan kemampuan ekonomi terbatas tetap dapat memenuhi kebutuhan energi dasar dalam kehidupan sehari-hari.
 
-\section{Model Pembanding Prediksi (\textit{Baseline})}
+Program subsidi listrik secara umum ditujukan kepada pelanggan rumah tangga dengan daya listrik rendah, terutama golongan 450 VA dan 900 VA. Kelompok pelanggan tersebut diasumsikan sebagai masyarakat berpenghasilan rendah yang membutuhkan dukungan pemerintah untuk mengurangi beban pengeluaran rumah tangga. Subsidi listrik menjadi bagian penting dari kebijakan perlindungan sosial karena listrik telah menjadi kebutuhan primer dalam aktivitas ekonomi dan sosial masyarakat modern [3].
 
-Dalam penelitian prediksi deret waktu, kinerja sebuah model kompleks harus selalu disandingkan dengan model pembanding sederhana (\textit{baseline}) untuk memvalidasi apakah kompleksitas tambahan benar-benar memberikan nilai tambah akurasi [20]. Beberapa \textit{baseline} standar yang digunakan dalam penelitian ini adalah:
+Distribusi subsidi listrik masih menghadapi berbagai tantangan. Ketidaktepatan sasaran sering terjadi akibat keterbatasan metode identifikasi penerima subsidi yang masih berbasis indikator administratif sederhana. Kondisi ini menyebabkan adanya pelanggan yang secara ekonomi mampu tetapi tetap menerima subsidi, sementara sebagian masyarakat yang lebih membutuhkan justru tidak terdaftar sebagai penerima bantuan. Permasalahan tersebut menunjukkan perlunya pendekatan berbasis analisis data untuk membantu proses evaluasi kelayakan subsidi secara lebih objektif. Pemanfaatan teknik machine learning memungkinkan analisis berbagai variabel pelanggan secara simultan sehingga keputusan yang dihasilkan menjadi lebih akurat dan berbasis bukti data.
+
+\subsection{PT. PLN (Persero) Unit Induk Distribusi Aceh}
+PT PLN (Persero) merupakan perusahaan milik negara yang memiliki tanggung jawab utama dalam penyediaan tenaga listrik bagi masyarakat Indonesia. Sebagai penyedia layanan kelistrikan nasional, PLN berperan dalam produksi, distribusi, serta pengelolaan layanan pelanggan listrik di seluruh wilayah Indonesia, termasuk Provinsi Aceh. PLN Aceh mengelola berbagai data operasional pelanggan yang mencakup informasi daya listrik terpasang, golongan tarif, konsumsi energi listrik, serta status subsidi pelanggan. Data tersebut memiliki potensi besar untuk dianalisis lebih lanjut dalam mendukung kebijakan berbasis data, khususnya dalam evaluasi kelayakan penerima subsidi listrik.
+
+Seiring perkembangan teknologi informasi, pemanfaatan data pelanggan menjadi salah satu strategi penting dalam meningkatkan kualitas pelayanan dan efisiensi operasional. Analisis data menggunakan metode machine learning dapat membantu PLN dalam mengidentifikasi pola konsumsi energi serta karakteristik pelanggan secara lebih mendalam. Dengan demikian, proses pengambilan keputusan terkait subsidi listrik dapat dilakukan secara lebih objektif, transparan, dan terukur.
+
+\subsection{Model Boosting dalam Machine Learning}
+Boosting merupakan salah satu teknik ensemble learning yang bertujuan meningkatkan performa model prediksi dengan menggabungkan beberapa model pembelajaran sederhana menjadi model yang lebih kuat. Konsep utama boosting adalah membangun model secara bertahap, di mana setiap model baru berfokus memperbaiki kesalahan yang dihasilkan oleh model sebelumnya [8]. Pendekatan boosting bekerja secara iteratif dengan memberikan perhatian lebih besar pada data yang sebelumnya salah diklasifikasikan. Melalui proses ini, model secara bertahap mampu meningkatkan akurasi prediksi dan mengurangi kesalahan klasifikasi.
+
+Metode boosting dikenal memiliki performa yang sangat baik dalam berbagai permasalahan klasifikasi karena mampu menangani hubungan kompleks dan nonlinier antar variabel. Beberapa algoritma boosting yang berkembang saat ini antara lain AdaBoost, Gradient Boosting Machine (GBM), XGBoost, dan LightGBM. Penggunaan model boosting menjadi semakin populer karena kemampuannya menghasilkan model dengan tingkat akurasi tinggi serta stabil terhadap variasi data.
+
+\subsection{Light Gradient Boosting Machine}
+Light Gradient Boosting Machine (LightGBM) merupakan salah satu algoritma machine learning berbasis boosting yang dirancang untuk menghasilkan prediksi dengan cepat dan akurat. Algoritma ini merupakan pengembangan dari Gradient Boosting Decision Tree (GBDT) dengan berbagai penyempurnaan agar proses pelatihan data menjadi lebih efisien dan tidak memerlukan banyak memori. LightGBM dikembangkan untuk mengatasi keterbatasan metode boosting konvensional, terutama ketika menangani dataset berukuran besar dan memiliki banyak variabel.
+
+Salah satu keunggulan LightGBM terletak pada cara membangun pohon keputusannya. LightGBM menggunakan teknik leaf-wise growth, yaitu memperluas cabang pohon yang memberikan penurunan kesalahan (loss) terbesar. Cara ini membuat proses pembelajaran menjadi lebih cepat dan mampu menangkap pola hubungan antar variabel yang lebih kompleks dibandingkan metode yang membangun pohon secara bertahap per level. Selain itu, LightGBM juga menggunakan pendekatan berbasis histogram sehingga proses pelatihan data menjadi lebih hemat memori dan lebih efisien.
+
+Untuk meningkatkan kinerjanya, LightGBM menerapkan dua teknik utama. Pertama, Gradient-based One-Side Sampling (GOSS), yaitu memilih data yang paling berpengaruh terhadap proses pembelajaran sehingga model dapat fokus pada informasi yang penting. Kedua, Exclusive Feature Bundling (EFB), yaitu menggabungkan fitur-fitur yang jarang aktif agar jumlah variabel dapat dikurangi tanpa menghilangkan informasi yang relevan. Kombinasi teknik ini membuat LightGBM mampu bekerja lebih cepat tanpa mengurangi akurasi.
+
+Berdasarkan karakteristik tersebut, LightGBM sangat sesuai digunakan dalam permasalahan klasifikasi yang melibatkan banyak atribut, seperti data pelanggan listrik. Dalam penelitian ini, LightGBM digunakan untuk membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh. Model yang dihasilkan diharapkan mampu mempelajari pola dari data historis pelanggan sehingga dapat memberikan prediksi yang lebih akurat, objektif, dan mendukung pengambilan keputusan yang lebih tepat dibandingkan metode manual.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{lightgbm_tree_growth}
+    \caption{Metode Light Gradient Boosting Machine}
+    \label{fig:lightgbm_tree_growth}
+\end{figure}
+
+Gambar \ref{fig:lightgbm_tree_growth} menunjukkan mekanisme pertumbuhan pohon keputusan pada metode Light Gradient Boosting Machine (LightGBM), yaitu menggunakan pendekatan leaf-wise tree growth. Pada metode ini, proses pengembangan pohon dilakukan dengan memilih cabang (leaf) yang memiliki nilai kesalahan (loss) terbesar untuk diperluas terlebih dahulu. Artinya, model akan memprioritaskan bagian pohon yang paling membutuhkan perbaikan sehingga proses pengurangan error dapat berlangsung lebih cepat dan efektif.
+
+Berbeda dengan metode level-wise yang mengembangkan seluruh node pada satu tingkat secara bersamaan, pendekatan leaf-wise hanya memperluas satu cabang yang paling optimal pada setiap iterasi. Strategi ini membuat struktur pohon dapat tumbuh lebih dalam pada bagian tertentu yang dianggap penting oleh model. Akibatnya, LightGBM mampu menangkap pola hubungan antar variabel yang lebih kompleks serta meningkatkan akurasi prediksi.
+
+Pendekatan ini menjadi salah satu alasan mengapa LightGBM memiliki performa yang lebih cepat dan efisien dibandingkan metode boosting konvensional. Dengan fokus pada pengurangan error terbesar di setiap tahap, model dapat belajar dari data secara lebih terarah dan menghasilkan prediksi yang lebih optimal. Untuk memahami bagaimana LightGBM bekerja dalam proses pembelajaran model, terdapat beberapa rumus utama yang digunakan untuk mengoptimalkan fungsi objektif dan menentukan pemisahan (split) terbaik pada setiap node pohon keputusan. Rumus-rumus ini berperan dalam mengukur tingkat kesalahan model sekaligus mengontrol kompleksitas pohon agar tidak terjadi overfitting. Berikut adalah rumus inti yang digunakan dalam LightGBM:
+
 \begin{enumerate}
-    \item \textbf{\textit{Naive}}: Nilai prediksi disamakan dengan nilai observasi terakhir yang tersedia. Metode ini menjadi tolok ukur minimum yang wajib dikalahkan oleh model yang lebih kompleks [20].
-    \item \textbf{\textit{Seasonal-Naive}}: Nilai prediksi diambil dari observasi terakhir pada musim yang sama, misalnya penjualan hari Senin diprediksi dari rata-rata beberapa hari Senin sebelumnya, sehingga efektif menangkap pola musiman mingguan [20].
-    \item \textbf{\textit{Moving Average} (Rata-rata Bergerak)}: Nilai prediksi berupa rata-rata dari $k$ observasi terakhir, berguna untuk meredam fluktuasi acak jangka pendek [14].
-    \item \textbf{SARIMA} (\textit{Seasonal Autoregressive Integrated Moving Average}): Model statistik klasik dari keluarga Box--Jenkins yang memodelkan komponen autoregresif, diferensiasi, rata-rata bergerak, beserta pola musimannya secara eksplisit [21].
+    \item Fungsi Objektif (Objective Function)
+    
+    Fungsi objektif pada LightGBM dirumuskan sebagai berikut:
+    \begin{equation}
+        L = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \Omega(f)
+    \end{equation}
+    
+    Keterangan:
+    
+    $l(y_i, \hat{y}_i)$ = fungsi loss (misalnya logloss untuk klasifikasi)
+    
+    $\Omega(f)$ = fungsi regularisasi untuk mengontrol kompleksitas model
+    
+    Fungsi regularisasi dirumuskan sebagai:
+    \begin{equation}
+        \Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2
+    \end{equation}
+    
+    Keterangan:
+    
+    $T$ = jumlah daun (leaf) pada pohon
+    
+    $w_j$ = nilai output pada daun ke-j
+    
+    $\gamma$ = parameter penalty terhadap jumlah daun
+    
+    $\lambda$ = parameter regularisasi L2
+    
+    Fungsi objektif ini bertujuan untuk meminimalkan kesalahan prediksi sekaligus menjaga agar model tidak terlalu kompleks. Regularisasi membantu mencegah overfitting dengan memberikan penalti pada jumlah daun dan besarnya bobot setiap daun.
+    
+    \item Rumus Gain (Pemilihan Split Terbaik)
+    
+    Untuk menentukan pemisahan node terbaik, LightGBM menggunakan perhitungan nilai gain sebagai berikut:
+    \begin{equation}
+        Gain = \frac{1}{2} \left[ \frac{G_L^2}{H_L + \lambda} + \frac{G_R^2}{H_R + \lambda} - \frac{(G_L + G_R)^2}{H_L + H_R + \lambda} \right] - \gamma
+    \end{equation}
+    
+    Keterangan:
+    
+    $G_L, G_R$ = jumlah gradient pada sisi kiri dan kanan
+    
+    $H_L, H_R$ = jumlah hessia (gradien kedua) pada sisi kiri dan kanan
+    
+    $\lambda$ = parameter regularisasi L2
+    
+    $\gamma$ = penalti terhadap jumlah daun
+    
+    Rumus gain ini digunakan untuk mengevaluasi apakah suatu pemisahan node memberikan peningkatan kualitas model atau tidak. Semakin besar nilai gain, maka semakin baik pemisahan tersebut dalam mengurangi error.
 \end{enumerate}
 
-Temuan pada kompetisi prediksi berskala global M3 dan M4 menunjukkan bahwa metode statistik klasik dan kombinasinya kerap mengungguli metode \textit{machine learning} murni pada deret waktu bisnis, terutama ketika data historis yang tersedia terbatas [22],[23]. Temuan tersebut menjadi dasar metodologis dalam penelitian ini untuk mengevaluasi model LSTM secara jujur terhadap \textit{baseline} sederhana sebelum diputuskan metode mana yang layak disajikan kepada pengguna akhir.
+Melalui kombinasi fungsi objektif dan perhitungan gain tersebut, LightGBM mampu membangun struktur pohon keputusan secara efisien dan terarah. Fungsi objektif memastikan model tetap optimal dan tidak overfitting, sedangkan rumus gain membantu memilih pemisahan node terbaik pada setiap tahap pembentukan pohon. Dengan mekanisme ini, LightGBM dapat menghasilkan model klasifikasi yang cepat, stabil, dan memiliki performa tinggi pada berbagai jenis dataset.
 
-\section{Metrik Evaluasi Prediksi (MAE, RMSE, sMAPE, dan MASE)}
-
-Kinerja model prediksi pada penelitian ini diukur menggunakan empat metrik evaluasi, yaitu MAE dan RMSE sebagai metrik galat dalam satuan nominal, serta sMAPE dan MASE sebagai metrik galat yang direkomendasikan untuk deret waktu bisnis dengan skala nilai yang bervariasi [16]:
-\begin{enumerate}
-    \item \textbf{\textit{Mean Absolute Error} (MAE):} Mengukur rata-rata selisih absolut antara nilai aktual penjualan $Y_t$ dengan nilai hasil prediksi $\hat{Y}_t$. Semakin kecil nilai MAE, maka model prediksi semakin akurat. Formula MAE didefinisikan sebagai berikut:
-    \begin{equation}
-        \text{MAE} = \frac{1}{n} \sum_{t=1}^{n} |Y_t - \hat{Y}_t|
-    \end{equation}
-    \noindent di mana $n$ adalah jumlah data pengujian.
-
-    \item \textbf{\textit{Root Mean Square Error} (RMSE):} Memberikan bobot lebih besar pada kesalahan prediksi yang bernilai besar karena selisihnya dikuadratkan terlebih dahulu sebelum dirata-ratakan dan ditarik akarnya. Formula RMSE didefinisikan sebagai berikut:
-    \begin{equation}
-        \text{RMSE} = \sqrt{\frac{1}{n} \sum_{t=1}^{n} (Y_t - \hat{Y}_t)^2}
-    \end{equation}
-
-    \item \textbf{sMAPE} (\textit{Symmetric Mean Absolute Percentage Error}): Varian MAPE yang membagi galat absolut terhadap rata-rata nilai aktual dan prediksi, sehingga terhindar dari ledakan nilai persentase ketika nilai aktual mendekati nol dan memiliki batas atas galat sebesar 200\%. Formula sMAPE didefinisikan sebagai berikut:
-    \begin{equation}
-        \text{sMAPE} = \frac{1}{n} \sum_{t=1}^{n} \frac{|Y_t - \hat{Y}_t|}{(|Y_t| + |\hat{Y}_t|) / 2} \times 100\%
-    \end{equation}
-    Sebagai konvensi implementasi, apabila penyebut bernilai nol (nilai aktual dan prediksi sama-sama nol), penyebut diganti dengan nilai 1 agar tidak terjadi galat pembagian dengan nol (\textit{division by zero}).
-
-    \item \textbf{MASE} (\textit{Mean Absolute Scaled Error}): Metrik yang diusulkan Hyndman dan Koehler [16] untuk menormalisasi galat model terhadap galat metode naif \textit{in-sample} pada data latih. Nilai MASE $< 1$ menandakan model lebih baik daripada metode naif, sehingga metrik ini dapat dibandingkan lintas dataset tanpa terpengaruh satuan nominal. Formula MASE didefinisikan sebagai berikut:
-    \begin{equation}
-        \text{MASE} = \frac{\frac{1}{n} \sum_{t=1}^{n} |Y_t - \hat{Y}_t|}{\frac{1}{N-1} \sum_{i=2}^{N} |Y^{\text{train}}_i - Y^{\text{train}}_{i-1}|}
-    \end{equation}
-    \noindent di mana $Y^{\text{train}}_i$ adalah nilai aktual pendapatan pada data latih, dan $N$ adalah jumlah data latih aktif.
-\end{enumerate}
-
-\section{\textit{Generative Adversarial Network} (GAN) dan TimeGAN}
-
-\textit{Generative Adversarial Network} (GAN) adalah kerangka pembelajaran generatif yang diperkenalkan oleh Goodfellow dkk.~[24], terdiri atas dua jaringan saraf yang saling berkompetisi: \textit{generator} yang berusaha menghasilkan data tiruan semirip mungkin dengan data asli, dan \textit{discriminator} yang berusaha membedakan data asli dari data tiruan. Melalui proses pelatihan \textit{adversarial} ini, \textit{generator} secara bertahap belajar mereproduksi distribusi data asli, sehingga GAN banyak dimanfaatkan untuk augmentasi data (\textit{data augmentation}) ketika jumlah data riil terbatas.
-
-\textbf{TimeGAN} (\textit{Time-series Generative Adversarial Networks}) merupakan pengembangan GAN yang dirancang khusus untuk data deret waktu, diusulkan oleh Yoon dkk.~[25] pada konferensi NeurIPS 2019. Berbeda dengan GAN konvensional yang hanya menangkap distribusi statis, TimeGAN menggabungkan kerangka \textit{adversarial} (\textit{unsupervised}) dengan pelatihan \textit{supervised} pada ruang laten agar dinamika temporal antar-langkah waktu pada data asli ikut dipelajari. Arsitektur TimeGAN terdiri atas lima komponen jaringan: \textit{embedder} dan \textit{recovery} yang memetakan data ke/dari ruang laten (\textit{autoencoder}), serta \textit{generator}, \textit{supervisor}, dan \textit{discriminator} yang dilatih dalam tiga fase (pelatihan \textit{autoencoder}, pelatihan \textit{supervised}, dan pelatihan gabungan \textit{adversarial}) [25]. Dalam penelitian ini, TimeGAN digunakan untuk mensintesis sekuens data penjualan harian tambahan sebagai upaya mitigasi keterbatasan ukuran dataset pada pelatihan model LSTM.
-
-\section{\textit{Framework} Flutter dan Bahasa Dart}
-
-Flutter merupakan \textit{framework} pengembangan aplikasi \textit{cross-platform} yang dikembangkan oleh Google dan menggunakan mesin grafis Skia untuk merender antarmuka pengguna secara langsung, menghasilkan performa tinggi mendekati aplikasi \textit{native} [1]. Bahasa pemrograman Dart yang menyertai Flutter mendukung fitur \textit{Just-In-Time} (JIT) untuk pengembangan cepat dan \textit{Ahead-Of-Time} (AOT) untuk rilis produksi yang efisien. Arsitektur \textit{widget} pada Flutter memungkinkan pengembang membangun komponen antarmuka yang modular dan dapat digunakan kembali, sangat cocok untuk aplikasi POS yang memiliki banyak elemen interaktif.
-
-Dalam penelitian ini, Flutter dipilih sebagai \textit{framework} utama pengembangan aplikasi \textit{mobile} karena kemampuannya menghasilkan aplikasi Android berkinerja tinggi dari satu basis kode, serta dukungan ekosistem \textit{package} yang kaya untuk integrasi fitur seperti koneksi Bluetooth, pemindaian barcode, dan komunikasi \textit{REST API} [1], [12].
-
-\section{Layanan Supabase dan Integrasi \textit{Cloud}}
-
-Supabase merupakan platform \textit{Backend-as-a-Service} (BaaS) \textit{open-source} yang menyediakan lapisan infrastruktur matang di atas basis data PostgreSQL [9]. Supabase mencakup fitur autentikasi pengguna, \textit{real-time subscriptions}, penyimpanan file, dan \textit{Row Level Security} (RLS) yang memungkinkan pengelolaan hak akses data secara granular. Fischer dan Weber [9] membuktikan bahwa penggunaan RLS pada Supabase dapat memangkas waktu pengembangan \textit{backend} hingga 40\% sekaligus mengamankan data transaksi multi-tenant. Fitur \textit{real-time subscriptions} pada Supabase memungkinkan aplikasi \textit{mobile} menerima pembaruan data secara instan tanpa perlu melakukan \textit{polling} ke server.
-
-Penggunaan Supabase dalam penelitian ini memfasilitasi penyimpanan data transaksi terpusat dalam jumlah besar sebagai muara sinkronisasi data penjualan dari perangkat kasir. Supabase juga menangani autentikasi multi-pengguna (Owner dan Kasir) dengan mekanisme \textit{Role-Based Access Control} (RBAC) yang terimplementasi langsung di lapisan basis data, memastikan privasi data antar-merchant terjaga [26].
-
-\section{Isar Database (\textit{Local Storage})}
-
-Isar DB adalah basis data \textit{embedded} berkinerja tinggi yang dirancang khusus untuk Flutter dan mendukung operasi baca/tulis secara \textit{asynchronous} tanpa memerlukan koneksi internet. Novikov dan Petrov [8] membuktikan bahwa Isar DB memiliki kecepatan \textit{batch insert} dan pembacaan data sekuensial yang paling optimal dibandingkan basis data lokal lain yang umum digunakan pada Flutter, yakni Hive dan ObjectBox. Isar DB beroperasi langsung di perangkat pengguna menggunakan format penyimpanan \textit{binary} yang dioptimalkan untuk kecepatan tinggi, serta mendukung kueri kompleks dengan antarmuka yang intuitif.
-
-Dalam penelitian ini, Isar DB berperan sebagai penyimpanan lokal utama pada perangkat \textit{mobile} untuk menjamin kelancaran operasional kasir dalam kondisi \textit{offline} [7],[8]. Seluruh transaksi yang dilakukan tanpa koneksi akan disimpan terlebih dahulu di Isar DB, kemudian disinkronkan secara otomatis ke Supabase oleh mesin \textit{SyncNotifier} ketika koneksi internet tersedia kembali.
-
-\section{Python, TensorFlow, PyTorch, dan Flask}
-
-Python dipilih sebagai bahasa pemrograman untuk pengembangan modul prediksi di sisi server (\textit{server-side}) karena ekosistemnya yang kaya dalam bidang \textit{machine learning} dan analisis data. \textbf{TensorFlow} [27] dengan antarmuka tingkat tinggi Keras digunakan untuk membangun, melatih, dan menyimpan model LSTM [4],[5], sedangkan \textbf{PyTorch} [28], pustaka \textit{deep learning} imperatif dengan komputasi graf dinamis, digunakan untuk mengimplementasikan model augmentasi data sintetis TimeGAN. Proses pelatihan model dilakukan di sisi server menggunakan data transaksi historis yang telah diekstraksi, kemudian layanan prediksi di-\textit{deploy} agar dapat dipanggil oleh aplikasi \textit{mobile} melalui \textit{REST API} [12], sehingga proses komputasi berat tidak membebani perangkat pengguna. Nguyen dan Tran [11] merekomendasikan pendekatan ini dalam arsitektur \textit{microservices} untuk memastikan sistem kasir tetap stabil meskipun modul AI sedang melakukan proses pelatihan ulang di sisi server.
-
-Layanan prediksi tersebut dibangun menggunakan \textbf{Flask}, yaitu \textit{micro-framework} web Python yang ringan dan modular untuk membangun aplikasi web dan layanan API [29]. Komunikasi antara aplikasi \textit{mobile} dan layanan prediksi mengikuti gaya arsitektur \textbf{REST} (\textit{Representational State Transfer}) yang diformulasikan oleh Fielding [30], di mana setiap sumber daya diakses melalui \textit{endpoint} HTTP yang seragam (\textit{uniform interface}) tanpa menyimpan status sesi di server (\textit{stateless}), dengan format pertukaran data JSON.
-
-\section{Layanan Firebase}
-
-Firebase merupakan platform pengembangan aplikasi dari Google yang menyediakan kumpulan layanan siap pakai di sisi \textit{backend} untuk aplikasi \textit{mobile} [31]. Dua layanan Firebase yang dimanfaatkan pada penelitian ini adalah \textbf{Firebase Cloud Messaging} (FCM) sebagai infrastruktur pengiriman \textit{push notification} lintas perangkat secara \textit{real-time}, dimanfaatkan untuk pemberitahuan seperti peringatan stok menipis dan \textit{broadcast} pesan antar staf toko, serta \textbf{Firebase Analytics} untuk pencatatan telemetri perilaku penggunaan aplikasi (seperti volume transaksi dan pemakaian fitur) sebagai bahan evaluasi produk [31].
-
-\section{Metode Pengembangan Perangkat Lunak \textit{Agile}}
-
-\textit{Agile} adalah paradigma pengembangan perangkat lunak yang menekankan iterasi pendek, penyerahan produk fungsional secara bertahap (\textit{incremental}), dan adaptasi cepat terhadap perubahan kebutuhan [32]. Pendekatan \textit{iterative and incremental} membagi pengembangan menjadi siklus-siklus kecil di mana setiap siklus menghasilkan pertambahan fungsionalitas yang dapat diuji. Selanjutnya, \textbf{\textit{Lean Software Development}} yang diadaptasi Poppendieck dari prinsip \textit{lean manufacturing} menambahkan tujuh prinsip utama, antara lain menghilangkan pemborosan (\textit{eliminate waste}), memperkuat pembelajaran, menunda keputusan hingga saat paling akhir yang bertanggung jawab, dan menyerahkan produk secepat mungkin [33]. Kombinasi pendekatan ini melandasi strategi pengembangan sistem pada penelitian ini yang memprioritaskan \textit{Minimum Viable Product} (MVP) fitur inti kasir sebelum fitur analitik lanjutan.
-
-\section{Pemodelan Sistem (UML dan ERD)}
-
-\textit{Unified Modeling Language} (UML) adalah bahasa pemodelan visual standar untuk menspesifikasikan, memvisualisasikan, dan mendokumentasikan artefak sistem perangkat lunak [34]. Diagram UML yang digunakan pada penelitian ini meliputi \textit{Use Case Diagram} (memetakan interaksi aktor terhadap fungsi sistem beserta relasi \textit{include}/\textit{extend}), \textit{Activity Diagram} (memvisualisasikan aliran kerja dan titik keputusan proses), dan \textit{Class Diagram} (menggambarkan struktur kelas beserta relasinya) [34].
-
-Adapun \textit{Entity Relationship Diagram} (ERD) adalah model konseptual basis data yang diperkenalkan oleh Chen [35], yang merepresentasikan data sebagai entitas, atribut, dan relasi antar-entitas beserta kardinalitasnya. ERD digunakan dalam penelitian ini untuk merancang skema basis data relasional PostgreSQL di sisi \textit{cloud} beserta padanan koleksi datanya di basis data lokal Isar DB.
-
-\section{Pengujian \textit{Black Box}}
-
-Pengujian \textit{black box} adalah teknik pengujian perangkat lunak yang memvalidasi fungsionalitas sistem murni dari sisi masukan dan keluaran yang teramati, tanpa memeriksa struktur internal kode program [32]. Penguji menyusun skenario uji berdasarkan spesifikasi kebutuhan fungsional, kemudian membandingkan hasil aktual sistem terhadap hasil yang diharapkan. Teknik ini efektif untuk memverifikasi kesesuaian perilaku fitur aplikasi terhadap kebutuhan pengguna akhir, dan pada penelitian ini diterapkan terhadap skenario-skenario penggunaan utama aplikasi POS oleh peran Owner dan Kasir [32].
-
-\section{Pengujian \textit{White Box}}
-
-Pengujian \textit{white box} (disebut juga \textit{glass box testing}) adalah teknik pengujian perangkat lunak yang memverifikasi kebenaran logika internal dan struktur kode program, dengan merancang kasus uji berdasarkan jalur eksekusi (\textit{code path}), percabangan keputusan (\textit{branch}), dan kondisi logika di dalam kode [32]. Berbeda dengan \textit{black box} yang hanya mengamati kesesuaian masukan--keluaran, \textit{white box} menuntut penguji memahami implementasi kode untuk memastikan setiap jalur logika kritis pernah dieksekusi dan menghasilkan keluaran yang benar, misalnya melalui pendekatan \textit{basis path testing} yang menelusuri jalur-jalur independen pada grafik alir program [32]. Pada penelitian ini, pengujian \textit{white box} diterapkan secara terbatas (\textit{lightweight}) terhadap fungsi-fungsi kritis pada layanan API prediksi, dengan menelusuri jalur percabangan logika menggunakan data masukan yang keluarannya telah dihitung secara manual sebagai acuan kebenaran (\textit{ground truth}).
 
 %%=============================================================
 %% BAB III - METODOLOGI PENELITIAN
