@@ -1119,29 +1119,14 @@ Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Ad
     Pada Gambar \ref{fig:act_halaman_pengaturan} di atas menunjukkan proses ketika admin masuk ke menu pengaturan model. Sistem menampilkan konfigurasi parameter dan performa model saat ini. Admin dapat menginisiasi proses training model baru dengan data tambahan, di mana sistem mengirimkan instruksi ke server API Flask untuk melatih kembali model LightGBM secara asinkron.
 \end{enumerate}
 
-\section{Metode dan Variabel Penelitian}
-Metode dan variabel penelitian digunakan sebagai dasar dalam proses pembangunan model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh. Pada penelitian ini digunakan pendekatan machine learning berbasis supervised learning dengan algoritma Light Gradient Boosting Machine (LightGBM). Metode tersebut dipilih karena memiliki kemampuan klasifikasi yang baik serta efisien dalam menangani data berukuran besar dan hubungan nonlinier antar variabel. Proses penelitian dilakukan dengan memanfaatkan data pelanggan listrik sebagai variabel input untuk menghasilkan prediksi status kelayakan subsidi listrik sebagai variabel output.
+\section{Perancangan Metode Penelitian}
+Perancangan metode penelitian menjelaskan pendekatan yang digunakan dalam membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh, mulai dari metode klasifikasi yang diterapkan hingga metrik yang digunakan untuk mengukur performanya sebelum diimplementasikan pada Bab IV.
 
-\section{Teknik Pengujian}
-Teknik pengujian sistem pada penelitian ini dilakukan untuk memastikan bahwa sistem klasifikasi kelayakan penerima subsidi listrik dapat berjalan sesuai dengan fungsi yang telah dirancang serta mampu menghasilkan prediksi yang akurat. Pengujian dilakukan terhadap fungsi sistem maupun performa model klasifikasi yang dibangun menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Pengujian dalam penelitian ini menggunakan dua pendekatan utama, yaitu pengujian fungsional sistem menggunakan metode Blackbox Testing dan pengujian performa model menggunakan metrik evaluasi klasifikasi.
+\subsection{Penerapan Metode Klasifikasi LightGBM}
+Penelitian ini menggunakan pendekatan machine learning berbasis supervised learning dengan algoritma Light Gradient Boosting Machine (LightGBM). Metode tersebut dipilih karena memiliki kemampuan klasifikasi yang baik serta efisien dalam menangani data berukuran besar dan hubungan nonlinier antar variabel. Proses penelitian dilakukan dengan memanfaatkan data pelanggan listrik sebagai variabel input untuk menghasilkan prediksi status kelayakan subsidi listrik sebagai variabel output. Model dilatih menggunakan data training hasil pembagian dataset (80\%) dan divalidasi menggunakan data testing (20\%) yang tidak dilibatkan pada proses pelatihan.
 
-\subsection{Pengujian Black Box}
-Pengujian Blackbox merupakan metode pengujian perangkat lunak yang berfokus pada pengujian fungsi sistem tanpa melihat struktur kode program di dalamnya. Pengujian dilakukan dengan cara memberikan input tertentu pada sistem dan mengamati apakah output yang dihasilkan telah sesuai dengan kebutuhan fungsional yang telah ditentukan.
-
-Tujuan pengujian Blackbox dalam penelitian ini adalah untuk memastikan bahwa setiap fitur sistem dapat berjalan dengan baik sesuai dengan skenario penggunaan. Adapun aspek yang diuji meliputi:
-\begin{enumerate}
-    \item Proses import dataset pelanggan listrik.
-    \item Proses preprocessing data.
-    \item Proses pelatihan model LightGBM.
-    \item Proses prediksi klasifikasi pelanggan.
-    \item Proses evaluasi model.
-    \item Tampilan hasil analisis.
-    \item Penyimpanan hasil pengolahan data.
-\end{enumerate}
-Setiap pengujian dinyatakan berhasil apabila sistem mampu menghasilkan keluaran sesuai dengan hasil yang diharapkan tanpa terjadi kesalahan proses.
-
-\subsection{Pengujian Performa Model}
-Selain pengujian fungsi sistem, dilakukan juga pengujian performa model klasifikasi untuk mengetahui tingkat akurasi dan kualitas prediksi model LightGBM dalam menentukan kelayakan penerima subsidi listrik. Pengujian dilakukan menggunakan data testing yang tidak digunakan pada tahap pelatihan model. Evaluasi model dilakukan menggunakan beberapa metrik pengukuran, yaitu:
+\subsection{Metrik Evaluasi Performa Model}
+Performa model klasifikasi LightGBM diukur menggunakan beberapa metrik evaluasi, yaitu:
 
 \begin{enumerate}
     \item \textbf{Accuracy} \\
@@ -1179,6 +1164,22 @@ Keterangan:
 \subsection{Confusion Matrix}
 Confusion Matrix digunakan untuk menampilkan perbandingan antara hasil prediksi model dan data aktual dalam bentuk tabel klasifikasi. Matriks ini membantu dalam memahami performa model secara lebih rinci terhadap masing-masing kelas prediksi. Melalui teknik pengujian ini, diharapkan sistem yang dibangun mampu bekerja sesuai fungsi serta menghasilkan model klasifikasi dengan performa yang optimal dalam menentukan kelayakan penerima subsidi listrik.
 
+\section{Perancangan Pengujian}
+Perancangan pengujian sistem dilakukan untuk memastikan bahwa sistem klasifikasi kelayakan penerima subsidi listrik dapat berjalan sesuai dengan fungsi yang telah dirancang serta mampu menghasilkan prediksi yang akurat. Pengujian fungsional sistem dilakukan menggunakan metode Black Box Testing.
+
+Pengujian Blackbox merupakan metode pengujian perangkat lunak yang berfokus pada pengujian fungsi sistem tanpa melihat struktur kode program di dalamnya. Pengujian dilakukan dengan cara memberikan input tertentu pada sistem dan mengamati apakah output yang dihasilkan telah sesuai dengan kebutuhan fungsional yang telah ditentukan.
+
+Tujuan pengujian Blackbox dalam penelitian ini adalah untuk memastikan bahwa setiap fitur sistem dapat berjalan dengan baik sesuai dengan skenario penggunaan. Adapun aspek yang diuji meliputi:
+\begin{enumerate}
+    \item Proses import dataset pelanggan listrik.
+    \item Proses preprocessing data.
+    \item Proses pelatihan model LightGBM.
+    \item Proses prediksi klasifikasi pelanggan.
+    \item Proses evaluasi model.
+    \item Tampilan hasil analisis.
+    \item Penyimpanan hasil pengolahan data.
+\end{enumerate}
+Setiap pengujian dinyatakan berhasil apabila sistem mampu menghasilkan keluaran sesuai dengan hasil yang diharapkan tanpa terjadi kesalahan proses. Rancangan skenario pengujian secara rinci disajikan pada Bab IV bagian Hasil Pengujian Sistem.
 
 
 
@@ -1271,8 +1272,8 @@ Layanan prediksi machine learning dikembangkan menggunakan bahasa pemrograman Py
     \item \texttt{GET /api/models} dan \texttt{POST /api/models/\allowbreak<model\_id>/activate} : Menampilkan daftar model yang tersedia beserta performanya, serta mengaktifkan salah satu model sebagai model produksi.
 \end{enumerate}
 
-\section{Preprocessing Data}
-Tahap pra-pemrosesan data dilakukan untuk menjamin kualitas dataset agar bebas dari nilai kosong, data duplikat, atau format variabel yang tidak konsisten sehingga model LightGBM dapat mempelajari pola klasifikasi secara stabil.
+\section{Implementasi Rancangan Model Klasifikasi LightGBM}
+Bagian ini menyajikan implementasi rancangan metode penelitian pada Bab III, mulai dari deskripsi dataset, pra-pemrosesan data, pelatihan model, hingga evaluasi performa model LightGBM yang dibangun. Tahap pra-pemrosesan data dilakukan untuk menjamin kualitas dataset agar bebas dari nilai kosong, data duplikat, atau format variabel yang tidak konsisten sehingga model LightGBM dapat mempelajari pola klasifikasi secara stabil.
 
 \subsection{Deskripsi Data dan Eksplorasi Awal}
 Dataset utama penelitian ini merupakan data gabungan administratif sosial ekonomi dari Dinas Sosial dan data kelistrikan sintetis sebanyak 1.000 baris. Statistik deskriptif untuk variabel-variabel numerik dalam dataset disajikan pada Tabel \ref{tab:stat_deskriptif}.
@@ -1397,10 +1398,8 @@ Pra-pemrosesan data dilakukan melalui beberapa tahapan berikut:
     Dataset dibagi menjadi data training (\textit{latih}) dan data testing (\textit{uji}) dengan rasio pembagian sebesar 80\% : 20\%. Pembagian dilakukan menggunakan parameter \texttt{stratify=y} untuk menjaga agar proporsi target label kelayakan (60\% Tidak Layak dan 40\% Layak) tetap konsisten antara data training (800 baris) dan data testing (200 baris).
 \end{enumerate}
 
-\section{Implementasi dan Pelatihan Model Klasifikasi}
+\subsection{Penerapan Nilai Parameter}
 Model klasifikasi yang dikembangkan menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Keunggulan LightGBM terletak pada kecepatan komputasi yang tinggi dan keakuratan model dalam menangani data bertipe kategori maupun campuran.
-
-\subsection{Skenario Eksperimen}
 Pelatihan model dilakukan menggunakan parameter default LightGBM untuk mengevaluasi kemampuan pembelajaran model pada dataset ini. Adapun konfigurasi hyperparameter yang digunakan disajikan pada Tabel \ref{tab:hyperparameter_lgb}.
 
 \begin{table}[H]
@@ -1423,10 +1422,8 @@ Pelatihan model dilakukan menggunakan parameter default LightGBM untuk mengevalu
 \subsection{Hasil Pelatihan Model}
 Pelatihan model dilakukan menggunakan modul \texttt{LGBMClassifier} dari pustaka \texttt{lightgbm} pada data training sebanyak 800 data. Pelatihan berlangsung sangat cepat dengan waktu komputasi kurang dari 1 detik dikarenakan algoritma LightGBM menggunakan teknik \textit{histogram-based decision tree} yang mengelompokkan nilai numerik menjadi bin-bin diskrit, sehingga mengurangi kompleksitas pencarian titik pembagian (\textit{split point}) pada data training. Model yang telah dilatih kemudian diekspor menjadi biner model \texttt{mdl\_001.txt} agar dapat digunakan secara asinkron oleh API Flask.
 
-\section{Evaluasi Model}
+\subsection{Analisis Klasifikasi Menggunakan Metrik Evaluasi dan Confusion Matrix}
 Performa model LightGBM diuji secara komprehensif pada data testing (200 data) menggunakan metrik evaluasi klasifikasi yang telah dibahas pada Bab III.
-
-\subsection{Metrik Evaluasi Performa Model}
 Pengujian model LightGBM menghasilkan tingkat keakuratan yang sempurna pada data uji. Hasil evaluasi metrik kinerja model disajikan pada Tabel \ref{tab:evaluasi_metrik}.
 
 \begin{table}[H]
