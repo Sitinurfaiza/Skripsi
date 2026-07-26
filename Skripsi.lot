@@ -7,15 +7,15 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Kebutuhan Perangkat Keras (Hardware)}}{29}{table.caption.11}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan Perangkat Lunak (Software)}}{30}{table.caption.12}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Statistik Deskriptif Variabel Numerik}}{52}{table.caption.27}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Distribusi Golongan Tarif}}{52}{table.caption.28}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Distribusi Status Kepemilikan Rumah}}{53}{table.caption.29}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Distribusi Status Penerima Bantuan Sosial}}{53}{table.caption.30}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Distribusi Pekerjaan Kepala Keluarga}}{53}{table.caption.31}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Distribusi Target Label Kelayakan}}{53}{table.caption.32}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Konfigurasi Hyperparameter Model LightGBM}}{56}{table.caption.33}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Metrik Performa Model LightGBM}}{57}{table.caption.34}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Confusion Matrix Hasil Pengujian}}{57}{table.caption.35}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Nilai Feature Importance Model LightGBM}}{58}{table.caption.36}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Hasil Pengujian Black Box Dashboard Klasifikasi}}{60}{table.caption.37}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Statistik Deskriptif Variabel Numerik}}{53}{table.caption.28}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Distribusi Golongan Tarif}}{54}{table.caption.29}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Distribusi Status Kepemilikan Rumah}}{54}{table.caption.30}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Distribusi Status Penerima Bantuan Sosial}}{54}{table.caption.31}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Distribusi Pekerjaan Kepala Keluarga}}{55}{table.caption.32}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Distribusi Target Label Kelayakan}}{55}{table.caption.33}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Konfigurasi Hyperparameter Model LightGBM}}{58}{table.caption.34}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Metrik Performa Model LightGBM}}{59}{table.caption.35}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Confusion Matrix Hasil Pengujian}}{59}{table.caption.36}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Nilai Feature Importance Model LightGBM}}{60}{table.caption.37}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Hasil Pengujian Black Box Dashboard Klasifikasi}}{62}{table.caption.38}%
 \addvspace {10\p@ }

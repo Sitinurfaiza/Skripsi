@@ -1077,12 +1077,21 @@ Aplikasi antarmuka pengguna dikembangkan menggunakan framework Next.js dengan ba
         \label{fig:ui_klasifikasi_hasil}
     \end{figure}
 
-    \item \textbf{Halaman Laporan dan Pengaturan} \\
-    Halaman Laporan memuat tabel riwayat pengujian klasifikasi batch maupun manual yang dapat difilter berdasarkan tanggal, status kelayakan, atau daya listrik pelanggan. Fitur ekspor laporan disediakan untuk memudahkan pencetakan dokumen hasil klasifikasi. Sementara halaman Pengaturan Model menampilkan status keaktifan model, metrik evaluasi model (akurasi, presisi, recall, F1-score), parameter default LightGBM, serta visualisasi nilai \textit{feature importance}. Antarmuka halaman pengaturan dapat dilihat pada Gambar \ref{fig:ui_pengaturan}.
+    \item \textbf{Halaman Laporan} \\
+    Halaman Laporan memuat tabel riwayat hasil klasifikasi (batch maupun manual) yang telah disimpan sebagai laporan, lengkap dengan judul, tanggal, jumlah data, serta ringkasan jumlah pelanggan layak dan tidak layak. Admin dapat menyaring daftar laporan berdasarkan rentang tanggal dan membuka detail masing-masing laporan. Antarmuka halaman laporan dapat dilihat pada Gambar \ref{fig:ui_laporan}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.85\textwidth]{ui_laporan}
+        \caption{Implementasi Halaman Laporan}
+        \label{fig:ui_laporan}
+    \end{figure}
+
+    \item \textbf{Halaman Pengaturan} \\
+    Halaman Pengaturan menampilkan profil admin yang sedang masuk (nama, email, dan peran) beserta formulir untuk mengganti password akun. Pada tahap MVP ini, fitur ganti password masih bersifat dummy karena mekanisme autentikasi sesungguhnya baru akan diintegrasikan dengan Supabase pada tahap pengembangan berikutnya. Antarmuka halaman pengaturan dapat dilihat pada Gambar \ref{fig:ui_pengaturan}.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.85\textwidth]{ui_pengaturan}
-        \caption{Implementasi Halaman Pengaturan Model}
+        \caption{Implementasi Halaman Pengaturan}
         \label{fig:ui_pengaturan}
     \end{figure}
 \end{enumerate}
@@ -1091,12 +1100,14 @@ Aplikasi antarmuka pengguna dikembangkan menggunakan framework Next.js dengan ba
 Backend aplikasi dikembangkan dengan memanfaatkan layanan Supabase yang bertindak sebagai backend cloud terintegrasi untuk menyimpan data hasil klasifikasi, riwayat batch, laporan bulanan, data autentikasi user, serta metadata model. Relasi data terpusat diatur menggunakan basis data relasional PostgreSQL dengan skema tabel utama meliputi tabel \texttt{pelanggan}, tabel \texttt{hasil\_klasifikasi}, tabel \texttt{laporan}, dan tabel \texttt{pengaturan\_model}. Lapisan keamanan diatur menggunakan mekanisme \textit{Row Level Security} (RLS) di sisi Supabase untuk menjamin privasi data agar tidak diakses oleh pihak luar secara ilegal.
 
 \subsection{Implementasi Layanan Prediksi (API)}
-Layanan prediksi machine learning dikembangkan menggunakan bahasa pemrograman Python dengan framework Flask yang berjalan secara independen di sisi server pada port 5000. Layanan ini bertindak sebagai API server yang bertugas memproses data masukan dari frontend, melakukan pra-pemrosesan data secara dinamis, memuat model biner LightGBM, melakukan kalkulasi prediksi, serta mengembalikan hasil berupa status kelayakan dan probabilitas klasifikasi dalam format JSON. Kontrak endpoint API yang diimplementasikan disajikan pada tabel berikut:
+Layanan prediksi machine learning dikembangkan menggunakan bahasa pemrograman Python dengan framework Flask yang berjalan secara independen di sisi server pada port 5000. Layanan ini bertindak sebagai API server yang bertugas memproses data masukan dari frontend, melakukan pra-pemrosesan data secara dinamis, memuat model biner LightGBM, melakukan kalkulasi prediksi, serta mengembalikan hasil berupa status kelayakan dan probabilitas klasifikasi dalam format JSON. Logika preprocessing dan pelatihan pada layanan ini identik dengan yang dijalankan pada \texttt{main.ipynb}, sehingga notebook berperan sebagai tempat eksplorasi dan pelatihan awal model, sedangkan \texttt{app.py} melayaninya sebagai REST API. Kontrak endpoint API yang diimplementasikan disajikan pada tabel berikut:
 \begin{enumerate}
-    \item \texttt{POST /api/predict/single} : Melakukan klasifikasi data masukan tunggal dari input manual.
-    \item \texttt{POST /api/predict/batch} : Melakukan klasifikasi data masukan berukuran besar melalui file CSV/Excel yang diunggah.
-    \item \texttt{GET /api/models/active} : Mengambil metadata performa dan profil parameter model LightGBM yang aktif.
-    \item \texttt{POST /api/train} : Memicu proses pelatihan ulang (\textit{retraining}) model secara asinkron apabila ada penambahan dataset baru.
+    \item \texttt{POST /api/preprocess} : Menjalankan pipeline pra-pemrosesan (cleaning, penanganan nilai kosong, encoding, normalisasi, dan split data) terhadap dataset yang dipilih.
+    \item \texttt{POST /api/train} : Memicu proses pelatihan (\textit{retraining}) model LightGBM secara asinkron menggunakan parameter yang ditentukan, dan mengembalikan \texttt{job\_id} untuk dipantau progresnya.
+    \item \texttt{GET /api/train/status/\allowbreak<job\_id>} : Memeriksa progres dan log pelatihan model yang sedang berjalan berdasarkan \texttt{job\_id}.
+    \item \texttt{GET /api/evaluate/\allowbreak<model\_id>} : Mengambil metrik evaluasi (accuracy, precision, recall, F1-score, confusion matrix, dan feature importance) beserta parameter dari model yang telah dilatih.
+    \item \texttt{POST /api/predict} : Melakukan klasifikasi data masukan, baik input manual (JSON tunggal) maupun upload batch (file CSV/Excel), ditentukan melalui parameter \texttt{mode}.
+    \item \texttt{GET /api/models} dan \texttt{POST /api/models/\allowbreak<model\_id>/activate} : Menampilkan daftar model yang tersedia beserta performanya, serta mengaktifkan salah satu model sebagai model produksi.
 \end{enumerate}
 
 \section{Preprocessing Data}
