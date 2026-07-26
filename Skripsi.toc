@@ -35,11 +35,11 @@
 \contentsline {subsection}{\numberline {3.3.1}Arsitektur Sistem}{31}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Use Case Diagram}{32}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Activity Diagram}{34}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Metode dan Variabel Penelitian}{38}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Metode dan Variabel Penelitian}{37}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Teknik Pengujian}{38}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Pengujian Black Box}{39}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Pengujian Performa Model}{40}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Confusion Matrix}{41}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.1}Pengujian Black Box}{38}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Pengujian Performa Model}{39}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Confusion Matrix}{40}{subsection.3.5.3}%
 \contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{42}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Hasil Implementasi Sistem}{43}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Implementasi Antarmuka (UI)}{43}{subsection.4.1.1}%
