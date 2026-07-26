@@ -739,7 +739,7 @@ Melalui kombinasi fungsi objektif dan perhitungan gain tersebut, LightGBM mampu 
 %%=============================================================
 \chapter[METODOLOGI PENELITIAN]{\\ METODOLOGI PENELITIAN}
 
-\section{Data dan Pengumpulan data}
+\section{Pengumpulan Data}
 Tahap pengumpulan data merupakan langkah awal yang penting dalam penelitian untuk memastikan ketersediaan data yang relevan dalam proses klasifikasi kelayakan penerima subsidi listrik rumah tangga. Data yang digunakan dalam penelitian ini merupakan kombinasi antara data sekunder dan data sintetis. Data sekunder diperoleh dari Dinas Sosial dan berjumlah 1.000 data rumah tangga yang memuat informasi mengenai kondisi sosial ekonomi masyarakat. Sementara itu, data sintetis digunakan untuk melengkapi atribut teknis kelistrikan yang tidak tersedia pada data Dinas Sosial.
 
 Data sintetis merupakan data buatan yang dibangkitkan secara sistematis sehingga memiliki karakteristik yang menyerupai data nyata. Dalam penelitian ini, pembangkitan data sintetis dilakukan menggunakan pendekatan \textit{rule-based synthetic data generation}, yaitu menghasilkan data berdasarkan aturan yang mengacu pada karakteristik sosial ekonomi yang tersedia pada data Dinas Sosial serta ketentuan penerima subsidi listrik yang diatur dalam regulasi Kementerian Energi dan Sumber Daya Mineral (ESDM). Atribut yang dibangkitkan meliputi daya listrik terpasang (VA), golongan tarif, dan penggunaan listrik per bulan (kWh). Proses ini dilakukan agar dataset memiliki informasi yang lebih lengkap sehingga dapat digunakan dalam proses pelatihan model klasifikasi.
@@ -772,8 +772,7 @@ Data yang digunakan dalam penelitian ini terdiri atas beberapa komponen sebagai 
 \end{enumerate}
 Seluruh variabel tersebut digunakan sebagai fitur masukan dalam proses pelatihan dan pengujian model menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Dengan mengombinasikan data sosial ekonomi dari Dinas Sosial dan data kelistrikan sintetis yang dibangkitkan berdasarkan regulasi Kementerian ESDM, diharapkan model mampu mempelajari pola hubungan antara karakteristik pelanggan dengan status kelayakan penerima subsidi listrik secara objektif dan menghasilkan performa klasifikasi yang baik.
 
-\subsection{Sumber Data}
-Sumber data penelitian ini terbagi menjadi dua jenis:
+Berdasarkan uraian di atas, sumber data penelitian ini terbagi menjadi dua jenis:
 \begin{enumerate}
     \item \textbf{Data Sekunder} \\
     Data sekunder merupakan data yang diperoleh dari sumber yang telah tersedia tanpa melakukan pengumpulan data secara langsung dari objek penelitian. Pada penelitian ini, data sekunder terdiri atas dua jenis, yaitu:
@@ -790,7 +789,7 @@ Analisis kebutuhan sistem dilakukan untuk mengidentifikasi kebutuhan yang diperl
 
 Kebutuhan sistem pada penelitian ini dibagi menjadi dua kategori utama, yaitu kebutuhan fungsional dan kebutuhan non-fungsional. Kebutuhan fungsional menjelaskan layanan sistem yang harus tersedia, sedangkan kebutuhan non-fungsional berkaitan dengan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam proses pengembangan dan pengujian sistem.
 
-\subsection{Kebutuhan Fungsional}
+\subsection{Analisis dan Kebutuhan Fungsional}
 Kebutuhan fungsional menggambarkan kemampuan atau layanan utama yang harus dimiliki sistem agar dapat menjalankan proses klasifikasi kelayakan penerima subsidi listrik secara optimal. Sistem yang dikembangkan berfungsi sebagai alat analisis data berbasis machine learning yang digunakan oleh peneliti dalam melakukan pengolahan dan evaluasi model. Kebutuhan fungsional ini dirancang agar seluruh tahapan pengolahan data hingga penyajian hasil analisis dapat berjalan secara sistematis dan terintegrasi. Berikut merupakan kebutuhan fungsional sistem yang meliputi:
 \begin{enumerate}
     \item \textbf{Import Dataset} \\
@@ -823,7 +822,7 @@ Kebutuhan fungsional menggambarkan kemampuan atau layanan utama yang harus dimil
     Sistem mampu menyimpan dataset hasil pengolahan, model yang telah dilatih, serta hasil prediksi klasifikasi ke dalam media penyimpanan atau database.
 \end{enumerate}
 
-\subsection{Kebutuhan Non-Fungsional}
+\subsection{Analisis Kebutuhan Non-Fungsional}
 Kebutuhan non-fungsional merupakan kebutuhan pendukung yang berkaitan dengan spesifikasi teknis sistem agar proses pengembangan dan pengujian model dapat berjalan dengan baik. Kebutuhan ini mencakup perangkat keras dan perangkat lunak yang digunakan dalam penelitian.
 
 \begin{enumerate}
@@ -866,10 +865,10 @@ Kebutuhan non-fungsional merupakan kebutuhan pendukung yang berkaitan dengan spe
     \end{table}
 \end{enumerate}
 
-\section{Rancangan Sistem}
-Rancangan sistem merupakan tahap perencanaan yang dilakukan untuk menggambarkan alur kerja sistem klasifikasi kelayakan penerima subsidi listrik menggunakan metode Light Gradient Boosting Machine (LightGBM). Perancangan ini bertujuan untuk memberikan gambaran mengenai proses pengolahan data, interaksi pengguna dengan sistem, serta tahapan analisis yang dilakukan mulai dari input data hingga menghasilkan output klasifikasi. Rancangan sistem divisualisasikan menggunakan diagram UML agar alur sistem dapat dipahami secara jelas sebelum tahap implementasi dilakukan.
+\section{Perancangan Sistem}
+Perancangan sistem merupakan tahap perencanaan yang dilakukan untuk menggambarkan alur kerja sistem klasifikasi kelayakan penerima subsidi listrik menggunakan metode Light Gradient Boosting Machine (LightGBM). Perancangan ini bertujuan untuk memberikan gambaran mengenai proses pengolahan data, interaksi pengguna dengan sistem, serta tahapan analisis yang dilakukan mulai dari input data hingga menghasilkan output klasifikasi. Rancangan sistem divisualisasikan menggunakan diagram UML agar alur sistem dapat dipahami secara jelas sebelum tahap implementasi dilakukan.
 
-\subsection{Arsitektur Sistem}
+\subsection{Rancangan Arsitektur Sistem}
 Arsitektur sistem menggambarkan struktur dan alur kerja utama sistem dalam mengolah data pelanggan listrik hingga menghasilkan hasil klasifikasi kelayakan subsidi. Sistem dirancang dalam beberapa tahapan, yaitu proses input data, preprocessing data, pelatihan model LightGBM, penyimpanan data, serta penyajian output hasil analisis. Arsitektur ini menunjukkan hubungan antar komponen sistem yang saling terintegrasi dalam proses klasifikasi.
 
 \begin{figure}[H]
@@ -881,7 +880,7 @@ Arsitektur sistem menggambarkan struktur dan alur kerja utama sistem dalam mengo
 
 Gambar \ref{fig:arsitektur_sistem} menunjukkan arsitektur sistem klasifikasi kelayakan penerima subsidi listrik yang terdiri dari empat tahapan utama. Pada tahap input, sistem menerima dataset pelanggan listrik yang kemudian melalui proses cleaning data untuk menghasilkan dataset yang terstruktur. Tahap proses meliputi preprocessing data serta pelatihan model menggunakan algoritma Light Gradient Boosting Machine (LightGBM) untuk menghasilkan prediksi kelayakan subsidi listrik. Hasil pengolahan data dan model selanjutnya disimpan pada database sebagai tahap penyimpanan. Pada tahap output, sistem menampilkan hasil analisis berupa dashboard, hasil klasifikasi pelanggan layak atau tidak layak menerima subsidi, serta laporan evaluasi performa model.
 
-\subsection{Use Case Diagram}
+\subsection{Rancangan Use Case Diagram}
 Use Case Diagram digunakan untuk menggambarkan fungsi utama sistem serta interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik yang dikembangkan. Diagram ini memberikan gambaran umum mengenai layanan yang disediakan sistem serta aktivitas yang dapat dilakukan oleh pengguna selama proses pengolahan data hingga memperoleh hasil klasifikasi.
 
 \begin{figure}[H]
@@ -891,7 +890,163 @@ Use Case Diagram digunakan untuk menggambarkan fungsi utama sistem serta interak
     \label{fig:use_case_diagram}
 \end{figure}
 
-Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik. Pengguna dapat melakukan beberapa aktivitas utama, yaitu login ke dalam sistem, mengimpor dataset pelanggan listrik, melakukan preprocessing data, menjalankan proses pelatihan model menggunakan algoritma LightGBM, melakukan pengujian model, serta melihat hasil akurasi klasifikasi yang dihasilkan. Setelah seluruh proses selesai, pengguna dapat keluar dari sistem melalui fitur logout. Diagram ini menunjukkan fungsi-fungsi utama sistem yang mendukung proses analisis data secara terstruktur dan sistematis.
+Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik. Pengguna dapat melakukan beberapa aktivitas utama, yaitu login ke dalam sistem, mengimpor dataset pelanggan listrik, melakukan preprocessing data, menjalankan proses pelatihan model menggunakan algoritma LightGBM, melakukan pengujian model, serta melihat hasil akurasi klasifikasi yang dihasilkan. Setelah seluruh proses selesai, pengguna dapat keluar dari sistem melalui fitur logout. Diagram ini menunjukkan fungsi-fungsi utama sistem yang mendukung proses analisis data secara terstruktur dan sistematis. Penjelasan mengenai aktor dan setiap use case pada Gambar \ref{fig:use_case_diagram} disajikan sebagai berikut.
+
+\begin{enumerate}
+    \item \textbf{Use Case Login dan Logout}
+
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Use Case Login dan Logout}
+    \label{tab:usecase_login}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.3cm}|X|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{Login dan Logout}} \\ \hline
+    Deskripsi & Use case ini menjelaskan proses login dan logout yang dilakukan oleh pengguna pada sistem klasifikasi. \\ \hline
+    Actor & Admin \\ \hline
+    Precondition & 1. Membuka website sistem klasifikasi. \\ \hline
+    Postcondition & 1. Pengguna berhasil masuk ke halaman utama sistem klasifikasi. \newline 2. Pengguna berhasil keluar dari sistem. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Main Flow of Event}} \\ \hline
+    \textbf{Actor Action} & \textbf{System Response} \\ \hline
+    1. Pengguna membuka halaman login. & \\ \hline
+    2. Pengguna memasukkan username dan password. & \\ \hline
+    3. Pengguna menekan tombol login. & \\ \hline
+     & 4. Sistem memverifikasi username dan password dengan mencocokkan pada database. \\ \hline
+     & 5. Jika sesuai, sistem memberikan hak akses dan menampilkan halaman utama sistem klasifikasi. \\ \hline
+    6. Pengguna menekan tombol logout. & \\ \hline
+     & 7. Sistem mengakhiri sesi akses dan mengembalikan pengguna ke halaman login. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Exceptional Flow of Event}} \\ \hline
+    Langkah 4 & Jika username atau password tidak sesuai, sistem menampilkan halaman login gagal. \\ \hline
+    \end{tabularx}
+    \end{table}
+
+    \item \textbf{Use Case Import Dataset}
+
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Use Case Import Dataset}
+    \label{tab:usecase_import}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.3cm}|X|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{Import Dataset}} \\ \hline
+    Deskripsi & Use case ini menjelaskan proses mengimpor dataset pelanggan listrik ke dalam sistem. \\ \hline
+    Actor & Admin \\ \hline
+    Precondition & 1. Melakukan login. \\ \hline
+    Postcondition & Dataset pelanggan listrik tersimpan dan siap diproses pada tahap preprocessing. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Main Flow of Event}} \\ \hline
+    \textbf{Actor Action} & \textbf{System Response} \\ \hline
+    1. Pengguna memilih berkas dataset (CSV/Excel) yang akan diunggah. & \\ \hline
+    2. Pengguna menekan tombol unggah/import. & \\ \hline
+     & 3. Sistem memvalidasi format dan struktur berkas dataset. \\ \hline
+     & 4. Sistem menyimpan dataset ke dalam database. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Exceptional Flow of Event}} \\ \hline
+    Langkah 3 & Jika format berkas atau struktur kolom tidak sesuai, sistem menampilkan pesan error dan membatalkan proses import. \\ \hline
+    \end{tabularx}
+    \end{table}
+
+    \item \textbf{Use Case Preprocessing Data}
+
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Use Case Preprocessing Data}
+    \label{tab:usecase_preprocessing}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.3cm}|X|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{Preprocessing Data}} \\ \hline
+    Deskripsi & Use case ini menjelaskan proses persiapan data (cleaning, penanganan nilai kosong, encoding, normalisasi, dan pembagian data) sebelum digunakan untuk pelatihan model. \\ \hline
+    Actor & Admin \\ \hline
+    Precondition & 1. Melakukan login. \newline 2. Dataset telah berhasil diimpor. \\ \hline
+    Postcondition & Data training dan data testing siap digunakan pada tahap pelatihan model. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Main Flow of Event}} \\ \hline
+    \textbf{Actor Action} & \textbf{System Response} \\ \hline
+    1. Pengguna menekan tombol jalankan preprocessing. & \\ \hline
+     & 2. Sistem melakukan cleaning data dan penanganan nilai kosong. \\ \hline
+     & 3. Sistem melakukan encoding variabel kategorikal dan normalisasi fitur numerik. \\ \hline
+     & 4. Sistem membagi data menjadi data training dan data testing. \\ \hline
+     & 5. Sistem menampilkan ringkasan hasil preprocessing. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Exceptional Flow of Event}} \\ \hline
+    Langkah 2 & Jika dataset belum diimpor, sistem menampilkan pesan bahwa preprocessing tidak dapat dijalankan. \\ \hline
+    \end{tabularx}
+    \end{table}
+
+    \item \textbf{Use Case Pelatihan Model LightGBM}
+
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Use Case Pelatihan Model LightGBM}
+    \label{tab:usecase_training}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.3cm}|X|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{Pelatihan Model LightGBM}} \\ \hline
+    Deskripsi & Use case ini menjelaskan proses pelatihan model klasifikasi menggunakan algoritma LightGBM pada data training. \\ \hline
+    Actor & Admin \\ \hline
+    Precondition & 1. Melakukan login. \newline 2. Data training telah tersedia dari hasil preprocessing. \\ \hline
+    Postcondition & Model LightGBM yang telah dilatih tersimpan dan siap digunakan untuk prediksi. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Main Flow of Event}} \\ \hline
+    \textbf{Actor Action} & \textbf{System Response} \\ \hline
+    1. Pengguna menentukan konfigurasi hyperparameter model. & \\ \hline
+    2. Pengguna menekan tombol jalankan pelatihan. & \\ \hline
+     & 3. Sistem melatih model LightGBM menggunakan data training. \\ \hline
+     & 4. Sistem menyimpan model yang telah dilatih ke dalam database/artefak model. \\ \hline
+     & 5. Sistem menampilkan status pelatihan selesai. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Exceptional Flow of Event}} \\ \hline
+    Langkah 3 & Jika data training belum tersedia, sistem menampilkan pesan bahwa pelatihan tidak dapat dijalankan. \\ \hline
+    \end{tabularx}
+    \end{table}
+
+    \item \textbf{Use Case Pengujian Model}
+
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Use Case Pengujian Model}
+    \label{tab:usecase_pengujian_model}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.3cm}|X|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{Pengujian Model}} \\ \hline
+    Deskripsi & Use case ini menjelaskan proses pengujian model LightGBM yang telah dilatih menggunakan data testing. \\ \hline
+    Actor & Admin \\ \hline
+    Precondition & 1. Melakukan login. \newline 2. Model telah selesai dilatih. \\ \hline
+    Postcondition & Nilai metrik evaluasi model (accuracy, precision, recall, F1-score, confusion matrix) tersedia. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Main Flow of Event}} \\ \hline
+    \textbf{Actor Action} & \textbf{System Response} \\ \hline
+    1. Pengguna menekan tombol jalankan pengujian model. & \\ \hline
+     & 2. Sistem melakukan prediksi terhadap data testing menggunakan model yang telah dilatih. \\ \hline
+     & 3. Sistem menghitung metrik evaluasi (accuracy, precision, recall, F1-score) dan confusion matrix. \\ \hline
+     & 4. Sistem menyimpan hasil evaluasi model. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Exceptional Flow of Event}} \\ \hline
+    Langkah 2 & Jika model belum tersedia, sistem menampilkan pesan bahwa pengujian tidak dapat dijalankan. \\ \hline
+    \end{tabularx}
+    \end{table}
+
+    \item \textbf{Use Case Melihat Hasil Akurasi}
+
+    \begin{table}[H]
+    \setstretch{1.2}
+    \centering
+    \caption{Use Case Melihat Hasil Akurasi}
+    \label{tab:usecase_hasil_akurasi}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.3cm}|X|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Use Case}} & \multicolumn{1}{c|}{\textbf{Melihat Hasil Akurasi}} \\ \hline
+    Deskripsi & Use case ini menjelaskan proses menampilkan hasil akurasi dan hasil klasifikasi kelayakan subsidi listrik kepada pengguna. \\ \hline
+    Actor & Admin \\ \hline
+    Precondition & 1. Melakukan login. \newline 2. Model telah diuji dan hasil evaluasi tersedia. \\ \hline
+    Postcondition & Menampilkan hasil klasifikasi beserta nilai akurasi dan metrik evaluasi model. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Main Flow of Event}} \\ \hline
+    \textbf{Actor Action} & \textbf{System Response} \\ \hline
+    1. Pengguna membuka halaman hasil klasifikasi. & \\ \hline
+     & 2. Sistem mengambil data hasil klasifikasi dan metrik evaluasi dari database. \\ \hline
+     & 3. Sistem menampilkan hasil klasifikasi kelayakan pelanggan beserta nilai akurasi model. \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Exceptional Flow of Event}} \\ \hline
+    Langkah 2 & Jika belum terdapat hasil klasifikasi, sistem menampilkan tampilan kosong (\textit{empty state}). \\ \hline
+    \end{tabularx}
+    \end{table}
+\end{enumerate}
 
 \subsection{Activity Diagram}
 Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Adapun Activity Diagram pada sistem adalah sebagai berikut:
