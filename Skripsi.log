@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.26)  26 JUL 2026 19:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.26)  26 JUL 2026 19:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -97,6 +97,8 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen150
 \Gin@req@width=\dimen151
+) (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 ) (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count286
@@ -787,36 +789,38 @@ File: pgflibraryshapes.multipart.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))
 \mylen=\skip129
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 97.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 123.
  (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count363
+) (Skripsi.aux (C:\Program Files\MiKTeX\tex/generic/babel/locale/en\babel-english.tex)
+Package babel Info: Importing data for english
+(babel)             from babel-en.ini. Reported on input line 13.
 )
-No file Skripsi.aux.
 \openout1 = `Skripsi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 155.
-LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line 155.
-(C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\omspzccm.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 181.
+LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line 181.
+ (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
  (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count364
@@ -875,1107 +879,441 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 155.
+Package hyperref Info: Link coloring OFF on input line 181.
+(Skripsi.out) (Skripsi.out)
 \@outlinefile=\write4
 \openout4 = `Skripsi.out'.
 
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:188: LaTeX Error: File `logo-pnl-skripsi' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.188 ...degraphics[width=3.5cm]{logo-pnl-skripsi}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line 197.
-(C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\ot1ptmcm.fd
+<placeholder.pdf, id=371, 191.5165pt x 148.83707pt>
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 214.
+(pdftex.def)             Requested size: 99.58464pt x 77.39116pt.
+LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line 223.
+ (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )<<ot1.cmap>>
-LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line 197.
+LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line 223.
  (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )<<oml.cmap>><<oms.cmap>>
-LaTeX Font Info:    Trying to load font information for OMX+psycm on input line 197.
+LaTeX Font Info:    Trying to load font information for OMX+psycm on input line 223.
  (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )<<omx.cmap>>
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 197.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 223.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 197.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 223.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 197.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 197.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 223.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 223.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 197.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 223.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/acern/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] [6] [7
+{C:/Users/acern/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc} <./placeholder.pdf>] [2] [3] [4] [5] [6] [7
 
-] (C:\Program Files\MiKTeX\tex/generic/babel/locale/en\babel-english.tex)
-Package babel Info: Importing data for english
-(babel)             from babel-en.ini. Reported on input line 472.
- [8]
-No file Skripsi.toc.
+] [8] (Skripsi.toc [9] [10])
 \tf@toc=\write5
 \openout5 = `Skripsi.toc'.
 
-[9]
-No file Skripsi.lof.
+ [11] (Skripsi.lof [12])
 \tf@lof=\write6
 \openout6 = `Skripsi.lof'.
 
-[10]
-No file Skripsi.lot.
+ [13] (Skripsi.lot)
 \tf@lot=\write7
 \openout7 = `Skripsi.lot'.
 
-[11]
+ [14]
 Bab I.
-[1
+[2
 
-] [2] [3] [4] [5] [6] [7] [8] [9]
+] [3] [4] [5] [6]
 Bab II.
+[7
 
-LaTeX Warning: Reference `tab:sota' on page 10 undefined on input line 619.
+] [8
 
-[10
+] [9] [10] [11
 
-] [11
-
-] [12] [13]
-
-LaTeX Warning: Reference `tab:sota' on page 14 undefined on input line 720.
-
-[14
-
-] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29]
+] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26]
 Bab III.
-[30
+[27
 
-]
-
-LaTeX Warning: Reference `tab:jadwal_penelitian' on page 31 undefined on input line 896.
-
-[31]
-
-LaTeX Warning: Reference `tab:alat_bahan' on page 32 undefined on input line 918.
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:951: ignored error: Infinite glue shrinkage found in box being split [32]
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:951: ignored error: Infinite glue shrinkage found in box being split [33] [34] [35] [36]
-
-LaTeX Warning: Reference `tab:kategori_sales' on page 37 undefined on input line 978.
-
+] [28]
+e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:945: ignored error: Infinite glue shrinkage found in box being split [29]
+e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:945: ignored error: Infinite glue shrinkage found in box being split [30] [31] [32] [33]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 994.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 988.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 994.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 988.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 994.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 988.
+ [34] [35] [36] [37] [38] [39] [40] [41] [42]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1138.
+(pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
+ [43] [44] [45]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1154.
+(pdftex.def)             Requested size: 613.58171pt x 476.8833pt.
 
-LaTeX Warning: Reference `tab:top_products' on page 37 undefined on input line 1001.
 
-[37] [38]
-
-LaTeX Warning: Reference `tab:daily_sales_schema' on page 39 undefined on input line 1043.
-
-[39]
-
-LaTeX Warning: Reference `tab:weekly_sales_schema' on page 40 undefined on input line 1066.
-
-
-LaTeX Warning: Reference `tab:monthly_sales_schema' on page 40 undefined on input line 1066.
-
-[40] [41] [42] [43]
-
-LaTeX Warning: Reference `subsec:lstm_alg' on page 44 undefined on input line 1122.
-
-[44]
-
-LaTeX Warning: Reference `fig:alur_penelitian' on page 45 undefined on input line 1140.
-
-[45]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1144: LaTeX Error: File `alur_penelitian' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1144 ...s[width=0.85\textwidth]{alur_penelitian}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Float too large for page by 102.1447pt on input line 1157.
 
 [46]
-
-LaTeX Warning: Reference `fig:use_case' on page 47 undefined on input line 1155.
-
-[47]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1160: LaTeX Error: File `use_case_drawio' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1160 ...s[width=0.95\linewidth]{use_case_drawio}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[48
-
-
-]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-
-LaTeX Warning: Reference `tab:aktor' on page 49 undefined on input line 1168.
-
-[49
-
-]
-
-LaTeX Warning: Reference `tab:usecase' on page 50 undefined on input line 1188.
-
-
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1194--1194
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 1188--1188
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1191--1196
+Overfull \hbox (9.1472pt too wide) in alignment at lines 1185--1190
  [] [] [] 
  []
 
 
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1198--1198
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 1192--1192
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1196--1200
+Overfull \hbox (9.1472pt too wide) in alignment at lines 1190--1194
  [] [] [] 
  []
 
 
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1200--1203
+Overfull \hbox (9.1472pt too wide) in alignment at lines 1194--1197
  [] [] [] 
  []
 
 
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1203--1205
+Overfull \hbox (9.1472pt too wide) in alignment at lines 1197--1199
  [] [] [] 
  []
 
 
-Overfull \hbox (9.1472pt too wide) in alignment at lines 1205--1239
+Overfull \hbox (9.1472pt too wide) in alignment at lines 1199--1233
  [] [] [] 
  []
 
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1239: ignored error: Infinite glue shrinkage found in box being split [50]
-
-LaTeX Warning: Reference `fig:arsitektur_sistem' on page 51 undefined on input line 1244.
+e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1233: ignored error: Infinite glue shrinkage found in box being split [47
 
 
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1248: LaTeX Error: File `arsitektur_sistem' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1248 ...width=0.85\textwidth]{arsitektur_sistem}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[51] [52]
-
-LaTeX Warning: Reference `fig:class_diagram' on page 53 undefined on input line 1263.
-
-[53]
-
-LaTeX Warning: File `../Rancangan/Class Diagram/Class Diagram.drawio.png' not found on input line 1267.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1267: Package pdftex.def Error: File `../Rancangan/Class Diagram/Class Diagram.drawio.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1267 .../Class Diagram/Class Diagram.drawio.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[54]
-
-LaTeX Warning: Reference `fig:act-checkout' on page 55 undefined on input line 1287.
-
-
-LaTeX Warning: File `activity_checkout.png' not found on input line 1293.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1293: Package pdftex.def Error: File `activity_checkout.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1293 ...,keepaspectratio]{activity_checkout.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[55]
-
-LaTeX Warning: Reference `fig:act-sync' on page 56 undefined on input line 1299.
-
-
-LaTeX Warning: File `activity_sync.png' not found on input line 1305.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1305: Package pdftex.def Error: File `activity_sync.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1305 ...ight,keepaspectratio]{activity_sync.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[56]
-
-LaTeX Warning: Reference `fig:act-ai' on page 57 undefined on input line 1311.
-
-
-LaTeX Warning: File `activity_ai.png' not found on input line 1320.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1320: Package pdftex.def Error: File `activity_ai.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1320 ...height,keepaspectratio]{activity_ai.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[57]
-
-LaTeX Warning: Reference `fig:act-produk' on page 58 undefined on input line 1326.
-
-
-LaTeX Warning: File `activity_produk.png' not found on input line 1332.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1332: Package pdftex.def Error: File `activity_produk.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1332 ...ht,keepaspectratio]{activity_produk.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[58]
-
-LaTeX Warning: Reference `fig:erd' on page 59 undefined on input line 1340.
-
-[59]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1344: LaTeX Error: File `erd_new' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1344 ...92\textheight, keepaspectratio]{erd_new}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[60
+] [48]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1242.
+(pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
+ [49] [50] [51]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1261.
+(pdftex.def)             Requested size: 366.47076pt x 284.82593pt.
+ [52]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1287.
+(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
+ [53]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1299.
+(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
+ [54]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1314.
+(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
+ [55]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1326.
+(pdftex.def)             Requested size: 258.93646pt x 201.23248pt.
+ [56] [57]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1338.
+(pdftex.def)             Requested size: 471.63333pt x 366.52986pt.
+ [58] [59
 
 
 ]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-
-LaTeX Warning: Reference `tab:database' on page 61 undefined on input line 1350.
-
-[61
-
-]
-
-LaTeX Warning: Reference `fig:lstm_alur' on page 62 undefined on input line 1385.
-
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1441.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1435.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1441.
-[62]
-
-LaTeX Warning: Reference `fig:lstm_alur' on page 63 undefined on input line 1446.
-
-[63]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1451.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1435.
+ [60]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1445.
  (C:\Users\acern\AppData\Roaming\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [64] [65] [66] [67] [68] [69]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1523: LaTeX Error: File `wireframe_register' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1523 ...idth=0.35\textwidth]{wireframe_register}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[70]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1536: LaTeX Error: File `wireframe_login' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1536 ...s[width=0.45\textwidth]{wireframe_login}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1547: LaTeX Error: File `wireframe_store_list' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1547 ...th=0.45\textwidth]{wireframe_store_list}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1558: LaTeX Error: File `wireframe_dashboard_owner' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1558 ...45\textwidth]{wireframe_dashboard_owner}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1569: LaTeX Error: File `wireframe_payment' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1569 ...width=0.45\textwidth]{wireframe_payment}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[71]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1580: LaTeX Error: File `wireframe_transaction_history' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1580 ...extwidth]{wireframe_transaction_history}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1591: LaTeX Error: File `wireframe_add_product' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1591 ...h=0.45\textwidth]{wireframe_add_product}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1602: LaTeX Error: File `wireframe_manage_categories' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1602 ...\textwidth]{wireframe_manage_categories}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1613: LaTeX Error: File `wireframe_reports' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1613 ...width=0.45\textwidth]{wireframe_reports}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[72]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1624: LaTeX Error: File `wireframe_settings' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1624 ...idth=0.45\textwidth]{wireframe_settings}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1635: LaTeX Error: File `wireframe_store_info' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1635 ...th=0.45\textwidth]{wireframe_store_info}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1646: LaTeX Error: File `wireframe_digital_receipt' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1646 ...45\textwidth]{wireframe_digital_receipt}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1657: LaTeX Error: File `wireframe_product_catalog' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1657 ...45\textwidth]{wireframe_product_catalog}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[73]
-
-LaTeX Warning: Reference `fig:lstm_alur' on page 74 undefined on input line 1672.
-
-[74]
-
-LaTeX Warning: Reference `tab:blackbox' on page 75 undefined on input line 1678.
-
-[75]
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1684--1684
+) [61] [62] [63] [64] [65] [66]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1517.
+(pdftex.def)             Requested size: 139.42093pt x 108.35036pt.
+ [67]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1530.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1541.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1552.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+ [68]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1563.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1574.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+ [69]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1585.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1596.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+ [70]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1607.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1618.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+ [71]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1629.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1640.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+ [72]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1651.
+(pdftex.def)             Requested size: 179.25114pt x 139.30501pt.
+ [73] [74]
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 1678--1678
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1681--1686
+Overfull \hbox (21.54718pt too wide) in alignment at lines 1675--1680
  [] [] [] [] 
  []
 
 
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 1689--1689
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 1683--1683
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1686--1691
+Overfull \hbox (21.54718pt too wide) in alignment at lines 1680--1685
  [] [] [] [] 
  []
 
 
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1691--1694
+Overfull \hbox (21.54718pt too wide) in alignment at lines 1685--1688
  [] [] [] [] 
  []
 
 
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1694--1696
+Overfull \hbox (21.54718pt too wide) in alignment at lines 1688--1690
  [] [] [] [] 
  []
 
 
-Overfull \hbox (21.54718pt too wide) in alignment at lines 1696--1726
+Overfull \hbox (21.54718pt too wide) in alignment at lines 1690--1720
  [] [] [] [] 
  []
 
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1726: ignored error: Infinite glue shrinkage found in box being split [76] [77] [78] [79]
+e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1720: ignored error: Infinite glue shrinkage found in box being split [75]
+e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1720: ignored error: Infinite glue shrinkage found in box being split [76] [77] [78] [79]
 Bab IV.
 [80
 
 ]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1771: LaTeX Error: File `ui_01_register' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1771 ...ics[width=0.4\textwidth]{ui_01_register}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[81]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1782: LaTeX Error: File `ui_02_login' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1782 ...aphics[width=0.4\textwidth]{ui_02_login}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1793: LaTeX Error: File `ui_03_daftar_toko' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1793 ...[width=0.4\textwidth]{ui_03_daftar_toko}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1804: LaTeX Error: File `ui_04_pilih_toko' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1804 ...s[width=0.4\textwidth]{ui_04_pilih_toko}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[82]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1815: LaTeX Error: File `ui_05_dashboard_owner' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1815 ...th=0.4\textwidth]{ui_05_dashboard_owner}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1828: LaTeX Error: File `ui_06a_kelola_produk' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1828 ...[width=\textwidth]{ui_06a_kelola_produk}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1835: LaTeX Error: File `ui_06b_tambah_produk' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1835 ...[width=\textwidth]{ui_06b_tambah_produk}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1849: LaTeX Error: File `ui_07_kelola_kategori' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1849 ...th=0.4\textwidth]{ui_07_kelola_kategori}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[83]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1862: LaTeX Error: File `ui_08_kelola_stok' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1862 ...ics[width=\textwidth]{ui_08_kelola_stok}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1869: LaTeX Error: File `ui_09_modal_edit_stok' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1869 ...width=\textwidth]{ui_09_modal_edit_stok}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1883: LaTeX Error: File `ui_10_riwayat_stok' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1883 ...width=0.4\textwidth]{ui_10_riwayat_stok}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1896: LaTeX Error: File `ui_11_kasir_pos' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1896 ...phics[width=\textwidth]{ui_11_kasir_pos}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1903: LaTeX Error: File `ui_12_detail_pesanan' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1903 ...[width=\textwidth]{ui_12_detail_pesanan}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[84]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1917: LaTeX Error: File `ui_13_pembayaran' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...s[width=0.4\textwidth]{ui_13_pembayaran}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1928: LaTeX Error: File `ui_14_riwayat_transaksi' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1928 ...=0.4\textwidth]{ui_14_riwayat_transaksi}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1939: LaTeX Error: File `ui_15_struk_digital' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1939 ...idth=0.4\textwidth]{ui_15_struk_digital}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[85]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1952: LaTeX Error: File `ui_16a_laporan_penjualan' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1952 ...th=\textwidth]{ui_16a_laporan_penjualan}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1959: LaTeX Error: File `ui_16b_laporan_penjualan' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1959 ...th=\textwidth]{ui_16b_laporan_penjualan}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1975: LaTeX Error: File `ui_17a_smart_analitik' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1975 ...width=\textwidth]{ui_17a_smart_analitik}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1982: LaTeX Error: File `ui_17b_smart_analitik' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1982 ...width=\textwidth]{ui_17b_smart_analitik}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:1992: LaTeX Error: File `ui_18_riwayat_analisis' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1992 ...h=0.4\textwidth]{ui_18_riwayat_analisis}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[86] [87] [88]
-
-LaTeX Warning: Reference `lst:flask_daily' on page 89 undefined on input line 2028.
-
-[89]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 2030.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1765.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [81]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1776.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1787.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [82]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1798.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [83]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1809.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1822.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1829.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [84]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1843.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1856.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1863.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [85]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1877.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1890.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1897.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [86]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1911.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1922.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [87]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1933.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1946.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1953.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [88]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1969.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1976.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [89]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 1986.
+(pdftex.def)             Requested size: 159.333pt x 123.82541pt.
+ [90] [91] [92]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 2024.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 2039.
- [90]
-
-LaTeX Warning: Reference `tab:statistik_revenue_harian' on page 91 undefined on input line 2072.
-
-[91] [92]
-
-LaTeX Warning: Reference `tab:pembagian_data_sequence' on page 93 undefined on input line 2098.
-
-[93]
-
-LaTeX Warning: Reference `lst:preprocessing' on page 94 undefined on input line 2114.
-
-[94]
-
-LaTeX Warning: Reference `lst:build_lstm' on page 95 undefined on input line 2150.
-
-[95] [96]
-
-LaTeX Warning: Reference `fig:lstm_alur' on page 97 undefined on input line 2180.
-
-
-LaTeX Warning: Reference `fig:lstm_kurva_training' on page 97 undefined on input line 2180.
-
-[97]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:2184: LaTeX Error: File `Gambar/lstm_harian_disederhanakan_plot_kurva_training' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2184 ...rian_disederhanakan_plot_kurva_training}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `lst:timegan' on page 98 undefined on input line 2193.
-
-[98] [99]
-
-LaTeX Warning: Reference `lst:recursive' on page 100 undefined on input line 2230.
-
-[100] [101]
-
-LaTeX Warning: Reference `lst:metrics' on page 102 undefined on input line 2271.
-
-[102] [103]
-
-LaTeX Warning: Reference `tab:eval_baseline_comp' on page 104 undefined on input line 2294.
-
-
-LaTeX Warning: Reference `tab:eval_baseline_comp' on page 104 undefined on input line 2311.
-
-
-LaTeX Warning: Reference `tab:eval_baseline_comp' on page 104 undefined on input line 2311.
-
-
-LaTeX Warning: Reference `fig:lstm_actual_predicted' on page 104 undefined on input line 2311.
-
-[104]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:2315: LaTeX Error: File `Gambar/lstm_harian_hybrid_residual_plot_1' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2315 ...mbar/lstm_harian_hybrid_residual_plot_1}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[105]
-
-LaTeX Warning: Reference `lst:multiseed' on page 106 undefined on input line 2322.
-
-
-LaTeX Warning: Reference `tab:statistik_multiseed' on page 106 undefined on input line 2322.
-
-[106]
-
-LaTeX Warning: Reference `tab:statistik_multiseed' on page 107 undefined on input line 2364.
-
-
-LaTeX Warning: Reference `fig:boxplot_multiseed' on page 107 undefined on input line 2364.
-
-[107]
-
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:2368: LaTeX Error: File `Gambar/evaluasi_multiseed_standalone_plot_1' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2368 ...ar/evaluasi_multiseed_standalone_plot_1}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `tab:eval_timegan' on page 108 undefined on input line 2375.
-
-
-Overfull \hbox (13.71461pt too wide) in paragraph at lines 2382--2390
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 2033.
+ [93] [94] [95] [96] [97] [98] [99] [100]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 2178.
+(pdftex.def)             Requested size: 278.83578pt x 216.71434pt.
+ [101] [102] [103] [104] [105] [106] [107] [108]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 2309.
+(pdftex.def)             Requested size: 338.59023pt x 263.15541pt.
+ [109] [110] [111]
+File: placeholder.pdf Graphic file (type pdf)
+<use placeholder.pdf>
+Package pdftex.def Info: placeholder.pdf  used on input line 2362.
+(pdftex.def)             Requested size: 298.75394pt x 232.19394pt.
+ [112]
+Overfull \hbox (13.71461pt too wide) in paragraph at lines 2376--2384
  [][] 
  []
 
-
-LaTeX Warning: Reference `tab:eval_timegan' on page 108 undefined on input line 2392.
-
-
-LaTeX Warning: Reference `tab:eval_baseline_comp' on page 108 undefined on input line 2392.
-
-[108] [109]
-
-LaTeX Warning: Reference `tab:blackbox' on page 110 undefined on input line 2402.
-
-
-LaTeX Warning: Reference `tab:hasil_blackbox' on page 110 undefined on input line 2406.
-
-[110]
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 2412--2412
+[113] [114] [115]
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 2406--2406
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2409--2414
+Overfull \hbox (14.03032pt too wide) in alignment at lines 2403--2408
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.59213pt too wide) in paragraph at lines 2416--2416
+Overfull \hbox (0.59213pt too wide) in paragraph at lines 2410--2410
  []|\T1/ptm/b/n/12 No.| 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2414--2418
+Overfull \hbox (14.03032pt too wide) in alignment at lines 2408--2412
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2418--2420
+Overfull \hbox (14.03032pt too wide) in alignment at lines 2412--2414
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2420--2422
+Overfull \hbox (14.03032pt too wide) in alignment at lines 2414--2416
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (14.03032pt too wide) in alignment at lines 2422--2451
+Overfull \hbox (14.03032pt too wide) in alignment at lines 2416--2445
  [] [] [] [] [] 
  []
 
-e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:2451: ignored error: Infinite glue shrinkage found in box being split [111]
-
-LaTeX Warning: Reference `tab:hasil_blackbox' on page 112 undefined on input line 2454.
-
-
-LaTeX Warning: Reference `tab:hasil_sync' on page 112 undefined on input line 2456.
-
-[112]
-
-LaTeX Warning: Reference `tab:hasil_whitebox' on page 113 undefined on input line 2482.
-
-[113] [114]
+e:/SKRIPSI/Siti/Skripsi/Skripsi.tex:2445: ignored error: Infinite glue shrinkage found in box being split [116] [117] [118] [119]
 Overfull \vbox (32.04378pt too high) has occurred while \output is active []
 
- [115]
-
-LaTeX Warning: Reference `tab:hasil_whitebox' on page 116 undefined on input line 2512.
-
-[116] [117] [118] [119] [120] [121] [122] [123]
+ [120] [121] [122] [123] [124] [125] [126] [127] [128]
 Bab V.
-[124
+[129
 
-] [125] [126] [127] [128] [129] [130] [131] [132]
+] [130] [131] [132] [133] [134] [135] [136] [137]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -2009,53 +1347,40 @@ Bab V.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Overfull \hbox (28.45274pt too wide) in paragraph at lines 2832--2833
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 2826--2827
 [][] 
  []
 
-[133
+[138
 
 ]
-Overfull \hbox (28.45274pt too wide) in paragraph at lines 2870--2871
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 2864--2865
 [][] 
  []
 
-[134] (Skripsi.aux)
+[139] (Skripsi.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Skripsi.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Skripsi.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B661C5BB9BD0404817712630A1DF814E;17554.
+Package rerunfilecheck Info: File `Skripsi.out' has not changed.
+(rerunfilecheck)             Checksum: 5196B21C0178E17448F83627BC35BA96;17391.
  ) 
 Here is how much of TeX's memory you used:
- 31802 strings out of 467871
- 599418 string characters out of 5428443
- 1052815 words of memory out of 5000000
- 59412 multiletter control sequences out of 15000+600000
+ 31022 strings out of 467871
+ 572448 string characters out of 5428443
+ 1062028 words of memory out of 5000000
+ 58611 multiletter control sequences out of 15000+600000
  715151 words of font info for 174 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,17n,94p,2066b,2665s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,17n,94p,1910b,2639s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Skripsi.pdf (145 pages, 528374 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Skripsi.pdf (152 pages, 619221 bytes).
 PDF statistics:
- 1330 PDF objects out of 1440 (max. 8388607)
- 652 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1849 PDF objects out of 2073 (max. 8388607)
+ 657 named destinations out of 1000 (max. 500000)
+ 766 words of extra memory for PDF output out of 10000 (max. 10000000)
 

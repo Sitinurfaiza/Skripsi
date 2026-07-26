@@ -12,6 +12,32 @@
 \usepackage[raggedrightboxes]{ragged2e}
 \usepackage{graphicx}
 \graphicspath{{../Project/gambar/}{gambar/}{../Rancangan/Mermaid/}{../Rancangan/Wireframe/}}
+\usepackage{letltxmacro}
+\makeatletter
+\newcommand{\CheckGraphicExists}[3]{%
+  \begingroup
+  \let\input@path\Ginput@path
+  \def\foundfile{0}%
+  \IfFileExists{#1}{\def\foundfile{1}}{}%
+  \IfFileExists{#1.pdf}{\def\foundfile{1}}{}%
+  \IfFileExists{#1.png}{\def\foundfile{1}}{}%
+  \IfFileExists{#1.jpg}{\def\foundfile{1}}{}%
+  \IfFileExists{#1.jpeg}{\def\foundfile{1}}{}%
+  \if\foundfile1%
+    \endgroup #2%
+  \else
+    \endgroup #3%
+  \fi
+}
+\LetLtxMacro\oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \CheckGraphicExists{#2}{%
+    \oldincludegraphics[#1]{#2}%
+  }{%
+    \oldincludegraphics[#1]{placeholder.pdf}%
+  }%
+}
+\makeatother
 \usepackage{float}
 \usepackage{indentfirst}
 \setlength\parindent{1cm}
@@ -169,9 +195,9 @@
 \begin{center}
 
 {\fontsize{14}{16}\selectfont\bfseries
-RANCANG BANGUN APLIKASI \textit{POINT OF SALE}\\[4pt]
-DENGAN FITUR PREDIKSI PENJUALAN HARIAN\\[4pt]
-MENGGUNAKAN METODE \textit{LONG SHORT-TERM MEMORY} (LSTM)}
+KLASIFIKASI KELAYAKAN PENERIMA SUBSIDI LISTRIK\\[4pt]
+RUMAH TANGGA PELANGGAN PLN ACEH\\[4pt]
+MENGGUNAKAN METODE \textit{LIGHT GRADIENT BOOSTING MACHINE} (LIGHTGBM)}
 
 \vspace{1.5cm}
 
@@ -179,8 +205,8 @@ MENGGUNAKAN METODE \textit{LONG SHORT-TERM MEMORY} (LSTM)}
 
 \vspace{1cm}
 
-Diajukan Sebagai Salah Satu Syarat Untuk Menyelesaikan\\
-Pendidikan Jenjang Sarjana Terapan\\
+Diajukan Sebagai Salah Satu Syarat Untuk\\
+Menyelesaikan Pendidikan Jenjang Sarjana Terapan\\
 Pada Politeknik Negeri Lhokseumawe
 
 \vspace{1.5cm}
@@ -190,12 +216,12 @@ Pada Politeknik Negeri Lhokseumawe
 \vspace{1.5cm}
 
 Oleh:\\[0.3cm]
-{\bfseries MUHAMMAD KHOLIS}
+{\bfseries SITI NUR FAIZA}
 
 \vspace{1cm}
 
 \begin{tabular}{@{}p{3.5cm}l@{}}
-NIM & : 2022573010098 \\
+NIM & : 2022573010045 \\
 Program Studi & : Teknik Informatika \\
 Jurusan & : Teknologi Informasi dan Komputer \\
 \end{tabular}
@@ -208,8 +234,6 @@ POLITEKNIK NEGERI LHOKSEUMAWE\\[4pt]
 TAHUN 2026}
 
 \vspace{1cm}
-
-
 
 \end{center}
 \end{spacing}
@@ -228,7 +252,7 @@ TAHUN 2026}
 \end{center}
 \vspace{0.5cm}
 
-\noindent Skripsi yang berjudul \textit{``Rancang Bangun Aplikasi Point of Sale dengan Fitur Prediksi Penjualan Harian Menggunakan Metode Long Short-Term Memory (LSTM)''}, disusun oleh Muhammad Kholis, NIM 2022573010098, Program Studi Teknik Informatika, Jurusan Teknologi Informasi dan Komputer Politeknik Negeri Lhokseumawe, telah memenuhi syarat untuk dipertanggungjawabkan di hadapan dewan penguji.
+\noindent Skripsi yang berjudul \textit{``Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting Machine (LightGBM)''}, disusun oleh Siti Nur Faiza, NIM 2022573010045, Program Studi Teknik Informatika, Jurusan Teknologi Informasi dan Komputer Politeknik Negeri Lhokseumawe, telah memenuhi syarat untuk dipertanggungjawabkan di hadapan dewan penguji.
 
 \vspace{1.5cm}
 
@@ -238,7 +262,7 @@ TAHUN 2026}
 Pembimbing I}
 \end{minipage}%
 \begin{minipage}[t]{0.48\textwidth}
-\parbox[t][1cm][t]{\linewidth}{Buket Rata, 16 Juli 2026\\
+\parbox[t][1cm][t]{\linewidth}{Buketrata, 22 Juli 2026\\
 Pembimbing II}
 \end{minipage}
 
@@ -246,12 +270,12 @@ Pembimbing II}
 
 \noindent
 \begin{minipage}[t]{0.48\textwidth}
-\parbox[t][1cm][t]{\linewidth}{\bfseries Zulfan Khairil Simbolon, S.T., M.Eng.}\\
-NIP. 196909021993031004
+\parbox[t][1cm][t]{\linewidth}{\bfseries Salahuddin, S.T., M.CS}\\
+NIP. 19740424 200212 1 001
 \end{minipage}%
 \begin{minipage}[t]{0.48\textwidth}
-\parbox[t][1cm][t]{\linewidth}{\bfseries Azhar, S.T., M.T.}\\
-NIP. 196408301990031005
+\parbox[t][1cm][t]{\linewidth}{\bfseries Hendrawaty, ST., M.T.}\\
+NIP. 19700226199802 2 001
 \end{minipage}
 
 \vspace{1.5cm}
@@ -276,12 +300,12 @@ Teknik Informatika,}
 
 \noindent
 \begin{minipage}[t]{0.4\textwidth}
-{\bfseries Salahuddin, S.T., M.Sc.}\\
-NIP. 197404242002121001
+{\bfseries Salahuddin, S.T., M.CS}\\
+NIP. 19740424 200212 1 001
 \end{minipage}\hfill
 \begin{minipage}[t]{0.4\textwidth}
 {\bfseries M. Khadafi, S.T., M.T}\\
-NIP. 197507182002121004
+NIP. 19750718 200212 1 004
 \end{minipage}
 
 %%-------------------------------------------------------------
@@ -295,7 +319,7 @@ NIP. 197507182002121004
 \end{center}
 \vspace{0.5cm}
 
-\noindent Skripsi yang berjudul \textit{``Rancang Bangun Aplikasi Point of Sale dengan Fitur Prediksi Penjualan Harian Menggunakan Metode Long Short-Term Memory (LSTM)''}, disusun oleh Muhammad Kholis, NIM 2022573010098, Program Studi Teknik Informatika, Jurusan Teknologi Informasi dan Komputer Politeknik Negeri Lhokseumawe, telah dipertanggungjawabkan di hadapan dewan penguji dan dinyatakan lulus pada tanggal 27 Juli 2026.
+\noindent Skripsi yang berjudul \textit{``Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting Machine (LightGBM)''}, disusun oleh Siti Nur Faiza, NIM 2022573010045, Program Studi Teknik Informatika, Jurusan Teknologi Informasi dan Komputer Politeknik Negeri Lhokseumawe, telah dipertanggungjawabkan di hadapan dewan penguji dan dinyatakan lulus pada tanggal 22 Juli 2026.
 
 \vspace{0.5cm}
 
@@ -307,8 +331,8 @@ Komisi Sidang,
 
 \noindent
 \begin{minipage}[t]{0.6\textwidth}
-{\bfseries Zulfan Khairil Simbolon, S.T., M.Eng.}\\
-NIP. 196909021993031004
+{\bfseries Salahuddin, S. T., M.CS}\\
+NIP. 1974024 200212 1 001
 \end{minipage}%
 \begin{minipage}[t]{0.4\textwidth}
 (Ketua Sidang)
@@ -318,8 +342,8 @@ NIP. 196909021993031004
 
 \noindent
 \begin{minipage}[t]{0.6\textwidth}
-{\bfseries Azhar, S.T., M.T.}\\
-NIP. 196408301990031005
+{\bfseries Hendrawaty, ST., M.T.}\\
+NIP. 19700226199802 2 001
 \end{minipage}%
 \begin{minipage}[t]{0.4\textwidth}
 (Sekretaris Sidang)
@@ -329,8 +353,8 @@ NIP. 196408301990031005
 
 \noindent
 \begin{minipage}[t]{0.6\textwidth}
-{\bfseries Musta'inul Abdi, S.S.T., M.Kom.}\\
-NIP. 199110302019031015
+{\bfseries Musta’inul Abdi, S.S.T., M.Kom.}\\
+NIP. 19911030 201903 1 015
 \end{minipage}%
 \begin{minipage}[t]{0.4\textwidth}
 (Penguji I)
@@ -340,8 +364,8 @@ NIP. 199110302019031015
 
 \noindent
 \begin{minipage}[t]{0.6\textwidth}
-{\bfseries Dr. Rahmad Hidayat, S.Kom., M.Cs.}\\
-NIP. 198304202012121003
+{\bfseries Radhiyatammardhiyyah, S.S.T., M.Sc.}\\
+NIP. 19920826 202203 2 011
 \end{minipage}%
 \begin{minipage}[t]{0.4\textwidth}
 (Penguji II)
@@ -351,8 +375,8 @@ NIP. 198304202012121003
 
 \noindent
 \begin{minipage}[t]{0.6\textwidth}
-{\bfseries Radhiyatammardhiyyah, S.S.T., M.Sc.}\\
-NIP. 199208262022032011
+{\bfseries Dr. Rahmad Hidayat, S.Kom., M.Cs.}\\
+NIP. 19830420 201212 1 003
 \end{minipage}%
 \begin{minipage}[t]{0.4\textwidth}
 (Penguji III)
@@ -380,12 +404,12 @@ Teknik Informatika,}
 
 \noindent
 \begin{minipage}[t]{0.4\textwidth}
-{\bfseries Salahuddin, S.T., M.Sc.}\\
-NIP. 197404242002121001
+{\bfseries Salahuddin, S. T., M.CS}\\
+NIP. 1974024 200212 1 001
 \end{minipage}\hfill
 \begin{minipage}[t]{0.4\textwidth}
-{\bfseries M. Khadafi, S.T., M.T}\\
-NIP. 197507182002121004
+{\bfseries Khadafi, S.T., M.T}\\
+NIP. 19750718 200212 1 004
 \end{minipage}
 
 %%-------------------------------------------------------------
@@ -405,12 +429,12 @@ NIP. 197507182002121004
 
 \begin{flushright}
 \begin{minipage}{5cm}
-Lhokseumawe, 16 Juli 2026
+Buketrata, 22 Juli 2026
 
 \vspace{2cm}
 
-\noindent{\bfseries Muhammad Kholis}\\
-NIM. 2022573010098
+\noindent{\bfseries Siti Nur Faiza}\\
+NIM. 2022573010045
 \end{minipage}
 \end{flushright}
 
@@ -425,17 +449,16 @@ NIM. 2022573010098
 \end{center}
 \vspace{0.5cm}
 
-\noindent Puji syukur penulis panjatkan kehadirat Allah SWT, karena atas rahmat dan hidayah-Nya, penulis dapat menyelesaikan skripsi ini dengan judul \textit{Rancang Bangun Aplikasi Point of Sale dengan Fitur Prediksi Penjualan Harian Menggunakan Metode Long Short-Term Memory (LSTM)}. Skripsi ini disusun sebagai salah satu syarat untuk memperoleh gelar Sarjana Terapan pada Program Studi Teknik Informatika Politeknik Negeri Lhokseumawe. Penulis menyadari bahwa skripsi ini masih jauh dari sempurna. Oleh karena itu, penulis mengharapkan kritik dan saran yang bersifat membangun dari semua pihak.
+\noindent Puji syukur penulis panjatkan kehadirat Allah SWT, karena atas rahmat and hidayah-Nya, penulis dapat menyelesaikan skripsi ini dengan judul \textit{Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting Machine (LightGBM)}. Skripsi ini disusun sebagai salah satu syarat untuk memperoleh gelar Sarjana Terapan pada Program Studi Teknik Informatika Politeknik Negeri Lhokseumawe. Penulis menyadari bahwa skripsi ini masih jauh dari sempurna. Oleh karena itu, penulis mengharapkan kritik dan saran yang bersifat membangun dari semua pihak.
 
 \noindent Dalam penulisan Skripsi ini penulis dapat melaksanakannya dengan baik berkat dukungan, bimbingan, dan bantuan dari berbagai pihak. Oleh karena itu, penulis ingin mengucapkan terima kasih yang sebesar-besarnya kepada:
-
 \begin{enumerate}
     \item Allah SWT atas segala rahmat, nikmat, kesehatan, serta kekuatan yang diberikan kepada penulis sehingga dapat menyelesaikan skripsi ini.
-    \item Keluarga tercinta, terutama Ibunda Jumiati yang selalu memberikan doa, dukungan moral maupun material, serta motivasi kepada penulis selama proses penyelesaian pendidikan.
+    \item Keluarga tercinta yang selalu memberikan doa, dukungan moral maupun material, serta motivasi kepada penulis selama proses penyelesaian pendidikan.
     \item Bapak Dr. Ir. Rizal Syahyadi, S.T., M.Eng.Sc., IPM, ASEAN Eng., APEC Eng., selaku Direktur Politeknik Negeri Lhokseumawe.
-    \item Bapak Salahuddin, S.T., M.Sc. selaku Ketua Jurusan Teknologi Informasi dan Komputer, Bapak Fachri Yanuar Rudi F, S.S.T., M.T. selaku Sekretaris Jurusan Teknologi Informasi dan Komputer, dan Bapak M. Khadafi, S.T., M.T. selaku Ketua Program Studi Teknik Informatika atas segala bimbingan dan perhatian selama masa perkuliahan.
-    \item Bapak Zulfan Khairil Simbolon, S.T., M.Eng. selaku Pembimbing Utama dan Bapak Azhar, S.T., M.T. selaku Pembimbing Pendamping yang telah membantu, membimbing, dan mengarahkan penulis dalam proses penyelesaian Skripsi ini.
-    \item Bapak Musta'inul Abdi, S.S.T., M.Kom., Bapak Dr. Rahmad Hidayat, S.Kom., M.Cs., dan Ibu Radhiyatammardhiyyah, S.S.T., M.Sc. selaku penguji yang telah bersedia memberikan arahan dan masukan dalam pengerjaan Skripsi ini.
+    \item Bapak Salahuddin, S.T., M.CS selaku Ketua Jurusan Teknologi Informasi dan Komputer, Bapak Fachri Yanuar Rudi F, S.S.T., M.T. selaku Sekretaris Jurusan Teknologi Informasi dan Komputer, dan Bapak M. Khadafi, S.T., M.T. selaku Ketua Program Studi Teknik Informatika atas segala bimbingan dan perhatian selama masa perkuliahan.
+    \item Bapak Salahuddin, S.T., M.CS selaku Pembimbing Utama dan Ibu Hendrawaty, ST., M.T selaku Pembimbing Pendamping yang telah membantu, membimbing, dan mengarahkan penulis dalam proses penyelesaian Skripsi ini.
+    \item Bapak Musta'inul Abdi, S.S.T., M.Kom., Bapak Dr. Rahmad Hidayat, S.Kom., M.Cs., and Ibu Radhiyatammardhiyyah, S.S.T., M.Sc. selaku penguji yang telah bersedia memberikan arahan dan masukan dalam pengerjaan Skripsi ini.
     \item Seluruh Dosen Pengajar Program Studi Teknik Informatika yang telah memberikan ilmu dan motivasi kepada penulis selama masa perkuliahan.
 \end{enumerate}
 
@@ -444,12 +467,12 @@ NIM. 2022573010098
 \vspace{1.5cm}
 
 \begin{flushright}
-Lhokseumawe, 16 Juli 2026
+Buketrata, 22 Juli 2026
 
 \vspace{2cm}
 
-\noindent{\bfseries Muhammad Kholis}\\
-NIM. 2022573010098
+\noindent{\bfseries Siti Nur Faiza}\\
+NIM. 2022573010045
 \end{flushright}
 
 %%-------------------------------------------------------------
@@ -463,9 +486,9 @@ NIM. 2022573010098
     \textbf{ABSTRAK}\\[0.5cm]
 \end{center}
 
-\noindent Penelitian ini bertujuan merancang dan membangun aplikasi \textit{Point of Sale} (POS) berbasis \textit{mobile} dengan arsitektur \textit{offline-first} yang dilengkapi fitur prediksi penjualan harian menggunakan metode \textit{Long Short-Term Memory} (LSTM), guna membantu pelaku UMKM, dalam hal ini kantin EatsTEDI Universitas Gadjah Mada sebagai mitra penelitian, dalam pengambilan keputusan operasional berbasis data. Sistem dikembangkan menggunakan \textit{framework} Flutter yang terintegrasi dengan basis data lokal Isar DB dan basis data \textit{cloud} Supabase PostgreSQL, sedangkan modul prediksi dibangun menggunakan Python (TensorFlow dan Flask) yang di-\textit{deploy} sebagai layanan API terpisah. Data yang digunakan berupa 313 hari aktif transaksi penjualan harian yang diolah sebagai data deret waktu (\textit{time series}) dengan pendekatan target \textit{log-return}. Kinerja model LSTM dievaluasi menggunakan metrik MAE, RMSE, sMAPE, dan MASE, serta dibandingkan dengan model pembanding \textit{Naive}, \textit{Mean-7}, dan SARIMA melalui pengujian \textit{multi-seed}. Hasil evaluasi menunjukkan bahwa model LSTM \textit{Hybrid} (MAE rata-rata Rp667.718,00, MASE 1,840) belum mampu mengungguli metode \textit{Naive} (MAE Rp519.841,00, MASE 1,432) akibat keterbatasan volume data historis dan dominasi persistensi jangka pendek pada data penjualan. Eksperimen augmentasi data sintetis menggunakan TimeGAN berhasil menurunkan galat model LSTM multi-langkah secara signifikan, namun tetap belum melampaui \textit{baseline Seasonal-Naive}. Berdasarkan temuan tersebut, layanan API produksi menyajikan metode \textit{Seasonal-Naive} sebagai metode penyaji utama prediksi harian. Pengujian fungsional \textit{Black Box} terhadap 14 skenario dan pengujian \textit{White Box} terhadap fungsi kritis layanan prediksi menunjukkan tingkat keberhasilan 100\%, sehingga sistem POS \textit{offline-first} ini terbukti layak dioperasikan secara penuh dalam mendukung operasional UMKM.\\[0.6cm]
+\noindent Subsidi listrik merupakan bantuan pemerintah yang diberikan kepada masyarakat yang memenuhi kriteria tertentu untuk meringankan biaya penggunaan energi listrik. Meskipun demikian, proses penentuan kelayakan penerima subsidi listrik masih memerlukan mekanisme yang lebih akurat dan objektif sehingga diperlukan pendekatan berbasis data untuk membantu pengambilan keputusan. Salah satu pendekatan yang dapat digunakan adalah teknik machine learning melalui metode klasifikasi. Penelitian ini bertujuan membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga di wilayah PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM). Data yang digunakan terdiri atas ID pelanggan, nama pelanggan, daya listrik (VA), golongan tarif, konsumsi listrik per bulan (kWh), penghasilan, jumlah anggota keluarga, pekerjaan kepala keluarga, status kepemilikan rumah, luas bangunan, dan status penerima bantuan, dengan output berupa klasifikasi layak atau tidak layak menerima subsidi listrik. Data diproses melalui tahapan preprocessing, pembagian data training dan testing, pelatihan model, serta evaluasi menggunakan metrik accuracy, precision, recall, dan F1-score. Hasil penelitian diharapkan menghasilkan model dengan tingkat akurasi yang baik dalam mengklasifikasikan kelayakan penerima subsidi listrik sehingga dapat mendukung PLN dalam proses pengambilan keputusan secara lebih efektif dan objektif.\\[0.6cm]
 
-\noindent \textbf{Kata Kunci}: \textit{Point of Sale} (POS), Prediksi Penjualan Harian, \textit{Long Short-Term Memory} (LSTM), \textit{Offline-First}, TimeGAN, UMKM
+\noindent \textbf{Kata Kunci}: Klasifikasi, Subsidi Listrik, Light Gradient Boosting Machine (LightGBM)
 \end{spacing}
 
 \newpage
@@ -477,9 +500,9 @@ NIM. 2022573010098
     \textbf{\textit{ABSTRACT}}\\[0.5cm]
 \end{center}
 
-\noindent \textit{This study aims to design and develop a mobile-based Point of Sale (POS) application with an offline-first architecture, equipped with a daily sales prediction feature using the Long Short-Term Memory (LSTM) method, to assist MSMEs, in this case the EatsTEDI canteen of Universitas Gadjah Mada as the research partner, in data-driven operational decision-making. The system was developed using the Flutter framework integrated with the local Isar DB database and the Supabase PostgreSQL cloud database, while the prediction module was built using Python (TensorFlow and Flask) deployed as a separate API service. The data used consist of 313 active days of daily sales transactions processed as time-series data using a log-return target approach. The performance of the LSTM model was evaluated using the MAE, RMSE, sMAPE, and MASE metrics, and compared against the Naive, Mean-7, and SARIMA baseline models through multi-seed testing. The evaluation results show that the Hybrid LSTM model (average MAE of IDR 667,718.00 and MASE of 1.840) was unable to outperform the Naive method (MAE of IDR 519,841.00 and MASE of 1.432) due to the limited volume of historical data and the dominance of short-term persistence in the sales data. A synthetic data augmentation experiment using TimeGAN significantly reduced the error of the multi-step LSTM model, yet still did not surpass the Seasonal-Naive baseline. Based on these findings, the production API service presents the Seasonal-Naive method as the primary forecasting method for daily predictions. Black Box functional testing on 14 scenarios and White Box testing on the critical functions of the prediction service showed a 100\% success rate, proving that this offline-first POS system is fully viable for supporting MSME operations.}\\[0.6cm]
+\noindent \textit{Electricity subsidy is government assistance provided to communities that meet certain criteria to reduce the cost of electricity consumption. Nevertheless, the process of determining the eligibility of electricity subsidy recipients still requires a more accurate and objective mechanism, hence a data-driven approach is needed to assist in decision-making. One approach that can be used is machine learning techniques through classification methods. This study aims to build a classification model for the eligibility of household electricity subsidy recipients in the PLN Aceh region using the Light Gradient Boosting Machine (LightGBM) method. The data used consists of customer ID, customer name, electrical power (VA), tariff category, monthly electricity consumption (kWh), income, number of family members, head of family occupation, house ownership status, building area, and assistance recipient status, with the output being the classification of eligible or ineligible to receive electricity subsidy. The data is processed through the stages of preprocessing, dividing training and testing data, model training, and evaluation using accuracy, precision, recall, and F1-score metrics. The results of the study are expected to produce a model with a good level of accuracy in classifying the eligibility of electricity subsidy recipients so that it can support PLN in a more effective and objective decision-making process.}\\[0.6cm]
 
-\noindent \textbf{\textit{Keywords}}: \textit{Point of Sale (POS), Daily Sales Prediction, Long Short-Term Memory (LSTM), Offline-First, TimeGAN, MSMEs}
+\noindent \textbf{\textit{Keywords}}: \textit{Classification, Electricity Subsidy, Light Gradient Boosting Machine (LightGBM)}
 \end{spacing}
 \selectlanguage{indonesian}
 
@@ -526,7 +549,7 @@ NIM. 2022573010098
 %%=============================================================
 \newpage
 \pagenumbering{arabic}
-\setcounter{page}{1}
+\setcounter{page}{2}
 \fancyhf{}
 \rhead{\thepage}
 \pagestyle{fancy}
@@ -536,77 +559,48 @@ NIM. 2022573010098
 \chapter[PENDAHULUAN]{\\ PENDAHULUAN}
 
 \section{Latar Belakang}
-Perkembangan teknologi informasi dan komunikasi telah mendorong transformasi digital di berbagai sektor bisnis, termasuk pada pengelolaan transaksi dan operasional penjualan usaha mikro, kecil, dan menengah (UMKM). Pemanfaatan sistem \textit{Point of Sale} (POS) berbasis aplikasi kini menjadi salah satu solusi yang banyak digunakan untuk membantu pelaku usaha mencatat transaksi, mengelola stok, serta menyusun laporan penjualan secara lebih terstruktur dan efisien~[1]. Namun, Pratama dan Handayani~[2] mencatat bahwa adopsi teknologi kasir digital di Indonesia masih terbatas, di mana minimnya fitur analitik menjadi penyebab utama UMKM gagal mengantisipasi siklus musiman penjualan.
+Subsidi listrik merupakan salah satu bentuk kebijakan strategis pemerintah dalam menjamin pemerataan akses energi serta meningkatkan kesejahteraan masyarakat berpenghasilan rendah [1]. Energi listrik telah menjadi kebutuhan dasar dalam kehidupan modern karena hampir seluruh aktivitas rumah tangga, pendidikan, ekonomi, dan layanan publik bergantung pada ketersediaan listrik yang stabil dan terjangkau [2]. Oleh karena itu, pemerintah melalui PT PLN (Persero) sebagai perusahaan penyedia tenaga listrik nasional, menyalurkan subsidi listrik khususnya kepada pelanggan rumah tangga dengan daya rendah seperti 450 VA dan 900 VA. Kebijakan ini bertujuan untuk meringankan beban pengeluaran masyarakat kurang mampu serta mendukung peningkatan taraf hidup secara berkelanjutan [3].
 
-Pada praktiknya, sebagian besar aplikasi POS yang digunakan UMKM masih bersifat deskriptif, yaitu hanya menampilkan data historis penjualan tanpa kemampuan analisis prediktif. Pelaku usaha umumnya harus melakukan estimasi penjualan secara manual berdasarkan pengalaman atau intuisi, sehingga rentan menimbulkan kesalahan dalam perencanaan stok, penentuan target, maupun pengelolaan arus kas. Ketidakmampuan sistem dalam memprediksi penjualan harian secara akurat dapat memicu berbagai permasalahan, seperti kelebihan stok (\textit{overstock}), kekurangan persediaan (\textit{stockout}), serta strategi penjualan yang tidak optimal~[3].
+Berdasarkan evaluasi kebijakan subsidi energi dan laporan kinerja sektor ketenagalistrikan, masih terdapat pelanggan yang secara ekonomi tergolong mampu tetapi tetap menerima subsidi, sementara sebagian masyarakat yang lebih membutuhkan justru belum terdata atau belum terjangkau program bantuan. Permasalahan ini umumnya disebabkan oleh pendekatan penentuan penerima subsidi yang masih bertumpu pada indikator administratif sederhana, seperti daya listrik terpasang dan golongan tarif, tanpa mempertimbangkan secara komprehensif pola konsumsi listrik, riwayat pembayaran, serta karakteristik sosial ekonomi pelanggan. Kondisi tersebut menunjukkan bahwa proses identifikasi penerima subsidi masih memerlukan sistem pendukung keputusan yang lebih objektif, terukur, dan berbasis data [4]. Perkembangan teknologi informasi dan meningkatnya ketersediaan data pelanggan listrik membuka peluang besar untuk menerapkan pendekatan analisis data dalam mendukung kebijakan subsidi [5]. Data administratif pelanggan, data konsumsi energi listrik, serta riwayat pembayaran yang dikelola oleh PT PLN (Persero), khususnya di wilayah Unit Induk Distribusi Aceh, memiliki potensi untuk dianalisis lebih lanjut guna menemukan pola yang mencerminkan kondisi kelayakan penerima subsidi. Pemanfaatan teknik machine learning dalam pengolahan data memungkinkan sistem untuk mempelajari hubungan kompleks antar variabel secara otomatis, sehingga proses klasifikasi dapat dilakukan secara lebih akurat dibandingkan metode manual atau berbasis aturan sederhana.
 
-Perkembangan teknologi kecerdasan buatan, khususnya bidang \textit{deep learning}, membuka peluang untuk menghadirkan fitur prediksi penjualan yang lebih akurat dan adaptif terhadap pola data historis. Salah satu metode \textit{deep learning} yang banyak digunakan dalam analisis data runtun waktu (\textit{time series}) adalah \textit{Long Short-Term Memory} (LSTM). Abbas dkk.~[4] membuktikan bahwa LSTM mengungguli model ARIMA konvensional dalam memprediksi data penjualan ritel harian berfluktuasi non-linier tinggi, dengan penurunan \textit{error} hingga 15\%. Wilson dan Davies~[5] menjelaskan bahwa mekanisme \textit{forget gate} pada arsitektur LSTM mampu mempertahankan memori pola penjualan jangka panjang, seperti tren musiman akibat periode Ramadan atau Tahun Baru, yang sering menjadi titik kritis operasional UMKM. Choi dan Lee~[6] lebih lanjut menunjukkan bahwa penambahan variabel kontekstual seperti jumlah transaksi harian pada model LSTM \textit{multivariate} dapat meningkatkan akurasi prediksi secara signifikan.
+Salah satu pendekatan dalam machine learning yang banyak digunakan untuk permasalahan klasifikasi adalah metode ensemble learning berbasis boosting. Metode ini bekerja dengan menggabungkan beberapa model pembelajaran sederhana untuk menghasilkan model prediksi yang lebih kuat dan stabil [6]. Di antara berbagai algoritma boosting yang berkembang, LightGBM (Light Gradient Boosting Machine) dikenal memiliki keunggulan dalam efisiensi komputasi, kecepatan pelatihan, serta kemampuan menangani dataset berukuran besar dengan hubungan nonlinier antar variabel. LightGBM menggunakan teknik pertumbuhan pohon yang memungkinkan model meminimalkan nilai loss secara lebih optimal, sehingga berpotensi menghasilkan tingkat akurasi yang tinggi dalam proses klasifikasi [7].
 
-Efektivitas penerapan model prediksi tersebut akan semakin optimal apabila didukung oleh arsitektur sistem yang andal pada kondisi lapangan UMKM. Tantangan infrastruktur menjadi hambatan nyata, khususnya koneksi internet yang tidak stabil di daerah. Martinez dan Silva~[7] menunjukkan bahwa arsitektur \textit{offline-first} dengan basis data lokal \textit{embedded} merupakan solusi efektif untuk menjamin kelancaran operasional sistem pada jaringan yang tidak andal. Novikov dan Petrov~[8] membuktikan bahwa Isar DB unggul sebagai basis data lokal pada aplikasi Flutter berkat kecepatan operasi baca-tulis yang optimal dibandingkan alternatif seperti Hive dan ObjectBox. Untuk mendukung ekosistem \textit{cloud backend} yang andal, Fischer dan Weber~[9] mengevaluasi Supabase sebagai platform \textit{Backend-as-a-Service} (BaaS) \textit{open-source} dengan fitur \textit{Row Level Security} (RLS) dan \textit{real-time subscription} yang sesuai untuk pengelolaan data transaksi multi-tenant UMKM.
-
-Meskipun riset terdahulu telah membuktikan keunggulan masing-masing komponen secara terpisah, belum ada penelitian yang mengintegrasikan keseluruhan komponen tersebut menjadi satu sistem yang utuh. Kumar dan Sharma~[10] menyoroti tantangan latensi ketika modul AI di-\textit{deploy} sebagai layanan terpisah yang dipanggil aplikasi klien kasir. Nguyen dan Tran~[11] merekomendasikan pemisahan beban kerja transaksional dari beban kerja analitik melalui arsitektur \textit{microservices} agar sistem kasir tidak terganggu selama proses pelatihan model. Roberts dan Thomas~[12] membahas standarisasi pengiriman data dari aplikasi \textit{mobile} ke server AI berbasis \textit{REST API}, yang menjadi jembatan integrasi antara sistem POS dan modul prediksi.
-
-Secara umum, kebutuhan UMKM Indonesia -- termasuk pelaku usaha di Lhokseumawe sebagai salah satu ilustrasi konteks operasional daerah -- akan sistem kasir yang tidak hanya mampu mencatat transaksi, tetapi juga memprediksi penjualan harian secara akurat sekaligus tetap berfungsi dalam kondisi jaringan terbatas menjadi semakin penting. Kompleksitas pengambilan keputusan stok dan tingginya dinamika pola penjualan menuntut solusi yang memadukan keandalan operasional \textit{offline} dengan kecerdasan analitik prediktif dalam satu kesatuan sistem. Perlu ditegaskan bahwa data, observasi, dan pengujian pada penelitian ini seluruhnya dilaksanakan pada mitra EatsTEDI DTEDI Universitas Gadjah Mada, sehingga konteks UMKM Lhokseumawe di atas berfungsi sebagai motivasi umum permasalahan, bukan sebagai lokasi pengambilan data.
-
-Berdasarkan permasalahan tersebut, penelitian ini bertujuan merancang dan membangun aplikasi \textit{Point of Sale} berbasis \textit{mobile} Android dengan arsitektur \textit{offline-first} menggunakan \textit{framework} Flutter dan Isar DB, yang secara bersamaan dilengkapi fitur prediksi penjualan harian berbasis metode LSTM yang dieksekusi di sisi server melalui \textit{REST API}. Aplikasi yang dikembangkan dalam penelitian ini diberi nama \textbf{Parzello POS Mobile}, dan diharapkan mampu berfungsi sebagai \textit{Decision Support System} bagi pelaku UMKM dalam mengambil keputusan manajemen stok dan strategi penjualan secara lebih akurat dan berbasis data.
-
-Perlu ditegaskan pula bahwa penelitian ini pada dasarnya bertujuan \textbf{mengevaluasi kelayakan (\textit{feasibility}) metode LSTM} dalam memprediksi penjualan harian pada volume data historis yang tersedia, bukan semata-mata mengklaim keunggulan LSTM tanpa pembuktian. Salah satu kontribusi utama penelitian ini justru adalah temuan berbasis bukti bahwa LSTM \textbf{belum layak} diterapkan pada volume data sebesar ini (313 hari aktif) dibandingkan metode \textit{baseline} statistik sederhana. Berdasarkan temuan tersebut, layanan prediksi produksi menerapkan mekanisme \textit{fallback} berbasis bukti berupa metode Seasonal-Naive ($k=4$), sementara model LSTM tetap didokumentasikan secara lengkap sebagai artefak riset. Arsitektur layanan prediksi (\textit{prediction service}) yang dibangun bersifat \textbf{model-agnostic}: \textit{endpoint} \texttt{/api/predict/daily} sudah disiapkan untuk dapat menyajikan model \texttt{.keras} begitu volume data transaksi mitra bertambah cukup untuk melampaui \textit{baseline} statistik secara konsisten.
+Berdasarkan permasalahan tersebut, diperlukan suatu penelitian yang mampu merancang dan membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga di wilayah PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM). Penelitian ini diharapkan dapat menghasilkan sistem klasifikasi berbasis data yang mampu meningkatkan objektivitas dan ketepatan sasaran penyaluran subsidi Listrik [8]. Dengan adanya model klasifikasi yang akurat, proses evaluasi penerima subsidi dapat dilakukan secara lebih efektif dan efisien, sehingga kebijakan subsidi listrik benar-benar dapat dirasakan oleh masyarakat yang berhak menerimanya serta mendukung pengelolaan anggaran subsidi energi secara lebih optimal [3].
 
 \section{Rumusan Masalah}
-Berdasarkan latar belakang yang telah diuraikan, maka rumusan masalah dalam penelitian ini adalah sebagai berikut:
+Berdasarkan latar belakang di atas, maka rumusan masalah dari penelitian ini adalah:
 \begin{enumerate}
-    \item Bagaimana merancang dan membangun aplikasi \textit{Point of Sale} (POS) dengan fitur prediksi penjualan harian berbasis \textit{mobile} yang dapat digunakan oleh pelaku usaha secara efektif?
-    \item Bagaimana keandalan arsitektur \textit{offline-first} dalam menjamin keberlangsungan pencatatan transaksi kasir pada kondisi konektivitas internet yang tidak stabil?
-    \item Bagaimana menerapkan metode \textit{Long Short-Term Memory} (LSTM) pada aplikasi \textit{Point of Sale} untuk memprediksi penjualan harian berdasarkan data transaksi historis?
-    \item Bagaimana tingkat akurasi hasil prediksi penjualan harian yang dihasilkan oleh metode \textit{Long Short-Term Memory} (LSTM) berdasarkan evaluasi menggunakan metrik kesalahan prediksi?
+    \item Bagaimana merancang dan membangun model klasifikasi kelayakan penerima subsidi listrik berdasarkan data pelanggan PLN Aceh?
+    \item Bagaimana penerapan metode Light Gradient Boosting Machine (LightGBM) dalam mengklasifikasikan kelayakan penerima subsidi listrik pelanggan PLN Aceh?
+    \item Bagaimana hasil evaluasi model Light Gradient Boosting Machine (LightGBM) dalam mengklasifikasikan kelayakan penerima subsidi listrik berdasarkan metrik pengujian yang digunakan?
 \end{enumerate}
 
 \section{Tujuan Penelitian}
-Berdasarkan rumusan masalah yang telah diuraikan, maka tujuan dalam penelitian ini adalah sebagai berikut:
+Berdasarkan rumusan masalah, maka tujuan dari penelitian ini adalah sebagai berikut:
 \begin{enumerate}
-    \item Merancang dan membangun aplikasi \textit{Point of Sale} (POS) berbasis \textit{mobile} yang dilengkapi dengan fitur prediksi penjualan harian sebagai alat bantu pengelolaan dan analisis penjualan.
-    \item Menguji keandalan arsitektur \textit{offline-first} berbasis Isar DB dan mekanisme sinkronisasi otomatis ke Supabase dalam menjaga keberlangsungan transaksi kasir pada kondisi jaringan tidak stabil.
-    \item Mengimplementasikan metode \textit{Long Short-Term Memory} (LSTM) pada aplikasi \textit{Point of Sale} untuk memprediksi penjualan harian berdasarkan data transaksi historis.
-    \item Mengevaluasi kinerja dan tingkat akurasi metode \textit{Long Short-Term Memory} (LSTM) dalam menghasilkan prediksi penjualan harian menggunakan metrik evaluasi kesalahan prediksi.
+    \item Menganalisis dan mengolah data pelanggan PLN Aceh yang digunakan dalam penentuan kelayakan penerima subsidi listrik.
+    \item Menerapkan metode Light Gradient Boosting Machine (LightGBM) untuk mengklasifikasikan kelayakan penerima subsidi listrik pada pelanggan PLN Aceh.
+    \item Mengetahui hasil klasifikasi kelayakan penerima subsidi listrik menggunakan metode LightGBM dalam mendukung ketepatan sasaran pemberian subsidi listrik.
 \end{enumerate}
 
 \section{Batasan Masalah}
-Untuk menghindari meluasnya materi pembahasan, maka penelitian ini dibatasi pada hal-hal berikut:
+Agar penelitian ini lebih terfokus dan sesuai dengan tujuan yang ingin dicapai, maka batasan masalah dalam penelitian ini adalah sebagai berikut:
 \begin{enumerate}
-    \item Aplikasi dikembangkan menggunakan \textit{framework} Flutter dan difokuskan untuk sistem operasi Android, mengingat dominasi pasar Android pada segmen UMKM lokal.
-    \item Basis data yang digunakan adalah Supabase dengan skema relasional untuk menyimpan data produk, transaksi, dan akun pengguna.
-    \item Algoritma yang digunakan adalah \textit{Long Short-Term Memory} (LSTM) dengan model \textit{univariate} atau \textit{multivariate} terbatas, dan prediksi dilakukan untuk rentang waktu harian.
-    \item Data uji bersumber dari basis data transaksi riil platform EatsTEDI DTEDI Universitas Gadjah Mada dengan periode lebih dari satu tahun. Pola musiman yang diobservasi bersifat kalender akademis (mingguan dan semester), karena cakupan data yang tersedia belum cukup untuk mengamati siklus musiman tahunan penuh secara statistik.
-    \item Proses pelatihan model dan prediksi dilakukan di sisi \textit{server/cloud} menggunakan bahasa Python, sedangkan aplikasi \textit{mobile} bertugas mengirim data transaksi dan menerima hasil prediksi melalui \textit{REST API}.
-    \item Metode penyaji prediksi pada layanan produksi ditentukan berdasarkan hasil evaluasi komparatif, sehingga dapat berbeda dari metode yang menjadi objek kajian utama.
+    \item Penelitian ini dibatasi pada klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga di wilayah PLN Aceh dengan fokus pada pelanggan daya 450 VA dan 900 VA sebagai kelompok utama penerima subsidi Listrik.
+    \item Data yang digunakan merupakan data pelanggan PLN Aceh dan data pelanggan yang tercatat di Dinas Sosial yang mencakup daya listrik terpasang (VA), rata-rata konsumsi listrik bulanan (kWh), golongan tarif listrik, serta data sosial ekonomi yang tersedia.
+    \item Metode klasifikasi yang digunakan dalam penelitian ini adalah Light Gradient Boosting Machine (LightGBM), tanpa melakukan perbandingan dengan metode klasifikasi lainnya.
+    \item Output penelitian terbatas pada hasil klasifikasi kelayakan penerima subsidi listrik dan evaluasi performa model berdasarkan metrik evaluasi yang digunakan.
 \end{enumerate}
 
 \section{Manfaat Penelitian}
-Manfaat yang diharapkan dari penelitian ini adalah sebagai berikut:
+Manfaat dari penelitian ini adalah sebagai berikut:
 \begin{enumerate}
-    \item \textbf{Bagi Pelaku UMKM}: Memberikan aplikasi \textit{Point of Sale} (POS) berbasis \textit{mobile} yang dapat digunakan untuk pencatatan transaksi penjualan dan pengelolaan stok secara digital, serta menyediakan fitur prediksi penjualan harian berbasis algoritma LSTM sebagai alat bantu dalam pengambilan keputusan \textit{restock} dan pengelolaan persediaan barang.
-    \item \textbf{Bagi Akademisi}: Menjadi referensi dan bahan kajian dalam pengembangan penelitian di bidang sistem informasi dan \textit{machine learning}, khususnya penerapan metode LSTM untuk prediksi penjualan harian pada sistem POS berbasis \textit{mobile} di lingkungan UMKM.
-    \item \textbf{Bagi Peneliti}: Menambah pengetahuan dan pengalaman dalam merancang dan membangun aplikasi POS berbasis \textit{mobile} menggunakan \textit{framework} Flutter serta mengimplementasikan algoritma LSTM untuk menyelesaikan permasalahan prediksi penjualan harian berbasis data transaksi UMKM pada studi kasus nyata.
+    \item Memberikan kontribusi keilmuan dalam penerapan algoritma Light Gradient Boosting Machine (LightGBM) untuk klasifikasi kelayakan penerima subsidi listrik.
+    \item Menghasilkan model klasifikasi berbasis data yang membantu penentuan penerima subsidi listrik secara lebih objektif dan tepat sasaran.
+    \item Mendukung peningkatan ketepatan sasaran subsidi listrik sehingga bantuan diberikan kepada masyarakat yang benar-benar membutuhkan.
+    \item Membantu meningkatkan efisiensi penggunaan anggaran subsidi listrik melalui pengurangan kesalahan penyaluran subsidi.
+\\
 \end{enumerate}
-
-\section{Sistematika Penulisan}
-Sistematika penulisan skripsi ini disusun untuk memberikan gambaran secara menyeluruh mengenai alur pembahasan yang dilakukan. Sistematika penulisan dibagi menjadi lima bab utama yang saling berkaitan, dengan rincian sebagai berikut:
-
-\noindent\textbf{BAB I PENDAHULUAN}\\
-Bab ini menguraikan gambaran umum penelitian yang meliputi latar belakang masalah, rumusan masalah, tujuan penelitian, batasan masalah, manfaat penelitian, serta sistematika penulisan. Bab ini menjadi dasar dalam memahami alasan dan arah penelitian yang dilakukan.
-
-\noindent\textbf{BAB II TINJAUAN PUSTAKA}\\
-Bab ini berisi kajian literatur dan landasan teori yang relevan dengan penelitian. Kajian mencakup perbandingan metode prediksi penjualan dan implementasi sistem POS berbasis \textit{mobile}. Landasan teori menyajikan konsep prediksi, arsitektur LSTM, \textit{framework} Flutter, bahasa Dart, serta layanan Supabase yang digunakan sebagai infrastruktur sistem.
-
-\noindent\textbf{BAB III METODOLOGI PENELITIAN}\\
-Bab ini menjelaskan tahapan metodologi penelitian yang dilakukan, meliputi jenis dan pendekatan penelitian, teknik pengumpulan data, teknik analisis data, alur penelitian, rancangan sistem menggunakan UML, teknik pengujian, serta indikator keberhasilan penelitian.
-
-\noindent\textbf{BAB IV HASIL DAN PEMBAHASAN}\\
-Bab ini menyajikan hasil implementasi sistem POS \textit{mobile} beserta layanan API prediksi, tahapan \textit{preprocessing} data, implementasi dan pelatihan model prediksi LSTM beserta eksperimen augmentasi TimeGAN, evaluasi komparatif model terhadap \textit{baseline}, hasil pengujian \textit{Black Box} dan \textit{White Box}, pembahasan temuan penelitian, serta keterbatasan sistem dan penelitian.
-
-\noindent\textbf{BAB V PENUTUP}\\
-Bab ini memuat kesimpulan yang menjawab rumusan masalah dan tujuan penelitian berdasarkan hasil yang diperoleh, serta saran-saran konstruktif untuk pengembangan sistem dan penelitian lanjutan di masa mendatang.
-
 %%=============================================================
 %% BAB II - TINJAUAN PUSTAKA
 %%=============================================================
