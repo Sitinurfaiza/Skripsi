@@ -8,8 +8,8 @@
 \contentsline {chapter}{ABSTRACT}{viii}{section*.6}%
 \babel@toc {indonesian}{}\relax 
 \contentsline {chapter}{DAFTAR ISI}{ix}{section*.7}%
-\contentsline {chapter}{DAFTAR GAMBAR}{xi}{section*.8}%
-\contentsline {chapter}{DAFTAR TABEL}{xii}{section*.9}%
+\contentsline {chapter}{DAFTAR GAMBAR}{xii}{section*.8}%
+\contentsline {chapter}{DAFTAR TABEL}{xiii}{section*.9}%
 \contentsline {chapter}{\numberline {I}PENDAHULUAN}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Latar Belakang}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Rumusan Masalah}{4}{section.1.2}%
@@ -26,41 +26,59 @@
 \contentsline {subsection}{\numberline {2.2.5}Model Boosting dalam Machine Learning}{15}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Light Gradient Boosting Machine}{16}{subsection.2.2.6}%
 \contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{22}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Pengumpulan Data}{22}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Analisis Kebutuhan Sistem}{25}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Analisis dan Kebutuhan Fungsional}{26}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Analisis Kebutuhan Non-Fungsional}{29}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Perancangan Sistem}{30}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Rancangan Arsitektur Sistem}{31}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Rancangan Use Case Diagram}{32}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Activity Diagram}{40}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Sequence Diagram}{47}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Perancangan Metode Penelitian}{51}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Penerapan Metode Klasifikasi LightGBM}{52}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Metrik Evaluasi Performa Model}{52}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Confusion Matrix}{53}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Perancangan Pengujian}{54}{section.3.5}%
-\contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{56}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Hasil Implementasi Sistem}{56}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Implementasi Antarmuka (UI)}{56}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Implementasi Backend dan Basis Data Cloud}{62}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Implementasi Layanan Prediksi (API)}{62}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Implementasi Rancangan Model Klasifikasi LightGBM}{64}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Deskripsi Data dan Eksplorasi Awal}{64}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Pra-pemrosesan Data}{66}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Penerapan Nilai Parameter}{68}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Hasil Pelatihan Model}{69}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Analisis Klasifikasi Menggunakan Metrik Evaluasi dan Confusion Matrix}{69}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Analisis Fitur Penting (Feature Importance)}{70}{subsection.4.2.6}%
-\contentsline {section}{\numberline {4.3}Hasil Pengujian Sistem}{72}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Hasil Black Box Testing}{72}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Hasil White Box Testing}{74}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Pembahasan}{74}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Pembahasan Pengujian Fungsional Web Dashboard}{74}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Pembahasan Akurasi Model Klasifikasi LightGBM}{75}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Keterbatasan Sistem dan Penelitian}{75}{section.4.5}%
-\contentsline {chapter}{\numberline {V}PENUTUP}{77}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kesimpulan}{77}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Saran}{78}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{80}{section*.49}%
-\contentsline {chapter}{LAMPIRAN}{82}{section*.50}%
+\contentsline {section}{\numberline {3.1}Tempat dan Waktu Penelitian}{22}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Tempat Penelitian}{23}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Waktu Penelitian}{23}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Alat dan Bahan Penelitian}{24}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Perangkat Lunak}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Perangkat Keras}{25}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Variabel Data}{26}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Sumber Data}{27}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Tahap Penelitian}{29}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Pengumpulan Data}{29}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Preprocessing Data}{30}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Model LightGBM}{30}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Evaluasi Hasil Klasifikasi}{31}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Rancangan Sistem}{31}{subsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.5.1}Analisis dan Kebutuhan Fungsional}{32}{subsubsection.3.5.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.5.2}Kebutuhan Non-Fungsional}{32}{subsubsection.3.5.5.2}%
+\contentsline {section}{\numberline {3.6}Rancangan Arsitektur Sistem}{33}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Perancangan Use Case Diagram}{34}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Perancangan Activity Diagram}{40}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Perancangan Sequence Diagram}{45}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Perancangan Class Diagram}{47}{subsection.3.6.4}%
+\contentsline {section}{\numberline {3.7}Perancangan Antarmuka Sistem}{48}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Perancangan Halaman Login}{48}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Perancangan Halaman Dashboard Admin}{49}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Perancangan Halaman Clustering Admin}{49}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.4}Perancangan Halaman Analisis Tren}{50}{subsection.3.7.4}%
+\contentsline {subsection}{\numberline {3.7.5}Perancangan Halaman Kelola Akun}{50}{subsection.3.7.5}%
+\contentsline {subsection}{\numberline {3.7.6}Perancangan Halaman Profil Pengguna}{51}{subsection.3.7.6}%
+\contentsline {section}{\numberline {3.8}Teknik Pengujian}{51}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Black Box Testing}{51}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}White Box Testing}{52}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Pengujian Implementasi Metode K-Means Clustering}{53}{subsection.3.8.3}%
+\contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{54}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Hasil Implementasi Sistem}{54}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Implementasi Antarmuka (UI)}{54}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Implementasi Backend dan Basis Data Cloud}{60}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Implementasi Layanan Prediksi (API)}{60}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Implementasi Rancangan Model Klasifikasi LightGBM}{62}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Deskripsi Data dan Eksplorasi Awal}{62}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Pra-pemrosesan Data}{64}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Penerapan Nilai Parameter}{66}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Hasil Pelatihan Model}{67}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Analisis Klasifikasi Menggunakan Metrik Evaluasi dan Confusion Matrix}{67}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Analisis Fitur Penting (Feature Importance)}{68}{subsection.4.2.6}%
+\contentsline {section}{\numberline {4.3}Hasil Pengujian Sistem}{70}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Hasil Black Box Testing}{70}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Hasil White Box Testing}{72}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Pembahasan}{72}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Pembahasan Pengujian Fungsional Web Dashboard}{72}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Pembahasan Akurasi Model Klasifikasi LightGBM}{73}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Keterbatasan Sistem dan Penelitian}{73}{section.4.5}%
+\contentsline {chapter}{\numberline {V}PENUTUP}{75}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{75}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Saran}{76}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{78}{section*.61}%
+\contentsline {chapter}{LAMPIRAN}{80}{section*.62}%

@@ -739,12 +739,79 @@ Melalui kombinasi fungsi objektif dan perhitungan gain tersebut, LightGBM mampu 
 %%=============================================================
 \chapter[METODOLOGI PENELITIAN]{\\ METODOLOGI PENELITIAN}
 
-\section{Pengumpulan Data}
-Tahap pengumpulan data merupakan langkah awal yang penting dalam penelitian untuk memastikan ketersediaan data yang relevan dalam proses klasifikasi kelayakan penerima subsidi listrik rumah tangga. Data yang digunakan dalam penelitian ini merupakan kombinasi antara data sekunder dan data sintetis. Data sekunder diperoleh dari Dinas Sosial dan berjumlah 1.000 data rumah tangga yang memuat informasi mengenai kondisi sosial ekonomi masyarakat. Sementara itu, data sintetis digunakan untuk melengkapi atribut teknis kelistrikan yang tidak tersedia pada data Dinas Sosial.
+Bab ini menjelaskan tentang metodologi penelitian yang digunakan dalam membangun dan mengevaluasi sistem klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan metode \textit{Light Gradient Boosting Machine} (LightGBM). Penjelasan pada bab ini mencakup tempat dan waktu penelitian, alat dan bahan penelitian, variabel data, sumber data, tahap penelitian, rancangan arsitektur sistem, perancangan antarmuka sistem, serta teknik pengujian yang diterapkan.
 
-Data sintetis merupakan data buatan yang dibangkitkan secara sistematis sehingga memiliki karakteristik yang menyerupai data nyata. Dalam penelitian ini, pembangkitan data sintetis dilakukan menggunakan pendekatan \textit{rule-based synthetic data generation}, yaitu menghasilkan data berdasarkan aturan yang mengacu pada karakteristik sosial ekonomi yang tersedia pada data Dinas Sosial serta ketentuan penerima subsidi listrik yang diatur dalam regulasi Kementerian Energi dan Sumber Daya Mineral (ESDM). Atribut yang dibangkitkan meliputi daya listrik terpasang (VA), golongan tarif, dan penggunaan listrik per bulan (kWh). Proses ini dilakukan agar dataset memiliki informasi yang lebih lengkap sehingga dapat digunakan dalam proses pelatihan model klasifikasi.
+\section{Tempat dan Waktu Penelitian}
+Tempat dan waktu penelitian merupakan bagian dari metodologi penelitian yang memuat informasi mengenai lokasi pelaksanaan penelitian serta periode berlangsungnya penelitian. Penjelasan mengenai tempat penelitian bertujuan untuk menunjukkan lokasi atau instansi yang menjadi objek penelitian dan sumber data yang digunakan dalam penelitian. Sementara itu, waktu penelitian menjelaskan rentang waktu pelaksanaan penelitian, mulai dari tahap pengumpulan data, pengolahan data, analisis data, hingga penyusunan laporan penelitian. Dengan adanya informasi mengenai tempat dan waktu penelitian, pelaksanaan penelitian dapat dipahami secara lebih jelas dan sistematis sesuai dengan ruang lingkup penelitian yang dilakukan.
 
-Data yang digunakan dalam penelitian ini terdiri atas beberapa komponen sebagai berikut:
+\subsection{Tempat Penelitian}
+Penelitian ini dilaksanakan di PT PLN (Persero) Unit Induk Distribusi (UID) Aceh, yang berlokasi di Jl. Tgk. H. Mohd. Daud Beureueh No. 172, Bandar Baru, Kec. Kuta Alam, Kota Banda Aceh, Aceh. Penentuan lokasi ini dilakukan secara sengaja (\textit{Purposive}) dengan pertimbangan bahwa PT PLN (Persero) UID Aceh memiliki basis data dan informasi pelanggan listrik yang lengkap dan relevan untuk dievaluasi kinerjanya dalam penentuan kelayakan penerima subsidi listrik rumah tangga menggunakan algoritma \textit{Light Gradient Boosting Machine} (LightGBM).
+
+\subsection{Waktu Penelitian}
+Waktu penelitian ini dilaksanakan selama 5 (lima) bulan, terhitung mulai bulan Februari 2026 sampai dengan Juni 2026. Untuk merinci penelitian secara sistematis, berikut adalah matriks jadwal kegiatan penelitian yang disajikan pada Tabel \ref{tab:jadwal_kegiatan_s1}.
+
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Jadwal Kegiatan Penelitian}
+\label{tab:jadwal_kegiatan_s1}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|c|c|}
+\hline
+\textbf{No} & \textbf{Kegiatan} & \textbf{Feb} & \textbf{Mar} & \textbf{Apr} & \textbf{Mei} & \textbf{Jun} \\ \hline
+1 & Pengajuan Judul \& Studi Literatur & \checkmark & & & & \\ \hline
+2 & Pengumpulan Data Sosial Ekonomi \& Kelistrikan & \checkmark & \checkmark & & & \\ \hline
+3 & Preprocessing Data \& Pelatihan Model LightGBM & & \checkmark & \checkmark & & \\ \hline
+4 & Perancangan \& Implementasi Sistem & & & \checkmark & \checkmark & \\ \hline
+5 & Pengujian \& Evaluasi Model Klasifikasi & & & & \checkmark & \checkmark \\ \hline
+6 & Penyusunan Laporan Skripsi & & & & & \checkmark \\ \hline
+\end{tabularx}
+\end{table}
+
+\section{Alat dan Bahan Penelitian}
+Pelaksanaan penelitian ini memerlukan dukungan perangkat keras (\textit{hardware}) dan perangkat lunak (\textit{software}) sebagai alat pendukung pengembangan sistem dan analisis data, serta dataset pelanggan listrik sebagai bahan utama penelitian.
+
+\subsection{Perangkat Lunak}
+Perangkat lunak digunakan sebagai lingkungan utama dalam proses pengembangan sistem, pengolahan data, serta implementasi algoritma \textit{Light Gradient Boosting Machine} (LightGBM) pada penelitian ini. Kebutuhan perangkat lunak disajikan pada Tabel \ref{tab:software_req}.
+
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Kebutuhan Perangkat Lunak (Software)}
+\label{tab:software_req}
+\begin{tabularx}{\textwidth}{|c|p{3.5cm}|p{5.5cm}|X|}
+\hline
+\textbf{No} & \textbf{Software} & \textbf{Spesifikasi} & \textbf{Fungsi} \\ \hline
+1 & Sistem Operasi & Windows / Linux & Platform menjalankan sistem \\ \hline
+2 & Python & Bahasa pemrograman utama & Pengolahan data \& model ML \\ \hline
+3 & Jupyter Notebook / Colab & Lingkungan eksperimen ML & Training \& validasi model \\ \hline
+4 & Library Pandas \& NumPy & Pengolahan dan manipulasi data & Data preprocessing \\ \hline
+5 & Scikit-Learn & Preprocessing \& evaluasi & Evaluasi metrik model \\ \hline
+6 & LightGBM Library & Algoritma LightGBM & Implementasi algoritma LightGBM \\ \hline
+7 & Visual Studio Code & Editor kode program & Pengembangan kode program \\ \hline
+8 & Microsoft Excel & Pengolahan awal dataset & Pengolahan awal berkas data \\ \hline
+9 & Draw.io & Perancangan diagram & Pembuatan diagram sistem \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsection{Perangkat Keras}
+Perangkat keras digunakan untuk menjalankan proses pengolahan data dan pelatihan model \textit{machine learning} yang membutuhkan kemampuan komputasi tertentu. Kebutuhan perangkat keras disajikan pada Tabel \ref{tab:hardware_req}.
+
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Kebutuhan Perangkat Keras (Hardware)}
+\label{tab:hardware_req}
+\begin{tabularx}{\textwidth}{|c|p{3.5cm}|p{4.5cm}|X|}
+\hline
+\textbf{No} & \textbf{Nama Perangkat} & \textbf{Spesifikasi} & \textbf{Keterangan} \\ \hline
+1 & Laptop / PC & Processor Intel Core i5 / setara & Perangkat utama pengembangan sistem \\ \hline
+2 & RAM & 8 GB & Mendukung proses training model \\ \hline
+3 & Penyimpanan & 256 GB SSD & Penyimpanan dataset dan hasil model \\ \hline
+\end{tabularx}
+\end{table}
+
+\section{Variabel Data}
+Variabel data yang digunakan dalam penelitian ini terdiri atas beberapa komponen sebagai berikut:
 \begin{enumerate}
     \item \textbf{Data Sosial Ekonomi} \\
     Data sosial ekonomi merupakan data sekunder yang diperoleh dari Dinas Sosial. Variabel yang digunakan meliputi:
@@ -764,112 +831,105 @@ Data yang digunakan dalam penelitian ini terdiri atas beberapa komponen sebagai 
         \item Penggunaan listrik per bulan (kWh).
     \end{enumerate}
     \item \textbf{Data Label Klasifikasi} \\
-    Data label digunakan sebagai variabel target (\textit{output}) dalam proses pembelajaran algoritma Light Gradient Boosting Machine (LightGBM). Label menunjukkan status kelayakan pelanggan dalam menerima subsidi listrik yang ditentukan berdasarkan kombinasi karakteristik sosial ekonomi dan karakteristik kelistrikan sesuai kriteria yang mengacu pada regulasi Kementerian ESDM. Label klasifikasi terdiri atas:
+    Data label digunakan sebagai variabel target (\textit{output}) dalam proses pembelajaran algoritma \textit{Light Gradient Boosting Machine} (LightGBM). Label menunjukkan status kelayakan pelanggan dalam menerima subsidi listrik yang ditentukan berdasarkan kombinasi karakteristik sosial ekonomi dan karakteristik kelistrikan sesuai kriteria regulasi Kementerian ESDM, yang terdiri atas:
     \begin{enumerate}
         \item Layak menerima subsidi.
         \item Tidak layak menerima subsidi.
     \end{enumerate}
 \end{enumerate}
-Seluruh variabel tersebut digunakan sebagai fitur masukan dalam proses pelatihan dan pengujian model menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Dengan mengombinasikan data sosial ekonomi dari Dinas Sosial dan data kelistrikan sintetis yang dibangkitkan berdasarkan regulasi Kementerian ESDM, diharapkan model mampu mempelajari pola hubungan antara karakteristik pelanggan dengan status kelayakan penerima subsidi listrik secara objektif dan menghasilkan performa klasifikasi yang baik.
+Seluruh variabel tersebut digunakan sebagai fitur masukan dalam proses pelatihan dan pengujian model menggunakan algoritma \textit{Light Gradient Boosting Machine} (LightGBM).
 
-Berdasarkan uraian di atas, sumber data penelitian ini terbagi menjadi dua jenis:
+\section{Sumber Data}
+Berdasarkan pengumpulannya, sumber data penelitian ini terbagi menjadi dua jenis:
 \begin{enumerate}
     \item \textbf{Data Sekunder} \\
     Data sekunder merupakan data yang diperoleh dari sumber yang telah tersedia tanpa melakukan pengumpulan data secara langsung dari objek penelitian. Pada penelitian ini, data sekunder terdiri atas dua jenis, yaitu:
     \begin{enumerate}
-        \item Data sosial ekonomi masyarakat yang diperoleh dari Dinas Sosial, meliputi informasi seperti penghasilan keluarga, jumlah anggota keluarga, pekerjaan kepala keluarga, status kepemilikan rumah, luas bangunan, dan status penerima bantuan sosial (PKH/BPNT).
-        \item Literatur pendukung yang diperoleh dari jurnal ilmiah, buku, penelitian terdahulu, serta regulasi Kementerian Energi dan Sumber Daya Mineral (ESDM) yang berkaitan dengan subsidi listrik dan penerapan algoritma Light Gradient Boosting Machine (LightGBM).
+        \item Data sosial ekonomi masyarakat yang diperoleh dari Dinas Sosial berjumlah 1.000 data rumah tangga.
+        \item Literatur pendukung yang diperoleh dari jurnal ilmiah, buku, penelitian terdahulu, serta regulasi Kementerian Energi dan Sumber Daya Mineral (ESDM) yang berkaitan dengan subsidi listrik dan penerapan algoritma \textit{Light Gradient Boosting Machine} (LightGBM).
     \end{enumerate}
     \item \textbf{Data Sintetis} \\
-    Data sintetis merupakan data buatan yang dibangkitkan untuk melengkapi atribut yang tidak tersedia pada data sekunder. Dalam penelitian ini, data sintetis dibentuk menggunakan pendekatan \textit{rule-based synthetic data generation}, yaitu pembangkitan data berdasarkan aturan yang mengacu pada karakteristik data sosial ekonomi dari Dinas Sosial dan regulasi Kementerian ESDM mengenai penerima subsidi listrik. Atribut yang dibangkitkan meliputi daya listrik terpasang (VA), golongan tarif, penggunaan listrik per bulan (kWh), serta label kelayakan penerima subsidi listrik (Layak/Tidak Layak). Data sintetis tersebut digunakan sebagai dataset pelatihan dan pengujian model klasifikasi menggunakan algoritma LightGBM.
+    Data sintetis merupakan data buatan yang dibangkitkan untuk melengkapi atribut yang tidak tersedia pada data sekunder. Dalam penelitian ini, data sintetis dibentuk menggunakan pendekatan \textit{rule-based synthetic data generation}, yaitu pembangkitan data berdasarkan aturan yang mengacu pada karakteristik data sosial ekonomi dari Dinas Sosial dan regulasi Kementerian ESDM mengenai penerima subsidi listrik. Atribut yang dibangkitkan meliputi daya listrik terpasang (VA), golongan tarif, penggunaan listrik per bulan (kWh), serta label kelayakan penerima subsidi listrik (Layak/Tidak Layak).
 \end{enumerate}
 
-\section{Analisis Kebutuhan Sistem}
-Analisis kebutuhan sistem dilakukan untuk mengidentifikasi kebutuhan yang diperlukan dalam pembangunan sistem klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM). Tahap ini bertujuan untuk memastikan sistem yang dikembangkan mampu mendukung seluruh proses penelitian mulai dari pengolahan data, pelatihan model, hingga penyajian hasil klasifikasi secara efektif dan terstruktur.
+\section{Tahap Penelitian}
+Tahap penelitian menjelaskan langkah-langkah sistematis yang dilakukan selama penelitian berlangsung dari pengumpulan data hingga pengujian sistem. Tahapan penelitian disajikan pada Gambar \ref{fig:tahapan_penelitian_s1}.
 
-Kebutuhan sistem pada penelitian ini dibagi menjadi dua kategori utama, yaitu kebutuhan fungsional dan kebutuhan non-fungsional. Kebutuhan fungsional menjelaskan layanan sistem yang harus tersedia, sedangkan kebutuhan non-fungsional berkaitan dengan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam proses pengembangan dan pengujian sistem.
-
-\subsection{Analisis dan Kebutuhan Fungsional}
-Kebutuhan fungsional menggambarkan kemampuan atau layanan utama yang harus dimiliki sistem agar dapat menjalankan proses klasifikasi kelayakan penerima subsidi listrik secara optimal. Sistem yang dikembangkan berfungsi sebagai alat analisis data berbasis machine learning yang digunakan oleh peneliti dalam melakukan pengolahan dan evaluasi model. Kebutuhan fungsional ini dirancang agar seluruh tahapan pengolahan data hingga penyajian hasil analisis dapat berjalan secara sistematis dan terintegrasi. Berikut merupakan kebutuhan fungsional sistem yang meliputi:
-\begin{enumerate}
-    \item \textbf{Import Dataset} \\
-    Sistem mampu menerima dan membaca dataset pelanggan listrik dalam format file digital seperti CSV atau Microsoft Excel. Dataset yang diimpor berisi data administratif pelanggan serta data konsumsi listrik yang akan digunakan sebagai bahan utama dalam proses analisis dan pelatihan model klasifikasi. Sistem juga harus mampu memastikan bahwa struktur data sesuai dengan format yang dibutuhkan sehingga data dapat diproses pada tahap selanjutnya tanpa kesalahan pembacaan.
-    \item \textbf{Preprocessing Data} \\
-    Sistem mampu melakukan proses persiapan data sebelum digunakan dalam pelatihan model machine learning. Tahap preprocessing bertujuan untuk meningkatkan kualitas data agar menghasilkan model yang lebih akurat dan stabil. Proses preprocessing meliputi:
-    \begin{enumerate}
-        \item Pembersihan data (\textit{data cleaning}) untuk menghapus data duplikat atau data tidak valid.
-        \item Penanganan data kosong (\textit{missing value handling}).
-        \item Transformasi data agar sesuai dengan format analisis.
-        \item Encoding variabel kategorikal menjadi bentuk numerik yang dapat diproses oleh algoritma.
-        \item Pembagian dataset menjadi data training dan data testing sebagai dasar pelatihan dan pengujian model.
-    \end{enumerate}
-    \item \textbf{Pelatihan Model (Training Model)} \\
-    Sistem mampu melakukan proses pelatihan model klasifikasi menggunakan algoritma Light Gradient Boosting Machine (LightGBM). Pada tahap ini, sistem mempelajari pola hubungan antara karakteristik pelanggan listrik dengan status kelayakan subsidi berdasarkan data training yang telah diproses sebelumnya, sehingga model dapat digunakan untuk melakukan prediksi terhadap data baru.
-    \item \textbf{Prediksi Klasifikasi} \\
-    Sistem mampu melakukan prediksi status kelayakan subsidi listrik pelanggan secara otomatis menggunakan model yang telah dilatih. Hasil prediksi berupa kategori pelanggan yang diklasifikasikan sebagai layak atau tidak layak menerima subsidi listrik berdasarkan karakteristik data pelanggan.
-    \item \textbf{Evaluasi Model} \\
-    Sistem mampu melakukan evaluasi performa model klasifikasi untuk mengetahui tingkat akurasi dan kualitas prediksi yang dihasilkan. Evaluasi dilakukan menggunakan beberapa metrik pengukuran performa, yaitu:
-    \begin{enumerate}
-        \item Accuracy untuk mengukur tingkat ketepatan prediksi secara keseluruhan.
-        \item Precision untuk mengukur ketepatan prediksi pada kelas tertentu.
-        \item Recall untuk mengukur kemampuan model dalam menemukan data yang relevan.
-        \item F1-Score sebagai kombinasi nilai precision dan recall.
-        \item Confusion Matrix untuk menampilkan perbandingan antara hasil prediksi dan data aktual secara detail.
-    \end{enumerate}
-    \item \textbf{Menampilkan Hasil Analisis} \\
-    Sistem mampu menampilkan hasil klasifikasi pelanggan beserta nilai evaluasi model dalam bentuk tabel, grafik, atau laporan analisis sehingga memudahkan pengguna dalam memahami hasil pengolahan data dan performa model yang telah dibangun.
-    \item \textbf{Penyimpanan Hasil} \\
-    Sistem mampu menyimpan dataset hasil pengolahan, model yang telah dilatih, serta hasil prediksi klasifikasi ke dalam media penyimpanan atau database.
-\end{enumerate}
-
-\subsection{Analisis Kebutuhan Non-Fungsional}
-Kebutuhan non-fungsional merupakan kebutuhan pendukung yang berkaitan dengan spesifikasi teknis sistem agar proses pengembangan dan pengujian model dapat berjalan dengan baik. Kebutuhan ini mencakup perangkat keras dan perangkat lunak yang digunakan dalam penelitian.
-
-\begin{enumerate}
-    \item \textbf{Kebutuhan Perangkat Keras (Hardware)} \\
-    Perangkat keras digunakan untuk menjalankan proses pengolahan data dan pelatihan model machine learning yang membutuhkan kemampuan komputasi tertentu.
-    \begin{table}[H]
-    \setstretch{1.2}
+\begin{figure}[H]
     \centering
-    \caption{Kebutuhan Perangkat Keras (Hardware)}
-    \label{tab:hardware_req}
-    \begin{tabularx}{\textwidth}{|c|p{2.8cm}|p{5cm}|X|}
-    \hline
-    \textbf{No} & \textbf{Nama Perangkat} & \textbf{Spesifikasi} & \textbf{Keterangan} \\ \hline
-    1 & Laptop / PC & Processor Intel Core i5 / setara & Perangkat utama pengembangan sistem \\ \hline
-    2 & RAM & 8 GB & Mendukung proses training model \\ \hline
-    3 & Penyimpanan & 256 GB SSD & Penyimpanan dataset dan hasil model \\ \hline
-    \end{tabularx}
-    \end{table}
+    \includegraphics[width=0.85\textwidth]{placeholder.pdf}
+    \caption{Tahapan Penelitian}
+    \label{fig:tahapan_penelitian_s1}
+\end{figure}
 
-    \item \textbf{Kebutuhan Perangkat Lunak (Software)} \\
-    Perangkat lunak digunakan sebagai lingkungan utama dalam proses pengembangan sistem, pengolahan data, serta implementasi algoritma Light Gradient Boosting Machine (LightGBM) pada penelitian ini.
-    \begin{table}[H]
-    \setstretch{1.2}
-    \centering
-    \caption{Kebutuhan Perangkat Lunak (Software)}
-    \label{tab:software_req}
-    \begin{tabularx}{\textwidth}{|c|p{3.5cm}|p{5.5cm}|X|}
-    \hline
-    \textbf{No} & \textbf{Software} & \textbf{Spesifikasi} & \textbf{Fungsi} \\ \hline
-    1 & Sistem Operasi & Windows / Linux & Platform menjalankan sistem \\ \hline
-    2 & Python & Bahasa pemrograman utama & - \\ \hline
-    3 & Jupyter Notebook / Colab & Lingkungan eksperimen machine learning & - \\ \hline
-    4 & Library Pandas \& NumPy & Pengolahan dan manipulasi data & - \\ \hline
-    5 & Scikit-Learn & Preprocessing dan evaluasi model & - \\ \hline
-    6 & LightGBM Library & Implementasi algoritma LightGBM & - \\ \hline
-    7 & Visual Studio Code & Editor kode program & - \\ \hline
-    8 & Microsoft Excel & Pengolahan awal dataset & - \\ \hline
-    9 & Draw.io & Perancangan diagram sistem & - \\ \hline
-    \end{tabularx}
-    \end{table}
+\subsection{Pengumpulan Data}
+Tahap pengumpulan data merupakan langkah awal yang penting dalam penelitian untuk memastikan ketersediaan data yang relevan dalam proses klasifikasi kelayakan penerima subsidi listrik rumah tangga melalui kombinasi data sekunder dari Dinas Sosial dan data sintetis atribut kelistrikan.
+
+\subsection{Preprocessing Data}
+Sistem mampu melakukan proses persiapan data sebelum digunakan dalam pelatihan model \textit{machine learning}. Tahap \textit{preprocessing} bertujuan untuk meningkatkan kualitas data agar menghasilkan model yang lebih akurat dan stabil. Proses \textit{preprocessing} meliputi:
+\begin{enumerate}
+    \item Pembersihan data (\textit{data cleaning}) untuk menghapus data duplikat atau data tidak valid.
+    \item Penanganan data kosong (\textit{missing value handling}).
+    \item Transformasi data agar sesuai dengan format analisis.
+    \item Encoding variabel kategorikal menjadi bentuk numerik yang dapat diproses oleh algoritma.
+    \item Pembagian dataset menjadi data \textit{training} (80\%) dan data \textit{testing} (20\%) sebagai dasar pelatihan dan pengujian model.
 \end{enumerate}
 
-\section{Perancangan Sistem}
-Perancangan sistem merupakan tahap perencanaan yang dilakukan untuk menggambarkan alur kerja sistem klasifikasi kelayakan penerima subsidi listrik menggunakan metode Light Gradient Boosting Machine (LightGBM). Perancangan ini bertujuan untuk memberikan gambaran mengenai proses pengolahan data, interaksi pengguna dengan sistem, serta tahapan analisis yang dilakukan mulai dari input data hingga menghasilkan output klasifikasi. Rancangan sistem divisualisasikan menggunakan diagram UML agar alur sistem dapat dipahami secara jelas sebelum tahap implementasi dilakukan.
+\subsection{Model LightGBM}
+Sistem mampu melakukan proses pelatihan model klasifikasi menggunakan algoritma \textit{Light Gradient Boosting Machine} (LightGBM). Pada tahap ini, sistem mempelajari pola hubungan antara karakteristik pelanggan listrik dengan status kelayakan subsidi berdasarkan data \textit{training} yang telah diproses sebelumnya, sehingga model dapat digunakan untuk melakukan prediksi terhadap data baru.
 
-\subsection{Rancangan Arsitektur Sistem}
-Arsitektur sistem menggambarkan struktur dan alur kerja utama sistem dalam mengolah data pelanggan listrik hingga menghasilkan hasil klasifikasi kelayakan subsidi. Sistem dirancang dalam beberapa tahapan, yaitu proses input data, preprocessing data, pelatihan model LightGBM, penyimpanan data, serta penyajian output hasil analisis. Arsitektur ini menunjukkan hubungan antar komponen sistem yang saling terintegrasi dalam proses klasifikasi.
+\subsection{Evaluasi Hasil Klasifikasi}
+Performa model klasifikasi LightGBM diukur menggunakan beberapa metrik evaluasi, yaitu \textit{Accuracy}, \textit{Precision}, \textit{Recall}, dan \textit{F1-Score}, serta \textit{Confusion Matrix} untuk menampilkan perbandingan antara hasil prediksi dan data aktual secara detail.
+\begin{enumerate}
+    \item \textbf{Accuracy}: Mengukur tingkat ketepatan prediksi model secara keseluruhan.
+    \begin{equation}
+        Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+    \end{equation}
+    \item \textbf{Precision}: Menunjukkan tingkat ketepatan prediksi positif yang dihasilkan oleh model.
+    \begin{equation}
+        Precision = \frac{TP}{TP + FP}
+    \end{equation}
+    \item \textbf{Recall}: Mengukur kemampuan model dalam menemukan seluruh data yang benar-benar termasuk ke dalam kelas positif.
+    \begin{equation}
+        Recall = \frac{TP}{TP + FN}
+    \end{equation}
+    \item \textbf{F1-Score}: Rata-rata harmonik antara precision dan recall.
+    \begin{equation}
+        F1\text{-}Score = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+    \end{equation}
+\end{enumerate}
+
+\subsection{Rancangan Sistem}
+Analisis kebutuhan sistem dilakukan untuk mengidentifikasi kebutuhan fungsional dan non-fungsional yang diperlukan dalam pembangunan sistem klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh menggunakan metode LightGBM.
+
+\subsubsection{Analisis dan Kebutuhan Fungsional}
+Kebutuhan fungsional menggambarkan kemampuan atau layanan utama yang harus dimiliki sistem agar dapat menjalankan proses klasifikasi kelayakan penerima subsidi listrik secara optimal. Kebutuhan fungsional sistem disajikan pada Tabel \ref{tab:kebutuhan_fungsional_s1}.
+
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Kebutuhan Fungsional Sistem}
+\label{tab:kebutuhan_fungsional_s1}
+\begin{tabularx}{\textwidth}{|p{4.5cm}|X|}
+\hline
+\textbf{Kebutuhan Fungsional} & \textbf{Deskripsi} \\ \hline
+Import Dataset & Membaca dan memvalidasi dataset pelanggan listrik (CSV/Excel). \\ \hline
+Preprocessing Data & Pembersihan data, missing value, encoding, normalisasi, dan pembagian data. \\ \hline
+Pelatihan Model (Training) & Melatih model klasifikasi LightGBM dengan data training. \\ \hline
+Prediksi Klasifikasi & Memprediksi status kelayakan subsidi (Layak/Tidak Layak) secara otomatis. \\ \hline
+Evaluasi Model & Menghitung Accuracy, Precision, Recall, F1-Score, dan Confusion Matrix. \\ \hline
+Menampilkan Hasil Analisis & Menyajikan grafik, tabel, dan laporan hasil klasifikasi. \\ \hline
+Penyimpanan Hasil & Menyimpan dataset, model terlatih, dan hasil prediksi ke database. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Kebutuhan Non-Fungsional}
+Kebutuhan non-fungsional merupakan kebutuhan pendukung yang berkaitan dengan spesifikasi teknis perangkat keras dan perangkat lunak yang digunakan dalam penelitian sebagaimana disajikan pada Tabel \ref{tab:hardware_req} dan Tabel \ref{tab:software_req}.
+
+\section{Rancangan Arsitektur Sistem}
+Perancangan sistem menggambarkan alur kerja dan arsitektur sistem klasifikasi kelayakan penerima subsidi listrik menggunakan metode LightGBM.
+
+Arsitektur sistem menggambarkan struktur dan alur kerja utama sistem dalam mengolah data pelanggan listrik hingga menghasilkan hasil klasifikasi kelayakan subsidi. Sistem dirancang dalam beberapa tahapan, yaitu proses input data, preprocessing data, pelatihan model LightGBM, penyimpanan data, serta penyajian output hasil analisis.
 
 \begin{figure}[H]
     \centering
@@ -878,10 +938,10 @@ Arsitektur sistem menggambarkan struktur dan alur kerja utama sistem dalam mengo
     \label{fig:arsitektur_sistem}
 \end{figure}
 
-Gambar \ref{fig:arsitektur_sistem} menunjukkan arsitektur sistem klasifikasi kelayakan penerima subsidi listrik yang terdiri dari empat tahapan utama. Pada tahap input, sistem menerima dataset pelanggan listrik yang kemudian melalui proses cleaning data untuk menghasilkan dataset yang terstruktur. Tahap proses meliputi preprocessing data serta pelatihan model menggunakan algoritma Light Gradient Boosting Machine (LightGBM) untuk menghasilkan prediksi kelayakan subsidi listrik. Hasil pengolahan data dan model selanjutnya disimpan pada database sebagai tahap penyimpanan. Pada tahap output, sistem menampilkan hasil analisis berupa dashboard, hasil klasifikasi pelanggan layak atau tidak layak menerima subsidi, serta laporan evaluasi performa model.
+Gambar \ref{fig:arsitektur_sistem} menunjukkan arsitektur sistem klasifikasi kelayakan penerima subsidi listrik yang terdiri dari empat tahapan utama: input, proses, penyimpanan, dan output.
 
-\subsection{Rancangan Use Case Diagram}
-Use Case Diagram digunakan untuk menggambarkan fungsi utama sistem serta interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik yang dikembangkan. Diagram ini memberikan gambaran umum mengenai layanan yang disediakan sistem serta aktivitas yang dapat dilakukan oleh pengguna selama proses pengolahan data hingga memperoleh hasil klasifikasi.
+\subsection{Perancangan Use Case Diagram}
+Use Case Diagram digunakan untuk menggambarkan fungsi utama sistem serta interaksi antara pengguna (Admin) dengan sistem klasifikasi kelayakan penerima subsidi listrik.
 
 \begin{figure}[H]
     \centering
@@ -890,11 +950,10 @@ Use Case Diagram digunakan untuk menggambarkan fungsi utama sistem serta interak
     \label{fig:use_case_diagram}
 \end{figure}
 
-Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi antara pengguna dengan sistem klasifikasi kelayakan penerima subsidi listrik. Pengguna dapat melakukan beberapa aktivitas utama, yaitu login ke dalam sistem, mengimpor dataset pelanggan listrik, melakukan preprocessing data, menjalankan proses pelatihan model menggunakan algoritma LightGBM, melakukan pengujian model, serta melihat hasil akurasi klasifikasi yang dihasilkan. Setelah seluruh proses selesai, pengguna dapat keluar dari sistem melalui fitur logout. Diagram ini menunjukkan fungsi-fungsi utama sistem yang mendukung proses analisis data secara terstruktur dan sistematis. Penjelasan mengenai aktor dan setiap use case pada Gambar \ref{fig:use_case_diagram} disajikan sebagai berikut.
+Penjelasan detail use case pada Gambar \ref{fig:use_case_diagram} dijabarkan pada tabel-tabel berikut:
 
 \begin{enumerate}
     \item \textbf{Use Case Login dan Logout}
-
     \begin{table}[H]
     \setstretch{1.2}
     \centering
@@ -922,7 +981,6 @@ Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi 
     \end{table}
 
     \item \textbf{Use Case Import Dataset}
-
     \begin{table}[H]
     \setstretch{1.2}
     \centering
@@ -947,7 +1005,6 @@ Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi 
     \end{table}
 
     \item \textbf{Use Case Preprocessing Data}
-
     \begin{table}[H]
     \setstretch{1.2}
     \centering
@@ -973,7 +1030,6 @@ Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi 
     \end{table}
 
     \item \textbf{Use Case Pelatihan Model LightGBM}
-
     \begin{table}[H]
     \setstretch{1.2}
     \centering
@@ -999,7 +1055,6 @@ Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi 
     \end{table}
 
     \item \textbf{Use Case Pengujian Model}
-
     \begin{table}[H]
     \setstretch{1.2}
     \centering
@@ -1024,7 +1079,6 @@ Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi 
     \end{table}
 
     \item \textbf{Use Case Melihat Hasil Akurasi}
-
     \begin{table}[H]
     \setstretch{1.2}
     \centering
@@ -1048,7 +1102,7 @@ Use Case Diagram pada Gambar \ref{fig:use_case_diagram} menggambarkan interaksi 
     \end{table}
 \end{enumerate}
 
-\subsection{Activity Diagram}
+\subsection{Perancangan Activity Diagram}
 Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Adapun Activity Diagram pada sistem adalah sebagai berikut:
 
 \begin{enumerate}
@@ -1060,7 +1114,7 @@ Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Ad
         \caption{Activity Diagram Login}
         \label{fig:act_login}
     \end{figure}
-    Gambar \ref{fig:act_login} menggambarkan Activity Diagram untuk proses login. Pada tahap awal, admin memasukkan username dan password ke dalam sistem. Setelah itu, admin menekan tombol login. Sistem kemudian melakukan verifikasi terhadap username dan password yang dimasukkan dengan melakukan pencarian pada database untuk mencocokkan informasi tersebut. Selanjutnya, sistem akan melakukan pengecekan apakah informasi yang dimasukkan benar atau tidak. Jika informasi yang dimasukkan sesuai dengan data yang ada di database, maka sistem akan memberikan hak akses kepada admin dan menampilkan halaman utama sistem klasifikasi. Namun, jika tidak ditemukan informasi yang sesuai, sistem akan menampilkan halaman login gagal.
+    Gambar \ref{fig:act_login} menggambarkan Activity Diagram untuk proses login. Pada tahap awal, admin memasukkan username dan password ke dalam sistem. Setelah itu, admin menekan tombol login. Sistem kemudian melakukan verifikasi terhadap username dan password yang dimasukkan dengan melakukan pencarian pada database untuk mencocokkan informasi tersebut. Jika informasi yang dimasukkan sesuai dengan data yang ada di database, maka sistem akan memberikan hak akses kepada admin dan menampilkan halaman utama sistem klasifikasi. Namun, jika tidak ditemukan informasi yang sesuai, sistem akan menampilkan halaman login gagal.
 
     \item \textbf{Activity Diagram Halaman Dashboard} \\
     Activity Diagram halaman Dashboard menjelaskan alur proses yang terjadi saat pengguna membuka halaman Dashboard. Sistem mengambil data dari database, mengolah informasi yang diperlukan, kemudian menampilkan ringkasan hasil klasifikasi beserta informasi pendukung kepada pengguna.
@@ -1070,10 +1124,10 @@ Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Ad
         \caption{Activity Diagram Dashboard}
         \label{fig:act_dashboard}
     \end{figure}
-    Pada Gambar \ref{fig:act_dashboard} di atas menampilkan activity diagram halaman Dashboard yang menggambarkan alur aktivitas ketika pengguna mengakses halaman Dashboard setelah berhasil melakukan login. Proses diawali dengan pengguna membuka halaman Dashboard, kemudian sistem mengirimkan permintaan untuk mengambil data ringkasan dari database. Selanjutnya, database mengembalikan data yang dibutuhkan kepada sistem untuk diproses. Jika proses pengambilan data berhasil, sistem mengolah data tersebut menjadi informasi berupa total pelanggan yang dianalisis, rasio kelayakan subsidi, total laporan yang tersimpan, distribusi hasil klasifikasi, serta aktivitas terbaru. Setelah seluruh data selesai diproses, sistem menampilkan seluruh komponen Dashboard sehingga pengguna dapat melihat ringkasan informasi secara lengkap. Apabila terjadi kegagalan dalam proses pengambilan data, sistem akan menampilkan pesan kesalahan kepada pengguna.
+    Pada Gambar \ref{fig:act_dashboard} di atas menampilkan activity diagram halaman Dashboard yang menggambarkan alur aktivitas ketika pengguna mengakses halaman Dashboard setelah berhasil melakukan login.
 
     \item \textbf{Activity Diagram Halaman Klasifikasi} \\
-    Activity Diagram pada halaman Klasifikasi Baru menggambarkan alur proses klasifikasi kelayakan penerima subsidi listrik melalui dua metode, yaitu Input Manual dan Upload Batch. Diagram ini menunjukkan interaksi antara pengguna, sistem, dan database.
+    Activity Diagram pada halaman Klasifikasi Baru menggambarkan alur proses klasifikasi kelayakan penerima subsidi listrik melalui dua metode, yaitu Input Manual dan Upload Batch.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.75\textwidth]{act_klasifikasi_manual}
@@ -1086,157 +1140,182 @@ Activity Diagram adalah diagram yang memodelkan aliran aktivitas pada sistem. Ad
         \caption{Activity Diagram Klasifikasi Batch}
         \label{fig:act_klasifikasi_batch}
     \end{figure}
-    Gambar \ref{fig:act_klasifikasi_manual} and Gambar \ref{fig:act_klasifikasi_batch} menunjukkan alur aktivitas untuk masing-masing metode input manual dan upload batch secara lengkap dari awal penginputan/upload hingga hasil prediksi kelayakan ditampilkan dan disimpan ke database.
 
     \item \textbf{Activity Diagram Halaman Riwayat Klasifikasi} \\
-    Activity Diagram pada halaman Riwayat Klasifikasi menggambarkan alur aktivitas untuk menelusuri, memfilter, dan mengekspor laporan hasil klasifikasi kelayakan penerima subsidi listrik yang telah dilakukan sebelumnya. Alur ini dapat dilihat pada Gambar \ref{fig:act_riwayat_klasifikasi} berikut.
+    Activity Diagram pada halaman Riwayat Klasifikasi menggambarkan alur aktivitas untuk menelusuri, memfilter, dan mengekspor laporan hasil klasifikasi kelayakan penerima subsidi listrik yang telah dilakukan sebelumnya.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.75\textwidth]{act_riwayat_klasifikasi}
         \caption{Activity Diagram Riwayat Klasifikasi}
         \label{fig:act_riwayat_klasifikasi}
     \end{figure}
-    Pada Gambar \ref{fig:act_riwayat_klasifikasi} di atas menunjukkan aliran proses di mana admin membuka halaman laporan, kemudian sistem memanggil database untuk menyajikan daftar data riwayat kelayakan. Admin dapat melakukan penyaringan (filtering) berdasarkan kategori tertentu atau mengekspor laporan tersebut menjadi dokumen PDF/Excel yang kemudian diunduh secara lokal.
 
     \item \textbf{Activity Diagram Halaman Laporan} \\
-    Activity Diagram pada halaman Laporan menggambarkan alur proses penyajian ringkasan statistik dan grafik distribusi hasil klasifikasi penerima subsidi listrik dalam bentuk laporan berkala. Alur ini dapat dilihat pada Gambar \ref{fig:act_halaman_laporan} berikut.
+    Activity Diagram pada halaman Laporan menggambarkan alur proses penyajian ringkasan statistik dan grafik distribusi hasil klasifikasi penerima subsidi listrik dalam bentuk laporan berkala.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.75\textwidth]{act_halaman_laporan}
         \caption{Activity Diagram Halaman Laporan}
         \label{fig:act_halaman_laporan}
     \end{figure}
-    Pada Gambar \ref{fig:act_halaman_laporan} di atas menunjukkan alur aktivitas ketika admin membuka menu laporan. Sistem akan memproses dan menampilkan rekapitulasi data kelayakan subsidi listrik, visualisasi grafik tren bulanan, serta menyediakan opsi ekspor laporan cetak bagi admin.
 
     \item \textbf{Activity Diagram Halaman Pengaturan} \\
-    Activity Diagram pada halaman Pengaturan Model menggambarkan alur kerja verifikasi status model aktif, konfigurasi parameter LightGBM, serta proses pelatihan ulang (\textit{retraining}) model klasifikasi secara dinamis. Alur ini dapat dilihat pada Gambar \ref{fig:act_halaman_pengaturan} berikut.
+    Activity Diagram pada halaman Pengaturan Model menggambarkan alur kerja verifikasi status model aktif, konfigurasi parameter LightGBM, serta proses pelatihan ulang (\textit{retraining}) model klasifikasi secara dinamis.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.75\textwidth]{act_halaman_pengaturan}
         \caption{Activity Diagram Halaman Pengaturan Model}
         \label{fig:act_halaman_pengaturan}
     \end{figure}
-    Pada Gambar \ref{fig:act_halaman_pengaturan} di atas menunjukkan proses ketika admin masuk ke menu pengaturan model. Sistem menampilkan konfigurasi parameter dan performa model saat ini. Admin dapat menginisiasi proses training model baru dengan data tambahan, di mana sistem mengirimkan instruksi ke server API Flask untuk melatih kembali model LightGBM secara asinkron.
 \end{enumerate}
 
-\subsection{Sequence Diagram}
-Sequence Diagram digunakan untuk menggambarkan interaksi antar objek dalam sistem berdasarkan urutan waktu terjadinya suatu proses. Diagram ini menjelaskan pesan (\textit{message}) yang dikirimkan antara pengguna, antarmuka, lapisan logika/prediksi, hingga penyimpanan data pada setiap alur utama sistem klasifikasi kelayakan penerima subsidi listrik. Adapun Sequence Diagram pada sistem adalah sebagai berikut:
+\subsection{Perancangan Sequence Diagram}
+Sequence Diagram digunakan untuk menggambarkan interaksi antar objek dalam sistem berdasarkan urutan waktu terjadinya suatu proses. Adapun Sequence Diagram pada sistem adalah sebagai berikut:
 
 \begin{enumerate}
-    \item \textbf{Sequence Diagram Login} \\
-    Sequence Diagram Login menggambarkan interaksi yang terjadi saat admin melakukan proses masuk ke dalam sistem, mulai dari input kredensial hingga sistem mengizinkan akses ke halaman Dashboard, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_login}.
+    \item \textbf{Sequence Diagram Login}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.95\textwidth]{seq_login}
+        \includegraphics[width=0.85\textwidth]{seq_login}
         \caption{Sequence Diagram Login}
         \label{fig:seq_login}
     \end{figure}
-    Pada Gambar \ref{fig:seq_login} di atas, admin memasukkan email dan password pada halaman Login, kemudian sistem melakukan validasi serta pencocokan kredensial. Apabila kredensial sesuai, sistem menyimpan sesi login pada cookie lalu mengarahkan admin ke halaman Dashboard; permintaan akses berikutnya akan diperiksa oleh guard rute sistem berdasarkan keberadaan sesi tersebut sebelum halaman Dashboard ditampilkan.
 
-    \item \textbf{Sequence Diagram Klasifikasi Manual} \\
-    Sequence Diagram Klasifikasi Manual menggambarkan interaksi antar objek pada proses klasifikasi kelayakan subsidi listrik melalui input data pelanggan secara manual, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_klasifikasi_manual}.
+    \item \textbf{Sequence Diagram Klasifikasi Manual}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.95\textwidth]{seq_klasifikasi_manual}
+        \includegraphics[width=0.85\textwidth]{seq_klasifikasi_manual}
         \caption{Sequence Diagram Klasifikasi Manual}
         \label{fig:seq_klasifikasi_manual}
     \end{figure}
-    Pada Gambar \ref{fig:seq_klasifikasi_manual} di atas, admin mengisi variabel data pelanggan pada form klasifikasi lalu menjalankan proses klasifikasi. Sistem menghitung skor kelayakan berdasarkan variabel tersebut untuk menentukan label ``Layak'' atau ``Tidak Layak'' beserta nilai keyakinannya (\textit{confidence}), kemudian menyimpan hasil klasifikasi ke penyimpanan data dan mencatat aktivitas terkait, sebelum akhirnya menampilkan hasil klasifikasi kepada admin.
 
-    \item \textbf{Sequence Diagram Klasifikasi Batch (CSV)} \\
-    Sequence Diagram Klasifikasi Batch menggambarkan interaksi antar objek pada proses klasifikasi kelayakan subsidi listrik untuk banyak data pelanggan sekaligus melalui unggah berkas CSV, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_klasifikasi_batch}.
+    \item \textbf{Sequence Diagram Klasifikasi Batch (CSV)}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.95\textwidth]{seq_klasifikasi_batch}
+        \includegraphics[width=0.85\textwidth]{seq_klasifikasi_batch}
         \caption{Sequence Diagram Klasifikasi Batch (CSV)}
         \label{fig:seq_klasifikasi_batch}
     \end{figure}
-    Pada Gambar \ref{fig:seq_klasifikasi_batch} di atas, admin mengunggah berkas CSV berisi data pelanggan, kemudian sistem mengurai (\textit{parsing}) isi berkas tersebut menjadi kumpulan data pelanggan. Setiap baris data selanjutnya diproses satu per satu untuk menghasilkan skor dan label kelayakan, sebelum seluruh hasil klasifikasi batch disimpan ke penyimpanan data dan ditampilkan sebagai ringkasan hasil kepada admin.
 
-    \item \textbf{Sequence Diagram Lihat Laporan} \\
-    Sequence Diagram Lihat Laporan menggambarkan interaksi antar objek pada saat admin menelusuri daftar laporan hasil klasifikasi serta membuka detail salah satu laporan, sebagaimana ditunjukkan pada Gambar \ref{fig:seq_laporan}.
+    \item \textbf{Sequence Diagram Lihat Laporan}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.85\textwidth]{seq_laporan}
         \caption{Sequence Diagram Lihat Laporan}
         \label{fig:seq_laporan}
     \end{figure}
-    Pada Gambar \ref{fig:seq_laporan} di atas, admin membuka halaman Laporan sehingga sistem mengambil dan menampilkan daftar laporan yang tersimpan, dengan opsi penyaringan berdasarkan rentang tanggal. Ketika admin memilih salah satu laporan, sistem menavigasikan admin ke halaman detail laporan, mengambil data laporan terkait dari penyimpanan data berdasarkan identitasnya, lalu menampilkan detail laporan tersebut kepada admin.
 \end{enumerate}
 
-\section{Perancangan Metode Penelitian}
-Perancangan metode penelitian menjelaskan pendekatan yang digunakan dalam membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh, mulai dari metode klasifikasi yang diterapkan hingga metrik yang digunakan untuk mengukur performanya sebelum diimplementasikan pada Bab IV.
+\subsection{Perancangan Class Diagram}
+Class Diagram digunakan untuk memodelkan struktur kelas, atribut, metode, serta hubungan antar objek dalam sistem klasifikasi kelayakan penerima subsidi listrik.
 
-\subsection{Penerapan Metode Klasifikasi LightGBM}
-Penelitian ini menggunakan pendekatan machine learning berbasis supervised learning dengan algoritma Light Gradient Boosting Machine (LightGBM). Metode tersebut dipilih karena memiliki kemampuan klasifikasi yang baik serta efisien dalam menangani data berukuran besar dan hubungan nonlinier antar variabel. Proses penelitian dilakukan dengan memanfaatkan data pelanggan listrik sebagai variabel input untuk menghasilkan prediksi status kelayakan subsidi listrik sebagai variabel output. Model dilatih menggunakan data training hasil pembagian dataset (80\%) dan divalidasi menggunakan data testing (20\%) yang tidak dilibatkan pada proses pelatihan.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{class_diagram}
+    \caption{Perancangan Class Diagram}
+    \label{fig:class_diagram}
+\end{figure}
 
-\subsection{Metrik Evaluasi Performa Model}
-Performa model klasifikasi LightGBM diukur menggunakan beberapa metrik evaluasi, yaitu:
+\section{Perancangan Antarmuka Sistem}
+Perancangan antarmuka (\textit{wireframe}) disusun untuk memberikan gambaran tata letak antarmuka aplikasi web sistem klasifikasi kelayakan penerima subsidi listrik.
 
-\begin{enumerate}
-    \item \textbf{Accuracy} \\
-    Accuracy digunakan untuk mengukur tingkat ketepatan prediksi model secara keseluruhan.
-    \begin{equation}
-        Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
-    \end{equation}
+\subsection{Perancangan Halaman Login}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wireframe_login}
+    \caption{Perancangan Wireframe Halaman Login}
+    \label{fig:wireframe_login}
+\end{figure}
 
-    \item \textbf{Precision} \\
-    Precision menunjukkan tingkat ketepatan prediksi positif yang dihasilkan oleh model.
-    \begin{equation}
-        Precision = \frac{TP}{TP + FP}
-    \end{equation}
+\subsection{Perancangan Halaman Dashboard Admin}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wireframe_dashboard}
+    \caption{Perancangan Wireframe Halaman Dashboard Admin}
+    \label{fig:wireframe_dashboard}
+\end{figure}
 
-    \item \textbf{Recall} \\
-    Recall mengukur kemampuan model dalam menemukan seluruh data yang benar-benar termasuk ke dalam kelas positif.
-    \begin{equation}
-        Recall = \frac{TP}{TP + FN}
-    \end{equation}
+\subsection{Perancangan Halaman Clustering Admin}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wireframe_clustering}
+    \caption{Perancangan Wireframe Halaman Klasifikasi}
+    \label{fig:wireframe_klasifikasi}
+\end{figure}
 
-    \item \textbf{F1-Score} \\
-    F1-Score merupakan rata-rata harmonik antara precision dan recall yang digunakan untuk menyeimbangkan kedua nilai tersebut.
-    \begin{equation}
-        F1\text{-}Score = 2 \times \frac{Precision \times Recall}{Precision + Recall}
-    \end{equation}
-\end{enumerate}
-Keterangan:
-\begin{itemize}
-    \item TP (True Positive) : Data layak subsidi yang diprediksi layak
-    \item TN (True Negative) : Data tidak layak yang diprediksi tidak layak
-    \item FP (False Positive) : Data tidak layak tetapi diprediksi layak
-    \item FN (False Negative) : Data layak tetapi diprediksi tidak layak
-\end{itemize}
+\subsection{Perancangan Halaman Analisis Tren}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wireframe_analisis_tren}
+    \caption{Perancangan Wireframe Halaman Laporan}
+    \label{fig:wireframe_laporan}
+\end{figure}
 
-\subsection{Confusion Matrix}
-Confusion Matrix digunakan untuk menampilkan perbandingan antara hasil prediksi model dan data aktual dalam bentuk tabel klasifikasi. Matriks ini membantu dalam memahami performa model secara lebih rinci terhadap masing-masing kelas prediksi. Melalui teknik pengujian ini, diharapkan sistem yang dibangun mampu bekerja sesuai fungsi serta menghasilkan model klasifikasi dengan performa yang optimal dalam menentukan kelayakan penerima subsidi listrik.
+\subsection{Perancangan Halaman Kelola Akun}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wireframe_kelola_akun}
+    \caption{Perancangan Wireframe Halaman Kelola Akun}
+    \label{fig:wireframe_kelola_akun}
+\end{figure}
 
-\section{Perancangan Pengujian}
+\subsection{Perancangan Halaman Profil Pengguna}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wireframe_profil_pengguna}
+    \caption{Perancangan Wireframe Halaman Profil Pengguna}
+    \label{fig:wireframe_profil_pengguna}
+\end{figure}
+
+\section{Teknik Pengujian}
 Perancangan pengujian sistem dilakukan untuk memastikan bahwa sistem klasifikasi kelayakan penerima subsidi listrik dapat berjalan sesuai dengan fungsi yang telah dirancang serta mampu menghasilkan prediksi yang akurat. Pengujian fungsional sistem dilakukan menggunakan metode Black Box Testing.
 
+\subsection{Black Box Testing}
 Pengujian Blackbox merupakan metode pengujian perangkat lunak yang berfokus pada pengujian fungsi sistem tanpa melihat struktur kode program di dalamnya. Pengujian dilakukan dengan cara memberikan input tertentu pada sistem dan mengamati apakah output yang dihasilkan telah sesuai dengan kebutuhan fungsional yang telah ditentukan.
 
-Tujuan pengujian Blackbox dalam penelitian ini adalah untuk memastikan bahwa setiap fitur sistem dapat berjalan dengan baik sesuai dengan skenario penggunaan. Adapun aspek yang diuji meliputi:
+\subsection{White Box Testing}
+\textit{White Box Testing} menerapkan teknik \textit{Basis Path Testing} pada fungsi autentikasi \textit{backend}.
 \begin{enumerate}
-    \item Proses import dataset pelanggan listrik.
-    \item Proses preprocessing data.
-    \item Proses pelatihan model LightGBM.
-    \item Proses prediksi klasifikasi pelanggan.
-    \item Proses evaluasi model.
-    \item Tampilan hasil analisis.
-    \item Penyimpanan hasil pengolahan data.
+    \item \textbf{Flow Graph}: Struktur alur logika fungsi autentikasi dipetakan ke dalam \textit{flow graph} yang terdiri atas node keputusan dan edge alur program.
+    \item \textbf{Cyclomatic Complexity}: Dihitung menggunakan rumus $V(G) = E - N + 2 = 11 - 9 + 2 = 4$, yang menunjukkan terdapat 4 jalur independen (\textit{independent path}).
+    \item \textbf{Tabel Jalur Independen}: Penentuan jalur independen disajikan pada Tabel \ref{tab:jalur_independen_s1}.
+    \item \textbf{Tabel Test Case}: Skenario pengujian disajikan pada Tabel \ref{tab:test_case_whitebox_s1}.
 \end{enumerate}
-Setiap pengujian dinyatakan berhasil apabila sistem mampu menghasilkan keluaran sesuai dengan hasil yang diharapkan tanpa terjadi kesalahan proses. Rancangan skenario pengujian secara rinci disajikan pada Bab IV bagian Hasil Pengujian Sistem.
+
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Tabel Jalur Independen}
+\label{tab:jalur_independen_s1}
+\begin{tabularx}{\textwidth}{|c|p{4cm}|X|}
+\hline
+\textbf{Jalur} & \textbf{Alur Node} & \textbf{Skenario} \\ \hline
+Path 1 & N1-N2-N3-N9 & Koneksi database gagal \\ \hline
+Path 2 & N1-N2-N4-N5-N6-N9 & Login berhasil (kredensial benar) \\ \hline
+Path 3 & N1-N2-N4-N5-N7-N9 & Login gagal (kredensial salah) \\ \hline
+Path 4 & N1-N2-N4-N8-N9 & Exception error saat query \\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\setstretch{1.2}
+\centering
+\caption{Tabel Test Case}
+\label{tab:test_case_whitebox_s1}
+\begin{tabularx}{\textwidth}{|c|p{4cm}|X|}
+\hline
+\textbf{Path} & \textbf{Data Uji} & \textbf{Hasil yang Diharapkan} \\ \hline
+Path 1 & DB terputus & Pesan error koneksi database \\ \hline
+Path 2 & User \& pass benar & Status success \& session aktif \\ \hline
+Path 3 & Pass salah & Pesan error kredensial salah \\ \hline
+Path 4 & Query error & Exception ditangkap tanpa crash \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsection{Pengujian Implementasi Metode K-Means Clustering}
+Pengujian ini dilakukan untuk memverifikasi konsistensi keluaran proses komputasi klasifikasi pada sistem aplikasi web terhadap hasil eksperimen acuan.
 
 
-
-%%=============================================================
-%% BAB IV - HASIL DAN PEMBAHASAN
-%%=============================================================
-%%=============================================================
-%% BAB IV - HASIL DAN PEMBAHASAN
-%%=============================================================
-%%=============================================================
-%% BAB IV - HASIL DAN PEMBAHASAN
-%%=============================================================
 \chapter[HASIL DAN PEMBAHASAN]{\\ HASIL DAN PEMBAHASAN}
 
 Bab ini menyajikan hasil implementasi, preprocessing data, pelatihan model, evaluasi performa model, serta pengujian sistem klasifikasi kelayakan penerima subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan metode Light Gradient Boosting Machine (LightGBM). Pembahasan dibagi menjadi tujuh bagian utama, yaitu hasil implementasi sistem, preprocessing data, implementasi dan pelatihan model prediksi, evaluasi model, hasil pengujian sistem, pembahasan hasil klasifikasi, serta keterbatasan sistem dan penelitian.

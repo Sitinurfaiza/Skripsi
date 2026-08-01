@@ -1,0 +1,2406 @@
+--- PAGE 1 ---
+KLASIFIKASI KELAYAKAN PENERIMA SUBSIDI LISTRIK
+RUMAH TANGGA PELANGGAN PLN ACEH
+MENGGUNAKAN METODELIGHT GRADIENT BOOSTING
+MACHINE(LIGHTGBM)
+SKRIPSI
+Diajukan Sebagai Salah Satu Syarat Untuk
+Menyelesaikan Pendidikan Jenjang Sarjana Terapan
+Pada Politeknik Negeri Lhokseumawe
+Oleh:
+SITI NUR FAIZA
+NIM : 2022573010045
+Program Studi : Teknik Informatika
+Jurusan : Teknologi Informasi dan Komputer
+KEMENTERIAN PENDIDIKAN TINGGI, SAINS, DAN TEKNOLOGI
+POLITEKNIK NEGERI LHOKSEUMA WE
+TAHUN 2026
+
+--- PAGE 2 ---
+PENGESAHAN PEMBIMBING
+Skripsi yang berjudul“Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah
+Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting
+Machine (LightGBM)”, disusun oleh Siti Nur Faiza, NIM 2022573010045,
+Program Studi Teknik Informatika, Jurusan Teknologi Informasi dan Komputer
+Politeknik Negeri Lhokseumawe, telah memenuhi syarat untuk
+dipertanggungjawabkan di hadapan dewan penguji.
+.
+Pembimbing I
+Buketrata, 22 Juli 2026
+Pembimbing II
+Salahuddin, S.T., M.CS
+NIP. 19740424 200212 1 001
+Hendrawaty, ST., M.T.
+NIP. 19700226199802 2 001
+Mengetahui,
+Ketua Jurusan
+Teknologi Informasi dan
+Komputer,
+Ketua Program Studi
+Teknik Informatika,
+Salahuddin, S.T., M.CS
+NIP. 19740424 200212 1 001
+M. Khadafi, S.T., M.T
+NIP. 19750718 200212 1 004
+ii
+
+--- PAGE 3 ---
+PENGESAHAN PENGUJI
+Skripsi yang berjudul“Klasifikasi Kelayakan Penerima Subsidi Listrik Rumah
+Tangga Pelanggan PLN Aceh Menggunakan Metode Light Gradient Boosting
+Machine (LightGBM)”, disusun oleh Siti Nur Faiza, NIM 2022573010045,
+Program Studi Teknik Informatika, Jurusan Teknologi Informasi dan Komputer
+Politeknik Negeri Lhokseumawe, telah dipertanggungjawabkan di hadapan dewan
+penguji dan dinyatakan lulus pada tanggal 22 Juli 2026.
+Komisi Sidang,
+Salahuddin, S. T., M.CS
+NIP. 1974024 200212 1 001
+(Ketua Sidang)
+Hendrawaty, ST., M.T.
+NIP. 19700226199802 2 001
+(Sekretaris Sidang)
+Musta’inul Abdi, S.S.T., M.Kom.
+NIP. 19911030 201903 1 015
+(Penguji I)
+Radhiyatammardhiyyah, S.S.T., M.Sc.
+NIP. 19920826 202203 2 011
+(Penguji II)
+Dr. Rahmad Hidayat, S.Kom., M.Cs.
+NIP. 19830420 201212 1 003
+(Penguji III)
+Mengetahui,
+Ketua Jurusan
+Teknologi Informasi dan
+Komputer,
+Ketua Program Studi
+Teknik Informatika,
+Salahuddin, S. T., M.CS
+NIP. 1974024 200212 1 001
+Khadafi, S.T., M.T
+NIP. 19750718 200212 1 004
+iii
+
+--- PAGE 4 ---
+HALAMAN PERNYATAAN
+Dengan ini saya menyatakan bahwa dalam Skripsi ini tidak terdapat karya yang
+pernah diajukan untuk mendapatkan gelar kesarjanaan di suatu Perguruan Tinggi,
+dan sepanjang pengetahuan saya juga tidak terdapat karya atau pendapat yang
+pernah ditulis orang lain, kecuali yang secara tertulis diacu dalam naskah dan
+disebut dalam daftar pustaka.
+Buketrata, 22 Juli 2026
+Siti Nur Faiza
+NIM. 2022573010045
+iv
+
+--- PAGE 5 ---
+KATA PENGANTAR
+Puji syukur penulis panjatkan kehadirat Allah SWT, karena atas rahmat and
+hidayah-Nya, penulis dapat menyelesaikan skripsi ini dengan judulKlasifikasi
+Kelayakan Penerima Subsidi Listrik Rumah Tangga Pelanggan PLN Aceh
+Menggunakan Metode Light Gradient Boosting Machine (LightGBM). Skripsi ini
+disusun sebagai salah satu syarat untuk memperoleh gelar Sarjana Terapan pada
+Program Studi Teknik Informatika Politeknik Negeri Lhokseumawe. Penulis
+menyadari bahwa skripsi ini masih jauh dari sempurna. Oleh karena itu, penulis
+mengharapkan kritik dan saran yang bersifat membangun dari semua pihak.
+Dalam penulisan Skripsi ini penulis dapat melaksanakannya dengan baik berkat
+dukungan, bimbingan, dan bantuan dari berbagai pihak. Oleh karena itu, penulis
+ingin mengucapkan terima kasih yang sebesar-besarnya kepada:
+1. Allah SWT atas segala rahmat, nikmat, kesehatan, serta kekuatan yang
+diberikan kepada penulis sehingga dapat menyelesaikan skripsi ini.
+2. Keluarga tercinta yang selalu memberikan doa, dukungan moral maupun
+material, serta motivasi kepada penulis selama proses penyelesaian
+pendidikan.
+3. Bapak Dr. Ir. Rizal Syahyadi, S.T., M.Eng.Sc., IPM, ASEAN Eng., APEC
+Eng., selaku Direktur Politeknik Negeri Lhokseumawe.
+4. Bapak Salahuddin, S.T., M.CS selaku Ketua Jurusan Teknologi Informasi
+dan Komputer, Bapak Fachri Yanuar Rudi F, S.S.T., M.T. selaku Sekretaris
+Jurusan Teknologi Informasi dan Komputer, dan Bapak M. Khadafi, S.T.,
+v
+
+--- PAGE 6 ---
+M.T. selaku Ketua Program Studi Teknik Informatika atas segala bimbingan
+dan perhatian selama masa perkuliahan.
+5. Bapak Salahuddin, S.T., M.CS selaku Pembimbing Utama dan Ibu
+Hendrawaty, ST., M.T selaku Pembimbing Pendamping yang telah
+membantu, membimbing, dan mengarahkan penulis dalam proses
+penyelesaian Skripsi ini.
+6. Bapak Musta’inul Abdi, S.S.T., M.Kom., Bapak Dr. Rahmad Hidayat,
+S.Kom., M.Cs., and Ibu Radhiyatammardhiyyah, S.S.T., M.Sc. selaku
+penguji yang telah bersedia memberikan arahan dan masukan dalam
+pengerjaan Skripsi ini.
+7. Seluruh Dosen Pengajar Program Studi Teknik Informatika yang telah
+memberikan ilmu dan motivasi kepada penulis selama masa perkuliahan.
+Penulis menyadari bahwa Skripsi ini masih terdapat kekurangan dan
+ketidaksempurnaan. Oleh sebab itu, penulis mengharapkan adanya saran dan kritik
+yang membangun guna dijadikan bahan perbaikan dan pembelajaran untuk ke
+depannya yang bermanfaat bagi penulis dan rekan-rekan yang membacanya.
+Semoga bantuan dan kebaikan semua pihak dapat menjadi amal ibadah.
+Buketrata, 22 Juli 2026
+Siti Nur Faiza
+NIM. 2022573010045
+vi
+
+--- PAGE 7 ---
+ABSTRAK
+Subsidi listrik merupakan bantuan pemerintah yang diberikan kepada masyarakat
+yang memenuhi kriteria tertentu untuk meringankan biaya penggunaan energi
+listrik. Meskipun demikian, proses penentuan kelayakan penerima subsidi listrik
+masih memerlukan mekanisme yang lebih akurat dan objektif sehingga diperlukan
+pendekatan berbasis data untuk membantu pengambilan keputusan. Salah satu
+pendekatan yang dapat digunakan adalah teknik machine learning melalui metode
+klasifikasi. Penelitian ini bertujuan membangun model klasifikasi kelayakan
+penerima subsidi listrik pelanggan rumah tangga di wilayah PLN Aceh
+menggunakan metode Light Gradient Boosting Machine (LightGBM). Data yang
+digunakan terdiri atas ID pelanggan, nama pelanggan, daya listrik (V A), golongan
+tarif, konsumsi listrik per bulan (kWh), penghasilan, jumlah anggota keluarga,
+pekerjaan kepala keluarga, status kepemilikan rumah, luas bangunan, dan status
+penerima bantuan, dengan output berupa klasifikasi layak atau tidak layak
+menerima subsidi listrik. Data diproses melalui tahapan preprocessing, pembagian
+data training dan testing, pelatihan model, serta evaluasi menggunakan metrik
+accuracy, precision, recall, dan F1-score. Hasil penelitian diharapkan
+menghasilkan model dengan tingkat akurasi yang baik dalam mengklasifikasikan
+kelayakan penerima subsidi listrik sehingga dapat mendukung PLN dalam proses
+pengambilan keputusan secara lebih efektif dan objektif.
+Kata Kunci: Klasifikasi, Subsidi Listrik, Light Gradient Boosting Machine
+(LightGBM)
+vii
+
+--- PAGE 8 ---
+ABSTRACT
+Electricity subsidy is government assistance provided to communities that meet
+certain criteria to reduce the cost of electricity consumption. Nevertheless, the
+process of determining the eligibility of electricity subsidy recipients still requires
+a more accurate and objective mechanism, hence a data-driven approach is
+needed to assist in decision-making. One approach that can be used is machine
+learning techniques through classification methods. This study aims to build a
+classification model for the eligibility of household electricity subsidy recipients in
+the PLN Aceh region using the Light Gradient Boosting Machine (LightGBM)
+method. The data used consists of customer ID, customer name, electrical power
+(VA), tariff category, monthly electricity consumption (kWh), income, number of
+family members, head of family occupation, house ownership status, building area,
+and assistance recipient status, with the output being the classification of eligible
+or ineligible to receive electricity subsidy. The data is processed through the stages
+of preprocessing, dividing training and testing data, model training, and
+evaluation using accuracy, precision, recall, and F1-score metrics. The results of
+the study are expected to produce a model with a good level of accuracy in
+classifying the eligibility of electricity subsidy recipients so that it can support
+PLN in a more effective and objective decision-making process.
+Keywords:Classification, Electricity Subsidy, Light Gradient Boosting Machine
+(LightGBM)
+viii
+
+--- PAGE 9 ---
+DAFTAR ISI
+PENGESAHAN PEMBIMBING ................................................ ii
+PENGESAHAN PENGUJI ...................................................... iii
+HALAMAN PERNYATAAN..................................................... iv
+KATA PENGANTAR ............................................................. v
+ABSTRAK ......................................................................... vii
+ABSTRACT........................................................................ viii
+DAFTAR ISI ....................................................................... ix
+DAFTAR GAMBAR .............................................................. xi
+DAFTAR TABEL ................................................................. xii
+BAB I PENDAHULUAN ..................................................... 2
+1.1 Latar Belakang .......................................................... 2
+1.2 Rumusan Masalah ....................................................... 4
+1.3 Tujuan Penelitian ........................................................ 5
+1.4 Batasan Masalah......................................................... 5
+1.5 Manfaat Penelitian ...................................................... 6
+BAB II TINJAUAN PUSTAKA ............................................... 7
+2.1 State of the Art .......................................................... 7
+2.2 Tinjauan Teoritis......................................................... 11
+2.2.1 Klasifikasi Dalam Machine Learning ........................ 11
+2.2.2 Supervised Learning dan Unsupervised Learning........... 12
+2.2.3 Subsidi Listrik di Indonesia .................................. 13
+2.2.4 PT. PLN (Persero) Unit Induk Distribusi Aceh.............. 15
+2.2.5 Model Boosting dalam Machine Learning .................. 15
+2.2.6 Light Gradient Boosting Machine ........................... 16
+BAB III METODOLOGI PENELITIAN ..................................... 22
+3.1 Tempat dan Waktu Penelitian ........................................... 22
+3.2 Alat dan Bahan Penelitian .............................................. 22
+3.2.1 Perangkat Lunak .............................................. 23
+3.2.2 Perangkat Keras ............................................... 23
+3.3 Variabel Data ............................................................ 24
+3.4 Sumber Data ............................................................. 24
+3.5 Tahap Penelitian ......................................................... 26
+3.5.1 Pengumpulan Data ............................................ 27
+3.5.2 Preprocessing Data ........................................... 27
+ix
+
+--- PAGE 10 ---
+3.5.3 Model K-Means Clustering .................................. 28
+3.5.4 Evaluasi Hasil Clustering..................................... 30
+3.5.5 Rancangan Sistem ............................................ 31
+3.5.5.1 Analisis Kebutuhan Sistem ............................... 32
+3.5.6 Rancangan Arsitektur Sistem ................................ 36
+3.5.6.1 Use Case Diagram ........................................ 38
+3.5.6.2 Activity Diagram ......................................... 40
+3.5.6.3 Sequence Diagram ........................................ 44
+3.5.6.4 Class Diagram ............................................ 50
+3.5.7 Perancangan Antarmuka Sistem ............................. 52
+3.5.7.1 Rancangan Halaman Login .............................. 52
+3.5.7.2 Rancangan Halaman Dashboard Admin ................. 54
+3.5.7.3 Rancangan Halaman Clustering Admin ................. 56
+3.5.7.4 Rancangan Halaman Analisis Tren ...................... 60
+3.5.7.5 Rancangan Halaman Kelola Akun ....................... 63
+3.5.7.6 Rancangan Halaman Profil Pengguna ................... 67
+3.5.8 Teknik Pengujian ............................................. 69
+3.5.8.1 Black Box Testing ........................................ 69
+3.5.9 Pengujian Implementasi Metode K-Means Clustering...... 70
+BAB IV HASIL DAN PEMBAHASAN ....................................... 71
+4.1 Hasil Implementasi Sistem.............................................. 71
+4.1.1 Implementasi Antarmuka (UI) ............................... 71
+4.1.2 Implementasi Backend dan Basis Data Cloud ............... 77
+4.1.3 Implementasi Layanan Prediksi (API) ....................... 77
+4.2 Implementasi Rancangan Model Klasifikasi LightGBM .............. 79
+4.2.1 Deskripsi Data dan Eksplorasi Awal ......................... 79
+4.2.2 Pra-pemrosesan Data ......................................... 81
+4.2.3 Penerapan Nilai Parameter ................................... 83
+4.2.4 Hasil Pelatihan Model ........................................ 84
+4.2.5 Analisis Klasifikasi Menggunakan Metrik Evaluasi dan
+Confusion Matrix ............................................. 84
+4.2.6 Analisis Fitur Penting (Feature Importance) ................ 85
+4.3 Hasil Pengujian Sistem.................................................. 87
+4.3.1 Hasil Black Box Testing ...................................... 87
+4.3.2 Hasil White Box Testing ..................................... 89
+4.4 Pembahasan.............................................................. 89
+4.4.1 Pembahasan Pengujian Fungsional Web Dashboard ........ 89
+x
+
+--- PAGE 11 ---
+4.4.2 Pembahasan Akurasi Model Klasifikasi LightGBM ........ 90
+4.5 Keterbatasan Sistem dan Penelitian .................................... 90
+BAB V PENUTUP.............................................................. 92
+5.1 Kesimpulan .............................................................. 92
+5.2 Saran ..................................................................... 93
+DAFTAR PUSTAKA.............................................................. 95
+LAMPIRAN ....................................................................... 97
+xi
+
+--- PAGE 12 ---
+DAFTAR GAMBAR
+2.1 Metode Light Gradient Boosting Machine ............................. 18
+3.1 Tahapan Penelitian ....................................................... 26
+3.2 Arsitektur Sistem......................................................... 37
+3.3 Use Case Diagram ....................................................... 39
+3.4 Activity Diagram Login ................................................. 40
+3.5 Activity Diagram Kelola akun Pegawai................................. 41
+3.6 Activity Diagram Clustering ............................................ 42
+3.7 Activity Diagram Analisis Tren ......................................... 44
+3.8 Sequence Diagram Login ................................................ 45
+3.9 Sequence Diagram Kelola Akun ........................................ 47
+3.10 Sequence Diagram Clustering ........................................... 48
+3.11 Sequence Diagram Analisis Tren ....................................... 49
+3.12 Class Diagram............................................................ 51
+3.13 Wireframe Halaman Login .............................................. 53
+3.14 Wireframe Halaman Dashboard Admin ................................ 54
+3.15 Halaman Dashboard Admin (Setelah Proses Clustering) .............. 55
+3.16 Wireframe Halaman Clustering (Sebelum Upload Data) .............. 57
+3.17 Wireframe Halaman Clustering (Setelah Upload Data) ................ 58
+3.18 Wireframe Halaman Clustering (Hasil Clustering)..................... 59
+3.19 Wireframe Halaman Analisis (Sebelum Mulai Analisis) .............. 60
+3.20 Wireframe Halaman Analisis Tren (Hasil Analisis).................... 62
+3.21 Wireframe Halaman Kelola Akun....................................... 64
+3.22 Wireframe Halaman Kelola Akun (Tambah Pengguna)................ 65
+3.23 Wireframe Halaman Kelola Akun (Edit dan Reset Password)......... 66
+3.24 Wireframe Halaman Profil Pengguna (Admin dan Pegawai) .......... 68
+4.1 Implementasi Halaman Login ........................................... 72
+4.2 Implementasi Halaman Dashboard Utama ............................. 73
+4.3 Implementasi Halaman Klasifikasi Baru................................ 74
+4.4 Implementasi Halaman Hasil Prediksi .................................. 75
+4.5 Implementasi Halaman Laporan ........................................ 76
+4.6 Implementasi Halaman Pengaturan ..................................... 77
+xii
+
+--- PAGE 13 ---
+DAFTAR TABEL
+3.1 Kebutuhan Perangkat Lunak ............................................ 23
+3.2 Kebutuhan Perangkat Keras ............................................. 23
+3.3 Kebutuhan Fungsional Sistem ........................................... 33
+3.4 Kebutuhan Non-Fungsional ............................................. 35
+4.1 Statistik Deskriptif Variabel Numerik................................... 80
+4.2 Distribusi Golongan Tarif................................................ 80
+4.3 Distribusi Status Kepemilikan Rumah .................................. 80
+4.4 Distribusi Status Penerima Bantuan Sosial ............................. 80
+4.5 Distribusi Pekerjaan Kepala Keluarga .................................. 81
+4.6 Distribusi Target Label Kelayakan ...................................... 81
+4.7 Konfigurasi Hyperparameter Model LightGBM ....................... 84
+4.8 Metrik Performa Model LightGBM..................................... 85
+4.9 Confusion Matrix Hasil Pengujian ...................................... 85
+4.10 Nilai Feature Importance Model LightGBM ........................... 86
+4.11 Hasil Pengujian Black Box Dashboard Klasifikasi..................... 88
+xiii
+
+--- PAGE 14 ---
+BAB I
+PENDAHULUAN
+1.1 Latar Belakang
+Subsidi listrik merupakan salah satu bentuk kebijakan strategis pemerintah
+dalam menjamin pemerataan akses energi serta meningkatkan kesejahteraan
+masyarakat berpenghasilan rendah [1]. Energi listrik telah menjadi kebutuhan
+dasar dalam kehidupan modern karena hampir seluruh aktivitas rumah tangga,
+pendidikan, ekonomi, dan layanan publik bergantung pada ketersediaan listrik
+yang stabil dan terjangkau [2]. Oleh karena itu, pemerintah melalui PT PLN
+(Persero) sebagai perusahaan penyedia tenaga listrik nasional, menyalurkan
+subsidi listrik khususnya kepada pelanggan rumah tangga dengan daya rendah
+seperti 450 V A dan 900 V A. Kebijakan ini bertujuan untuk meringankan beban
+pengeluaran masyarakat kurang mampu serta mendukung peningkatan taraf hidup
+secara berkelanjutan [3].
+Berdasarkan evaluasi kebijakan subsidi energi dan laporan kinerja sektor
+ketenagalistrikan, masih terdapat pelanggan yang secara ekonomi tergolong
+mampu tetapi tetap menerima subsidi, sementara sebagian masyarakat yang lebih
+membutuhkan justru belum terdata atau belum terjangkau program bantuan.
+Permasalahan ini umumnya disebabkan oleh pendekatan penentuan penerima
+subsidi yang masih bertumpu pada indikator administratif sederhana, seperti daya
+listrik terpasang dan golongan tarif, tanpa mempertimbangkan secara
+komprehensif pola konsumsi listrik, riwayat pembayaran, serta karakteristik sosial
+2
+
+--- PAGE 15 ---
+3
+ekonomi pelanggan. Kondisi tersebut menunjukkan bahwa proses identifikasi
+penerima subsidi masih memerlukan sistem pendukung keputusan yang lebih
+objektif, terukur, dan berbasis data [4]. Perkembangan teknologi informasi dan
+meningkatnya ketersediaan data pelanggan listrik membuka peluang besar untuk
+menerapkan pendekatan analisis data dalam mendukung kebijakan subsidi [5].
+Data administratif pelanggan, data konsumsi energi listrik, serta riwayat
+pembayaran yang dikelola oleh PT PLN (Persero), khususnya di wilayah Unit
+Induk Distribusi Aceh, memiliki potensi untuk dianalisis lebih lanjut guna
+menemukan pola yang mencerminkan kondisi kelayakan penerima subsidi.
+Pemanfaatan teknik machine learning dalam pengolahan data memungkinkan
+sistem untuk mempelajari hubungan kompleks antar variabel secara otomatis,
+sehingga proses klasifikasi dapat dilakukan secara lebih akurat dibandingkan
+metode manual atau berbasis aturan sederhana.
+Salah satu pendekatan dalam machine learning yang banyak digunakan
+untuk permasalahan klasifikasi adalah metode ensemble learning berbasis
+boosting. Metode ini bekerja dengan menggabungkan beberapa model
+pembelajaran sederhana untuk menghasilkan model prediksi yang lebih kuat dan
+stabil [6]. Di antara berbagai algoritma boosting yang berkembang, LightGBM
+(Light Gradient Boosting Machine) dikenal memiliki keunggulan dalam efisiensi
+komputasi, kecepatan pelatihan, serta kemampuan menangani dataset berukuran
+besar dengan hubungan nonlinier antar variabel. LightGBM menggunakan teknik
+pertumbuhan pohon yang memungkinkan model meminimalkan nilai loss secara
+
+--- PAGE 16 ---
+4
+lebih optimal, sehingga berpotensi menghasilkan tingkat akurasi yang tinggi dalam
+proses klasifikasi [7].
+Berdasarkan permasalahan tersebut, diperlukan suatu penelitian yang
+mampu merancang dan membangun model klasifikasi kelayakan penerima subsidi
+listrik pelanggan rumah tangga di wilayah PLN Aceh menggunakan metode Light
+Gradient Boosting Machine (LightGBM). Penelitian ini diharapkan dapat
+menghasilkan sistem klasifikasi berbasis data yang mampu meningkatkan
+objektivitas dan ketepatan sasaran penyaluran subsidi Listrik [8]. Dengan adanya
+model klasifikasi yang akurat, proses evaluasi penerima subsidi dapat dilakukan
+secara lebih efektif dan efisien, sehingga kebijakan subsidi listrik benar-benar
+dapat dirasakan oleh masyarakat yang berhak menerimanya serta mendukung
+pengelolaan anggaran subsidi energi secara lebih optimal [3].
+1.2 Rumusan Masalah
+Berdasarkan latar belakang di atas, maka rumusan masalah dari penelitian ini
+adalah:
+1. Bagaimana merancang dan membangun model klasifikasi kelayakan
+penerima subsidi listrik berdasarkan data pelanggan PLN Aceh?
+2. Bagaimana penerapan metode Light Gradient Boosting Machine
+(LightGBM) dalam mengklasifikasikan kelayakan penerima subsidi listrik
+pelanggan PLN Aceh?
+3. Bagaimana hasil evaluasi model Light Gradient Boosting Machine
+
+--- PAGE 17 ---
+5
+(LightGBM) dalam mengklasifikasikan kelayakan penerima subsidi listrik
+berdasarkan metrik pengujian yang digunakan?
+1.3 Tujuan Penelitian
+Berdasarkan rumusan masalah, maka tujuan dari penelitian ini adalah sebagai
+berikut:
+1. Menganalisis dan mengolah data pelanggan PLN Aceh yang digunakan
+dalam penentuan kelayakan penerima subsidi listrik.
+2. Menerapkan metode Light Gradient Boosting Machine (LightGBM) untuk
+mengklasifikasikan kelayakan penerima subsidi listrik pada pelanggan PLN
+Aceh.
+3. Mengetahui hasil klasifikasi kelayakan penerima subsidi listrik menggunakan
+metode LightGBM dalam mendukung ketepatan sasaran pemberian subsidi
+listrik.
+1.4 Batasan Masalah
+Agar penelitian ini lebih terfokus dan sesuai dengan tujuan yang ingin dicapai,
+maka batasan masalah dalam penelitian ini adalah sebagai berikut:
+1. Penelitian ini dibatasi pada klasifikasi kelayakan penerima subsidi listrik
+pelanggan rumah tangga di wilayah PLN Aceh dengan fokus pada pelanggan
+daya 450 V A dan 900 V A sebagai kelompok utama penerima subsidi Listrik.
+2. Data yang digunakan merupakan data pelanggan PLN Aceh dan data
+
+--- PAGE 18 ---
+6
+pelanggan yang tercatat di Dinas Sosial yang mencakup daya listrik
+terpasang (V A), rata-rata konsumsi listrik bulanan (kWh), golongan tarif
+listrik, serta data sosial ekonomi yang tersedia.
+3. Metode klasifikasi yang digunakan dalam penelitian ini adalah Light
+Gradient Boosting Machine (LightGBM), tanpa melakukan perbandingan
+dengan metode klasifikasi lainnya.
+4. Output penelitian terbatas pada hasil klasifikasi kelayakan penerima subsidi
+listrik dan evaluasi performa model berdasarkan metrik evaluasi yang
+digunakan.
+1.5 Manfaat Penelitian
+Manfaat dari penelitian ini adalah sebagai berikut:
+1. Memberikan kontribusi keilmuan dalam penerapan algoritma Light Gradient
+Boosting Machine (LightGBM) untuk klasifikasi kelayakan penerima subsidi
+listrik.
+2. Menghasilkan model klasifikasi berbasis data yang membantu penentuan
+penerima subsidi listrik secara lebih objektif dan tepat sasaran.
+3. Mendukung peningkatan ketepatan sasaran subsidi listrik sehingga bantuan
+diberikan kepada masyarakat yang benar-benar membutuhkan.
+4. Membantu meningkatkan efisiensi penggunaan anggaran subsidi listrik
+melalui pengurangan kesalahan penyaluran subsidi.
+
+--- PAGE 19 ---
+BAB II
+TINJAUAN PUSTAKA
+2.1 State of the Art
+State of the Art bertujuan untuk memperkaya pembahasan penelitian serta
+membedakan penelitian ini dari penelitian-penelitian sebelumnya. Dalam
+penelitian ini, digunakan beberapa jurnal penelitian terdahulu yang berhubungan
+dengan klasifikasi dan penentuan kelayakan penerima subsidi listrik maupun
+bantuan sosial berbasis metode komputasi. Jurnal-jurnal tersebut antara lain:
+1. Penelitian yang dilakukan oleh Yanto dan Yunus (2021) yang berjudul
+“Evaluasi Penentuan Kelayakan Pemberian Subsidi Listrik dengan Metode
+MFEP” membahas proses evaluasi kelayakan penerima subsidi listrik
+menggunakan metode Multi Factor Evaluation Process (MFEP). Metode ini
+melakukan pembobotan terhadap beberapa kriteria untuk menentukan
+tingkat kelayakan pelanggan. Hasil penelitian menunjukkan bahwa MFEP
+mampu membantu proses pengambilan keputusan secara sistematis
+berdasarkan faktor-faktor yang telah ditentukan. Persamaan penelitian
+tersebut dengan penelitian ini adalah sama-sama membahas penentuan
+kelayakan penerima subsidi listrik berdasarkan kriteria tertentu.
+Perbedaannya, penelitian tersebut menggunakan metode pembobotan
+manual berbasis MFEP, sedangkan penelitian ini menggunakan metode
+klasifikasi berbasis machine learning yang mampu mempelajari pola data
+secara otomatis sehingga diharapkan menghasilkan model prediksi yang
+7
+
+--- PAGE 20 ---
+8
+lebih optimal.
+2. Hutahaean dan Wijayanto (2022) dalam penelitian berjudul “Klasifikasi
+Rumah Tangga Penerima Subsidi Listrik di Provinsi Gorontalo Tahun 2019
+dengan Metode K-Nearest Neighbor dan Support Vector Machine”
+menerapkan dua algoritma klasifikasi, yaitu K-Nearest Neighbor (KNN) dan
+Support Vector Machine (SVM), untuk menentukan rumah tangga yang
+layak menerima subsidi listrik. Penelitian ini membandingkan performa
+kedua metode dalam menghasilkan tingkat akurasi terbaik. Hasil penelitian
+menunjukkan bahwa kedua metode mampu melakukan klasifikasi dengan
+tingkat akurasi yang baik pada dataset yang digunakan. Persamaannya
+dengan penelitian ini adalah sama-sama menggunakan pendekatan
+klasifikasi dalam menentukan penerima subsidi listrik. Perbedaannya,
+penelitian tersebut membandingkan dua metode sekaligus, sedangkan
+penelitian ini berfokus pada satu metode klasifikasi sehingga analisis dapat
+dilakukan lebih mendalam dan terfokus pada peningkatan performa model
+dan juga hasilnya lebih akurat.
+3. Vionika Emalia Ismayana, Agung Panji Sasmito, dan Ali Mahmudi (2023)
+dalam penelitian berjudul “Sistem Penunjang Kelayakan Penerima Subsidi
+Program Keluarga Harapan (PKH) Menggunakan Metode Simple Additive
+Weighting (SAW) Berbasis Website (Studi Kasus: Desa Blimbing)”
+mengembangkan sistem pendukung keputusan untuk menentukan kelayakan
+penerima bantuan PKH menggunakan metode Simple Additive Weighting
+
+--- PAGE 21 ---
+9
+(SAW). Metode SAW digunakan untuk melakukan pembobotan dan
+perangkingan berdasarkan sejumlah kriteria sosial ekonomi. Hasil penelitian
+menunjukkan bahwa sistem mampu memberikan rekomendasi penerima
+bantuan secara terstruktur. Persamaannya dengan penelitian ini adalah
+sama-sama bertujuan menentukan kelayakan penerima bantuan sosial
+berbasis kriteria tertentu. Perbedaannya, penelitian tersebut menggunakan
+metode pembobotan berbasis perhitungan statis, sedangkan penelitian ini
+menggunakan pendekatan klasifikasi machine learning yang lebih adaptif
+terhadap pola data.
+4. Penelitian yang dilakukan oleh Fitriani, Sriani, dan Suhardi (2025) yang
+berjudul “Klasifikasi Penggunaan Daya Listrik Rumah Tangga
+Menggunakan Metode Naïve Bayes” membahas penerapan algoritma Naïve
+Bayes dalam mengklasifikasikan pelanggan listrik rumah tangga yang layak
+menerima subsidi. Penelitian ini menggunakan 720 data latih dengan
+variabel seperti daya listrik, luas bangunan, jenis lantai, dan kondisi tempat
+tinggal. Hasil penelitian menunjukkan tingkat akurasi sebesar 92%.
+Persamaannya dengan penelitian ini adalah sama-sama menggunakan
+metode klasifikasi untuk menentukan kelayakan subsidi listrik.
+Perbedaannya, penelitian tersebut menggunakan Naïve Bayes yang berbasis
+probabilitas dengan asumsi independensi antar variabel, sedangkan
+penelitian ini menggunakan metode klasifikasi yang mampu menangkap
+hubungan antar variabel secara lebih kompleks sehingga berpotensi
+
+--- PAGE 22 ---
+10
+menghasilkan performa yang lebih baik.
+5. (Sukerti, 2021) dalam penelitian berjudul “Sistem Penunjang Keputusan
+Penerima Bantuan Desa di Kecamatan Klungkung dengan Metode SAW”
+membahas perancangan sistem pendukung keputusan untuk menentukan
+desa yang layak menerima bantuan menggunakan metode Simple Additive
+Weighting (SAW). Penelitian ini bertujuan membantu pengambil keputusan
+dalam menentukan prioritas penerima bantuan berdasarkan kriteria tertentu.
+Hasil penelitian menunjukkan bahwa metode SAW dapat membantu proses
+seleksi secara lebih objektif. Persamaannya dengan penelitian ini adalah
+sama-sama membahas sistem penentuan kelayakan penerima bantuan.
+Perbedaannya, penelitian tersebut berfokus pada sistem pendukung
+keputusan berbasis pembobotan kriteria, sedangkan penelitian ini
+menggunakan pendekatan klasifikasi prediktif berbasis machine learning
+untuk meningkatkan akurasi dan kemampuan generalisasi model terhadap
+data baru.
+6. Roudhotul Jannah dan Rastri Prativi (2026) dalam penelitian berjudul
+“Analisa Performa Metode LightGBM untuk Prediksi Kecanduan Media
+Sosial” membahas penerapan algoritma Light Gradient Boosting Machine
+(LightGBM) dalam memprediksi tingkat kecanduan media sosial
+berdasarkan berbagai indikator perilaku pengguna. Penelitian ini bertujuan
+untuk menganalisis performa model dari segi akurasi, presisi, dan efektivitas
+dalam menangani dataset. Persamaan penelitian tersebut dengan penelitian
+
+--- PAGE 23 ---
+11
+ini adalah sama-sama menggunakan metode LightGBM sebagai algoritma
+klasifikasi/prediksi dalam membangun model berbasis machine learning.
+Perbedaannya, penelitian tersebut diterapkan pada kasus prediksi kecanduan
+media sosial, sedangkan penelitian ini berfokus pada klasifikasi penerima
+subsidi listrik berdasarkan variabel sosial ekonomi sehingga memiliki objek
+dan tujuan penelitian yang berbeda.
+2.2 Tinjauan Teoritis
+Tinjauan teoritis merupakan bagian yang menjelaskan konsep, teori, serta
+pendekatan ilmiah yang menjadi dasar dalam pelaksanaan penelitian. Pada
+penelitian ini, teori yang digunakan berkaitan dengan konsep klasifikasi dalam
+machine learning, pendekatan supervised dan unsupervised learning, kebijakan
+subsidi listrik di Indonesia, peran PT PLN dalam pengelolaan energi listrik, serta
+metode ensemble learning khususnya model boosting dan algoritma Light
+Gradient Boosting Machine (LightGBM). Seluruh teori tersebut menjadi landasan
+dalam membangun model klasifikasi kelayakan penerima subsidi listrik pelanggan
+PLN Aceh secara sistematis dan berbasis data.
+2.2.1 Klasifikasi Dalam Machine Learning
+Klasifikasi merupakan salah satu teknik utama dalam bidang data mining
+dan machine learning yang digunakan untuk mengelompokkan data ke dalam
+kategori tertentu berdasarkan karakteristik yang dimiliki. Teknik ini bekerja
+dengan mempelajari pola hubungan antara variabel input dan label keluaran dari
+
+--- PAGE 24 ---
+12
+data historis, kemudian menggunakan pola tersebut untuk memprediksi kelas pada
+data baru yang belum diketahui kategorinya [9]. Dalam konteks pengolahan data
+modern, klasifikasi menjadi metode yang banyak digunakan karena mampu
+membantu proses pengambilan keputusan secara objektif melalui analisis data.
+Model klasifikasi dibangun melalui proses pembelajaran (training) menggunakan
+dataset yang telah memiliki label kelas. Setelah model terbentuk, dilakukan
+pengujian menggunakan data testing untuk mengetahui kemampuan model dalam
+melakukan prediksi secara akurat.
+Penerapan klasifikasi telah digunakan pada berbagai bidang, seperti
+diagnosis penyakit pada sektor kesehatan, analisis risiko kredit pada sektor
+keuangan, deteksi penipuan transaksi digital, hingga evaluasi kebijakan publik.
+Pada penelitian ini, teknik klasifikasi digunakan untuk menentukan status
+kelayakan pelanggan listrik rumah tangga dalam menerima subsidi listrik
+berdasarkan karakteristik data pelanggan yang tersedia.
+Proses klasifikasi umumnya melibatkan beberapa tahapan utama, yaitu
+pengumpulan data, preprocessing data, pembentukan model, pengujian model,
+serta evaluasi performa menggunakan metrik tertentu. Kualitas hasil klasifikasi
+sangat dipengaruhi oleh kualitas data, pemilihan fitur, serta algoritma yang
+digunakan dalam proses pembelajaran mesin [10].
+2.2.2 Supervised Learning dan Unsupervised Learning
+Supervised learning merupakan metode pembelajaran mesin yang
+menggunakan data berlabel sebagai dasar pelatihan model. Pada metode ini, setiap
+
+--- PAGE 25 ---
+13
+data memiliki pasangan input dan output yang telah diketahui sebelumnya,
+sehingga algoritma dapat mempelajari hubungan antara keduanya. Model yang
+dihasilkan kemudian digunakan untuk memprediksi output dari data baru [11].
+Pendekatan supervised learning banyak digunakan pada permasalahan klasifikasi
+dan regresi karena mampu menghasilkan prediksi yang terarah sesuai target yang
+diinginkan. Dalam penelitian ini, pendekatan supervised learning digunakan
+karena data pelanggan PLN memiliki label kelayakan subsidi yang menjadi target
+prediksi. Model akan belajar dari data historis pelanggan untuk mengenali pola
+tertentu yang menunjukkan apakah seorang pelanggan layak atau tidak layak
+menerima subsidi listrik.
+Sebaliknya, unsupervised learning merupakan metode pembelajaran mesin
+yang tidak menggunakan label kelas dalam proses pelatihannya. Algoritma pada
+pendekatan ini bertujuan menemukan pola tersembunyi atau struktur alami dalam
+data, seperti pengelompokan data berdasarkan kemiripan karakteristik. Metode ini
+umumnya digunakan untuk clustering, segmentasi pelanggan, dan analisis pola
+data. Meskipun unsupervised learning memiliki peran penting dalam eksplorasi
+data, pendekatan ini tidak digunakan dalam penelitian karena tujuan utama
+penelitian adalah melakukan klasifikasi berbasis label kelayakan subsidi yang telah
+ditentukan [12].
+2.2.3 Subsidi Listrik di Indonesia
+Subsidi listrik merupakan salah satu bentuk kebijakan pemerintah Indonesia
+dalam rangka meningkatkan kesejahteraan masyarakat serta menjamin akses
+
+--- PAGE 26 ---
+14
+energi listrik yang merata. Kebijakan ini diberikan melalui penyesuaian tarif listrik
+sehingga masyarakat dengan kemampuan ekonomi terbatas tetap dapat memenuhi
+kebutuhan energi dasar dalam kehidupan sehari-hari.
+Program subsidi listrik secara umum ditujukan kepada pelanggan rumah
+tangga dengan daya listrik rendah, terutama golongan 450 V A dan 900 V A.
+Kelompok pelanggan tersebut diasumsikan sebagai masyarakat berpenghasilan
+rendah yang membutuhkan dukungan pemerintah untuk mengurangi beban
+pengeluaran rumah tangga. Subsidi listrik menjadi bagian penting dari kebijakan
+perlindungan sosial karena listrik telah menjadi kebutuhan primer dalam aktivitas
+ekonomi dan sosial masyarakat modern [3].
+Distribusi subsidi listrik masih menghadapi berbagai tantangan.
+Ketidaktepatan sasaran sering terjadi akibat keterbatasan metode identifikasi
+penerima subsidi yang masih berbasis indikator administratif sederhana. Kondisi
+ini menyebabkan adanya pelanggan yang secara ekonomi mampu tetapi tetap
+menerima subsidi, sementara sebagian masyarakat yang lebih membutuhkan justru
+tidak terdaftar sebagai penerima bantuan. Permasalahan tersebut menunjukkan
+perlunya pendekatan berbasis analisis data untuk membantu proses evaluasi
+kelayakan subsidi secara lebih objektif. Pemanfaatan teknik machine learning
+memungkinkan analisis berbagai variabel pelanggan secara simultan sehingga
+keputusan yang dihasilkan menjadi lebih akurat dan berbasis bukti data.
+
+--- PAGE 27 ---
+15
+2.2.4 PT. PLN (Persero) Unit Induk Distribusi Aceh
+PT PLN (Persero) merupakan perusahaan milik negara yang memiliki
+tanggung jawab utama dalam penyediaan tenaga listrik bagi masyarakat Indonesia.
+Sebagai penyedia layanan kelistrikan nasional, PLN berperan dalam produksi,
+distribusi, serta pengelolaan layanan pelanggan listrik di seluruh wilayah
+Indonesia, termasuk Provinsi Aceh. PLN Aceh mengelola berbagai data
+operasional pelanggan yang mencakup informasi daya listrik terpasang, golongan
+tarif, konsumsi energi listrik, serta status subsidi pelanggan. Data tersebut
+memiliki potensi besar untuk dianalisis lebih lanjut dalam mendukung kebijakan
+berbasis data, khususnya dalam evaluasi kelayakan penerima subsidi listrik.
+Seiring perkembangan teknologi informasi, pemanfaatan data pelanggan
+menjadi salah satu strategi penting dalam meningkatkan kualitas pelayanan dan
+efisiensi operasional. Analisis data menggunakan metode machine learning dapat
+membantu PLN dalam mengidentifikasi pola konsumsi energi serta karakteristik
+pelanggan secara lebih mendalam. Dengan demikian, proses pengambilan
+keputusan terkait subsidi listrik dapat dilakukan secara lebih objektif, transparan,
+dan terukur.
+2.2.5 Model Boosting dalam Machine Learning
+Boosting merupakan salah satu teknik ensemble learning yang bertujuan
+meningkatkan performa model prediksi dengan menggabungkan beberapa model
+pembelajaran sederhana menjadi model yang lebih kuat. Konsep utama boosting
+
+--- PAGE 28 ---
+16
+adalah membangun model secara bertahap, di mana setiap model baru berfokus
+memperbaiki kesalahan yang dihasilkan oleh model sebelumnya [8]. Pendekatan
+boosting bekerja secara iteratif dengan memberikan perhatian lebih besar pada data
+yang sebelumnya salah diklasifikasikan. Melalui proses ini, model secara bertahap
+mampu meningkatkan akurasi prediksi dan mengurangi kesalahan klasifikasi.
+Metode boosting dikenal memiliki performa yang sangat baik dalam
+berbagai permasalahan klasifikasi karena mampu menangani hubungan kompleks
+dan nonlinier antar variabel. Beberapa algoritma boosting yang berkembang saat
+ini antara lain AdaBoost, Gradient Boosting Machine (GBM), XGBoost, dan
+LightGBM. Penggunaan model boosting menjadi semakin populer karena
+kemampuannya menghasilkan model dengan tingkat akurasi tinggi serta stabil
+terhadap variasi data.
+2.2.6 Light Gradient Boosting Machine
+Light Gradient Boosting Machine (LightGBM) merupakan salah satu
+algoritma machine learning berbasis boosting yang dirancang untuk menghasilkan
+prediksi dengan cepat dan akurat. Algoritma ini merupakan pengembangan dari
+Gradient Boosting Decision Tree (GBDT) dengan berbagai penyempurnaan agar
+proses pelatihan data menjadi lebih efisien dan tidak memerlukan banyak memori.
+LightGBM dikembangkan untuk mengatasi keterbatasan metode boosting
+konvensional, terutama ketika menangani dataset berukuran besar dan memiliki
+banyak variabel.
+Salah satu keunggulan LightGBM terletak pada cara membangun pohon
+
+--- PAGE 29 ---
+17
+keputusannya. LightGBM menggunakan teknik leaf-wise growth, yaitu
+memperluas cabang pohon yang memberikan penurunan kesalahan (loss) terbesar.
+Cara ini membuat proses pembelajaran menjadi lebih cepat dan mampu
+menangkap pola hubungan antar variabel yang lebih kompleks dibandingkan
+metode yang membangun pohon secara bertahap per level. Selain itu, LightGBM
+juga menggunakan pendekatan berbasis histogram sehingga proses pelatihan data
+menjadi lebih hemat memori dan lebih efisien.
+Untuk meningkatkan kinerjanya, LightGBM menerapkan dua teknik utama.
+Pertama, Gradient-based One-Side Sampling (GOSS), yaitu memilih data yang
+paling berpengaruh terhadap proses pembelajaran sehingga model dapat fokus
+pada informasi yang penting. Kedua, Exclusive Feature Bundling (EFB), yaitu
+menggabungkan fitur-fitur yang jarang aktif agar jumlah variabel dapat dikurangi
+tanpa menghilangkan informasi yang relevan. Kombinasi teknik ini membuat
+LightGBM mampu bekerja lebih cepat tanpa mengurangi akurasi.
+Berdasarkan karakteristik tersebut, LightGBM sangat sesuai digunakan
+dalam permasalahan klasifikasi yang melibatkan banyak atribut, seperti data
+pelanggan listrik. Dalam penelitian ini, LightGBM digunakan untuk membangun
+model klasifikasi kelayakan penerima subsidi listrik pelanggan PLN Aceh. Model
+yang dihasilkan diharapkan mampu mempelajari pola dari data historis pelanggan
+sehingga dapat memberikan prediksi yang lebih akurat, objektif, dan mendukung
+pengambilan keputusan yang lebih tepat dibandingkan metode manual.
+
+--- PAGE 30 ---
+18
+Gambar 2.1 Metode Light Gradient Boosting Machine
+Gambar 2.1 menunjukkan mekanisme pertumbuhan pohon keputusan pada
+metode Light Gradient Boosting Machine (LightGBM), yaitu menggunakan
+pendekatan leaf-wise tree growth. Pada metode ini, proses pengembangan pohon
+dilakukan dengan memilih cabang (leaf) yang memiliki nilai kesalahan (loss)
+terbesar untuk diperluas terlebih dahulu. Artinya, model akan memprioritaskan
+bagian pohon yang paling membutuhkan perbaikan sehingga proses pengurangan
+error dapat berlangsung lebih cepat dan efektif.
+Berbeda dengan metode level-wise yang mengembangkan seluruh node pada
+satu tingkat secara bersamaan, pendekatan leaf-wise hanya memperluas satu
+cabang yang paling optimal pada setiap iterasi. Strategi ini membuat struktur
+pohon dapat tumbuh lebih dalam pada bagian tertentu yang dianggap penting oleh
+model. Akibatnya, LightGBM mampu menangkap pola hubungan antar variabel
+yang lebih kompleks serta meningkatkan akurasi prediksi.
+Pendekatan ini menjadi salah satu alasan mengapa LightGBM memiliki
+performa yang lebih cepat dan efisien dibandingkan metode boosting
+
+--- PAGE 31 ---
+19
+konvensional. Dengan fokus pada pengurangan error terbesar di setiap tahap,
+model dapat belajar dari data secara lebih terarah dan menghasilkan prediksi yang
+lebih optimal. Untuk memahami bagaimana LightGBM bekerja dalam proses
+pembelajaran model, terdapat beberapa rumus utama yang digunakan untuk
+mengoptimalkan fungsi objektif dan menentukan pemisahan (split) terbaik pada
+setiap node pohon keputusan. Rumus-rumus ini berperan dalam mengukur tingkat
+kesalahan model sekaligus mengontrol kompleksitas pohon agar tidak terjadi
+overfitting. Berikut adalah rumus inti yang digunakan dalam LightGBM:
+1. Fungsi Objektif (Objective Function)
+Fungsi objektif pada LightGBM dirumuskan sebagai berikut:
+L=
+n
+∑
+i=1
+l(yi,ˆyi) +Ω(f)(2.1)
+Keterangan:
+l(yi,ˆyi)= fungsi loss (misalnya logloss untuk klasifikasi)
+Ω(f)= fungsi regularisasi untuk mengontrol kompleksitas model
+Fungsi regularisasi dirumuskan sebagai:
+Ω(f) =γT+ 1
+2λ
+T
+∑
+j=1
+w2
+j (2.2)
+Keterangan:
+T= jumlah daun (leaf) pada pohon
+w j = nilai output pada daun ke-j
+
+--- PAGE 32 ---
+20
+γ= parameter penalty terhadap jumlah daun
+λ= parameter regularisasi L2
+Fungsi objektif ini bertujuan untuk meminimalkan kesalahan prediksi
+sekaligus menjaga agar model tidak terlalu kompleks. Regularisasi
+membantu mencegah overfitting dengan memberikan penalti pada jumlah
+daun dan besarnya bobot setiap daun.
+2. Rumus Gain (Pemilihan Split Terbaik)
+Untuk menentukan pemisahan node terbaik, LightGBM menggunakan
+perhitungan nilai gain sebagai berikut:
+Gain= 1
+2
+ G2
+L
+HL +λ + G2
+R
+HR +λ − (GL +G R)2
+HL +H R +λ
+
+−γ(2.3)
+Keterangan:
+GL,G R = jumlah gradient pada sisi kiri dan kanan
+HL,HR = jumlah hessia (gradien kedua) pada sisi kiri dan kanan
+λ= parameter regularisasi L2
+γ= penalti terhadap jumlah daun
+Rumus gain ini digunakan untuk mengevaluasi apakah suatu pemisahan node
+memberikan peningkatan kualitas model atau tidak. Semakin besar nilai gain,
+maka semakin baik pemisahan tersebut dalam mengurangi error.
+Melalui kombinasi fungsi objektif dan perhitungan gain tersebut, LightGBM
+mampu membangun struktur pohon keputusan secara efisien dan terarah. Fungsi
+objektif memastikan model tetap optimal dan tidak overfitting, sedangkan rumus
+
+--- PAGE 33 ---
+21
+gain membantu memilih pemisahan node terbaik pada setiap tahap pembentukan
+pohon. Dengan mekanisme ini, LightGBM dapat menghasilkan model klasifikasi
+yang cepat, stabil, dan memiliki performa tinggi pada berbagai jenis dataset.
+
+--- PAGE 34 ---
+BAB III
+METODOLOGI PENELITIAN
+3.1 Tempat dan Waktu Penelitian
+Penelitian ini dilaksanakan di PT PLN (Persero) Unit Induk Distribusi (UID)
+Aceh yang beralamat di Jalan T. Tjhik Ditiro No. 5, Peuniti, Kecamatan
+Baiturrahman, Kota Banda Aceh, Aceh. Waktu pelaksanaan penelitian berlangsung
+selama lima bulan, terhitung mulai bulan Februari hingga bulan Juni 2026.
+3.2 Alat dan Bahan Penelitian
+Penelitian ini menggunakan beberapa perangkat lunak dan perangkat keras
+untuk mendukung seluruh tahapan penelitian, mulai dari proses pengumpulan data,
+pengolahan dan pembersihan data (preprocessing), implementasi algoritma
+K-Means Clustering, hingga pengembangan dan pengujian sistem GridEval PLN.
+Perangkat lunak yang digunakan mencakup sistem operasi, bahasa pemrograman,
+serta berbagailibrarydanframeworkyang mendukung proses analisis data dan
+pembangunan aplikasi berbasis web. Sementara itu, perangkat keras yang
+digunakan berupa perangkat komputer dengan spesifikasi tertentu yang memadai
+untuk menjalankan proses pengolahan data dan pengujian sistem secara optimal.
+Rincian perangkat lunak dan perangkat keras yang digunakan dalam penelitian ini
+dijelaskan pada sub-bagian berikut.
+22
+
+--- PAGE 35 ---
+23
+3.2.1 Perangkat Lunak
+Perangkat lunak yang digunakan dalam penelitian ini disajikan pada Tabel
+3.1.
+Tabel 3.1 Kebutuhan Perangkat Lunak
+Perangkat Lunak Fungsi
+Windows 11 Sistem operasi yang digunakan untuk menjalankan
+aplikasi dan lingkungan pengembangan sistem.
+Python 3.12.6 Bahasa pemrograman yang digunakan untuk
+pengolahan data dan implementasi algoritma K-
+Means Clustering.
+Pandas 2.3.0 Library Python yang digunakan untuk manipulasi dan
+pengolahan data.
+NumPy 1.26.4 Library Python yang digunakan untuk komputasi
+numerik dan pengolahan data multidimensi.
+Scikit-learn Library Python yang digunakan untuk implementasi
+algoritma K-Means dan evaluasi hasil clustering.
+Flask Framework web yang digunakan untuk membangun
+aplikasi berbasis web.
+MySQL 8.0.30 Sistem manajemen basis data yang digunakan untuk
+penyimpanan data.
+Figma Digunakan untuk merancang wireframe antarmuka
+sistem.
+3.2.2 Perangkat Keras
+Perangkat keras yang digunakan dalam penelitian ini disajikan pada Tabel 3.2.
+Tabel 3.2 Kebutuhan Perangkat Keras
+Komponen Spesifikasi
+Processor AMD Ryzen 7 atau setara
+RAM Minimal 8GB
+SSD Minimal 256GB
+
+--- PAGE 36 ---
+24
+3.3 Variabel Data
+Variabel yang digunakan dalam penelitian ini meliputi:
+1.Lama Padam (Jam), yaitu durasi waktu sejak terjadinya gangguan hingga
+sistem kembali normal. Variabel ini digunakan untuk menggambarkan
+lamanya pemadaman yang dialami pelanggan akibat gangguan listrik.
+2.Jumlah Pelanggan Padam, yaitu banyaknya pelanggan yang terdampak
+akibat gangguan listrik yang terjadi. Variabel ini digunakan untuk
+menggambarkan luas dampak gangguan terhadap pelanggan.
+3.Energy Not Supplied (ENS), yaitu jumlah energi listrik yang tidak
+tersalurkan akibat terjadinya gangguan. Variabel ini merepresentasikan
+besarnya dampak gangguan terhadap sistem secara teknis dan operasional.
+Ketiga variabel tersebut digunakan sebagai atribut dalam proses K-Means
+Clustering untuk mengelompokkan data gangguan listrik berdasarkan karakteristik
+durasi pemadaman, jumlah pelanggan terdampak, dan nilai ENS. Hasil
+pengelompokan digunakan untuk mengidentifikasi kelompok gangguan dengan
+tingkat dampak yang berbeda sehingga dapat menjadi bahan pendukung dalam
+proses evaluasi data historis gangguan listrik.
+3.4 Sumber Data
+Data yang digunakan dalam penelitian ini merupakan data sekunder yang
+diperoleh dari PT PLN (Persero) Unit Induk Distribusi (UID) Aceh. Data tersebut
+berkaitan dengan gangguan/pemadaman listrik yang terjadi pada wilayah kerja PT
+
+--- PAGE 37 ---
+25
+PLN (Persero) UID Aceh, yang meliputi variabel jumlah pelanggan padam, lama
+padam, dan Energy Not Supplied (ENS). Data yang diberikan oleh pihak PLN
+mencakup periode dua tahun terakhir sebelum data tersebut diserahkan kepada
+peneliti, dengan format berkas berupa Microsoft Excel (.xlsx).
+Teknik pengumpulan data dalam penelitian ini dilakukan melalui beberapa
+tahapan sebagai berikut:
+1.Observasi
+Observasi dilakukan untuk memahami proses pencatatan, penyimpanan, dan
+pengelolaan data gangguan listrik yang digunakan sebagai sumber data
+penelitian di lingkungan PT PLN (Persero) UID Aceh. Observasi ini
+bertujuan untuk mengetahui struktur data yang tersedia serta kesesuaian data
+dengan kebutuhan penelitian.
+2.Permohonan Data Secara Resmi
+Pengumpulan data diawali dengan pengajuan surat permohonan data resmi
+dari pihak kampus kepada PT PLN (Persero) UID Aceh. Setelah surat
+tersebut diterima, pihak PLN mengarahkan peneliti untuk mengisi formulir
+permintaan data (Google Form) sebagai syarat administratif lanjutan untuk
+memperoleh izin akses data.
+3.Dokumentasi
+Data yang telah disetujui kemudian diperoleh dalam bentuk dokumentasi
+data historis gangguan listrik yang telah terdigitalisasi dan disimpan oleh
+pihak PLN. Data tersebut selanjutnya digunakan sebagai bahan analisis
+
+--- PAGE 38 ---
+26
+dalam penelitian ini.
+3.5 Tahap Penelitian
+Penelitian ini dilakukan secara sistematis melalui beberapa tahapan yang
+saling berkaitan, mulai dari proses pengumpulan data hingga pengujian sistem
+yang dikembangkan. Setiap tahapan disusun secara berurutan agar hasil dari satu
+tahap dapat digunakan sebagai dasar bagi tahap berikutnya, sehingga proses
+penelitian dapat berjalan secara terstruktur dan menghasilkan luaran yang sesuai
+dengan tujuan penelitian. Tahapan penelitian yang dilakukan dalam penyusunan
+skripsi ini ditampilkan pada Gambar 3.1 berikut.
+Gambar Tidak Ditemukan
+Gambar 3.1 Tahapan Penelitian
+Berdasarkan Gambar 3.1, tahapan penelitian tersebut dapat dijelaskan sebagai
+berikut:
+
+--- PAGE 39 ---
+27
+3.5.1 Pengumpulan Data
+Tahap ini merupakan proses memperoleh data sekunder gangguan listrik dari
+PT PLN (Persero) UID Aceh, sebagaimana telah dijelaskan pada sub-bab 3.4
+Sumber Data.
+3.5.2 Preprocessing Data
+Tahap preprocessing dilakukan untuk mempersiapkan data sebelum
+digunakan pada proses clustering. Tahap ini terdiri atas tiga bagian, yaitu
+pembersihan data, deteksi outlier, dan normalisasi data.
+Pembersihan data (data cleaning) dilakukan melalui tiga langkah, yaitu
+pengecekan dan penanganan nilai kosong (missing value) pada variabel
+JUMLAH_PELANGGAN, LAMA_PADAM_JAM, dan ENS; pengecekan dan
+penghapusan data duplikat; serta validasi nilai logis dengan memastikan tidak
+terdapat nilai negatif pada ketiga variabel tersebut, mengingat secara konsep
+ketiganya tidak mungkin bernilai negatif.
+Selanjutnya, dilakukan deteksi nilai ekstrem (outlier) pada masing-masing
+variabel menggunakan metode Interquartile Range (IQR). Metode ini menentukan
+batas kewajaran data berdasarkan nilai kuartil pertama (Q 1), kuartil ketiga (Q 3),
+dan rentang interkuartil (IQR=Q 3 −Q 1), dengan batas bawah sebesar
+Q1 −1,5×IQR dan batas atas sebesarQ 3 +1,5×IQR. Data yang berada di luar
+rentang tersebut dikategorikan sebagai outlier. Namun, pada penelitian ini nilai
+outlier yang terdeteksi tidak dihapus dari dataset, melainkan tetap dipertahankan.
+
+--- PAGE 40 ---
+28
+Hal ini didasarkan pada pertimbangan bahwa nilai ekstrem tersebut bukan
+merupakan kesalahan pencatatan, melainkan merepresentasikan kejadian
+gangguan listrik yang benar-benar terjadi di lapangan dengan tingkat dampak yang
+tinggi, sehingga penting untuk tetap diikutsertakan dalam proses clustering.
+Tahap terakhir dari preprocessing adalah normalisasi data menggunakan
+metode StandardScaler. Normalisasi ini bertujuan untuk menyamakan skala antar
+variabel penelitian, mengingat rentang nilai antar variabel yang digunakan sangat
+bervariasi. Proses normalisasi dilakukan dengan mentransformasikan setiap nilai
+variabel sehingga memiliki rata-rata sama dengan 0 dan standar deviasi sama
+dengan 1, sehingga setiap variabel memiliki kontribusi yang seimbang dalam
+proses pembentukan cluster dan tidak didominasi oleh variabel dengan skala nilai
+yang lebih besar.
+3.5.3 Model K-Means Clustering
+Sebelum proses clustering dijalankan, terlebih dahulu ditentukan jumlah
+cluster (k) yang optimal dengan mengombinasikan dua metode, yaitu Elbow
+Method dan Silhouette Score. Pengujian dilakukan terhadap beberapa
+kemungkinan nilaikdengan menjalankan algoritma K-Means pada setiap nilaik
+yang diuji, menggunakan metode inisialisasi k-means++ dan jumlah inisialisasi
+(n_init) sebanyak 10 untuk menjaga kestabilan hasil.
+Pada Elbow Method, dihitung nilai inertia (Sum of Squared Error) untuk
+setiap nilaikyang diuji. Nilai inertia akan terus menurun seiring bertambahnya
+jumlah cluster, namun laju penurunan tersebut akan melambat pada titik tertentu
+
+--- PAGE 41 ---
+29
+yang membentuk pola siku (elbow point). Titik ini mengindikasikan jumlah cluster
+yang cukup optimal, karena penambahan cluster setelahnya tidak lagi memberikan
+penurunan inertia yang signifikan. Untuk memvalidasi titik siku yang diperoleh,
+digunakan pula Silhouette Score pada rentang nilaikyang sama. Silhouette Score
+mengukur seberapa baik suatu data ditempatkan pada clusternya dibandingkan
+dengan cluster terdekat lainnya, dengan mempertimbangkan tingkat kohesi
+(kedekatan data dengan anggota cluster yang sama) dan tingkat separasi (jarak data
+terhadap cluster terdekat lainnya). Nilai Silhouette Score berkisar antara -1 hingga
+1, dengan nilai yang semakin mendekati 1 menunjukkan kualitas pemisahan antar
+cluster yang semakin baik. Jumlah cluster yang dipilih untuk digunakan pada
+tahap selanjutnya adalah nilaikyang berada pada titik siku hasil Elbow Method
+dan sekaligus menghasilkan Silhouette Score tertinggi dibandingkan nilaik
+lainnya, sehingga penentuan jumlah cluster tidak hanya didasarkan pada satu
+metode saja, melainkan pada kesesuaian antara kedua metode tersebut.
+Setelah jumlah cluster optimal diperoleh, proses clustering dilanjutkan
+menggunakan algoritma K-Means. Algoritma ini bekerja dengan
+mengelompokkan data ke dalam sejumlah cluster berdasarkan tingkat kemiripan
+karakteristik antar data, sehingga data dengan karakteristik serupa akan berada
+pada cluster yang sama. Proses K-Means dijalankan dengan metode inisialisasi
+k-means++ untuk penentuan titik pusat (centroid) awal, jumlah inisialisasi (n_init)
+sebanyak 10 kali agar diperoleh hasil pengelompokan yang stabil, serta iterasi
+maksimum (max_iter) sebanyak 300 kali. Algoritma bekerja secara iteratif dengan
+
+--- PAGE 42 ---
+30
+menghitung jarak Euclidean antara setiap data dengan centroid masing-masing
+cluster, mengelompokkan data ke centroid terdekat, kemudian memperbarui posisi
+centroid berdasarkan rata-rata data anggotanya. Proses ini diulang hingga posisi
+centroid tidak lagi mengalami perubahan yang signifikan atau telah mencapai
+kondisi konvergen.
+Hasil dari proses clustering berupa sejumlah kelompok data gangguan listrik
+yang memiliki karakteristik serupa berdasarkan variabel jumlah pelanggan padam,
+lama padam, dan ENS. Untuk mempermudah interpretasi, setiap cluster yang
+terbentuk selanjutnya diberi label kategori tingkat dampak berdasarkan peringkat
+rata-rata nilai centroid pada skala data yang telah dinormalisasi, sehingga setiap
+cluster dapat merepresentasikan tingkat keparahan gangguan listrik secara relatif
+satu sama lain.
+3.5.4 Evaluasi Hasil Clustering
+Tahap terakhir dalam penerapan metode K-Means Clustering adalah evaluasi
+hasil clustering. Evaluasi ini dilakukan untuk mengetahui kualitas pengelompokan
+yang dihasilkan, yaitu seberapa baik data pada masing-masing cluster terpisah satu
+sama lain dan seberapa homogen data di dalam satu cluster yang sama.
+Pada penelitian ini, evaluasi hasil clustering dilakukan menggunakan metrik
+Silhouette Score. Metrik ini dipilih karena mampu mengukur kualitas cluster tanpa
+memerlukan label kelas yang sebenarnya (unsupervised evaluation), sehingga
+sesuai dengan karakteristik data penelitian yang tidak memiliki labelground truth.
+Silhouette Score mengukur seberapa baik suatu data ditempatkan pada clusternya
+
+--- PAGE 43 ---
+31
+dibandingkan dengan cluster terdekat lainnya, dengan mempertimbangkan dua
+komponen, yaitu jarak rata-rata antar data dalam satu cluster yang sama (kohesi)
+dan jarak rata-rata data tersebut terhadap data pada cluster terdekat (separasi).
+Nilai Silhouette Score berada pada rentang -1 hingga 1, di mana nilai yang
+semakin mendekati 1 menunjukkan bahwa cluster yang terbentuk memiliki tingkat
+kohesi internal yang tinggi sekaligus tingkat pemisahan antar cluster yang baik.
+Berdasarkan hasil pengujian, model K-Means final dengan jumlah cluster
+K=3 menghasilkan nilai Silhouette Score sebesar 0,6012. Nilai ini menunjukkan
+bahwa kualitas pengelompokan yang dihasilkan tergolong baik, karena berada
+cukup jauh di atas nilai 0 (yang mengindikasikan tumpang tindih antar cluster) dan
+cukup mendekati nilai maksimum 1. Dengan demikian, dapat disimpulkan bahwa
+ketiga cluster yang terbentuk pada penelitian ini, yaitu kategori Dampak Tinggi,
+Dampak Sedang, dan Dampak Rendah, memiliki tingkat keterpisahan yang cukup
+jelas dan merepresentasikan pengelompokan data gangguan listrik yang cukup
+baik berdasarkan variabel lama padam, jumlah pelanggan padam, dan ENS.
+3.5.5 Rancangan Sistem
+Rancangan sistem pada penelitian ini bertujuan untuk membangun sistem
+analitik yang mampu mengolah data historis gangguan listrik menggunakan
+metode K-Means Clustering guna menghasilkan segmentasi kinerja penanganan
+gangguan. Sistem yang dirancang berfungsi sebagai alat bantu evaluasi berbasis
+data dan divisualisasikan dalam bentuk dashboard.
+
+--- PAGE 44 ---
+32
+3.5.5.1 Analisis Kebutuhan Sistem
+Analisis kebutuhan sistem dilakukan untuk mengidentifikasi fitur dan
+karakteristik yang harus dimiliki oleh sistem agar dapat mendukung proses
+pengelompokan data gangguan listrik menggunakan metode K-Means Clustering
+secara optimal. Kebutuhan sistem pada penelitian ini dibagi menjadi dua kategori,
+yaitu kebutuhan fungsional dan kebutuhan non-fungsional. Kebutuhan fungsional
+menjelaskan fitur-fitur yang harus disediakan oleh sistem untuk menjalankan
+proses bisnisnya, mulai dari autentikasi pengguna, pengelolaan data dan akun,
+penerapan algoritma K-Means Clustering, hingga penyajikan hasil analisis kepada
+pengguna, sedangkan kebutuhan non-fungsional menjelaskan kualitas dan batasan
+yang harus dipenuhi oleh sistem dalam menjalankan setiap fungsinya, seperti
+kemudahan penggunaan, kinerja, keamanan, keandalan, kompatibilitas,
+kemudahan pemeliharaan, dan ketersediaan sistem. Kebutuhan fungsional sistem
+ini dijabarkan pada Tabel 3.3, sedangkan kebutuhan non-fungsional sistem
+dijabarkan pada Tabel 3.4.
+1.Kebutuhan Fungsional Sistem
+
+--- PAGE 45 ---
+33
+Tabel 3.3 Kebutuhan Fungsional Sistem
+Kebutuhan Fungsional Deskripsi
+Login Sistem menyediakan halaman login untuk
+memastikan hanya pengguna yang memiliki akun
+dapat mengakses sistem.
+Kelola Akun Admin dapat menambahkan, mengubah,
+menonaktifkan, dan mengatur akun pegawai yang
+dapat mengakses sistem.
+Upload Data Gangguan Sistem dapat menerima unggahan data historis
+gangguan listrik dalam format yang telah
+ditentukan sebagai input analisis.
+Validasi Data Sistem melakukan pemeriksaan terhadap data
+yang diunggah untuk memastikan format dan
+struktur data sesuai kebutuhan analisis.
+Preprocessing Data Sistem melakukan pembersihan data dan
+normalisasi agar data siap digunakan pada proses
+clustering.
+Proses K-Means
+Clustering
+Sistem menerapkan algoritma K-Means untuk
+mengelompokkan data gangguan berdasarkan
+karakteristik yang dimiliki.
+Evaluasi Hasil Clustering Sistem menghitung kualitas cluster menggunakan
+metrik evaluasi seperti Silhouette Score.
+Visualisasi Hasil
+Clustering
+Sistem menampilkan hasil pengelompokan dalam
+bentuk tabel, grafik, dan informasi cluster untuk
+memudahkan analisis.
+Statistik Cluster Sistem menampilkan informasi statistik setiap
+cluster, seperti jumlah data pada masing-masing
+cluster dan karakteristiknya.
+Analisis Tren Gangguan Sistem menampilkan tren gangguan berdasarkan
+periode waktu tertentu untuk membantu
+identifikasi pola gangguan.
+Export Hasil Analisis Sistem dapat mengekspor hasil clustering dan
+hasil analisis ke dalam format file yang tersedia
+untuk keperluan dokumentasi dan pelaporan.
+Logout Sistem menyediakan fungsi logout untuk
+mengakhiri sesi penggunaan dan menjaga
+keamanan akses sistem.
+
+--- PAGE 46 ---
+34
+Berdasarkan Tabel 3.3, kebutuhan fungsional sistem terdiri atas sebelas
+fungsi utama yang mencakup keseluruhan alur kerja sistem, mulai dari
+proses autentikasi pengguna, pengelolaan data gangguan listrik, penerapan
+metode K-Means Clustering, hingga penyajian hasil analisis kepada
+pengguna. Fungsi Login, Kelola Akun, dan Logout disediakan untuk
+mendukung aspek keamanan dan pengelolaan hak akses pengguna terhadap
+sistem. Fungsi Upload Data Gangguan, Validasi Data, dan Preprocessing
+Data digunakan untuk memastikan data yang akan diproses telah sesuai
+format dan siap digunakan pada tahap clustering. Selanjutnya, fungsi Proses
+K-Means Clustering dan Evaluasi Hasil Clustering merupakan inti dari
+sistem, yang masing-masing digunakan untuk mengelompokkan data
+gangguan listrik dan menilai kualitas cluster yang dihasilkan melalui
+Silhouette Score. Adapun fungsi Visualisasi Hasil Clustering, Statistik
+Cluster, dan Analisis Tren Gangguan disediakan untuk membantu pengguna
+dalam menginterpretasikan hasil pengelompokan secara lebih mudah,
+sementara fungsi Export Hasil Analisis digunakan untuk mendukung
+kebutuhan dokumentasi dan pelaporan hasil analisis.
+2.Kebutuhan Non-Fungsional
+Adapun kebutuhan non-fungsional merupakan aspek yang menjelaskan
+kualitas serta batasan yang harus dipenuhi oleh sistem dalam menjalankan
+setiap fungsi yang telah didefinisikan, meliputi aspek kemudahan
+penggunaan (usability), kinerja sistem (performance), keamanan (security),
+
+--- PAGE 47 ---
+35
+keandalan (reliability), kompatibilitas (compatibility), kemudahan
+pemeliharaan (maintainability), serta ketersediaan sistem (availability).
+Kebutuhan non-fungsional sistem tersebut dijabarkan pada Tabel 3.4.
+Tabel 3.4 Kebutuhan Non-Fungsional
+Aspek Kebutuhan Non-Fungsional
+Usability Sistem harus memiliki antarmuka yang sederhana
+dan mudah dipahami sehingga dapat digunakan oleh
+pegawai maupun admin tanpa memerlukan pelatihan
+khusus.
+Performance Sistem harus mampu memproses data gangguan listrik
+yang diunggah serta menjalankan proses K-Means
+Clustering dalam waktu yang relatif singkat.
+Security Sistem harus membatasi hak akses pengguna sesuai
+dengan peran (role) masing-masing, misalnya hanya
+admin yang dapat mengakses halaman Kelola Akun
+Pegawai, serta menyimpan kata sandi pengguna dalam
+bentuk terenkripsi.
+Reliability Sistem harus dapat berjalan secara stabil dan konsisten
+dalam menghasilkan output clustering meskipun
+dijalankan berulang kali dengan data yang sama.
+Compatibility Sistem dapat diakses melalui browser umum seperti
+Google Chrome, Mozilla Firefox, dan Microsoft Edge
+tanpa memerlukan instalasi tambahan.
+Maintainability Kode program sistem disusun secara modular agar
+mudah dikembangkan, diperbaiki, atau ditambahkan
+fitur baru di kemudian hari.
+Availability Sistem harus dapat diakses kapan saja selama server
+dalam kondisi aktif, agar pegawai dapat melakukan
+analisis gangguan listrik sesuai kebutuhan.
+Berdasarkan Tabel 3.4, kebutuhan non-fungsional sistem mencakup tujuh
+aspek utama yang berkaitan dengan kualitas dan keandalan sistem dalam
+menjalankan fungsinya. Aspek usability memastikan sistem mudah
+
+--- PAGE 48 ---
+36
+digunakan oleh pengguna tanpa memerlukan pelatihan khusus, sedangkan
+aspek performance dan reliability memastikan sistem dapat memproses data
+serta menghasilkan output clustering secara cepat dan konsisten. Aspek
+security berperan penting dalam menjaga keamanan akses sistem melalui
+pembatasan hak akses berdasarkan peran pengguna, sementara aspek
+compatibility, maintainability, dan availability memastikan sistem dapat
+diakses dengan mudah, mudah dikembangkan di masa mendatang, serta
+dapat digunakan kapan pun dibutuhkan.
+3.5.6 Rancangan Arsitektur Sistem
+Arsitektur sistem menggambarkan struktur, komponen, serta alur pengolahan
+data yang terdapat dalam suatu sistem. Pada penelitian ini, arsitektur sistem
+menunjukkan proses pengolahan data gangguan listrik mulai dari input data,
+preprocessing, penerapan metode K-Means Clustering, hingga penyajikan hasil
+analisis melalui dashboard dan laporan.
+
+--- PAGE 49 ---
+37
+Gambar 3.2 Arsitektur Sistem
+Gambar 3.2 menunjukkan rancangan arsitektur sistem evaluasi penanganan
+gangguan listrik yang dikembangkan dalam penelitian ini. Arsitektur sistem
+menggambarkan alur proses pengolahan data mulai dari data gangguan listrik yang
+diunggah oleh pengguna, kemudian diproses melalui tahapan preprocessing yang
+meliputi data cleaning dan normalisasi data. Data yang telah diproses selanjutnya
+dianalisis menggunakan algoritma K-Means Clustering untuk menghasilkan
+pengelompokan data gangguan berdasarkan karakteristik durasi dan tingkat
+dampaknya. Hasil clustering kemudian dievaluasi menggunakan metrik kualitas
+cluster untuk memastikan hasil pengelompokan yang diperoleh memiliki tingkat
+
+--- PAGE 50 ---
+38
+validitas yang baik. Seluruh hasil analisis disajikan melalui dashboard dalam
+bentuk informasi statistik, visualisasi hasil clustering, serta analisis tren bulanan
+yang dapat membantu pengguna dalam memahami pola gangguan listrik. Selain
+itu, sistem juga menyediakan fitur ekspor hasil analisis untuk mendukung
+kebutuhan dokumentasi dan pelaporan. Dengan arsitektur ini, proses analisis data
+gangguan dapat dilakukan secara terintegrasi mulai dari pengolahan data hingga
+penyajian informasi hasil analisis.
+3.5.6.1 Use Case Diagram
+Use Case Diagram digunakan untuk menggambarkan interaksi antara
+pengguna dengan sistem yang dikembangkan, yang menunjukkan fungsi-fungsi
+utama yang dapat diakses oleh masing-masing pengguna berdasarkan hak akses
+yang dimilikinya. Pada sistem ini terdapat dua aktor, yaitu Admin dan Pegawai.
+Admin memiliki hak akses untuk mengelola data gangguan listrik, menjalankan
+proses analisis clustering, serta mengelola akun pengguna sistem, sedangkan
+Pegawai hanya memiliki hak akses untuk melihat hasil analisis yang telah
+dihasilkan oleh sistem tanpa dapat mengelola data maupun menjalankan proses
+analisis.
+
+--- PAGE 51 ---
+39
+Gambar 3.3 Use Case Diagram
+Berdasarkan Gambar 3.3, aktor Admin memiliki hak akses penuh terhadap
+seluruh fungsi utama sistem, yaitu melakukan login, mengelola akun pegawai,
+mengunggah data gangguan listrik, menjalankan proses analisis menggunakan
+metode K-Means Clustering, melihat dashboard visualisasi dan hasil clustering,
+mengakses fitur analisis tren gangguan, mengekspor laporan hasil analisis,
+mengubah password akun, serta melakukan logout setelah selesai menggunakan
+sistem. Sementara itu, aktor Pegawai memiliki hak akses yang lebih terbatas dan
+berfokus pada pemanfaatan hasil analisis, yaitu melakukan login, melihat
+dashboard visualisasi, melihat hasil clustering, mengakses fitur analisis tren
+gangguan, mengubah password akun, serta melakukan logout, tanpa memiliki hak
+
+--- PAGE 52 ---
+40
+untuk mengunggah data, menjalankan proses clustering, mengelola akun
+pengguna, maupun mengekspor laporan hasil analisis.
+3.5.6.2 Activity Diagram
+Activity Diagram digunakan untuk menggambarkan alur kerja dan urutan
+aktivitas yang terjadi dalam sistem. Diagram ini menunjukkan interaksi antara
+pengguna dan sistem dalam menjalankan fungsi-fungsi yang tersedia pada aplikasi.
+1.Activity Diagram Login
+Activity Diagram Login menggambarkan alur proses autentikasi pengguna
+saat mengakses sistem menggunakan NIP dan password yang telah terdaftar.
+Gambar 3.4 Activity Diagram Login
+Gambar 3.4 Activity Diagram Login menggambarkan alur proses autentikasi
+pengguna saat mengakses sistem menggunakan NIP dan password yang
+telah terdaftar. Proses dimulai ketika pengguna membuka halaman login dan
+memasukkan NIP serta password. Data yang dimasukkan kemudian dikirim
+
+--- PAGE 53 ---
+41
+ke sistem untuk dilakukan proses validasi. Sistem memeriksa kesesuaian
+data akun yang tersimpan pada basis data. Apabila data yang dimasukkan
+valid, sistem akan menampilkan halaman dashboard sesuai hak akses
+pengguna. Namun apabila data tidak valid, sistem akan menampilkan pesan
+kesalahan dan pengguna diminta untuk mengulangi proses login dengan
+memasukkan kembali NIP dan password yang benar.
+2.Activity Diagram Kelola Akun Pegawai
+Activity Diagram Kelola Akun Pegawai menggambarkan proses yang
+dilakukan Admin dalam mengelola akun pegawai yang dapat mengakses
+sistem.
+Gambar Tidak Ditemukan
+Gambar 3.5 Activity Diagram Kelola akun Pegawai
+Gambar 3.5 Activity Diagram Kelola Akun Pegawai menggambarkan proses
+yang dilakukan Admin dalam mengelola akun pegawai yang dapat
+mengakses sistem. Proses dimulai ketika Admin membuka menu kelola
+
+--- PAGE 54 ---
+42
+akun, kemudian sistem menampilkan form daftar akun yang tersedia. Admin
+selanjutnya mengisi data pegawai pada form yang tersedia, setelah itu sistem
+melakukan validasi terhadap data yang diinputkan. Apabila data yang
+dimasukkan valid, sistem akan menyimpan data akun ke basis data dan
+menampilkan notifikasi bahwa proses pengelolaan akun berhasil dilakukan.
+Apabila data tidak valid, sistem akan menampilkan pesan kesalahan dan
+Admin diminta untuk memperbaiki data yang diinputkan sebelum
+menyimpan kembali.
+3.Activity Diagram Clustering
+Activity Diagram Proses Clustering menggambarkan alur pengolahan data
+gangguan listrik mulai dari proses unggah data hingga menghasilkan hasil
+pengelompokan menggunakan metode K-Means Clustering.
+Gambar Tidak Ditemukan
+Gambar 3.6 Activity Diagram Clustering
+Gambar 3.6 Activity Diagram Clustering menggambarkan alur pengolahan
+
+--- PAGE 55 ---
+43
+data gangguan listrik mulai dari proses unggah data hingga menghasilkan
+hasil pengelompokan menggunakan metode K-Means Clustering. Proses
+dimulai ketika Admin memilih fitur upload data dan memilih file data
+gangguan listrik yang akan diunggah. Sistem kemudian melakukan validasi
+terhadap data yang diunggah untuk memastikan kesesuaian format dengan
+ketentuan yang berlaku. Apabila data tidak valid, sistem akan menampilkan
+pesan kesalahan dan Admin diminta untuk mengunggah ulang file data yang
+sesuai. Apabila data valid, sistem akan melakukan preprocessing yang
+meliputi pembersihan dan normalisasi data, kemudian menjalankan proses
+K-Means Clustering untuk mengelompokkan data gangguan berdasarkan
+karakteristik yang dimiliki. Hasil clustering selanjutnya dievaluasi
+menggunakan metrik kualitas cluster, disimpan ke dalam basis data, dan
+ditampilkan pada dashboard sistem.
+4.Activity Diagram Analisis Tren
+Activity Diagram Analisis Tren menggambarkan proses penyajian informasi
+tren gangguan listrik berdasarkan data yang telah dianalisis oleh sistem.
+
+--- PAGE 56 ---
+44
+Gambar Tidak Ditemukan
+Gambar 3.7 Activity Diagram Analisis Tren
+Gambar 3.7 Activity Diagram Analisis Tren menggambarkan proses
+penyajian informasi tren gangguan listrik berdasarkan data yang telah
+tersimpan dalam basis data sistem. Proses dimulai ketika pengguna, baik
+Admin maupun Pegawai, memilih menu analisis tren. Sistem kemudian
+mengambil data hasil clustering yang tersimpan pada basis data dan
+melakukan perhitungan statistik berdasarkan periode bulanan. Hasil
+pengolahan tersebut selanjutnya disajikan dalam bentuk grafik dan informasi
+statistik tren yang dapat digunakan untuk mengidentifikasi pola serta tren
+gangguan listrik dari waktu ke waktu.
+3.5.6.3 Sequence Diagram
+Sequence Diagram digunakan untuk menggambarkan urutan interaksi atau
+pertukaran pesan antara objek-objek yang terlibat dalam suatu proses berdasarkan
+
+--- PAGE 57 ---
+45
+waktu terjadinya. Berbeda dengan Activity Diagram yang berfokus pada alur
+logika dan pengambilan keputusan dalam suatu proses, Sequence Diagram lebih
+menekankan pada bagaimana objek-objek tersebut saling berkomunikasi secara
+berurutan untuk menyelesaikan suatu fungsi tertentu. Pada penelitian ini, Sequence
+Diagram digunakan untuk menggambarkan interaksi antara Aktor, Sistem, dan
+Database dalam menjalankan proses login, kelola akun pegawai, clustering, dan
+analisis tren gangguan listrik.
+1.Sequence Diagram Login
+Proses login dilakukan untuk memastikan hanya pengguna yang memiliki
+akun terdaftar yang dapat mengakses sistem. Pada proses ini, Aktor
+menginput NIP dan password yang kemudian diverifikasi oleh Sistem
+melalui pengecekan data akun pada Database sebelum pengguna diarahkan
+ke halaman yang sesuai dengan hak aksesnya.
+Gambar 3.8 Sequence Diagram Login
+Gambar 3.8 Sequence Diagram Login menggambarkan urutan interaksi
+antara Aktor, Sistem, dan Database dalam proses autentikasi pengguna.
+
+--- PAGE 58 ---
+46
+Proses dimulai ketika Aktor menginput NIP dan password pada halaman
+login. Sistem kemudian mengirimkan permintaan ke Database untuk
+mengambil data akun berdasarkan NIP yang dimasukkan. Setelah data akun
+diterima, Sistem melakukan pemeriksaan terhadap empat kemungkinan
+kondisi, yaitu apabila akun tidak ditemukan, password tidak sesuai, akun
+berstatus nonaktif, atau data valid dan akun aktif. Apabila salah satu dari tiga
+kondisi pertama terpenuhi, Sistem akan mengirimkan pesan kesalahan yang
+sesuai kepada Aktor. Sebaliknya, apabila data valid dan akun berstatus aktif,
+Sistem akan menampilkan halaman dashboard sesuai dengan hak akses
+(role) yang dimiliki oleh Aktor.
+2.Sequence Diagram Kelola Akun
+Proses kelola akun pegawai dilakukan oleh Admin untuk mengelola data
+akun pengguna sistem, mulai dari menambahkan, mengubah, hingga
+menonaktifkan akun pegawai. Sistem akan memvalidasi data yang diinput
+sebelum disimpan ke dalam Database.
+
+--- PAGE 59 ---
+47
+Gambar Tidak Ditemukan
+Gambar 3.9 Sequence Diagram Kelola Akun
+Gambar 3.9 Sequence Diagram Kelola Akun Pegawai menggambarkan
+urutan interaksi antara Admin, Sistem, dan Database dalam proses
+pengelolaan akun pegawai. Proses dimulai ketika Admin membuka menu
+kelola akun, kemudian Sistem meminta daftar akun yang tersimpan pada
+Database dan menampilkannya kepada Admin. Selanjutnya, Admin
+menginput data pegawai yang akan ditambahkan atau diubah, dan Sistem
+melakukan validasi terhadap format serta keunikan NIP yang dimasukkan.
+Apabila data tidak valid atau NIP telah terdaftar sebelumnya, Sistem akan
+mengirimkan pesan kesalahan kepada Admin. Apabila data dinyatakan
+valid, Sistem akan menyimpan atau memperbarui data akun pada Database,
+kemudian menerima konfirmasi penyimpanan dan menampilkan notifikasi
+keberhasilan kepada Admin.
+
+--- PAGE 60 ---
+48
+3.Sequence Diagram Clustering
+Proses clustering dilakukan untuk mengelompokkan data gangguan listrik
+menggunakan metode K-Means. Admin mengunggah data gangguan yang
+kemudian divalidasi dan diproses oleh Sistem, dengan hasil akhirnya
+disimpan ke dalam Database dan ditampilkan pada dashboard.
+Gambar Tidak Ditemukan
+Gambar 3.10 Sequence Diagram Clustering
+Gambar 3.10 Sequence Diagram Proses Clustering menggambarkan urutan
+interaksi antara Admin, Sistem, dan Database dalam proses pengelompokan
+data gangguan listrik. Proses dimulai ketika Admin mengunggah file data
+gangguan listrik ke sistem. Sistem selanjutnya melakukan validasi terhadap
+format dan struktur data yang diunggah. Apabila data tidak valid, Sistem
+akan mengirimkan pesan kesalahan kepada Admin dan meminta data
+diunggah ulang. Apabila data valid, Sistem akan menyimpan data mentah ke
+
+--- PAGE 61 ---
+49
+Database, kemudian menjalankan proses clustering menggunakan algoritma
+K-Means. Setelah proses clustering selesai, Sistem menyimpan hasil
+pengelompokan beserta skor evaluasi ke Database, menerima konfirmasi
+penyimpanan, dan menampilkan hasil clustering pada dashboard yang dapat
+dilihat oleh Admin.
+4.Sequence Diagram Analisis Tren
+Proses analisis tren dilakukan untuk menampilkan pola gangguan listrik
+berdasarkan periode waktu tertentu. Pengguna menentukan periode yang
+ingin dilihat, kemudian Sistem mengambil data hasil clustering dari
+Database untuk diolah menjadi informasi tren yang ditampilkan kepada
+pengguna.
+Gambar Tidak Ditemukan
+Gambar 3.11 Sequence Diagram Analisis Tren
+Gambar 3.11 Sequence Diagram Analisis Tren menggambarkan urutan
+
+--- PAGE 62 ---
+50
+interaksi antara Pengguna, Sistem, dan Database dalam proses penyajian
+informasi tren gangguan listrik. Proses dimulai ketika Pengguna memilih
+menu analisis tren dan menentukan periode waktu yang ingin dianalisis.
+Sistem kemudian memeriksa ketersediaan data hasil clustering pada periode
+tersebut ke Database. Apabila data tidak tersedia, Sistem akan menampilkan
+pesan bahwa data belum tersedia untuk periode yang dipilih. Apabila data
+tersedia, Sistem akan mengambil data hasil cluster dari Database, melakukan
+perhitungan statistik berdasarkan periode yang ditentukan, kemudian
+menampilkan hasilnya dalam bentuk grafik dan tabel tren kepada Pengguna.
+3.5.6.4 Class Diagram
+Class Diagram digunakan untuk menggambarkan struktur statis sistem, yang
+meliputi kelas-kelas yang terlibat beserta atribut, method (operasi), dan hubungan
+antar kelas tersebut. Class Diagram pada penelitian ini dirancang berdasarkan hasil
+analisis kebutuhan sistem, use case diagram, serta activity diagram dan sequence
+diagram yang telah dibuat sebelumnya.
+
+--- PAGE 63 ---
+51
+Gambar Tidak Ditemukan
+Gambar 3.12 Class Diagram
+Berdasarkan Gambar 3.12, sistem terdiri atas kelas User sebagai kelas induk
+yang diturunkan menjadi kelas Admin dan Pegawai, dengan pembagian hak akses
+sesuai peran masing-masing. Kelas DataGangguan merepresentasikan data
+gangguan listrik yang diunggah oleh Admin, yang kemudian diproses oleh kelas
+ClusteringEngine untuk menjalankan tahapan preprocessing dan algoritma
+K-Means Clustering. Hasil dari proses tersebut disimpan pada kelas HasilCluster,
+yang selanjutnya digunakan oleh kelas AnalisisTren untuk menghasilkan statistik
+dan grafik tren gangguan berdasarkan periode waktu tertentu. Kelas Admin
+memiliki relasi langsung dengan kelas DataGangguan dalam mengunggah data,
+sedangkan kelas Pegawai memiliki relasi dengan kelas HasilCluster dan
+AnalisisTren untuk melihat hasil analisis yang telah dihasilkan oleh sistem.
+
+--- PAGE 64 ---
+52
+3.5.7 Perancangan Antarmuka Sistem
+Perancangan antarmuka sistem bertujuan untuk memberikan gambaran
+mengenai tampilan serta interaksi pengguna dengan sistem yang akan dibangun.
+Perancangan ini disusun dalam bentukwireframeyang menggambarkan tata letak
+setiap halaman, penempatan komponen, serta fungsi utama yang tersedia pada
+masing-masing antarmuka. Wireframe digunakan sebagai acuan dalam proses
+implementasi sistem agar tampilan yang dikembangkan sesuai dengan kebutuhan
+pengguna dan fungsionalitas yang telah dirancang.
+3.5.7.1 Rancangan Halaman Login
+Rancangan Halaman login merupakan halaman awal yang digunakan sebagai
+proses autentikasi pengguna sebelum mengakses sistem. Halaman ini dirancang
+dengan tampilan yang sederhana dan mudah dipahami sehingga memudahkan
+pengguna dalam melakukan proses login. Selain berfungsi sebagai media
+autentikasi, halaman login juga menampilkan logo aplikasi serta deskripsi singkat
+mengenai sistem sebagai identitas dan informasi awal bagi pengguna.
+
+--- PAGE 65 ---
+53
+Gambar Tidak Ditemukan
+Gambar 3.13 Wireframe Halaman Login
+Pada Gambar 3.13, halaman login terdiri atas logo aplikasi, nama aplikasi,
+deskripsi singkat mengenai fungsi sistem, kolom Username (NIP), kolom
+Password, serta tombol Login. Pengguna melakukan autentikasi dengan
+memasukkan NIP sebagai username dan password yang telah terdaftar pada
+sistem. Setelah data login berhasil divalidasi, sistem akan mengidentifikasi role
+pengguna. Apabila pengguna memiliki role sebagai Admin, sistem akan
+mengarahkan ke Dashboard Admin yang memiliki hak akses untuk mengunggah
+data gangguan listrik, menjalankan proses clustering, mengelola akun pengguna,
+melihat dashboard, analisis tren, serta mengekspor laporan. Sebaliknya, apabila
+pengguna memiliki role sebagai Pegawai, sistem akan mengarahkan ke Dashboard
+Pegawai yang hanya memiliki hak akses untuk melihat dashboard, hasil clustering,
+analisis tren gangguan, serta mengubah password miliknya sendiri.
+
+--- PAGE 66 ---
+54
+3.5.7.2 Rancangan Halaman Dashboard Admin
+Dashboard Admin merupakan halaman utama yang ditampilkan setelah
+Admin berhasil melakukan login. Halaman ini dirancang sebagai pusat navigasi
+sekaligus panduan awal dalam menggunakan sistem. Pada tampilan awal,
+dashboard belum menampilkan hasil analisis, melainkan berisi informasi singkat
+mengenai tahapan penggunaan aplikasi serta petunjuk kepada Admin untuk
+melakukan proses clustering terhadap data gangguan listrik yang akan dianalisis.
+Gambar Tidak Ditemukan
+Gambar 3.14 Wireframe Halaman Dashboard Admin
+Pada Gambar 3.14, halaman Dashboard Admin menampilkan logo aplikasi,
+menu navigasi, deskripsi singkat mengenai fungsi sistem, serta informasi yang
+mengarahkan Admin untuk memulai proses clustering data gangguan listrik. Pada
+halaman ini tersedia tombol "Mulai Clustering" yang berfungsi untuk
+mengarahkan Admin ke halaman clustering. Melalui halaman tersebut, Admin
+
+--- PAGE 67 ---
+55
+dapat mengunggah data gangguan listrik dan menjalankan proses clustering
+menggunakan metode K-Means. Setelah proses clustering selesai dilakukan,
+sistem akan menampilkan hasil analisis berupa dashboard visualisasi, hasil
+clustering, serta analisis tren gangguan yang dapat digunakan sebagai pendukung
+proses evaluasi kinerja penanganan gangguan listrik.
+Setelah proses clustering selesai dilakukan, tampilan Dashboard Admin akan
+diperbarui secara otomatis untuk menampilkan ringkasan hasil analisis yang
+dihasilkan oleh sistem. Informasi yang disajikan dalam dashboard bertujuan untuk
+memudahkan Admin dalam memantau hasil clustering serta memperoleh
+gambaran umum mengenai kondisi gangguan listrik berdasarkan data yang telah
+dianalisis.
+Gambar Tidak Ditemukan
+Gambar 3.15 Halaman Dashboard Admin (Setelah Proses Clustering)
+Pada Gambar 3.15, Dashboard Admin menampilkan ringkasan informasi
+hasil clustering dalam bentuk visualisasi interaktif. Pada bagian atas halaman
+
+--- PAGE 68 ---
+56
+ditampilkan informasi mengenai total kejadian pemadaman serta jumlah gangguan
+pada setiap cluster sebagai ringkasan hasil pengelompokan data. Selanjutnya,
+sistem menyajikan scatter plot clustering yang menggambarkan persebaran data
+berdasarkan hasil pengelompokan menggunakan metode K-Means. Selain itu,
+dashboard juga menampilkan diagram distribusi cluster yang memperlihatkan
+proporsi data pada masing-masing cluster serta grafik distribusi kejadian gangguan
+per bulan untuk membantu Admin dalam mengidentifikasi pola gangguan listrik
+berdasarkan periode waktu tertentu. Seluruh informasi tersebut disajikan secara
+visual agar memudahkan proses evaluasi dan pengambilan keputusan terhadap
+penanganan gangguan listrik.
+3.5.7.3 Rancangan Halaman Clustering Admin
+Halaman clustering merupakan halaman yang digunakan oleh Admin untuk
+memulai proses analisis data gangguan listrik menggunakan metode K-Means
+Clustering. Pada halaman ini, sistem memberikan deskripsi singkat serta petunjuk
+mengenai format dan jenis data yang harus diunggah agar proses clustering dapat
+berjalan dengan baik. Selain itu, halaman ini juga menyediakan fasilitas untuk
+mengunggah data serta menampilkan riwayat data yang pernah digunakan dalam
+proses clustering.
+
+--- PAGE 69 ---
+57
+Gambar Tidak Ditemukan
+Gambar 3.16 Wireframe Halaman Clustering (Sebelum Upload Data)
+Pada Gambar 3.16, halaman clustering menampilkan deskripsi singkat
+mengenai proses unggah data beserta petunjuk penggunaan sistem sebelum proses
+clustering dilakukan. Admin dapat mengunggah data gangguan listrik dengan
+menekan tombol "Pilih Data", kemudian memilih file yang akan digunakan
+sebagai data masukan dalam proses clustering. Di bagian bawah halaman tersedia
+tabel Riwayat Unggahan Data yang berfungsi untuk menampilkan daftar file yang
+telah diunggah sebelumnya. Informasi yang ditampilkan pada tabel meliputi
+nomor, nama file, jumlah baris data, tanggal unggahan, dan aksi. Melalui kolom
+aksi, Admin dapat memilih file yang akan digunakan untuk proses clustering
+berikutnya atau melakukan pengelolaan terhadap data yang telah diunggah sesuai
+kebutuhan sistem.
+Setelah proses clustering selesai dilakukan, sistem akan menyimpan hasil
+analisis dan menampilkannya pada tabel riwayat clustering. Riwayat ini berfungsi
+
+--- PAGE 70 ---
+58
+sebagai dokumentasi proses analisis yang telah dilakukan sehingga Admin dapat
+mengakses kembali hasil clustering tanpa perlu mengunggah ulang dataset yang
+sama.
+Gambar Tidak Ditemukan
+Gambar 3.17 Wireframe Halaman Clustering (Setelah Upload Data)
+Pada Gambar 3.17, tabel riwayat clustering menampilkan informasi
+mengenai dataset yang telah berhasil diproses. Informasi yang ditampilkan
+meliputi nomor, nama file, jumlah baris data, dan tanggal unggahan. Pada kolom
+Aksi, tersedia tombol "Lihat Analisis" dan "Hapus". Tombol "Lihat Analisis"
+digunakan untuk menampilkan kembali hasil clustering beserta visualisasi dan
+informasi analisis yang telah dihasilkan oleh sistem, sedangkan tombol "Hapus"
+digunakan untuk menghapus riwayat hasil clustering apabila data tersebut sudah
+tidak diperlukan lagi.
+Setelah proses clustering selesai dilakukan, Admin dapat melihat hasil
+analisis dengan memilih tombol "Lihat Analisis" pada tabel riwayat analisis
+
+--- PAGE 71 ---
+59
+clustering. Halaman ini masih berada pada menu clustering, namun sistem akan
+menampilkan hasil analisis secara lengkap berdasarkan dataset yang dipilih.
+Gambar Tidak Ditemukan
+Gambar 3.18 Wireframe Halaman Clustering (Hasil Clustering)
+Pada Gambar 3.18, setelah tombol "Lihat Analisis" dipilih, sistem akan
+menampilkan hasil analisis clustering pada halaman yang sama. Informasi yang
+disajikan meliputi total data yang berhasil diproses, nilai rata-rata centroid pada
+setiap cluster, serta grafik distribusi data per cluster untuk memberikan gambaran
+mengenai persebaran data hasil clustering. Selain itu, sistem juga menampilkan
+tabel data hasil clustering yang berisi seluruh data beserta label cluster yang
+dihasilkan oleh algoritma K-Means. Pada bagian bawah tabel tersedia tombol
+"Download Excel" untuk mengunduh hasil clustering dalam format Microsoft
+Excel serta tombol "Download PDF" untuk mengunduh laporan hasil analisis
+dalam format PDF. Fitur tersebut memudahkan Admin dalam mendokumentasikan
+serta membagikan hasil analisis sesuai kebutuhan.
+
+--- PAGE 72 ---
+60
+3.5.7.4 Rancangan Halaman Analisis Tren
+Halaman Analisis Tren merupakan halaman yang digunakan untuk
+menganalisis pola gangguan listrik berdasarkan periode waktu tertentu. Halaman
+ini dirancang untuk membantu Admin memperoleh informasi mengenai
+kecenderungan gangguan listrik melalui beberapa pilihan analisis yang tersedia.
+Sebelum proses analisis dilakukan, Admin dapat menentukan jenis analisis dan
+periode waktu yang akan digunakan sehingga hasil yang ditampilkan sesuai
+dengan kebutuhan. Dengan adanya fitur ini, Admin dapat melakukan analisis
+secara lebih terarah terhadap data gangguan listrik yang telah diproses
+sebelumnya, sehingga informasi yang dihasilkan dapat digunakan sebagai
+pendukung dalam proses evaluasi kinerja penanganan gangguan listrik serta
+membantu pengambilan keputusan berdasarkan tren gangguan yang terjadi.
+Gambar Tidak Ditemukan
+Gambar 3.19 Wireframe Halaman Analisis (Sebelum Mulai Analisis)
+
+--- PAGE 73 ---
+61
+Pada Gambar 3.19, halaman Analisis Tren menampilkan deskripsi singkat
+mengenai fungsi analisis tren beserta beberapa komponen yang digunakan untuk
+menentukan parameter analisis. Halaman ini menyediakan fitur Pilih Tipe Analisis
+yang digunakan untuk menentukan jenis analisis yang akan ditampilkan oleh
+sistem, serta fitur Pilih Bulan untuk menentukan periode data yang akan dianalisis.
+Setelah seluruh parameter dipilih, Admin dapat menekan tombol "Mulai Analisis"
+untuk menjalankan proses analisis tren. Selanjutnya, sistem akan mengolah data
+sesuai dengan parameter yang dipilih dan menampilkan hasil analisis dalam
+bentuk visualisasi maupun informasi pendukung pada halaman yang sama.
+Setelah Admin menentukan tipe analisis dan periode waktu yang diinginkan,
+sistem akan memproses data berdasarkan parameter yang telah dipilih. Hasil
+analisis kemudian ditampilkan pada halaman yang sama dalam bentuk ringkasan
+informasi, visualisasi data, serta tabel hasil analisis. Penyajikan informasi secara
+visual bertujuan untuk memudahkan Admin dalam memahami pola gangguan
+listrik dan karakteristik setiap cluster yang terbentuk.
+
+--- PAGE 74 ---
+62
+Gambar Tidak Ditemukan
+Gambar 3.20 Wireframe Halaman Analisis Tren (Hasil Analisis)
+Berdasarkan Gambar 3.20, setelah tombol "Mulai Analisis" ditekan, sistem
+akan menampilkan hasil analisis tren berdasarkan parameter yang telah dipilih.
+Informasi yang disajikan diawali dengan ringkasan hasil analisis yang meliputi
+total data, durasi padam rata-rata, total Energy Not Supplied (ENS), serta nilai
+rata-rata centroid pada setiap cluster. Selanjutnya, sistem menyajikan grafik
+distribusi data per cluster untuk memperlihatkan proporsi data pada
+masing-masing kelompok hasil clustering, serta grafik sebaran per cluster yang
+menggambarkan persebaran data berdasarkan hasil pengelompokan menggunakan
+metode K-Means. Pada bagian bawah halaman ditampilkan tabel data hasil analisis
+yang berisi seluruh data beserta label cluster yang diperoleh dari proses clustering.
+Selain itu, tersedia fitur Pilih Cluster yang memungkinkan Admin untuk memfilter
+data berdasarkan cluster tertentu sehingga proses analisis dapat dilakukan secara
+lebih spesifik. Melalui penyajian informasi dalam bentuk ringkasan, visualisasi,
+
+--- PAGE 75 ---
+63
+dan tabel data, halaman ini membantu Admin dalam memahami karakteristik
+setiap cluster, mengidentifikasi pola gangguan listrik, serta mendukung proses
+evaluasi kinerja penanganan gangguan listrik secara lebih efektif.
+3.5.7.5 Rancangan Halaman Kelola Akun
+Halaman Kelola Akun merupakan halaman yang digunakan oleh Admin
+untuk mengelola seluruh akun pengguna yang terdaftar pada sistem. Halaman ini
+hanya dapat diakses oleh pengguna dengan role Admin, sedangkan Pegawai tidak
+memiliki hak akses terhadap fitur ini. Melalui halaman Kelola Akun, Admin dapat
+melakukan pengelolaan akun pengguna mulai dari menambahkan akun baru
+hingga mengubah informasi akun yang telah terdaftar. Dengan adanya fitur ini,
+proses administrasi pengguna dapat dilakukan secara terpusat sehingga
+memudahkan pengelolaan hak akses sesuai dengan peran masing-masing
+pengguna. Selain itu, halaman ini juga mendukung keamanan sistem dengan
+memastikan bahwa hanya pengguna yang memiliki akun aktif dan hak akses yang
+sesuai yang dapat menggunakan fitur-fitur yang tersedia pada aplikasi.
+
+--- PAGE 76 ---
+64
+Gambar Tidak Ditemukan
+Gambar 3.21 Wireframe Halaman Kelola Akun
+Pada Gambar 3.21, halaman Kelola Akun menampilkan deskripsi singkat
+mengenai fungsi pengelolaan akun, tombol "Tambah Pengguna Baru", serta tabel
+Daftar Pengguna. Tombol "Tambah Pengguna Baru" digunakan oleh Admin untuk
+membuat akun pengguna baru yang nantinya dapat digunakan untuk mengakses
+sistem. Sementara itu, tabel Daftar Pengguna menampilkan informasi seluruh akun
+yang telah terdaftar pada sistem, seperti Nomor Induk Pegawai (NIP) sebagai
+username, nama lengkap, role, serta aksi yang dapat dilakukan terhadap setiap
+akun. Melalui halaman ini, Admin dapat mengelola akun pengguna secara
+terstruktur sehingga hanya pengguna yang memiliki akun terdaftar yang dapat
+mengakses sistem sesuai dengan hak akses yang dimilikinya.
+Untuk menambahkan pengguna baru ke dalam sistem, Admin dapat
+menekan tombol "Tambah Pengguna Baru" yang terdapat pada halaman Kelola
+Akun. Setelah tombol tersebut dipilih, sistem akan menampilkan sebuah pop-up
+
+--- PAGE 77 ---
+65
+form yang digunakan untuk memasukkan informasi akun pengguna baru. Form ini
+dirancang agar proses penambahan akun dapat dilakukan secara cepat dan
+terstruktur tanpa harus berpindah ke halaman lain.
+Gambar Tidak Ditemukan
+Gambar 3.22 Wireframe Halaman Kelola Akun (Tambah Pengguna)
+Pada Gambar 3.22, pop-up Tambah Pengguna Baru menampilkan form yang
+harus diisi oleh Admin untuk membuat akun pengguna baru. Form tersebut terdiri
+atas beberapa isian, yaitu Username yang menggunakan Nomor Induk Pegawai
+(NIP), Nama Lengkap, Password, serta Role yang digunakan untuk menentukan
+hak akses pengguna sebagai Admin atau Pegawai. Setelah seluruh data diisi,
+Admin dapat menekan tombol "Simpan Akun" untuk menyimpan data pengguna
+ke dalam sistem sehingga akun dapat digunakan untuk proses login. Apabila
+Admin membatalkan proses penambahan akun, tombol "Batal" dapat digunakan
+untuk menutup pop-up tanpa menyimpan data yang telah diinputkan. Dengan
+adanya form ini, proses pembuatan akun baru dapat dilakukan secara terstruktur
+sekaligus memastikan bahwa setiap pengguna memiliki identitas dan hak akses
+
+--- PAGE 78 ---
+66
+yang sesuai sebelum menggunakan aplikasi.
+Setelah proses penambahan akun berhasil dilakukan, data pengguna akan
+tersimpan ke dalam sistem dan secara otomatis ditampilkan pada tabel Daftar
+Pengguna. Melalui tabel ini, Admin dapat melihat seluruh akun yang telah
+terdaftar sekaligus melakukan pengelolaan terhadap setiap akun sesuai kebutuhan.
+Fitur pengelolaan akun dirancang untuk memudahkan Admin dalam melakukan
+pemeliharaan data pengguna sehingga informasi akun tetap akurat dan keamanan
+akses sistem dapat terjaga.
+Gambar Tidak Ditemukan
+Gambar 3.23 Wireframe Halaman Kelola Akun (Edit dan Reset Password)
+Berdasarkan Gambar 3.23, tabel Daftar Pengguna menampilkan informasi
+seluruh akun yang telah berhasil didaftarkan ke dalam sistem. Informasi yang
+ditampilkan meliputi Username (NIP), Nama Lengkap, dan Role pengguna. Pada
+kolom Aksi, tersedia tiga fitur utama, yaitu Edit Akun, Reset Password, dan Hapus
+Akun. Fitur Edit Akun digunakan untuk mengubah informasi pengguna, seperti
+
+--- PAGE 79 ---
+67
+nama lengkap atau role sesuai kebutuhan. Fitur Reset Password memungkinkan
+Admin untuk mengatur ulang password pengguna apabila pengguna lupa password
+atau mengalami kendala saat login. Sementara itu, fitur Hapus Akun digunakan
+untuk menghapus akun pengguna yang sudah tidak diperlukan atau tidak lagi
+memiliki hak akses terhadap sistem. Dengan adanya fitur-fitur tersebut, Admin
+dapat mengelola seluruh akun pengguna secara terpusat sehingga keamanan,
+validitas data pengguna, dan pengaturan hak akses dalam sistem tetap terjaga.
+3.5.7.6 Rancangan Halaman Profil Pengguna
+Halaman Profil Pengguna merupakan halaman yang digunakan untuk
+mengelola informasi akun milik pengguna yang sedang login. Halaman ini dapat
+diakses oleh Admin maupun Pegawai sebagai sarana untuk memperbarui informasi
+pribadi tanpa memengaruhi data akun pengguna lain. Tampilan dan fitur yang
+tersedia pada halaman profil bersifat sama untuk kedua role, sehingga baik Admin
+maupun Pegawai dapat mengubah nama lengkap dan password akun miliknya
+sendiri melalui halaman ini. Dengan adanya halaman profil, pengguna dapat
+menjaga keakuratan identitas akun serta meningkatkan keamanan akun melalui
+perubahan password secara berkala.
+
+--- PAGE 80 ---
+68
+Gambar Tidak Ditemukan
+Gambar 3.24 Wireframe Halaman Profil Pengguna (Admin dan Pegawai)
+Pada Gambar 3.24, halaman Profil Pengguna terdiri atas dua bagian utama,
+yaitu Informasi Profil dan Perbarui Password. Pada bagian Informasi Profil,
+pengguna dapat melihat Username (NIP) yang digunakan sebagai identitas akun
+serta memperbarui Nama Lengkap sesuai kebutuhan. Username (NIP) hanya
+ditampilkan sebagai identitas akun dan tidak dapat diubah oleh pengguna.
+Selanjutnya, pada bagian Perbarui Password, pengguna dapat mengganti password
+akun dengan memasukkan password lama, password baru, dan konfirmasi
+password baru. Setelah seluruh data diisi dengan benar, pengguna dapat
+menyimpan perubahan yang telah dilakukan. Halaman ini dirancang untuk
+memberikan kemudahan kepada pengguna dalam mengelola informasi akun
+pribadinya sekaligus meningkatkan keamanan sistem melalui perubahan password
+secara mandiri. Karena halaman ini digunakan untuk pengelolaan akun pribadi,
+tampilan maupun fitur yang tersedia bagi Admin dan Pegawai adalah sama.
+
+--- PAGE 81 ---
+69
+Perbedaannya hanya terletak pada hak akses masing-masing pengguna terhadap
+fitur-fitur lain di dalam sistem, sedangkan pengelolaan akun pengguna lain tetap
+menjadi kewenangan Admin melalui menu Kelola Akun.
+3.5.8 Teknik Pengujian
+Pengujian sistem dilakukan untuk memastikan bahwa aplikasi yang
+dikembangkan telah berjalan sesuai dengan kebutuhan fungsional serta mampu
+mengimplementasikan metode K-Means Clustering dengan baik. Pada penelitian
+ini, pengujian dilakukan terhadap fungsi-fungsi utama aplikasi dan hasil
+implementasi metode clustering. Pengujian fungsi aplikasi menggunakan metode
+Black Box Testing, sedangkan pengujian implementasi metode dilakukan dengan
+membandingkan hasil clustering yang dihasilkan oleh sistem dengan hasil
+pengolahan data menggunakan Jupyter Notebook sebagai acuan. Melalui
+pengujian tersebut diharapkan seluruh fitur aplikasi dapat berjalan sesuai dengan
+kebutuhan pengguna serta menghasilkan keluaran yang konsisten dengan proses
+clustering yang telah dirancang.
+3.5.8.1 Black Box Testing
+Pengujian antarmuka dan fungsionalitas aplikasi dilakukan menggunakan
+metode Black Box Testing. Metode ini berfokus pada pengujian fungsi sistem
+berdasarkan masukan (input) dan keluaran (output) tanpa memperhatikan struktur
+internal atau kode program. Pengujian dilakukan untuk memastikan bahwa setiap
+fitur pada aplikasi, seperti proses login, pengelolaan akun pengguna, unggah
+
+--- PAGE 82 ---
+70
+dataset, proses clustering, dashboard, analisis tren, hingga perubahan profil
+pengguna dapat berjalan sesuai dengan kebutuhan fungsional yang telah
+dirancang. Hasil pengujian nantinya digunakan untuk mengetahui apakah seluruh
+fungsi sistem telah memberikan keluaran yang sesuai dengan yang diharapkan.
+3.5.9 Pengujian Implementasi Metode K-Means Clustering
+Pengujian implementasi metode K-Means Clustering dilakukan untuk
+memastikan bahwa algoritma yang diimplementasikan pada aplikasi menghasilkan
+keluaran yang konsisten dengan proses pengolahan data yang telah dilakukan pada
+tahap perancangan menggunakan Jupyter Notebook. Pengujian dilakukan dengan
+membandingkan hasil clustering yang dihasilkan oleh aplikasi, meliputi
+pembentukan label cluster, distribusi data pada setiap cluster, serta visualisasi hasil
+clustering. Selain itu, dilakukan pengecekan terhadap nilai centroid dan hasil
+analisis yang ditampilkan pada dashboard maupun halaman analisis tren untuk
+memastikan bahwa seluruh proses perhitungan telah sesuai dengan implementasi
+metode K-Means Clustering yang digunakan dalam penelitian.
+
+--- PAGE 83 ---
+BAB IV
+HASIL DAN PEMBAHASAN
+Bab ini menyajikan hasil implementasi, preprocessing data, pelatihan model,
+evaluasi performa model, serta pengujian sistem klasifikasi kelayakan penerima
+subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan metode Light
+Gradient Boosting Machine (LightGBM). Pembahasan dibagi menjadi tujuh
+bagian utama, yaitu hasil implementasi sistem, preprocessing data, implementasi
+dan pelatihan model prediksi, evaluasi model, hasil pengujian sistem, pembahasan
+hasil klasifikasi, serta keterbatasan sistem dan penelitian.
+4.1 Hasil Implementasi Sistem
+Bagian ini memaparkan realisasi fisik dari rancangan sistem yang telah
+disusun pada Bab III, yang mencakup implementasi antarmuka aplikasi web
+dashboard (Next.js), implementasi backend dan basis data cloud (Supabase), serta
+implementasi layanan API di sisi server (Flask).
+4.1.1 Implementasi Antarmuka (UI)
+Aplikasi antarmuka pengguna dikembangkan menggunakan framework
+Next.js dengan bahasa pemrograman TypeScript, mengacu pada rancangan use
+case dan diagram aktivitas yang disusun pada Bab III. Antarmuka dirancang
+sebagai dashboard interaktif untuk mempermudah administrator dan analis dalam
+melakukan proses klasifikasi kelayakan penerima subsidi listrik.
+71
+
+--- PAGE 84 ---
+72
+1.Halaman Login
+Halaman Login berfungsi sebagai sistem keamanan utama untuk
+memverifikasi hak akses pengguna sebelum dapat masuk ke dashboard
+sistem. Form login memuat input username, password, serta tombol masuk.
+Antarmuka halaman login dapat dilihat pada Gambar 4.1.
+Gambar 4.1 Implementasi Halaman Login
+2.Halaman Dashboard Utama
+Halaman Dashboard Utama menyajikan ringkasan statistik dari hasil
+klasifikasi kelayakan penerima subsidi listrik secara real-time. Informasi
+yang disajikan meliputi jumlah total pelanggan yang dianalisis, total
+pelanggan layak subsidi, total pelanggan tidak layak subsidi, rasio
+kelayakan, serta grafik lingkaran (doughnut chart) yang menampilkan
+distribusi hasil keputusan. Antarmuka dashboard dapat dilihat pada Gambar
+4.2.
+
+--- PAGE 85 ---
+73
+Gambar 4.2 Implementasi Halaman Dashboard Utama
+3.Halaman Klasifikasi Baru
+Halaman Klasifikasi Baru menyediakan fitur bagi administrator untuk
+melakukan prediksi kelayakan subsidi melalui dua metode, yaitu Input
+Manual untuk pengujian pelanggan secara individu, serta Upload Batch
+(import CSV/Excel) untuk melakukan klasifikasi data pelanggan dalam
+jumlah banyak sekaligus. Antarmuka halaman klasifikasi baru dapat dilihat
+pada Gambar 4.3.
+
+--- PAGE 86 ---
+74
+Gambar 4.3 Implementasi Halaman Klasifikasi Baru
+4.Halaman Hasil Prediksi
+Halaman Hasil Prediksi menampilkan luaran model berupa status kelayakan
+pelanggan (Layak atau Tidak Layak menerima subsidi) beserta nilai
+probabilitas (prediction confidence) yang dihitung oleh model LightGBM.
+Halaman ini juga menyajikan detail karakteristik sosial ekonomi dan
+kelistrikan pelanggan yang bersangkutan. Antarmuka hasil prediksi dapat
+dilihat pada Gambar 4.4.
+
+--- PAGE 87 ---
+75
+Gambar 4.4 Implementasi Halaman Hasil Prediksi
+5.Halaman Laporan
+Halaman Laporan memuat tabel riwayat hasil klasifikasi (batch maupun
+manual) yang telah disimpan sebagai laporan, lengkap dengan judul,
+tanggal, jumlah data, serta ringkasan jumlah pelanggan layak dan tidak
+layak. Admin dapat menyaring daftar laporan berdasarkan rentang tanggal
+dan membuka detail masing-masing laporan. Antarmuka halaman laporan
+dapat dilihat pada Gambar 4.5.
+
+--- PAGE 88 ---
+76
+Gambar 4.5 Implementasi Halaman Laporan
+6.Halaman Pengaturan
+Halaman Pengaturan menampilkan profil admin yang sedang masuk (nama,
+email, dan peran) beserta formulir untuk mengganti password akun. Pada
+tahap MVP ini, fitur ganti password masih bersifat dummy karena
+mekanisme autentikasi sesungguhnya baru akan diintegrasikan dengan
+Supabase pada tahap pengembangan berikutnya. Antarmuka halaman
+pengaturan dapat dilihat pada Gambar 4.6.
+
+--- PAGE 89 ---
+77
+Gambar 4.6 Implementasi Halaman Pengaturan
+4.1.2 Implementasi Backend dan Basis Data Cloud
+Backend aplikasi dikembangkan dengan memanfaatkan layanan Supabase
+yang bertindak sebagai backend cloud terintegrasi untuk menyimpan data hasil
+klasifikasi, riwayat batch, laporan bulanan, data autentikasi user, serta metadata
+model. Relasi data terpusat diatur menggunakan basis data relasional PostgreSQL
+dengan skema tabel utama meliputi tabelpelanggan, tabelhasil_klasifikasi,
+tabellaporan, dan tabelpengaturan_model. Lapisan keamanan diatur
+menggunakan mekanismeRow Level Security(RLS) di sisi Supabase untuk
+menjamin privasi data agar tidak diakses oleh pihak luar secara ilegal.
+4.1.3 Implementasi Layanan Prediksi (API)
+Layanan prediksi machine learning dikembangkan menggunakan bahasa
+pemrograman Python dengan framework Flask yang berjalan secara independen di
+
+--- PAGE 90 ---
+78
+sisi server pada port 5000. Layanan ini bertindak sebagai API server yang bertugas
+memproses data masukan dari frontend, melakukan pra-pemrosesan data secara
+dinamis, memuat model biner LightGBM, melakukan kalkulasi prediksi, serta
+mengembalikan hasil berupa status kelayakan dan probabilitas klasifikasi dalam
+format JSON. Logika preprocessing dan pelatihan pada layanan ini identik dengan
+yang dijalankan padamain.ipynb, sehingga notebook berperan sebagai tempat
+eksplorasi dan pelatihan awal model, sedangkanapp.pymelayaninya sebagai
+REST API. Kontrak endpoint API yang diimplementasikan disajikan pada tabel
+berikut:
+1.POST /api/preprocess: Menjalankan pipeline pra-pemrosesan (cleaning,
+penanganan nilai kosong, encoding, normalisasi, dan split data) terhadap
+dataset yang dipilih.
+2.POST /api/train: Memicu proses pelatihan (retraining) model
+LightGBM secara asinkron menggunakan parameter yang ditentukan, dan
+mengembalikanjob_iduntuk dipantau progresnya.
+3.GET /api/train/status/<job_id>: Memeriksa progres dan log pelatihan
+model yang sedang berjalan berdasarkanjob_id.
+4.GET /api/evaluate/<model_id>: Mengambil metrik evaluasi (accuracy,
+precision, recall, F1-score, confusion matrix, dan feature importance) beserta
+parameter dari model yang telah dilatih.
+5.POST /api/predict: Melakukan klasifikasi data masukan, baik input
+manual (JSON tunggal) maupun upload batch (file CSV/Excel), ditentukan
+
+--- PAGE 91 ---
+79
+melalui parametermode.
+6.GET /api/modelsdanPOST /api/models/<model_id>/activate:
+Menampilkan daftar model yang tersedia beserta performanya, serta
+mengaktifkan salah satu model sebagai model produksi.
+4.2 Implementasi Rancangan Model Klasifikasi LightGBM
+Bagian ini menyajikan implementasi rancangan metode penelitian pada Bab
+III, mulai dari deskripsi dataset, pra-pemrosesan data, pelatihan model, hingga
+evaluasi performa model LightGBM yang dibangun. Tahap pra-pemrosesan data
+dilakukan untuk menjamin kualitas dataset agar bebas dari nilai kosong, data
+duplikat, atau format variabel yang tidak konsisten sehingga model LightGBM
+dapat mempelajari pola klasifikasi secara stabil.
+4.2.1 Deskripsi Data dan Eksplorasi Awal
+Dataset utama penelitian ini merupakan data gabungan administratif sosial
+ekonomi dari Dinas Sosial dan data kelistrikan sintetis sebanyak 1.000 baris.
+Statistik deskriptif untuk variabel-variabel numerik dalam dataset disajikan pada
+Tabel 4.1.
+
+--- PAGE 92 ---
+80
+Tabel 4.1 Statistik Deskriptif Variabel Numerik
+No Variabel Mean Std Dev Min Median (50%) Max
+1 Daya V A (V A) 1.071,1 573,1 450 900 2.200
+2 Pemakaian kWh (kWh) 126,18 70,50 35 108 349
+3 Penghasilan (Rupiah) 5.789.800 3.926.025 900.000 5.150.000 17.900.000
+4 Jumlah Anggota Keluarga 4,47 1,71 2 5 8
+5 Luas Bangunan (m2) 96,17 60,36 24 91 250
+Sementara distribusi nilai untuk variabel-variabel kategorikal disajikan secara
+berturut-turut pada Tabel 4.2, Tabel 4.3, Tabel 4.4, Tabel 4.5, dan Tabel 4.6.
+Tabel 4.2 Distribusi Golongan Tarif
+No Golongan Tarif Frekuensi (N = 1000) Persentase (%)
+1 R-1/900 V A 367 36,7%
+2 R-1/450 V A 266 26,6%
+3 R-1/1300 V A 207 20,7%
+4 R-1/2200 V A 160 16,0%
+Tabel 4.3 Distribusi Status Kepemilikan Rumah
+No Status Kepemilikan Frekuensi (N = 1000) Persentase (%)
+1 Milik Sendiri 574 57,4%
+2 Menumpang 217 21,7%
+3 Kontrak 209 20,9%
+Tabel 4.4 Distribusi Status Penerima Bantuan Sosial
+No Kategori Penerima Bansos Frekuensi (N = 1000) Persentase (%)
+1 Tidak 647 64,7%
+2 PKH 135 13,5%
+3 BPNT 124 12,4%
+4 PKH & BPNT 94 9,4%
+
+--- PAGE 93 ---
+81
+Tabel 4.5 Distribusi Pekerjaan Kepala Keluarga
+No Kategori Pekerjaan Frekuensi (N = 1000) Persentase (%)
+1 Dokter 70 7,0%
+2 ASN / PNS / Dosen 194 19,4%
+3 Pemulung 64 6,4%
+4 Nelayan 59 5,9%
+5 Pengusaha / Manajer 111 11,1%
+6 Teknisi 53 5,3%
+7 Satpam / Sopir / Penjahit 143 14,3%
+8 Tukang Bangunan 49 4,9%
+9 Buruh Harian Lepas 46 4,6%
+10 Guru Honorer 45 4,5%
+11 Karyawan Swasta 44 4,4%
+12 Petani 43 4,3%
+13 Pedagang Kecil 42 4,2%
+14 Wiraswasta 37 3,7%
+Tabel 4.6 Distribusi Target Label Kelayakan
+No Status Label Frekuensi (N = 1000) Persentase (%)
+1 Tidak Layak (Non Subsidi) 600 60,0%
+2 Layak (Subsidi) 400 40,0%
+4.2.2 Pra-pemrosesan Data
+Pra-pemrosesan data dilakukan melalui beberapa tahapan berikut:
+1.Penghapusan Variabel Tidak Relevan
+Variabelid_pelanggandannama_pelanggandihapus dari dataset karena
+data tersebut bersifat unik dan hanya merepresentasikan identitas
+administratif, sehingga tidak memberikan kontribusi informasi terhadap
+proses klasifikasi kelayakan penerima subsidi.
+2.Penyelarasan Nama Variabel
+
+--- PAGE 94 ---
+82
+Kolom-kolom diselaraskan dengan kontrak backend, yaitu merenameVA
+menjadidaya_va,KwH_Perbulanmenjadipemakaian_kwh,Penghasilan
+menjadipenghasilan,Jumla_Anggota_Keluargamenjadi
+jumlah_anggota,pekerjaan_kepala_keluargamenjadipekerjaan,
+status_kepemilikan_rumahmenjadistatus_rumah,luas_bangunan_m2
+menjadiluas_bangunan, danpenerima_bantuanmenjadi
+status_bansos.
+3.Penanganan Nilai Kosong (Imputasi)
+Nilai kosong pada variabel numerik diisi menggunakan nilai median dari
+masing-masing kolom pada data training untuk menghindari pengaruh nilai
+ekstrem (outliers). Sementara nilai kosong pada variabel kategorikal diisi
+menggunakan nilai modus (nilai dengan frekuensi tertinggi).
+4.Encoding Variabel Kategorikal
+Variabel kategorikal (pekerjaan,status_rumah,status_bansos,
+golongan_tarif) ditransformasikan menjadi representasi numerik
+menggunakanLabel Encoderdari pustaka Scikit-Learn. Target label
+(label) juga dikodekan menjadi representasi biner dengan nilai0untuk
+"Tidak Layak" dan1untuk "Layak".
+5.Standardisasi Skala Fitur
+Fitur-fitur numerik distandardisasikan menggunakanStandardScaleragar
+memiliki rata-rata (mean) sama dengan 0 dan standar deviasi sama dengan 1.
+
+--- PAGE 95 ---
+83
+Proses standardisasi dirumuskan sebagai berikut:
+z= x−µ
+σ (4.1)
+di manaxadalah nilai asli,µadalah rata-rata fitur, danσadalah standar
+deviasi fitur.
+6.Pembagian Dataset
+Dataset dibagi menjadi data training (latih) dan data testing (uji) dengan
+rasio pembagian sebesar 80% : 20%. Pembagian dilakukan menggunakan
+parameterstratify=yuntuk menjaga agar proporsi target label kelayakan
+(60% Tidak Layak dan 40% Layak) tetap konsisten antara data training (800
+baris) dan data testing (200 baris).
+4.2.3 Penerapan Nilai Parameter
+Model klasifikasi yang dikembangkan menggunakan algoritma Light
+Gradient Boosting Machine (LightGBM). Keunggulan LightGBM terletak pada
+kecepatan komputasi yang tinggi dan keakuratan model dalam menangani data
+bertipe kategori maupun campuran. Pelatihan model dilakukan menggunakan
+parameter default LightGBM untuk mengevaluasi kemampuan pembelajaran
+model pada dataset ini. Adapun konfigurasi hyperparameter yang digunakan
+disajikan pada Tabel 4.7.
+
+--- PAGE 96 ---
+84
+Tabel 4.7 Konfigurasi Hyperparameter Model LightGBM
+No Hyperparameter Nilai Parameter Keterangan
+1 objective "binary" Menunjukkan tugas klasifikasi biner
+2 num_leaves 31 Jumlah daun maksimal dalam satu pohon
+3 learning_rate 0,1 Faktor kecepatan pembelajaran model
+4 n_estimators 100 Jumlah pohon keputusan (tree) yang dibangun
+5 max_depth -1 Kedalaman pohon tidak dibatasi
+6 random_state 42 Kunci acak untuk reprodusibilitas model
+4.2.4 Hasil Pelatihan Model
+Pelatihan model dilakukan menggunakan modulLGBMClassifierdari
+pustakalightgbmpada data training sebanyak 800 data. Pelatihan berlangsung
+sangat cepat dengan waktu komputasi kurang dari 1 detik dikarenakan algoritma
+LightGBM menggunakan teknikhistogram-based decision treeyang
+mengelompokkan nilai numerik menjadi bin-bin diskrit, sehingga mengurangi
+kompleksitas pencarian titik pembagian (split point) pada data training. Model
+yang telah dilatih kemudian diekspor menjadi biner modelmdl_001.txtagar
+dapat digunakan secara asinkron oleh API Flask.
+4.2.5 Analisis Klasifikasi Menggunakan Metrik Evaluasi dan Confusion
+Matrix
+Performa model LightGBM diuji secara komprehensif pada data testing (200
+data) menggunakan metrik evaluasi klasifikasi yang telah dibahas pada Bab III.
+Pengujian model LightGBM menghasilkan tingkat keakuratan yang sempurna pada
+data uji. Hasil evaluasi metrik kinerja model disajikan pada Tabel 4.8.
+
+--- PAGE 97 ---
+85
+Tabel 4.8 Metrik Performa Model LightGBM
+No Metrik Evaluasi Nilai Prediksi Keterangan
+1 Accuracy 1,0000 Tingkat akurasi klasifikasi 100%
+2 Precision 1,0000 Presisi deteksi kelas Layak 100%
+3 Recall 1,0000 Sensitivitas deteksi kelas Layak 100%
+4 F1-Score 1,0000 Rata-rata harmonik performa 100%
+While the classification matrix is presented in Table 4.9.
+Tabel 4.9 Confusion Matrix Hasil Pengujian
+Confusion Matrix
+Data Aktual
+Layak (Subsidi) Tidak Layak (Non Subsidi)
+Prediksi
+Layak (Subsidi) TP = 80 FP = 0
+Tidak Layak FN = 0 TN = 120
+Berdasarkan Confusion Matrix pada Tabel 4.9, dari total 200 data pengujian,
+model LightGBM mampu mengklasifikasikan seluruh data secara benar tanpa
+terjadi kesalahan prediksi. Hal ini ditunjukkan dengan nilai False Positive (FP)
+sebesar 0 dan False Negative (FN) sebesar 0.
+4.2.6 Analisis Fitur Penting (Feature Importance)
+Nilaifeature importancemenunjukkan kontribusi relatif setiap variabel
+dalam membantu model menentukan kelayakan penerima subsidi listrik. Skor
+dihitung berdasarkan jumlah kumulatif pembagian (split) yang dilakukan oleh
+variabel tersebut di seluruh pohon keputusan. Skorfeature importancedisajikan
+pada Tabel 4.10.
+
+--- PAGE 98 ---
+86
+Tabel 4.10 Nilai Feature Importance Model LightGBM
+No Nama Fitur (Variabel) Skor Splits
+1 Penghasilan 877
+2 Luas Bangunan 359
+3 Pemakaian kWh 186
+4 Daya V A 150
+5 Jumlah Anggota Keluarga 30
+6 Status Kepemilikan Rumah 11
+7 Pekerjaan Kepala Keluarga 0
+8 Status Penerima Bansos 0
+9 Golongan Tarif 0
+Berdasarkan Tabel 4.10, variabelpenghasilanmemiliki nilai kontribusi
+tertinggi dengan skor splits sebesar 877, diikuti olehluas_bangunan(359),
+pemakaian_kwh(186), dandaya_va(150). Hal ini menunjukkan bahwa
+karakteristik sosial ekonomi (penghasilan dan luas bangunan) merupakan indikator
+yang paling dinamis dan krusial bagi model dalam menentukan kelas kelayakan,
+sementara variabel teknis kelistrikan (pemakaian kWh dan daya terpasang)
+bertindak sebagai cross-reference aturan utama yang mengacu pada ketentuan
+Kementerian ESDM.
+
+--- PAGE 99 ---
+87
+4.3 Hasil Pengujian Sistem
+Pengujian sistem dilakukan terhadap fungsi antarmuka aplikasi web dan
+kebenaran komputasi layanan API prediksi.
+4.3.1 Hasil Black Box Testing
+Pengujian fungsionalitas sistem dilakukan menggunakan metode Black Box
+Testing. Pengujian ini berfokus pada verifikasi input-output sistem tanpa meninjau
+struktur internal kode. Hasil pengujian fungsionalitas disajikan pada Tabel 4.11.
+
+--- PAGE 100 ---
+88
+Tabel 4.11 Hasil Pengujian Black Box Dashboard Klasifikasi
+No Modul / Fitur Skenario Pengujian Hasil yang
+Diharapkan
+1 Login Admin Memasukkan username dan
+password benar
+Masuk ke
+dashboard
+utama
+2 Dashboard Utama Menampilkan ringkasan total
+data, rasio, dan grafik
+Data
+terintegrasi
+dengan
+database
+Supabase
+3 Input Manual Menginput data pelanggan
+tunggal valid
+Prediksi
+kelayakan dan
+probabilitas
+tampil
+4 Upload Batch Mengunggah file Excel berisi
+200 data
+Seluruh data
+terklasifikasi
+dan tersimpan
+5 Pengaturan Model Membuka grafik metrik dan
+feature importance
+Visualisasi
+model aktif
+dimuat dari
+Flask
+6 Riwayat Laporan Mencari riwayat batch dan
+mengekspor ke PDF
+File PDF
+laporan
+klasifikasi
+terunduh
+Berdasarkan hasil pengujian Black Box pada Tabel 4.11, seluruh skenario
+fungsionalitas yang diuji pada aplikasi web berjalan dengan sukses tanpa kegagalan
+(tingkat keberhasilan 100%).
+
+--- PAGE 101 ---
+89
+4.3.2 Hasil White Box Testing
+Pengujian logika internal (White Box Testing) dilakukan secara terbatas
+untuk menguji kebenaran algoritma preprocessing dinamis dan pemanggilan
+model LightGBM pada layanan API Flask (app.py). Pengujian dilakukan dengan
+menelusuri jalur percabangan eksekusi ketika sistem menerima format JSON data
+masukan yang tidak lengkap, data dengan tipe data salah, serta file batch kosong.
+Pengujian logika penanganan kesalahan menunjukkan bahwa layanan API secara
+tepat mengembalikan kode respon HTTP 400 (Bad Request) dan deskripsi pesan
+error yang selaras dengan spesifikasi penanganan kesalahan API.
+4.4 Pembahasan
+Bagian ini membahas keterkaitan antara hasil pelatihan model LightGBM,
+implementasi sistem web dashboard, serta kesesuaian hasil prediksi dengan aturan
+penyaluran subsidi listrik PLN.
+4.4.1 Pembahasan Pengujian Fungsional Web Dashboard
+Hasil pengujian fungsionalitas menunjukkan bahwa aplikasi web dashboard
+klasifikasi berbasis Next.js yang terintegrasi dengan backend Supabase dan
+layanan prediksi Flask mampu membantu PT PLN Aceh dalam mengevaluasi
+status pelanggan secara efisien. Administrator dapat menggunakan fitur Upload
+Batch untuk memproses ribuan data pelanggan dalam hitungan detik tanpa harus
+mengevaluasi satu per satu secara manual. Hal ini menghemat waktu operasional
+
+--- PAGE 102 ---
+90
+dan mengurangi potensi kesalahan penulisan data administratif.
+4.4.2 Pembahasan Akurasi Model Klasifikasi LightGBM
+Model LightGBM yang dibangun menghasilkan akurasi sempurna sebesar
+1,0000 (100%) pada data pengujian. Meskipun secara teoritis akurasi sempurna
+pada model machine learning dapat disebabkan oleh indikasi overfitting, namun
+dalam konteks dataset penelitian ini, hasil akurasi 100% disebabkan oleh
+pembentukan dataset sintetis kelistrikan yang menggunakan aturan deterministic
+berbasis aturan regulasi Kementerian ESDM.
+Algoritma berbasis pohon keputusan (decision tree ensemble) seperti
+LightGBM sangat efektif dalam memetakan batas keputusan deterministic yang
+bersifat linear maupun bercabang. Dikarenakan batas antara kelas "Layak" dan
+"Tidak Layak" ditentukan oleh kombinasi kriteria (seperti daya≤900 V A,
+pemakaian bulanan di bawah rata-rata nasional, penghasilan di bawah ambang
+batas prasejahtera, dan kepemilikan status bansos), model LightGBM mampu
+merekonstruksi aturan tersebut secara sempurna melalui struktur percabangan
+pohon keputusan. Analisisfeature importancemendukung argumen ini, di mana
+variabel penghasilan dan luas bangunan yang memiliki ambang batas numerik
+ketat menjadi pemisah utama pada level teratas pohon keputusan.
+4.5 Keterbatasan Sistem dan Penelitian
+Meskipun sistem telah selesai dibangun dan model klasifikasi memiliki
+performa yang sangat baik, terdapat beberapa keterbatasan dalam penelitian ini:
+
+--- PAGE 103 ---
+91
+1.Ukuran Dataset Penelitian
+Dataset yang digunakan terbatas pada 1.000 data pelanggan rumah tangga.
+Untuk penggunaan pada skala wilayah provinsi Aceh secara utuh,
+diperlukan dataset dengan volume jutaan data pelanggan agar model dapat
+dilatih menghadapi variasi sebaran data yang lebih beragam.
+2.Ketergantungan pada Kualitas Data Sintetis
+Atribut kelistrikan dibentuk menggunakan pembangkitan sintetis rule-based.
+Karakteristik ini memiliki batasan di mana data riil di lapangan cenderung
+memiliki tingkat derau (noise) dan anomali pembacaan meteran yang lebih
+tinggi, yang dapat mempengaruhi akurasi prediksi model pada kondisi nyata.
+3.Penyebaran Layanan (Deployment)
+Layanan API Flask dan frontend Next.js saat ini masih berjalan pada
+lingkungan lokal (localhost) sebagai purwarupa (prototype). Untuk
+penggunaan skala komersial, sistem perlu disebarkan pada layanan cloud
+server berskala besar dengan jaminan keamanan data pelanggan yang
+terlindungi.
+
+--- PAGE 104 ---
+BAB V
+PENUTUP
+Bab ini menyajikan kesimpulan dari hasil perancangan, implementasi, dan
+pengujian sistem klasifikasi kelayakan penerima subsidi listrik pelanggan rumah
+tangga PLN Aceh menggunakan metode Light Gradient Boosting Machine
+(LightGBM), serta saran-saran untuk pengembangan sistem lebih lanjut di masa
+mendatang.
+5.1 Kesimpulan
+Berdasarkan hasil analisis, perancangan, implementasi, dan pengujian yang
+telah dilakukan pada penelitian ini, maka dapat ditarik beberapa kesimpulan sebagai
+berikut:
+1. Penelitian ini telah berhasil membangun sistem klasifikasi kelayakan
+penerima subsidi listrik pelanggan rumah tangga PLN Aceh menggunakan
+metode Light Gradient Boosting Machine (LightGBM) yang terintegrasi
+dengan web dashboard Next.js dan backend server Flask API Python.
+2. Model LightGBM yang dibangun menggunakan konfigurasi default
+(num_leaves=31,learning_rate=0.1,n_estimators=100) pada 1.000
+data pelanggan mampu menghasilkan performa klasifikasi yang sangat baik
+dengan tingkat akurasi sebesar 1,0000 (100%), presisi 1,0000 (100%), recall
+1,0000 (100%), dan F1-score 1,0000 (100%) pada data testing.
+3. Analisisfeature importancemenunjukkan bahwa variabelpenghasilan
+92
+
+--- PAGE 105 ---
+93
+(skor splits 877) danluas_bangunan(359) merupakan dua fitur dengan
+kontribusi tertinggi bagi model dalam menentukan batas pemisah kelayakan,
+sementara variabel teknis kelistrikan (pemakaian_kwhdandaya_va)
+bertindak sebagai verifikasi aturan dasar kesesuaian kriteria subsidi.
+4. Pengujian sistem menggunakan metodeBlack Box Testingterhadap 6
+skenario fungsionalitas utama pada antarmuka web dashboard berjalan
+dengan sukses tanpa adanya kegagalan (100% keberhasilan), serta pengujian
+White Box Testingmembuktikan keandalan logika API Flask dalam
+menangani kesalahan input.
+5.2 Saran
+Berdasarkan keterbatasan sistem dan model yang diidentifikasi selama
+penelitian, berikut adalah beberapa saran konstruktif untuk pengembangan lebih
+lanjut:
+1.Pengembangan Skala Dataset: Disarankan untuk menambahkan volume
+dataset hingga mencakup data riil berskala provinsi secara komprehensif,
+sehingga model dapat mempelajari variasi karakteristik pelanggan yang
+lebih heterogen.
+2.Penanganan Derau Data Lapangan (Noise Handling): Penelitian
+selanjutnya perlu menguji performa model LightGBM pada data riil
+lapangan yang memiliki tingkat pencatatan anomali (data kosong, pencatatan
+meteran listrik yang salah) guna mengukur ketahanan (robustness) model.
+
+--- PAGE 106 ---
+94
+3.Penyebaran Layanan Cloud (Cloud Deployment): Purwarupa aplikasi web
+dan server API Flask ini perlu dipublikasikan pada arsitektur cloud server
+komersial yang aman untuk memastikan keandalan akses dan keamanan data
+pribadi pelanggan.
+
+--- PAGE 107 ---
+95
+DAFTAR PUSTAKA
+[1] L. N. Nainggolan, K. Akbar, T. Yuliaty, and S. Suhaimi, “Tinjauan Kebijakan
+Pemerintah Bagi Masyarakat Prasejahtera dalam Menghadapi Fenomena
+Subsidi Listrik, Bahan Bakar Minyak dan Gas di Indonesia,”Jurnal
+Ekonomi Pembangunan STIE Muhammadiyah Palopo, vol. 10, no. 1, pp.
+114–130, 2024.
+[2] S. Jamilatun, F. R. Rhomadoni, E. Astuti, B. S. Wardhana, M. Idris, and P. A.
+Auliasari, “Peran Manajemen Energi terhadap Efisiensi Konsumsi Listrik
+Rumah Tangga di Indonesia,” inProsiding Semnastek, 2025.
+[3] T. Muzayyanah and M. D. Rhosyidy, “Kelayakan Ekonomi Atas Implementasi
+Subsidi Listrik Untuk Mengurangi Tunggakan Pada Pelanggan PT. PLN
+(Persero) Kraksaan,”Menulis Jurnal Penelitian Nusantara, vol. 1, no. 3,
+pp. 403–411, 2025.
+[4] C. Lestari, “Kebijakan Subsidi Listrik Terhadap Masyarakat Yang Terdampak
+Covid-19 Di Kabupaten Pinrang (Analisis Hukum Ekonomi Islam),”IAIN
+Parepare, 2022.
+[5] M. Faturrochman and T. H. Yaasiin, “Efektivitas subsidi kendaraan listrik
+terhadap perkembangan industri otomotif dalam mewujudkan program
+Making Indonesia 4.0,”Jurnal Environment Economics and
+Sustainability, vol. 1, no. 3, pp. 1–17, 2024.
+[6] K. Syaban, “Evaluasi Model Ensemble Learning pada Identifikasi Faktor Risiko
+Diabetes Mellitus,”Jurnal Teknologi dan Informasi, vol. 15, no. 2, pp.
+121–130, 2025.
+[7] I. G. A. R. Astarani and I. G. S. Rahayuda, “Analisis Perbandingan XGBoost dan
+LightGBM dalam Prediksi Penjualan Ritel Walmart Store Sales,”Jurnal
+Nasional Teknologi Informasi dan Aplikasi, vol. 3, no. 4, pp. 717–728,
+2025.
+[8] N. P. Cintari, K. Alifviansyah, D. U. Tsabitah, B. Sartono, and A. R.
+Firdawanti, “Analisis Perbandingan Kinerja Metode Ensemble Bagging
+dan Boosting pada Klasifikasi Bantuan Subsidi Listrik di Kabupaten/Kota
+Bogor,”Indonesian Journal of Computer Science, vol. 13, no. 6, 2024.
+[9] S. Syam et al.,Data Mining: Teori dan Penerapannya dalam Berbagai Bidang.
+Indonesia: PT. Sonpedia Publishing Indonesia, 2024.
+[10] T. Gori, A. Sunyoto, and H. Al Fatta, “Preprocessing Data dan Klasifikasi
+untuk Prediksi Kinerja Akademik Siswa,”Jurnal Teknologi Informasi dan
+Ilmu Komputer, vol. 11, no. 1, pp. 215–224, 2024.
+
+--- PAGE 108 ---
+96
+[11] R. K. Dinata and N. Hasdyna,SUPERVISED LEARNING: Strategi Prediksi
+dan Klasifikasi Data. Indonesia: Serasi Media Teknologi, 2025.
+[12] R. S. Nurhalizah, R. Ardianto, and P. Purwono, “Analisis supervised dan
+unsupervised learning pada machine learning: Systematic literature
+review,”Jurnal Ilmu Komputer dan Informatika, vol. 4, no. 1, pp. 61–72,
+2024.
+[13] Y . Yanto and M. Yunus, “Evaluasi Penentuan Kelayakan Pemberian Subsidi
+Listrik dengan Metode MFEP,”Jurnal Ilmu dan Teknologi, 2021.
+[14] Hutahaean and Wijayanto, “Klasifikasi Rumah Tangga Penerima Subsidi
+Listrik di Provinsi Gorontalo Tahun 2019 dengan Metode K-Nearest
+Neighbor dan Support Vector Machine,”Jurnal Teknologi dan Informasi,
+2022.
+[15] V . E. Ismayana, A. P. Sasmito, and A. Mahmudi, “Sistem Penunjang
+Kelayakan Penerima Subsidi Program Keluarga Harapan (PKH)
+Menggunakan Metode Simple Additive Weighting (SAW) Berbasis
+Website (Studi Kasus: Desa Blimbing),”Jurnal Sistem Pendukung
+Keputusan, 2023.
+[16] Fitriani, Sriani, and Suhardi, “Klasifikasi Penggunaan Daya Listrik Rumah
+Tangga Menggunakan Metode Naive Bayes,”Jurnal Teknologi dan
+Informasi, pp. 92% akurasi, 2025.
+[17] Sukerti, “Sistem Penunjang Keputusan Penerima Bantuan Desa di Kecamatan
+Klungkung dengan Metode SAW,”Jurnal Sistem Pendukung Keputusan,
+2014.
+[18] R. Jannah and R. Prativi, “Analisa Performa Metode LightGBM untuk Prediksi
+Kecanduan Media Sosial,”Jurnal Teknologi dan Informasi, 2026.
+
+--- PAGE 109 ---
+LAMPIRAN
+
+--- PAGE 110 ---
+LEMBAR KONSULTASI PEMBIMBING I
+LEMBAR KONSULTASI SKRIPSI
+JURUSAN TEKNOLOGI INFORMASI DAN KOMPUTER
+PROGRAM STUDI TEKNIK INFORMATIKA
+Nama : Siti Nur Faiza
+NIM : 2022573010045
+Judul TA : Klasifikasi Kelayakan Penerima Subsidi
+Listrik Rumah Tangga Pelanggan PLN Aceh
+Menggunakan Metode Light Gradient Boosting
+Machine (LightGBM)
+Pembimbing I : Salahuddin, S.T., M.CS
+NIP : 19740424 200212 1 001
+No. Tanggal Hasil Konsultasi Paraf
+Pembimbing
+
+--- PAGE 111 ---
+LEMBAR KONSULTASI PEMBIMBING II
+LEMBAR KONSULTASI SKRIPSI
+JURUSAN TEKNOLOGI INFORMASI DAN KOMPUTER
+PROGRAM STUDI TEKNIK INFORMATIKA
+Nama : Siti Nur Faiza
+NIM : 2022573010045
+Judul TA : Klasifikasi Kelayakan Penerima Subsidi
+Listrik Rumah Tangga Pelanggan PLN Aceh
+Menggunakan Metode Light Gradient Boosting
+Machine (LightGBM)
+Pembimbing II : Hendrawaty, ST., M.T.
+NIP : 19700226199802 2 001
+No. Tanggal Hasil Konsultasi Paraf
+Pembimbing
+

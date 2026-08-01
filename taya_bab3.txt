@@ -1,0 +1,1530 @@
+BAB III 
+METODOLOGI PENELITIAN 
+ 
+3.1    Tempat dan Waktu Penelitian 
+Tempat dan waktu penelitian merupakan bagian dari metodologi penelitian 
+yang memuat informasi mengenai lokasi pelaksanaan penelitian serta periode 
+berlangsungnya penelitian. Penjelasan mengenai tempat penelitian bertujuan untuk 
+menunjukkan lokasi atau inst ansi yang menjadi objek penelitian dan sumber data 
+yang digunakan dalam penelitian. Sementara itu, waktu penelitian menjelaskan 
+rentang waktu pelaksanaan penelitian, mulai dari tahap pengumpulan data, 
+pengolahan data, analisis data, hingga penyusunan lapor an penelitian. Dengan 
+adanya informasi mengenai tempat dan waktu penelitian, pelaksanaan penelitian 
+dapat dipahami secara lebih jelas dan sistematis sesuai dengan ruang lingkup 
+penelitian yang dilakukan. 
+3.1.1   Tempat Penelitian 
+Penelitian ini dilaksanakan di PT PLN (Persero) Unit Induk Distribusi (UID) 
+Aceh, yang berlokasi di Jl. Tgk. H. Mohd. Daud Beureueh No. 172, Bandar Baru, 
+Kec. Kuta Alam, Kota Banda Aceh, Aceh. Penentuan lokasi ini di lakukan secara 
+sengaja (Purporsive) dengan pertimbangan bahwa PT PLN UID Aceh memiliki 
+basis data rekam medis penanganan gangguan listrik yang lengkap . Data tersebut 
+sangat relevan untuk dievaluasi kinerjanya menggunakan algoritma K -Means 
+Clustering. 
+  
+
+--- PAGE 39 ---
+26 
+ 
+ 
+3.1.2   Waktu Penelitian 
+Waktu penelitian ini dilaksanakan selama 5 (lima) bulan, terhitung mulai 
+bulan Februari 2026 sampai dengan Juni 2026. Untuk merinci penelitian secara 
+sistematis berikut adalah matriks jadwal kegiatan penelitian: 
+Tabel 3.1 Jadwal Kegiatan 
+ 
+Berdasarkan Tabel 3.1, kegiatan penelitian dimulai dengan pengajuan judul 
+dan studi literatur pada bulan Februari 2026, dilanjutkan dengan pengumpulan data 
+gangguan listrik dari PT PLN (Persero) UID Aceh. Selanjutnya dilakukan analisis 
+dan preprocessing data, penentuan jumlah cluster, serta proses K-Means Clustering 
+pada bulan Maret hingga April 2026. Tahap perancangan dan implementasi sistem 
+dilakukan pada bulan April hingga Juni 2026, dilanjutkan dengan pengujian sistem 
+pada bulan Juni 2026. Rangkaian keg iatan penelitian diakhiri dengan penyusunan 
+dan penyelesaian laporan skripsi pada bulan Juni hingga Juli 2026. 
+No Kegiatan Feb Mar Apr Mei Jun 
+I II III IV I II II IV I II III IV I II III IV I II III IV 
+1 Pengumpulan 
+Data 
+                    
+2 Perancangan 
+Kebutuhan 
+                    
+3 Membuat 
+Rancangan 
+Sistem 
+                    
+4 Rancangan 
+Bangun 
+Program 
+                    
+5 Uji Coba 
+Program 
+(Testing) 
+                    
+6 Revisi 
+Perbaikan 
+Program 
+                    
+7 Implemen 
+tasi Program 
+                    
+8 Penyusunan 
+Laporan 
+                    
+9 Sidang Akhir 
+Tahun 
+                    
+
+--- PAGE 40 ---
+27 
+ 
+ 
+3.2    Alat dan Bahan Penelitian 
+Penelitian ini menggunakan beberapa perangkat lunak dan perangkat keras 
+untuk mendukung seluruh tahapan penelitian, mulai dari proses pengumpulan data, 
+pengolahan dan pembersihan data ( preprocessing), implementasi algoritma K -
+Means Clustering, hingga pengembangan dan pengujian sistem GridEval PLN. 
+Perangkat lunak yang digunakan mencakup sistem operasi, bahasa pemrograman, 
+serta berbagai library dan framework yang mendukung proses analisis data dan 
+pembangunan aplikasi berbasis web. Sementara itu, perangkat keras yang 
+digunakan berupa perangkat komputer dengan spesifikasi tertentu yang memadai 
+untuk menjalankan proses pengolahan data dan pengujian sistem secar a optimal. 
+Rincian perangkat lunak dan perangkat keras yang digunakan dalam penelitian ini 
+dijelaskan pada sub-bagian berikut. 
+1. Perangkat Lunak 
+Penelitian ini menggunakan beberapa perangkat lunak untuk mendukung 
+proses pengumpulan data, pengolahan data, implementasi algoritma K -
+Means Clustering, hingga pengembangan sistem berbasis web. Perangkat 
+lunak tersebut mencakup sistem operasi, bahasa pemro graman, serta 
+berbagai library dan framework pendukung yang digunakan sepanjang 
+tahapan penelitian. Perangkat lunak yang digunakan dalam penelitian ini 
+disajikan pada Tabel 3.2. 
+Tabel 3.2 Kebutuhan Perangkat Lunak 
+Perangkat Lunak Fungsi 
+Windows 11 
+Sistem operasi yang digunakan untuk 
+menjalankan aplikasi dan lingkungan 
+pengembangan sistem. 
+
+--- PAGE 41 ---
+28 
+ 
+ 
+Perangkat Lunak Fungsi 
+Python 3.12.6 
+Bahasa pemrograman yang digunakan 
+untuk pengolahan data dan 
+implementasi algoritma K -Means 
+Clustering. 
+Pandas 2.3.0 Library Python yang digunakan untuk 
+manipulasi dan pengolahan data. 
+NumPy 1.26.4 
+Library Python yang digunakan untuk 
+komputasi numerik dan pengolahan 
+data multidimensi. 
+Scikit-learn 
+Library Python yang digunakan untuk 
+implementasi algoritma K -Means dan 
+evaluasi hasil clustering. 
+Flask Framework web yang digunakan untuk 
+membangun aplikasi berbasis web. 
+MySQL 8.0.30 Sistem manajemen basis data yang 
+digunakan untuk penyimpanan data. 
+Figma Digunakan untuk merancang 
+wireframe antarmuka sistem. 
+ 
+2. Perangkat Keras 
+Selain perangkat lunak, penelitian ini juga menggunakan perangkat keras 
+berupa perangkat komputer dengan spesifikasi tertentu untuk mendukung 
+proses pengolahan data, pelatihan model K -Means Clustering, hingga 
+pengujian sistem yang dikembangkan. Spesifikasi  perangkat keras yang 
+memadai diperlukan agar proses pengolahan data dan pengujian sistem 
+dapat berjalan secara optimal. Perangkat keras yang digunakan dalam 
+penelitian ini disajikan pada Tabel 3.3. 
+Tabel 3.3 Kebutuhan Perangkat Keras 
+Komponen Spesifikasi 
+Processor AMD Ryzen 7 atau setara 
+RAM Minimal 8GB 
+
+--- PAGE 42 ---
+29 
+ 
+ 
+Komponen Spesifikasi 
+SSD Minimal 256GB 
+ 
+3.3    Variabel Data 
+Variabel yang digunakan dalam penelitian ini meliputi: 
+1. Lama Padam (Jam), yaitu durasi waktu sejak terjadinya gangguan hingga 
+sistem kembali normal. Variabel ini digunakan untuk menggambarkan 
+lamanya pemadaman yang dialami pelanggan akibat gangguan listrik.  
+2. Jumlah Pelanggan Padam , yaitu banyaknya pelanggan yang terdampak 
+akibat gangguan listrik yang terjadi. Variabel ini digunakan untuk 
+menggambarkan luas dampak gangguan terhadap pelanggan. 
+3. Energy Not Supplied (ENS) , yaitu jumlah energi listrik yang tidak 
+tersalurkan akibat terjadinya gangguan. Variabel ini merepresentasikan 
+besarnya dampak gangguan terhadap sistem secara teknis dan operasional. 
+Ketiga variabel tersebut digunakan sebagai atribut dalam proses K -Means 
+Clustering untuk mengelompokkan data gangguan listrik berdasarkan karakteristik 
+durasi pemadaman, jumlah pelanggan terdampak, dan nilai ENS. Hasil 
+pengelompokan digunakan untuk mengide ntifikasi kelompok gangguan dengan 
+tingkat dampak yang berbeda sehingga dapat menjadi bahan pendukung dalam 
+proses evaluasi data historis gangguan listrik. 
+3.4    Sumber Data 
+Data yang digunakan dalam penelitian ini merupakan data sekunder yang 
+diperoleh dari PT PLN (Persero) Unit Induk Distribusi (UID) Aceh. Data tersebut 
+berkaitan dengan gangguan/pemadaman listrik yang terjadi pada wilayah kerja PT 
+
+--- PAGE 43 ---
+30 
+ 
+ 
+PLN (Persero) UID Aceh, yang meliputi variabel jumlah pelanggan padam, lama 
+padam, dan Energy Not S upplied (ENS). Data yang diberikan oleh pihak PLN 
+mencakup periode dua tahun terakhir sebelum data tersebut diserahkan kepada 
+peneliti, dengan format berkas berupa Microsoft Excel (.xlsx). 
+Teknik pengumpulan data dalam penelitian ini dilakukan melalui beberapa tahapan 
+sebagai berikut: 
+1. Observasi 
+Observasi dilakukan untuk memahami proses pencatatan, penyimpanan, dan 
+pengelolaan data gangguan listrik yang digunakan sebagai sumber data 
+penelitian di lingkungan PT PLN (Persero) UID Aceh. Observasi ini bertujuan 
+untuk mengetahui struktur data yang ters edia serta kesesuaian data dengan 
+kebutuhan penelitian. 
+2. Permohonan Data Secara Resmi 
+Pengumpulan data diawali dengan pengajuan surat permohonan data resmi dari 
+pihak kampus kepada PT PLN (Persero) UID Aceh. Setelah surat tersebut 
+diterima, pihak PLN mengarahkan peneliti untuk mengisi formulir permintaan 
+data (Google Form) sebagai syarat administratif lanjutan untuk memperoleh 
+izin akses data. 
+3. Dokumentasi 
+Data yang telah disetujui kemudian diperoleh dalam bentuk dokumentasi data 
+historis gangguan listrik yang telah terdigitalisasi dan disimpan oleh pihak 
+PLN. Data tersebut selanjutnya digunakan sebagai bahan analisis dalam 
+penelitian ini. 
+
+--- PAGE 44 ---
+31 
+ 
+ 
+3.5   Tahap Penelitian 
+Penelitian ini dilakukan secara sistematis melalui beberapa tahapan yang 
+saling berkaitan, mulai dari proses pengumpulan data hingga pengujian sistem yang 
+dikembangkan. Setiap tahapan disusun secara berurutan agar hasil dari satu tahap 
+dapat digunakan seba gai dasar bagi tahap berikutnya, sehingga proses penelitian 
+dapat berjalan secara terstruktur dan menghasilkan luaran yang sesuai dengan 
+tujuan penelitian. Tahapan penelitian yang dilakukan dalam penyusunan skripsi ini 
+ditampilkan pada Gambar 3.1 berikut. 
+ 
+Gambar 3.1 Tahapan Penelitian 
+Berdasarkan Gambar 3. 1, tahapan penelitian tersebut dapat dijelaskan sebagai 
+berikut: 
+3.5.1   Pengumpulan Data 
+Tahap ini merupakan proses memperoleh data sekunder gangguan listrik dari PT 
+PLN (Persero) UID Aceh, sebagaimana telah dijelaskan pada sub -bab 3.4 Sumber 
+Data. 
+ 
+
+
+--- PAGE 45 ---
+32 
+ 
+ 
+3.5.2    Preprocessing Data 
+Tahap preprocessing dilakukan untuk mempersiapkan data sebelum 
+digunakan pada proses clustering. Tahap ini terdiri atas tiga bagian, yaitu 
+pembersihan data, deteksi outlier, dan normalisasi data. 
+Pembersihan data (data cleaning) dilakukan melalui tiga langkah, yaitu 
+pengecekan dan penanganan nilai kosong (missing value) pada variabel 
+JUMLAH_PELANGGAN, LAMA_PADAM_JAM, dan ENS; pengecekan dan 
+penghapusan data duplikat; serta validasi nilai logis deng an memastikan tidak 
+terdapat nilai negatif pada ketiga variabel tersebut, mengingat secara konsep 
+ketiganya tidak mungkin bernilai negatif. 
+Selanjutnya, dilakukan deteksi nilai ekstrem (outlier) pada masing -masing 
+variabel menggunakan metode Interquartile Range (IQR). Metode ini menentukan 
+batas kewajaran data berdasarkan nilai kuartil pertama (Q1), kuartil ketiga (Q3), 
+dan rentang interkuarti l (IQR = Q3 − Q1),  dengan batas bawah dan batas atas 
+kewajaran data dihitung menggunakan Persamaan (2.1) . Data yang berada di luar 
+rentang tersebut dikategorikan sebagai outlier. Namun, pada penelitian ini nilai 
+outlier yang terdeteksi tidak dihapus dari dataset, melainkan tetap dipertahankan. 
+Hal ini didasarkan pada pertimbangan bahwa nilai ekstrem tersebut  bukan 
+merupakan kesalahan pencatatan, melainkan merepresentasikan kejadian gangguan 
+listrik yang benar -benar terjadi di lapangan dengan tingkat dampak yang tinggi, 
+sehingga penting untuk tetap diikutsertakan dalam proses clustering. 
+Tahap terakhir dari preprocessing adalah normalisasi data menggunakan 
+metode StandardScaler. Normalisasi ini bertujuan untuk menyamakan skala antar 
+
+--- PAGE 46 ---
+33 
+ 
+ 
+variabel penelitian, mengingat rentang nilai antar variabel yang digunakan sangat 
+bervariasi. Proses normalisasi dilakukan dengan mentransformasikan setiap nilai 
+variabel sehingga memiliki rata -rata sama dengan 0 dan standar deviasi sama 
+dengan 1, sehingga setiap variabel memiliki kontribusi yang seimbang dalam proses 
+pembentukan cluster dan tidak didominasi oleh variabel dengan skala nilai yang 
+lebih besar. 
+3.5.2 Model K-Means Clustering 
+Sebelum proses clustering dijalankan, terlebih dahulu ditentukan jumlah 
+cluster (k) yang optimal dengan mengombinasikan dua metode, yaitu Elbow 
+Method dan Silhouette Score. Pengujian dilakukan terhadap beberapa 
+kemungkinan nilai k dengan menjalankan algori tma K-Means pada setiap nilai k 
+yang diuji, menggunakan metode inisialisasi k -means++ dan jumlah inisialisasi 
+(n_init) sebanyak 10 untuk menjaga kestabilan hasil. 
+Pada Elbow Method, dihitung nilai inertia (Sum of Squared Error) untuk 
+setiap nilai k yang diuji sebagaimana Persamaan (2.2). . Nilai inertia akan terus 
+menurun seiring bertambahnya jumlah cluster, namun laju penurunan tersebut akan 
+melambat pada titik tertentu yang membentuk pola siku (elbow point). Titik ini 
+mengindikasikan jumlah cluster yang cukup optimal, karena penambahan cluster 
+setelahnya tidak lagi memberikan penurunan inertia yang signifikan. Untuk 
+memvalidasi titik siku yang diperoleh, digunakan pula Silhouette Score pada 
+rentang nilai k yan g sama. Silhouette Score mengukur seberapa baik suatu data 
+ditempatkan pada clusternya dibandingkan dengan cluster terdekat lainnya, dengan 
+mempertimbangkan tingkat kohesi (kedekatan data dengan anggota cluster yang 
+
+--- PAGE 47 ---
+34 
+ 
+ 
+sama) dan tingkat separasi (jarak data terhadap cluster terdekat lainnya). Nilai 
+Silhouette Score berkisar antara -1 hingga 1, dengan nilai yang semakin mendekati 
+1 menunjukkan kualitas pemisahan antar cluster yang semakin baik. Jumlah cluster 
+yang dipilih untuk digunakan pada tahap selanjutnya adalah nilai k yang berada 
+pada titik siku hasil Elbow Method dan sekaligus menghasilkan Silhouette Score 
+tertinggi dibandingkan nilai k lainnya, sehingga penentuan jumlah cluster tidak 
+hanya didasarkan pada satu met ode saja, melainkan pada kesesuaian antara kedua 
+metode tersebut. 
+Setelah jumlah cluster optimal diperoleh, proses clustering dilanjutkan 
+menggunakan algoritma K-Means. Algoritma ini bekerja dengan mengelompokkan 
+data ke dalam sejumlah cluster berdasarkan tingkat kemiripan karakteristik antar 
+data, sehingga data dengan karakteristik serupa akan berada pada cluster yang sama. 
+Proses K-Means dijalankan dengan metode inisialisasi k-means++ untuk penentuan 
+titik pusat (centroid) awal, jumlah inisialisasi (n_init) sebanyak 10 kali agar 
+diperoleh hasil pengelompokan yang stabil , serta iterasi maksimum (max_iter) 
+sebanyak 300 kali.  Algoritma bekerja secara iteratif dengan menghitung jarak 
+Euclidean antara setiap data dengan centroid masing -masing cluster sebagaimana 
+Persamaan (2.3), mengelompokkan data ke centroid terdekat, kemudian 
+memperbarui posisi centroid berdasarkan rata -rata data anggotanya sebagaimana 
+Persamaan (2.4). Proses ini diulang hingga posisi centroid tidak lagi mengalami 
+perubahan yang signifikan atau telah mencapai kondisi konvergen. 
+Hasil dari proses clustering berupa sejumlah kelompok data gangguan listrik 
+yang memiliki karakteristik serupa berdasarkan variabel jumlah pelanggan padam, 
+
+--- PAGE 48 ---
+35 
+ 
+ 
+lama padam, dan ENS. Untuk mempermudah interpretasi, setiap cluster yang 
+terbentuk selanjutnya diberi label kategori tingkat dampak berdasarkan peringkat 
+rata-rata nilai centroid pada skala data yang telah dinormalisasi, sehingga setiap 
+cluster dapat merep resentasikan tingkat keparahan gangguan listrik secara relatif 
+satu sama lain. 
+3.5.3 Evaluasi Hasil Clustering 
+Tahap terakhir dalam penerapan metode K-Means Clustering adalah evaluasi 
+hasil clustering. Evaluasi ini dilakukan untuk mengetahui kualitas pengelompokan 
+yang dihasilkan, yaitu seberapa baik data pada masing-masing cluster terpisah satu 
+sama lain dan seberapa homogen data di dalam satu cluster yang sama. 
+Pada penelitian ini, evaluasi hasil clustering dilakukan menggunakan metrik 
+Silhouette Score. Metrik ini dipilih karena mampu mengukur kualitas cluster tanpa 
+memerlukan label kelas yang sebenarnya (unsupervised evaluation), sehingga 
+sesuai dengan karakteristik data penelitian yang tidak memiliki label ground truth.  
+Silhouette Score mengukur seberapa baik suatu data ditempatkan pada clusternya 
+dibandingkan dengan cluster terdekat lainnya sebagaimana Persamaan (2.5), 
+dengan mempertimbangkan dua komponen, yaitu jarak rata -rata antar data dalam 
+satu cluster yang sama (kohesi) dan jarak rata-rata data tersebut terhadap data pada 
+cluster terdekat (separasi). Nilai Silhouette Score berada pada rentang -1 hingga 1, 
+di mana nilai yang semakin mendekati 1 menunjukkan bahwa cluster yang 
+terbentuk memiliki tingkat kohesi internal yang tinggi sekaligus tingkat pemisahan 
+antar cluster yang baik. 
+
+--- PAGE 49 ---
+36 
+ 
+ 
+Berdasarkan hasil pengujian, model K -Means final dengan jumlah cluster 
+K=3 menghasilkan nilai Silhouette Score sebesar 0,6012. Nilai ini menunjukkan 
+bahwa kualitas pengelompokan yang dihasilkan tergolong baik, karena berada 
+cukup jauh di atas nilai 0 (yang mengindikasikan tumpang tindih antar cluster) dan 
+cukup mendekati nilai maksimum 1. Dengan demikian, dapat disimpulkan bahwa 
+ketiga cluster yang terbentuk pada penelitian ini, yaitu kategori Dampak Tinggi, 
+Dampak Sedang, dan Dampak Rendah, memiliki tingka t keterpisahan yang cukup 
+jelas dan merepresentasikan pengelompokan data gangguan listrik yang cukup baik 
+berdasarkan variabel lama padam, jumlah pelanggan padam, dan ENS. 
+3.5.4 Rancangan Sistem 
+Rancangan sistem pada penelitian ini bertujuan untuk membangun sistem 
+analitik yang mampu mengolah data historis gangguan listrik menggunakan metode 
+K-Means Clustering guna menghasilkan segmentasi kinerja penanganan gangguan. 
+Sistem yang dirancang berfungs i sebagai alat bantu evaluasi berbasis data dan 
+divisualisasikan dalam bentuk dashboard. 
+a. Analisis Kebutuhan Sistem 
+Analisis kebutuhan sistem dilakukan untuk mengidentifikasi fitur dan 
+karakteristik yang harus dimiliki oleh sistem agar dapat mendukung proses 
+pengelompokan data gangguan listrik menggunakan metode K -Means Clustering 
+secara optimal. Kebutuhan sistem pada p enelitian ini dibagi menjadi dua kategori, 
+yaitu kebutuhan fungsional dan kebutuhan non -fungsional. Kebutuhan fungsional 
+menjelaskan fitur-fitur yang harus disediakan oleh sistem untuk menjalankan proses 
+bisnisnya, mulai dari autentikasi pengguna, pengelol aan data dan akun, penerapan 
+
+--- PAGE 50 ---
+37 
+ 
+ 
+algoritma K-Means Clustering, hingga penyajian hasil analisis kepada pengguna, 
+sedangkan kebutuhan non-fungsional menjelaskan kualitas dan batasan yang harus 
+dipenuhi oleh sistem dalam menjalankan setiap fungsinya, seperti kemudahan 
+penggunaan, kinerja, ke amanan, keandalan, kompatibilitas, kemudahan 
+pemeliharaan, dan ketersediaan sistem. Kebutuhan fungsional sistem ini dijabarkan 
+pada Tabel 3.4, sedangkan kebutuhan non-fungsional sistem dijabarkan pada Tabel 
+3.5. 
+1. Kebutuhan Fungsional Sistem 
+Adapun kebutuhan fungsional merupakan aspek yang menjelaskan fungsi -
+fungsi atau fitur yang harus dimiliki oleh sistem agar dapat memenuhi kebutuhan 
+pengguna dalam melakukan evaluasi gangguan listrik, meliputi proses autentikasi 
+pengguna (login), pengelolaan data gangguan listrik, penerapan metode K -Means 
+Clustering, penyajian hasil analisis dalam bentuk visualisasi, analisis tren 
+gangguan, pengelolaan akun pengguna, serta pengelolaan profil pengguna. 
+Kebutuhan fungsional sistem tersebut dijabarkan pada Tabel 3.4. 
+Tabel 3.4 Kebutuhan Fungsional Sistem 
+Kebutuhan Fungsional Deskripsi 
+Login 
+Sistem menyediakan halaman login 
+untuk memastikan hanya pengguna 
+yang memiliki akun dapat mengakses 
+sistem. 
+Kelola Akun 
+Admin dapat menambahkan, 
+mengubah, menonaktifkan, dan 
+mengatur akun pegawai yang dapat 
+mengakses sistem. 
+Upload Data Gangguan Sistem dapat menerima unggahan 
+data historis gangguan listrik dalam 
+
+--- PAGE 51 ---
+38 
+ 
+ 
+Kebutuhan Fungsional Deskripsi 
+format yang telah ditentukan sebagai 
+input analisis. 
+Validasi Data 
+Sistem melakukan pemeriksaan 
+terhadap data yang diunggah untuk 
+memastikan format dan struktur data 
+sesuai kebutuhan analisis. 
+Preprocessing Data 
+Sistem melakukan pembersihan data 
+dan normalisasi agar data siap 
+digunakan pada proses clustering. 
+Proses K-Means Clustering 
+Sistem menerapkan algoritma K -
+Means untuk mengelompokkan data 
+gangguan berdasarkan karakteristik 
+yang dimiliki. 
+Evaluasi Hasil Clustering 
+Sistem menghitung kualitas cluster 
+menggunakan metrik evaluasi seperti 
+Silhouette Score. 
+Visualisasi Hasil Clustering 
+Sistem menampilkan hasil 
+pengelompokan dalam bentuk tabel, 
+grafik, dan informasi cluster untuk 
+memudahkan analisis. 
+Statistik Cluster 
+Sistem menampilkan informasi 
+statistik setiap cluster, seperti jumlah 
+data pada masing-masing cluster dan 
+karakteristiknya. 
+Analisis Tren Gangguan 
+Sistem menampilkan tren gangguan 
+berdasarkan periode waktu tertentu 
+untuk membantu identifikasi pola 
+gangguan. 
+Export Hasil Analisis 
+Sistem dapat mengekspor hasil 
+clustering dan hasil analisis ke dalam 
+format file yang tersedia untuk 
+keperluan dokumentasi dan 
+pelaporan. 
+Logout 
+Sistem menyediakan fungsi logout 
+untuk mengakhiri sesi penggunaan 
+dan menjaga keamanan akses sistem. 
+ 
+
+--- PAGE 52 ---
+39 
+ 
+ 
+Berdasarkan Tabel 3. 4, kebutuhan fungsional sistem terdiri atas sebelas 
+fungsi utama yang mencakup keseluruhan alur kerja sistem, mulai dari proses 
+autentikasi pengguna, pengelolaan data gangguan listrik, penerapan metode K -
+Means Clustering, hingga penyajian hasil analisis kepada pengguna. Fungsi Login, 
+Kelola Akun, dan Logout disediakan untuk mendukung aspek keamanan dan 
+pengelolaan hak akses pengguna terhadap sistem. Fungsi Upload Data Gangguan, 
+Validasi Data, dan Preprocessing Data digunakan untuk memastikan data yang akan 
+diproses telah sesuai format dan siap digunakan pada tahap clustering. Selanjutnya, 
+fungsi Proses K -Means Clustering dan Evaluasi Hasil Clustering merupakan inti 
+dari sistem, yang masing -masing digunakan untuk mengelompokkan data 
+gangguan listrik dan menila i kualitas cluster yang dihasilkan melalui Silhouette 
+Score. Adapun fungsi Visualisasi Hasil Clustering, Statistik Cluster, dan Analisis 
+Tren Gangguan disediakan untuk membantu pengguna dalam menginterpretasikan 
+hasil pengelompokan secara lebih mudah, seme ntara fungsi Export Hasil Analisis 
+digunakan untuk mendukung kebutuhan dokumentasi dan pelaporan hasil analisis. 
+2. Kebutuhan Non-Fungsional 
+Adapun kebutuhan non -fungsional merupakan aspek yang menjelaskan 
+kualitas serta batasan yang harus dipenuhi oleh sistem dalam menjalankan setiap 
+fungsi yang telah didefinisikan, meliputi aspek kemudahan penggunaan (usability), 
+kinerja sistem ( performance), keamanan ( security), keandalan ( reliability), 
+kompatibilitas ( compatibility), kemudahan pemeliharaan ( maintainability), serta 
+ketersediaan sistem ( availability). Kebutuhan non -fungsional sistem tersebut 
+dijabarkan pada Tabel 3.5. 
+
+--- PAGE 53 ---
+40 
+ 
+ 
+Tabel 3.5 Kebutuhan Non Fungsional 
+Aspek Kebutuhan Non-Fungsional 
+Usability 
+Sistem harus memiliki antarmuka yang 
+sederhana dan mudah dipahami sehingga 
+dapat digunakan oleh pegawai maupun 
+admin tanpa memerlukan pelatihan 
+khusus. 
+Performance 
+Sistem harus mampu memproses data 
+gangguan listrik yang diunggah serta 
+menjalankan proses K-Means Clustering 
+dalam waktu yang relatif singkat. 
+Security 
+Sistem harus membatasi hak akses 
+pengguna sesuai dengan peran (role) 
+masing-masing, misalnya hanya admin 
+yang dapat mengakses halaman Kelola 
+Akun Pegawai, serta menyimpan kata 
+sandi pengguna dalam bentuk 
+terenkripsi. 
+Reliability 
+Sistem harus dapat berjalan secara stabil 
+dan konsisten dalam menghasilkan 
+output clustering meskipun dijalankan 
+berulang kali dengan data yang sama. 
+Compatibility 
+Sistem dapat diakses melalui browser 
+umum seperti Google Chrome, Mozilla 
+Firefox, dan Microsoft Edge tanpa 
+memerlukan instalasi tambahan. 
+Maintainability 
+Kode program sistem disusun secara 
+modular agar mudah dikembangkan, 
+diperbaiki, atau ditambahkan fitur baru 
+di kemudian hari. 
+Availability 
+Sistem harus dapat diakses kapan saja 
+selama server dalam kondisi aktif, agar 
+pegawai dapat melakukan analisis 
+gangguan listrik sesuai kebutuhan. 
+ 
+Berdasarkan Tabel 3. 5, kebutuhan non -fungsional sistem mencakup tujuh 
+aspek utama yang berkaitan dengan kualitas dan keandalan sistem dalam 
+
+--- PAGE 54 ---
+41 
+ 
+ 
+menjalankan fungsinya. Aspek usability memastikan sistem mudah digunakan oleh 
+pengguna tanpa memerlukan pelatihan khusus, sedangkan aspek performance dan 
+reliability memastikan sistem dapat memproses data serta menghasilkan output 
+clustering secara cepat d an konsisten. Aspek security berperan penting dalam 
+menjaga keamanan akses sistem melalui pembatasan hak akses berdasarkan peran 
+pengguna, sementara aspek compatibility, maintainability, dan availability 
+memastikan sistem dapat diakses dengan mudah, mudah dikembangkan di masa 
+mendatang, serta dapat digunakan kapan pun dibutuhkan. 
+3.6    Rancangan Arsitektur Sistem 
+Arsitektur sistem menggambarkan struktur, komponen, serta alur pengolahan 
+data yang terdapat dalam suatu sistem. Pada penelitian ini, arsitektur sistem 
+menunjukkan proses pengolahan data gangguan listrik mulai dari input data, 
+preprocessing, penerapan meto de K -Means Clustering, hingga penyajian hasil 
+analisis melalui dashboard dan laporan. 
+Secara umum, arsitektur sistem GridEval PLN terdiri atas tiga lapisan utama, 
+yaitu lapisan antarmuka pengguna, lapisan logika aplikasi yang dibangun 
+menggunakan framework Flask, dan lapisan penyimpanan data menggunakan basis 
+data MySQL. Ketiga lapisan ters ebut saling terintegrasi untuk memastikan proses 
+pengolahan data, mulai dari data mentah hingga hasil analisis yang dapat dipahami 
+oleh pengguna, berjalan secara efisien dan terstruktur, sehingga pengguna dapat 
+memantau dan mengevaluasi kondisi gangguan listrik pada wilayah kerja PT PLN 
+(Persero) UID Aceh dengan lebih mudah. 
+
+--- PAGE 55 ---
+42 
+ 
+ 
+ 
+Gambar 3.2 Arsitektur Sistem 
+Gambar 3.2 menunjukkan rancangan arsitektur sistem evaluasi penanganan 
+gangguan listrik yang dikembangkan dalam penelitian ini. Arsitektur sistem 
+menggambarkan alur proses pengolahan data mulai dari data gangguan listrik yang 
+diunggah oleh pengguna, kemudi an diproses melalui tahapan preprocessing yang 
+meliputi data cleaning dan normalisasi data. Data yang telah diproses selanjutnya 
+dianalisis menggunakan algoritma K -Means Clustering untuk menghasilkan 
+pengelompokan data gangguan berdasarkan karakteristik du rasi dan tingkat 
+
+
+--- PAGE 56 ---
+43 
+ 
+ 
+dampaknya. Hasil clustering kemudian dievaluasi menggunakan metrik kualitas 
+cluster untuk memastikan hasil pengelompokan yang diperoleh memiliki tingkat 
+validitas yang baik. Seluruh hasil analisis disajikan melalui dashboard dalam bentuk 
+informasi statistik, visualisasi hasil clustering, serta analisis tren bulanan yang dapat 
+membantu pengguna dalam memahami pola gangguan listrik. Selain itu, sistem 
+juga menyediakan fitur ekspor hasil analisis untuk mendukung kebutuhan 
+dokumentasi dan pelaporan. Dengan arsi tektur ini, proses analisis data gangguan 
+dapat dilakukan secara terintegrasi mulai dari pengolahan data hingga penyajian 
+informasi hasil analisis. 
+3.6.1 Perancangan Use Case Diagram  
+Sistem yang dibangun terdiri atas dua aktor, yaitu Admin dan Pegawai, yang 
+memiliki hak akses berbeda sesuai dengan perannya masing -masing. Admin 
+merupakan aktor yang memiliki akses penuh terhadap sistem, sehingga dapat 
+mengelola data gangguan listrik, menjalankan proses clustering menggunakan 
+metode K -Means, melihat hasil  analisis yang dihasilkan, serta mengelola data 
+pengguna yang dapat mengakses sistem. Seluruh proses pengolahan data hingga 
+menghasilkan informasi hasil clustering dilakukan melalui hak akses yang dimiliki 
+oleh Admin. 
+Sementara itu, Pegawai memiliki hak akses yang lebih terbatas dibandingkan 
+Admin. Pegawai hanya dapat mengakses informasi yang telah dihasilkan oleh 
+sistem, seperti melihat hasil analisis clustering dan visualisasi data gangguan listrik. 
+Pegawai tidak memi liki hak untuk menambah, mengubah, menghapus data 
+gangguan, maupun menjalankan proses analisis clustering. Pembagian hak akses 
+
+--- PAGE 57 ---
+44 
+ 
+ 
+tersebut bertujuan agar setiap pengguna hanya dapat mengakses fitur sesuai dengan 
+tugas dan kewenangannya. Hubungan antara kedua aktor dengan fungsi -fungsi 
+yang tersedia pada sistem ditunjukkan pada Gambar 3.3. 
+ 
+Gambar 3.3 Perancangan Use Case Diagram 
+Berdasarkan use case diagram yang telah dirancang, setiap fungsi yang 
+tersedia pada sistem memiliki peran dan alur penggunaan yang berbeda sesuai 
+dengan hak akses masing -masing aktor. Fungsi -fungsi tersebut mencakup proses 
+pengelolaan data gangguan listrik, pelaksanaan proses clustering, pengelolaan data 
+pengguna, serta penyajian hasil analisis dan visualisasi data. Untuk memberikan 
+gambaran yang lebih rinci mengenai setiap fungsi yang terdapat pada sistem, 
+masing-masing use case  dijelaskan dalam bentuk deskripsi yang memuat aktor 
+yang terlibat, tujuan, serta alur interaksi antara pengguna dengan sistem. 
+ 
+
+
+--- PAGE 58 ---
+45 
+ 
+ 
+3.6.2 Perancangan Activity Diagram 
+Activity diagram pada penelitian ini menggambarkan alur aktivitas yang 
+dilakukan oleh setiap aktor dalam menggunakan sistem, mulai dari proses awal 
+hingga proses selesai. Setiap diagram menunjukkan urutan aktivitas sesuai dengan 
+fungsi yang dijalankan, seperti proses login, pengelolaan data gangguan listrik, 
+pelaksanaan clustering, pengelolaan data pengguna, serta melihat hasil analisis 
+dan visualisasi data. Rangkaian aktivitas pada masing-masing proses disajikan 
+dalam beberapa activity diagram sesuai dengan fitur yang tersedia pada sistem. 
+1.  Perancangan Activity Diagram Login 
+Activity Diagram Login menggambarkan alur proses autentikasi pengguna 
+saat mengakses sistem menggunakan NIP dan password yang telah terdaftar. 
+Adapun activity diagram login dapat dilihat pada Gambar 3.4. 
+ 
+ 
+Gambar 3.4 Perancangan Activity Diagram Login 
+ 
+Gambar 3. 4 Perancangan Activity Diagram  Login menggambarkan alur 
+proses autentikasi pengguna saat mengakses sistem menggunakan NIP dan 
+password yang telah terdaftar. Proses dimulai ketika pengguna membuka halaman 
+
+
+--- PAGE 59 ---
+46 
+ 
+ 
+login dan memasukkan NIP serta password. Data yang dimasukkan kemudian 
+dikirim ke sistem untuk dilakukan proses validasi. Sistem memeriksa kesesuaian 
+data akun yang tersimpan pada basis data. Apabila data yang dimasukkan valid, 
+sistem akan menampilkan halaman dashboard sesuai hak akses pengguna. Namun 
+apabila data tidak valid, sistem akan menampilkan pesan kesalahan dan pengguna 
+diminta untuk mengulangi proses login dengan memasukkan kembali NIP dan 
+password yang benar. 
+2. Perancangan Activity Diagram Kelola Akun Pegawai 
+Activity Diagram Kelola Akun Pegawai menggambarkan alur pengelolaan 
+akun pegawai yang dilakukan oleh Admin, mulai dari menambahkan, mengubah, 
+hingga menghapus data akun. Adapun activity diagram kelola akun pegawai 
+ditunjukkan pada Gambar 3.5. 
+        
+    Gambar 3.5 Perancangan  Activity Diagram Kelola akun Pegawai 
+ 
+Gambar 3. 5 Perancangan Activity Diagram  Kelola Akun Pegawai 
+menggambarkan proses yang dilakukan Admin dalam mengelola akun pegawai 
+
+
+--- PAGE 60 ---
+47 
+ 
+ 
+yang dapat mengakses sistem. Proses dimulai ketika Admin membuka menu kelola 
+akun, kemudian sistem menampilkan form daftar akun yang tersedia. Admin 
+selanjutnya mengisi data pegawai pada form yang tersedia, setelah itu sistem 
+melakukan validasi terhadap data yang diinputkan. Apabila data yang dimasukkan 
+valid, sistem akan menyimpan data akun ke basis data dan menampilkan notifikasi 
+bahwa proses pengelolaan akun berhasil dilakukan. Apabila data tidak valid, sistem 
+akan menampilkan pesan kesalahan dan Admin d iminta untuk memperbaiki data 
+yang diinputkan sebelum menyimpan kembali. 
+3. Perancangan Activity Diagram Clustering 
+Activity Diagram Proses Clustering menggambarkan alur pengolahan data 
+gangguan listrik menggunakan metode K-Means Clustering hingga menghasilkan 
+data yang telah dikelompokkan. Adapun activity diagram proses clustering 
+ditunjukkan pada Gambar 3.6. 
+ 
+Gambar 3.6 Perancangan Activity Diagram Clustering 
+ 
+
+
+--- PAGE 61 ---
+48 
+ 
+ 
+Gambar 3.6 Activity Diagram Clustering menggambarkan alur pengolahan 
+data gangguan listrik mulai dari proses unggah data hingga menghasilkan hasil 
+pengelompokan menggunakan metode K-Means Clustering. Proses dimulai ketika 
+Admin memilih fitur upload data dan memilih file data gangguan listrik yang akan 
+diunggah. Sistem kemudian melakukan validasi terhadap data yang diunggah untuk 
+memastikan kesesuaian format dengan ketentuan yang berlaku. Apabila data tidak 
+valid, sistem akan menampilkan pesan kesalahan dan Admin diminta untuk 
+mengunggah ulang file data yang sesuai. Apabila data valid, sistem akan melakukan 
+preprocessing yang meliputi pembersihan dan normalisasi data, kemudian 
+menjalankan proses K-Means Clustering untuk mengelompokkan data gangguan 
+berdasarkan karakteristik yang dimiliki. Hasil clustering selanjutnya dievaluasi 
+menggunakan metrik kualitas cluster, disimpan ke dalam basis data, dan 
+ditampilkan pada dashboard sistem. 
+4. Perancangan Activity Diagram Analisis Tren 
+Activity Diagram Analisis Tren menggambarkan alur pengguna dalam 
+mengakses informasi tren gangguan listrik yang disajikan oleh sistem berdasarkan 
+data hasil analisis yang telah dilakukan. Melalui fitur ini, pengguna dapat melihat 
+visualisasi tren serta inf ormasi yang menggambarkan kondisi gangguan listrik 
+berdasarkan data yang tersedia. Informasi tersebut dapat digunakan sebagai bahan 
+pendukung dalam memahami pola gangguan dan membantu proses evaluasi 
+terhadap hasil analisis yang telah dilakukan. Adapun activity diagram analisis tren 
+ditunjukkan pada Gambar 3.7. 
+
+--- PAGE 62 ---
+49 
+ 
+ 
+ 
+Gambar 3.7 Perancangan Activity Diagram Analisis Tren 
+Gambar 3.7 Perancangan Activity Diagram  Analisis Tren menggambarkan 
+proses penyajian informasi tren gangguan listrik berdasarkan data yang telah 
+tersimpan dalam basis data sistem. Proses dimulai ketika pengguna, baik Admin 
+maupun Pegawai, memilih menu analisis tren. Sistem kemudian mengambil da ta 
+hasil clustering yang tersimpan pada basis data dan melakukan perhitungan statistik 
+berdasarkan periode bulanan. Hasil pengolahan tersebut selanjutnya disajikan 
+dalam bentuk grafik dan informasi statistik tren yang dapat digunakan untuk 
+mengidentifikasi pola serta tren gangguan listrik dari waktu ke waktu. 
+3.6.3 Perancangan Sequence Diagram 
+Sequence diagram pada penelitian ini menggambarkan urutan interaksi antara 
+aktor, sistem, dan database dalam menjalankan setiap fungsi yang tersedia pada 
+aplikasi. Interaksi tersebut menunjukkan aliran proses yang terjadi mulai dari 
+pengguna memberikan per mintaan hingga sistem memproses dan memberikan 
+respons sesuai dengan fungsi yang dijalankan. Sequence diagram yang disajikan 
+
+
+--- PAGE 63 ---
+50 
+ 
+ 
+meliputi proses login, kelola akun pegawai, proses clustering, dan analisis tren 
+gangguan listrik. 
+1. Perancangan Sequence Diagram Login 
+Pada proses ini, Aktor menginput NIP dan password yang kemudian 
+diverifikasi oleh Sistem melalui pengecekan data akun pada Database sebelum 
+pengguna diarahkan ke halaman yang sesuai dengan hak aksesnya. Adapun 
+sequence diagram login ditunjukkan pada Gambar 3.8. 
+ 
+Gambar 3.8 Perancangan Sequence Diagram Login 
+Gambar 3.8 Perancangan Sequence Diagram Login menggambarkan urutan 
+interaksi antara Aktor, Sistem, dan Database dalam proses autentikasi pengguna. 
+Proses dimulai ketika Aktor menginput NIP dan password pada halaman login. 
+Sistem kemudian mengirimkan permintaan ke Database untuk mengambil data 
+akun berdasarkan NIP yang dimasukkan. Setelah data akun diterima, Sistem 
+
+
+--- PAGE 64 ---
+51 
+ 
+ 
+melakukan pemeriksaan terhadap empat kemungkinan kondisi, yaitu apabila akun 
+tidak ditemukan, password tidak sesuai, akun berstatus nonaktif, atau data valid dan 
+akun aktif. Apabila salah satu dari tiga kondisi pertama terpenuhi, Sistem akan 
+mengirimkan pesan kesalahan yang sesuai kepada Aktor. Sebaliknya, apabila data 
+valid dan akun berstatus aktif, Sistem akan menampilkan halaman dashboard sesuai 
+dengan hak akses (role) yang dimiliki oleh Aktor. 
+2. Perancangan Sequence Diagram Kelola Akun 
+Proses kelola akun pegawai dilakukan oleh Admin untuk mengelola data akun 
+pengguna sistem, meliputi penambahan, perubahan, dan penonaktifan akun 
+pegawai. Pada proses ini, Sistem akan memvalidasi data yang diinput sebelum 
+menyimpan perubahan ke dalam Database. Adapun sequence diagram kelola akun 
+pegawai ditunjukkan pada Gambar 3.9. 
+ 
+Gambar 3.9 Perancangan Sequence Diagram Kelola Akun 
+
+
+--- PAGE 65 ---
+52 
+ 
+ 
+Gambar 3. 9 Sequence Diagram  Kelola Akun Pegawai menggambarkan 
+urutan interaksi antara Admin, Sistem, dan Database dalam proses pengelolaan 
+akun pegawai. Proses dimulai ketika Admin membuka menu kelola akun, kemudian 
+Sistem meminta daftar akun yang tersimpan pada Database dan menampi lkannya 
+kepada Admin. Selanjutnya, Admin menginput data pegawai yang akan 
+ditambahkan atau diubah, dan Sistem melakukan validasi terhadap format serta 
+keunikan NIP yang dimasukkan. Apabila data tidak valid atau NIP telah terdaftar 
+sebelumnya, Sistem akan m engirimkan pesan kesalahan kepada Admin. Apabila 
+data dinyatakan valid, Sistem akan menyimpan atau memperbarui data akun pada 
+Database, kemudian menerima konfirmasi penyimpanan dan menampilkan 
+notifikasi keberhasilan kepada Admin. 
+3. Perancangan Sequence Diagram Clustering 
+Pada proses ini, Admin mengunggah data gangguan yang selanjutnya 
+divalidasi oleh Sistem sebelum dilakukan proses clustering. Apabila data yang 
+diunggah telah sesuai, Sistem akan memproses data menggunakan metode K -
+Means hingga menghasilkan kelompok data berdasarkan karakteristik yang telah 
+ditentukan. Setelah proses pengelompokan selesai, Sistem menyimpan hasil 
+analisis ke dal am Database dan menampilkan hasil clustering pada dashboard. 
+Melalui dashboard tersebut, pengguna dapat melihat hasil pengelompokan beserta 
+informasi yang dihasilkan sebagai bahan pendukung dalam proses evaluasi 
+terhadap data gangguan listrik. Adapun sequence diagram proses clustering 
+ditunjukkan pada Gambar 3.10. 
+
+--- PAGE 66 ---
+53 
+ 
+ 
+ 
+Gambar 3.10 Perancangan Sequence Diagram Clustering 
+Gambar 3. 10 Perancangan Sequence Diagram  Proses Clustering 
+menggambarkan urutan interaksi antara Admin, Sistem, dan Database dalam 
+proses pengelompokan data gangguan listrik. Proses dimulai ketika Admin 
+mengunggah file data gangguan listrik ke sistem. Sistem selanjutnya melakukan 
+validasi terhad ap format dan struktur data yang diunggah. Apabila data tidak 
+valid, Sistem akan mengirimkan pesan kesalahan kepada Admin dan meminta 
+data diunggah ulang. Apabila data valid, Sistem akan menyimpan data mentah ke 
+Database, kemudian menjalankan proses cluste ring menggunakan algoritma K -
+Means. Setelah proses clustering selesai, Sistem menyimpan hasil 
+pengelompokan beserta skor evaluasi ke Database, menerima konfirmasi 
+penyimpanan, dan menampilkan hasil clustering pada dashboard yang dapat 
+dilihat oleh Admin. 
+ 
+ 
+
+
+--- PAGE 67 ---
+54 
+ 
+ 
+4. Perancangan Sequence Diagram Analisis Tren 
+Pada proses ini pengguna menentukan periode yang ingin ditampilkan, kemudian 
+Sistem mengambil data hasil clustering dari Database untuk diolah dan disajikan 
+dalam bentuk informasi tren. Adapun sequence diagram analisis tren ditunjukkan 
+pada Gambar 3.11. 
+ 
+Gambar 3.11 Perancangan Sequence Diagram Analisis Tren 
+Gambar 3.11 Perancangan Sequence Diagram Analisis Tren menggambarkan 
+urutan interaksi antara Pengguna, Sistem, dan Database dalam proses penyajian 
+informasi tren gangguan listrik. Proses dimulai ketika Pengguna memilih menu 
+analisis tren dan menentukan periode waktu yang ingin dianalisis. Sistem kemudian 
+memeriksa ketersediaan data hasil clustering pada periode tersebut ke Database. 
+Apabila data tidak tersedia, Sistem akan menampilkan pesan bahwa data belum 
+tersedia untuk periode yang dipilih. Apabila data tersedia, Sistem akan mengambil 
+data has il cluster dari Database, melakukan perhitungan statistik berdasarkan 
+
+
+--- PAGE 68 ---
+55 
+ 
+ 
+periode yang ditentukan, kemudian menampilkan hasilnya dalam bentuk grafik dan 
+tabel tren kepada Pengguna. 
+3.6.4 Perancangan Class Diagram 
+Perancangan class diagram pada penelitian ini menggambarkan struktur kelas yang 
+membentuk sistem beserta hubungan antar kelas yang digunakan dalam proses 
+pengelolaan data. Perancangan class diagram disesuaikan dengan kebutuhan 
+fungsional sistem, sehingga setiap kelas m erepresentasikan data dan fungsi yang 
+digunakan pada proses login, pengelolaan akun pegawai, pengelolaan data 
+gangguan listrik, proses clustering, serta analisis tren. Adapun class diagram sistem 
+ditunjukkan pada Gambar 3.12. 
+ 
+Gambar 3.12 Perancangan Class Diagram 
+
+
+--- PAGE 69 ---
+56 
+ 
+ 
+Berdasarkan Gambar 3. 12, sistem terdiri atas kelas User sebagai kelas induk 
+yang diturunkan menjadi kelas Admin dan Pegawai, dengan pembagian hak akses 
+sesuai peran masing -masing. Kelas DataGangguan merepresentasikan data 
+gangguan listrik yang diunggah oleh Admin, yang kemudian diproses oleh kelas 
+ClusteringEngine untuk menjalankan tahapan preprocessing dan algoritma K -
+Means Clustering. Hasil dari proses tersebut disimpan pada kelas HasilCluster, 
+yang selanjutnya digunakan oleh kelas AnalisisTren untuk menghasilkan statistik 
+dan grafik tren gangguan berdasarkan periode waktu tertentu. Kelas Admin 
+memiliki relasi langsung dengan kelas DataGangguan dalam mengunggah data, 
+sedangkan kelas Pegawai memiliki relasi dengan kelas HasilCluster dan 
+AnalisisTren untuk melihat hasil analisis yang telah dihasilkan oleh sistem. 
+3.7    Perancangan Antarmuka Sistem 
+Perancangan antarmuka sistem bertujuan untuk memberikan gambaran 
+mengenai tampilan serta interaksi pengguna dengan sistem yang akan dibangun. 
+Perancangan ini disusun dalam bentuk wireframe yang menggambarkan tata letak 
+setiap halaman, penempatan komponen, serta fungsi utama yang tersedia pada 
+masing-masing antarmuka. Wireframe digunakan sebagai acuan dalam proses 
+implementasi sistem agar tampilan yang dikembangkan sesuai dengan kebutuhan 
+pengguna dan fungsionalitas yang telah dirancang. 
+3.7.1   Perancangan Halaman Login 
+Rancangan Halaman login merupakan halaman awal yang digunakan sebagai 
+proses autentikasi pengguna sebelum mengakses sistem. Halaman ini dirancang 
+dengan tampilan yang sederhana dan mudah dipahami sehingga memudahkan 
+
+--- PAGE 70 ---
+57 
+ 
+ 
+pengguna dalam melakukan proses login. Selain berfungsi sebagai media 
+autentikasi, halaman login juga menampilkan logo aplikasi serta deskripsi singkat 
+mengenai sistem sebagai identitas dan informasi awal bagi pengguna. 
+ 
+Gambar 3.11 Perancangan Wireframe Halaman Login 
+Pada Gambar 3.11, halaman login terdiri atas logo aplikasi, nama aplikasi, 
+deskripsi singkat mengenai fungsi sistem, kolom Username (NIP), kolom 
+Password, serta tombol Login. Pengguna melakukan autentikasi dengan 
+memasukkan NIP sebagai username dan password yang telah terdaftar pada sistem. 
+Setelah data login berhasil divalidasi, sistem akan mengidentifikasi role pengguna. 
+Apabila pengguna memiliki role sebagai Admin, sistem akan mengarahkan ke 
+Dashboard Admin yang memiliki hak akses untuk mengunggah data gangguan 
+listrik, menjalankan proses clustering, mengelola akun pengguna, melihat 
+dashboard, analisis tren, serta mengekspor laporan. Sebaliknya, apabila pengguna 
+memiliki role sebagai Pegawai, sistem akan mengarahkan ke Dashboard Pegawai 
+yang hanya memiliki hak akses untu k melihat dashboard, hasil clustering, analisis 
+tren gangguan, serta mengubah password miliknya sendiri. 
+ 
+
+
+--- PAGE 71 ---
+58 
+ 
+ 
+3.7.2 Perancangan Halaman Dashboard Admin 
+Dashboard Admin merupakan halaman utama yang ditampilkan setelah 
+Admin berhasil melakukan login. Halaman ini dirancang sebagai pusat navigasi 
+sekaligus panduan awal dalam menggunakan sistem. Pada tampilan awal, 
+dashboard belum menampilkan hasil analisis, m elainkan berisi informasi singkat 
+mengenai tahapan penggunaan aplikasi serta petunjuk kepada Admin untuk 
+melakukan proses clustering terhadap data gangguan listrik yang akan dianalisis. 
+ 
+Gambar 3.12 Perancangan Wireframe Halaman Dashboard Admin 
+Pada Gambar 3.12, halaman Dashboard Admin menampilkan logo aplikasi, 
+menu navigasi, deskripsi singkat mengenai fungsi sistem, serta informasi yang 
+mengarahkan Admin untuk memulai proses clustering data gangguan listrik. Pada 
+halaman ini tersedia tombol "Mulai Clustering" yang berfungsi untuk mengarahkan 
+Admin ke halaman clustering. Melalui halaman tersebut, Admin dapat mengunggah 
+data gangguan listrik dan menjalankan proses clustering menggunakan metode K -
+Means. Setelah proses clustering selesai dilakukan, sistem akan menampilkan hasil 
+analisis berupa dashboard visualisasi, hasil clustering, serta analisis tren gangguan 
+
+
+--- PAGE 72 ---
+59 
+ 
+ 
+yang dapat digunakan sebagai pendukung proses evaluasi kinerja penanganan 
+gangguan listrik.  
+Setelah proses clustering selesai dilakukan, tampilan Dashboard Admin akan 
+diperbarui secara otomatis untuk menampilkan ringkasan hasil analisis yang 
+dihasilkan oleh sistem. Informasi yang disajikan dalam dashboard bertujuan untuk 
+memudahkan Admin dalam memantau hasil clustering serta memperoleh gambaran 
+umum mengenai kondisi gangguan listrik berdasarkan data yang telah dianalisis. 
+ 
+Gambar 3.13 Perancangan Wireframe Halaman Dashboard Admin (Setelah Proses 
+Clustering) 
+Pada Gambar 3. 13, Dashboard Admin menampilkan ringkasan informasi 
+hasil clustering dalam bentuk visualisasi interaktif. Pada bagian atas halaman 
+ditampilkan informasi mengenai total kejadian pemadaman serta jumlah gangguan 
+pada setiap cluster sebagai ringkasan hasil penge lompokan data. Selanjutnya, 
+sistem menyajikan scatter plot clustering yang menggambarkan persebaran data 
+berdasarkan hasil pengelompokan menggunakan metode K -Means. Selain itu, 
+
+
+--- PAGE 73 ---
+60 
+ 
+ 
+dashboard juga menampilkan diagram distribusi cluster yang memperlihatkan 
+proporsi data pada masing-masing cluster serta grafik distribusi kejadian gangguan 
+per bulan untuk membantu Admin dalam mengidentifikasi pola gangguan listrik 
+berdasarkan periode wak tu tertentu. Seluruh informasi tersebut disajikan secara 
+visual agar memudahkan proses evaluasi dan pengambilan keputusan terhadap 
+penanganan gangguan listrik. 
+3.7.3 Perancangan Halaman Clustering Admin 
+Halaman clustering merupakan halaman yang digunakan oleh Admin untuk 
+memulai proses analisis data gangguan listrik menggunakan metode K -Means 
+Clustering. Pada halaman ini, sistem memberikan deskripsi singkat serta petunjuk 
+mengenai format dan jenis data ya ng harus diunggah agar proses clustering dapat 
+berjalan dengan baik. Selain itu, halaman ini juga menyediakan fasilitas untuk 
+mengunggah data serta menampilkan riwayat data yang pernah digunakan dalam 
+proses clustering. 
+ 
+Gambar 3.14 Perancangan Wireframe Halaman Clustering (Sebelum Upload 
+Data) 
+
+
+--- PAGE 74 ---
+61 
+ 
+ 
+Pada Gambar 3.1 4, halaman clustering menampilkan deskripsi singkat 
+mengenai proses unggah data beserta petunjuk penggunaan sistem sebelum proses 
+clustering dilakukan. Admin dapat mengunggah data gangguan listrik dengan 
+menekan tombol "Pilih Data", kemudian memilih file yang akan digunakan sebagai 
+data masukan dalam proses clustering. Di bagian bawah halaman tersedia tabel 
+Riwayat Unggahan Data yang berfungsi untuk menampilkan daftar file yang telah 
+diunggah sebelumnya. Informasi yang ditampilkan pada tabel meliputi nomor, 
+nama file, jumlah baris data, tanggal unggahan, dan aksi. Melalui kolom aksi, 
+Admin dapat memilih file yang akan digunakan untuk proses clustering berikutnya 
+atau melakukan pengelolaan terhadap data yang telah diunggah sesuai kebutuhan 
+sistem. 
+Setelah proses clustering selesai dilakukan, sistem akan menyimpan hasil 
+analisis dan menampilkannya pada tabel riwayat clustering. Riwayat ini berfungsi 
+sebagai dokumentasi proses analisis yang telah dilakukan sehingga Admin dapat 
+mengakses kembali hasil clustering tanpa perlu mengunggah ulang dataset yang 
+sama. 
+ 
+Gambar 3.15 Perancangan Wireframe Halaman Clustering (Setelah Upload Data) 
+
+
+--- PAGE 75 ---
+62 
+ 
+ 
+Pada Gambar 3.1 5, tabel riwayat clustering menampilkan informasi 
+mengenai dataset yang telah berhasil diproses. Informasi yang ditampilkan meliputi 
+nomor, nama file, jumlah baris data, dan tanggal unggahan. Pada kolom Aksi, 
+tersedia tombol "Lihat Analisis" dan "Hapus". Tombol "Lihat Analisis" digunakan 
+untuk menampilkan kembali hasil clustering beserta visualisasi dan informasi 
+analisis yang telah dihasilkan oleh sistem, sedangkan tombol "Hapus" digunakan 
+untuk menghapus riwayat hasil clustering apabila data tersebut sudah  tidak 
+diperlukan lagi.  
+Setelah proses clustering selesai dilakukan, Admin dapat melihat hasil analisis 
+dengan memilih tombol "Lihat Analisis" pada tabel riwayat analisis clustering. 
+Halaman ini masih berada pada menu clustering, namun sistem akan menampilkan 
+hasil analisis secara lengkap berdasarkan dataset yang dipilih. 
+ 
+Gambar 3.16 Perancangan Wireframe Halaman Clustering (Hasil Clustering) 
+
+
+--- PAGE 76 ---
+63 
+ 
+ 
+Pada Gambar 3.1 6, setelah tombol "Lihat Analisis" dipilih, sistem akan 
+menampilkan hasil analisis clustering pada halaman yang sama. Informasi yang 
+disajikan meliputi total data yang berhasil diproses, nilai rata -rata centroid pada 
+setiap cluster, serta grafik distribusi data per cluster untuk memberikan gambaran 
+mengenai persebaran data hasil clustering. Selain itu, sistem juga menampilkan 
+tabel data hasil clustering yang berisi seluruh data beserta label cluster yang 
+dihasilkan oleh algoritma K -Means. Pada bagian bawah t abel tersedia tombol 
+"Download Excel" untuk mengunduh hasil clustering dalam format Microsoft 
+Excel serta tombol "Download PDF" untuk mengunduh laporan hasil analisis dalam 
+format PDF. Fitur tersebut memudahkan Admin dalam mendokumentasikan serta 
+membagikan hasil analisis sesuai kebutuhan. 
+3.7.4 Perancangan Halaman Analisis Tren 
+Halaman Analisis Tren merupakan halaman yang digunakan untuk 
+menganalisis pola gangguan listrik berdasarkan periode waktu tertentu. Halaman 
+ini dirancang untuk membantu Admin memperoleh informasi mengenai 
+kecenderungan gangguan listrik melalui beberapa pil ihan analisis yang tersedia. 
+Sebelum proses analisis dilakukan, Admin dapat menentukan jenis analisis dan 
+periode waktu yang akan digunakan sehingga hasil yang ditampilkan sesuai dengan 
+kebutuhan. Dengan adanya fitur ini, Admin dapat melakukan analisis sec ara lebih 
+terarah terhadap data gangguan listrik yang telah diproses sebelumnya, sehingga 
+informasi yang dihasilkan dapat digunakan sebagai pendukung dalam proses 
+evaluasi kinerja penanganan gangguan listrik serta membantu pengambilan 
+keputusan berdasarkan tren gangguan yang terjadi. 
+
+--- PAGE 77 ---
+64 
+ 
+ 
+ 
+Gambar 3.17 Perancangan Wireframe Halaman Analisis (Sebelum Mulai 
+Analisis) 
+Pada Gambar 3.1 7, halaman Analisis Tren menampilkan deskripsi singkat 
+mengenai fungsi analisis tren beserta beberapa komponen yang digunakan untuk 
+menentukan parameter analisis. Halaman ini menyediakan fitur Pilih Tipe Analisis 
+yang digunakan untuk menentukan jenis analis is yang akan ditampilkan oleh 
+sistem, serta fitur Pilih Bulan untuk menentukan periode data yang akan dianalisis. 
+Setelah seluruh parameter dipilih, Admin dapat menekan tombol "Mulai Analisis" 
+untuk menjalankan proses analisis tren. Selanjutnya, sistem aka n mengolah data 
+sesuai dengan parameter yang dipilih dan menampilkan hasil analisis dalam bentuk 
+visualisasi maupun informasi pendukung pada halaman yang sama. 
+Setelah Admin menentukan tipe analisis dan periode waktu yang diinginkan, 
+sistem akan memproses data berdasarkan parameter yang telah dipilih. Hasil 
+analisis kemudian ditampilkan pada halaman yang sama dalam bentuk ringkasan 
+informasi, visualisasi data, se rta tabel hasil analisis. Penyajian informasi secara 
+visual bertujuan untuk memudahkan Admin dalam memahami pola gangguan 
+listrik dan karakteristik setiap cluster yang terbentuk. 
+
+
+--- PAGE 78 ---
+65 
+ 
+ 
+ 
+Gambar 3.18 Perancangan Wireframe Halaman Analisis Tren (Hasil Analisis) 
+Berdasarkan Gambar 3. 18, setelah tombol "Mulai Analisis" ditekan, sistem 
+akan menampilkan hasil analisis tren berdasarkan parameter yang telah dipilih. 
+Informasi yang disajikan diawali dengan ringkasan hasil analisis yang meliputi total 
+data, durasi padam rata-rata, total Energy Not Supplied (ENS), serta nilai rata-rata 
+centroid pada setiap cluster. Selanjutnya, sistem menyajikan grafik distribusi data 
+per cluster untuk memperlihatkan proporsi data pada masing -masing kelompok 
+hasil clustering, serta grafik sebaran per cluster yang menggambark an persebaran 
+data berdasarkan hasil pengelompokan menggunakan metode K -Means. Pada 
+bagian bawah halaman ditampilkan tabel data hasil analisis yang berisi seluruh data 
+beserta label cluster yang diperoleh dari proses clustering. Selain itu, tersedia fitur 
+Pilih Cluster yang memungkinkan Admin untuk memfilter data berdasarkan cluster 
+tertentu sehingga proses analisis dapat dilakukan secara lebih spesifik. Melalui 
+
+
+--- PAGE 79 ---
+66 
+ 
+ 
+penyajian informasi dalam bentuk ringkasan, visualisasi, dan tabel data, halaman 
+ini membantu Admin dalam memahami karakteristik setiap cluster, 
+mengidentifikasi pola gangguan listrik, serta mendukung proses evaluasi kinerja 
+penanganan gangguan listrik secara lebih efektif. 
+3.7.5 Perancangan Halaman Kelola Akun 
+Halaman Kelola Akun merupakan halaman yang digunakan oleh Admin 
+untuk mengelola seluruh akun pengguna yang terdaftar pada sistem. Halaman ini 
+hanya dapat diakses oleh pengguna dengan role Admin, sedangkan Pegawai tidak 
+memiliki hak akses terhadap fitur ini. Melalui halaman Kelola Akun, Admin dapat 
+melakukan pengelolaan akun pengguna mulai dari menambahkan akun baru hingga 
+mengubah informasi akun yang telah terdaftar. Dengan adanya fitur ini, pro ses 
+administrasi pengguna dapat dilakukan secara terpusat sehingga memudahkan 
+pengelolaan hak akses sesuai dengan peran masing -masing pengguna. Selain itu, 
+halaman ini juga mendukung keamanan sistem dengan memastikan bahwa hanya 
+pengguna yang memiliki akun  aktif dan hak akses yang sesuai yang dapat 
+menggunakan fitur-fitur yang tersedia pada aplikasi. 
+ 
+Gambar 3.19 Perancangan Wireframe Halaman Kelola Akun 
+
+
+--- PAGE 80 ---
+67 
+ 
+ 
+Pada Gambar 3. 19, halaman Kelola Akun menampilkan deskripsi singkat 
+mengenai fungsi pengelolaan akun, tombol "Tambah Pengguna Baru", serta tabel 
+Daftar Pengguna. Tombol "Tambah Pengguna Baru" digunakan oleh Admin untuk 
+membuat akun pengguna baru yang nantinya dapat diguna kan untuk mengakses 
+sistem. Sementara itu, tabel Daftar Pengguna menampilkan informasi seluruh akun 
+yang telah terdaftar pada sistem, seperti Nomor Induk Pegawai (NIP) sebagai 
+username, nama lengkap, role, serta aksi yang dapat dilakukan terhadap setiap akun. 
+Melalui halaman ini, Admin dapat mengelola akun pengguna secara terstruktur 
+sehingga hanya pengguna yang memiliki akun terdaftar yang dapat mengakses 
+sistem sesuai dengan hak akses yang dimilikinya. 
+Untuk menambahkan pengguna baru ke dalam sistem, Admin dapat menekan 
+tombol "Tambah Pengguna Baru" yang terdapat pada halaman Kelola Akun. 
+Setelah tombol tersebut dipilih, sistem akan menampilkan sebuah pop-up form yang 
+digunakan untuk memasukkan informasi akun pengguna baru. Form ini dirancang 
+agar proses penambahan akun dapat dilakukan secara cepat dan terstruktur tanpa 
+harus berpindah ke halaman lain. 
+ 
+Gambar 3.20 Perancangan Wireframe Halaman Kelola Akun (Tambah Pengguna) 
+
+
+--- PAGE 81 ---
+68 
+ 
+ 
+Pada Gambar 3.20, pop-up Tambah Pengguna Baru menampilkan form yang 
+harus diisi oleh Admin untuk membuat akun pengguna baru. Form tersebut terdiri 
+atas beberapa isian, yaitu Username yang menggunakan Nomor Induk Pegawai 
+(NIP), Nama Lengkap, Password, serta Role yang digun akan untuk menentukan 
+hak akses pengguna sebagai Admin atau Pegawai. Setelah seluruh data diisi, Admin 
+dapat menekan tombol "Simpan Akun" untuk menyimpan data pengguna ke dalam 
+sistem sehingga akun dapat digunakan untuk proses login. Apabila Admin 
+membatalkan proses penambahan akun, tombol "Batal" dapat digunakan untuk 
+menutup pop-up tanpa menyimpan data yang telah diinputkan. Dengan adanya form 
+ini, proses pembuatan akun baru dapat dilakukan secara terstruktur sekaligus 
+memastikan bahwa setiap pengguna mem iliki identitas dan hak akses yang sesuai 
+sebelum menggunakan aplikasi. 
+Setelah proses penambahan akun berhasil dilakukan, data pengguna akan 
+tersimpan ke dalam sistem dan secara otomatis ditampilkan pada tabel Daftar 
+Pengguna. Melalui tabel ini, Admin dapat melihat seluruh akun yang telah terdaftar 
+sekaligus melakukan pengelolaan terhadap setiap akun sesuai kebutuhan. Fitur 
+pengelolaan akun dirancang untuk memudahkan Admin dalam melakukan 
+Gambar 3.21 Perancangan Wireframe Halaman Kelola Akun (Edit dan 
+Reset Password) 
+ 
+
+--- PAGE 82 ---
+69 
+ 
+ 
+pemeliharaan data pengguna sehingga informasi akun tetap akurat dan keamanan 
+akses sistem dapat terjaga. 
+Berdasarkan Gambar 3. 21, tabel Daftar Pengguna menampilkan informasi 
+seluruh akun yang telah berhasil didaftarkan ke dalam sistem. Informasi yang 
+ditampilkan meliputi Username (NIP), Nama Lengkap, dan Role pengguna. Pada 
+kolom Aksi, tersedia tiga fitur utama, yaitu Edit Akun, Reset Password, dan Hapus 
+Akun. Fitur Edit Akun digunakan untuk mengubah informasi pengguna, seperti 
+nama lengkap atau role sesuai kebutuhan. Fitur Reset Password memungkinkan 
+Admin untuk mengatur ulang password pengguna apabila pengguna lupa password 
+atau m engalami kendala saat login. Sementara itu, fitur Hapus Akun digunakan 
+untuk menghapus akun pengguna yang sudah tidak diperlukan atau tidak lagi 
+memiliki hak akses terhadap sistem. Dengan adanya fitur -fitur tersebut, Admin 
+dapat mengelola seluruh akun pengguna secara terpusat sehingga keamanan, 
+validitas data pengguna, dan pengaturan hak akses dalam sistem tetap terjaga. 
+3.7.6 Perancangan Halaman Profil Pengguna 
+Halaman Profil Pengguna merupakan halaman yang digunakan untuk 
+mengelola informasi akun milik pengguna yang sedang login. Halaman ini dapat 
+diakses oleh Admin maupun Pegawai sebagai sarana untuk memperbarui informasi 
+pribadi tanpa memengaruhi data akun pen gguna lain. Tampilan dan fitur yang 
+tersedia pada halaman profil bersifat sama untuk kedua role, sehingga baik Admin 
+maupun Pegawai dapat mengubah nama lengkap dan password akun miliknya 
+sendiri melalui halaman ini. Dengan adanya halaman profil, pengguna d apat 
+
+--- PAGE 83 ---
+70 
+ 
+ 
+menjaga keakuratan identitas akun serta meningkatkan keamanan akun melalui 
+perubahan password secara berkala. 
+ 
+Gambar 3.22 Perancangan Wireframe Halaman Profil Pengguna (Admin dan 
+Pegawai) 
+Pada Gambar 3.22, halaman Profil Pengguna terdiri atas dua bagian utama, 
+yaitu Informasi Profil dan Perbarui Password. Pada bagian Informasi Profil, 
+pengguna dapat melihat Username (NIP) yang digunakan sebagai identitas akun 
+serta memperbarui Nama Lengkap sesuai kebutuhan . Username (NIP) hanya 
+ditampilkan sebagai identitas akun dan tidak dapat diubah oleh pengguna. 
+Selanjutnya, pada bagian Perbarui Password, pengguna dapat mengganti password 
+akun dengan memasukkan password lama, password baru, dan konfirmasi 
+password baru.  Setelah seluruh data diisi dengan benar, pengguna dapat 
+menyimpan perubahan yang telah dilakukan. Halaman ini dirancang untuk 
+memberikan kemudahan kepada pengguna dalam mengelola informasi akun 
+pribadinya sekaligus meningkatkan keamanan sistem melalui perubahan password 
+secara mandiri. Karena halaman ini digunakan untuk pengelolaan akun pribadi, 
+tampilan maupun fitur yang tersedia bagi Admin dan Pegawai adalah sama. 
+Perbedaannya hanya terletak pada hak akses masing -masing pengguna terhadap 
+
+
+--- PAGE 84 ---
+71 
+ 
+ 
+fitur-fitur lain di dalam sistem, sedangkan pengelolaan akun pengguna lain tetap 
+menjadi kewenangan Admin melalui menu Kelola Akun. 
+3.8 Teknik Pengujian 
+Pengujian sistem dilakukan untuk memastikan bahwa aplikasi yang 
+dikembangkan telah berjalan sesuai dengan kebutuhan fungsional serta mampu 
+mengimplementasikan metode K -Means Clustering dengan baik. Pada penelitian 
+ini, pengujian dilakukan terhadap fungsi -fungsi utama aplikasi dan hasil 
+implementasi metode clustering. Pengujian fungsi aplikasi menggunakan metode 
+Black Box Testing, sedangkan pengujian implementasi metode dilakukan dengan 
+membandingkan hasil clustering yang dihasilkan oleh sistem dengan hasil 
+pengolahan data menggunakan Jupyter Notebook sebagai acuan. Melalui pengujian 
+tersebut diharapkan seluruh fitur aplikasi dapat berjalan sesuai dengan kebutuhan 
+pengguna serta menghasilkan keluaran yang konsisten dengan proses clustering 
+yang telah dirancang. 
+3.8.1   Black Box Testing 
+Pengujian antarmuka dan fungsionalitas aplikasi dilakukan menggunakan 
+metode Black Box Testing. Metode ini berfokus pada pengujian fungsi sistem 
+berdasarkan masukan (input) dan keluaran (output) tanpa memperhatikan struktur 
+internal atau kode program. Peng ujian dilakukan untuk memastikan bahwa setiap 
+fitur pada aplikasi, seperti proses login, pengelolaan akun pengguna, unggah 
+dataset, proses clustering, dashboard, analisis tren, hingga perubahan profil 
+pengguna dapat berjalan sesuai dengan kebutuhan fungsional yang telah dirancang. 
+
+--- PAGE 85 ---
+72 
+ 
+ 
+Hasil pengujian nantinya digunakan untuk mengetahui apakah seluruh fungsi 
+sistem telah memberikan keluaran yang sesuai dengan yang diharapkan. 
+Tabel 3.6 Skenario Pengujian Black Box  
+Halaman/Fitur Skenario 
+Pengujian Data Uji Hasil yang 
+Diharapkan 
+Login 
+Login dengan 
+username dan 
+password benar 
+Username & 
+password terdaftar 
+Sistem berhasil 
+login dan 
+mengarahkan ke 
+dashboard 
+Login dengan 
+password salah 
+Username 
+terdaftar, 
+password salah 
+Sistem 
+menampilkan 
+pesan "Username 
+atau password 
+salah" 
+Login dengan 
+username tidak 
+terdaftar 
+Username tidak 
+ada di database 
+Sistem 
+menampilkan 
+pesan "Username 
+atau password 
+salah" 
+Kelola Akun 
+Menambah akun 
+pegawai baru 
+Username tidak 
+ada di database 
+Sistem 
+menampilkan 
+pesan "Username 
+atau password 
+salah" 
+Menambah akun 
+dengan username 
+yang sudah ada 
+Username 
+duplikat 
+Sistem menolak 
+dan menampilkan 
+pesan error 
+Upload Data 
+Clustering 
+Mengunggah file 
+dengan format 
+sesuai 
+File .xlsx sesuai 
+struktur kolom 
+Sistem berhasil 
+memproses dan 
+menampilkan 
+hasil clustering 
+Mengunggah file 
+dengan format 
+tidak sesuai 
+File dengan 
+kolom tidak 
+lengkap 
+Sistem 
+menampilkan 
+pesan error format 
+tidak sesuai 
+
+--- PAGE 86 ---
+73 
+ 
+ 
+Halaman/Fitur Skenario 
+Pengujian Data Uji Hasil yang 
+Diharapkan 
+Analisis Tren 
+Memilih periode 
+yang memiliki 
+data 
+Bulan/tahun 
+dengan data 
+tersedia 
+Sistem 
+menampilkan 
+grafik dan statistik 
+tren 
+Memilih periode 
+yang tidak 
+memiliki data 
+Bulan/tahun tanpa 
+data 
+Sistem 
+menampilkan 
+pesan data tidak 
+tersedia 
+Profil Pengguna 
+Mengubah 
+password dengan 
+data valid 
+Password lama 
+benar, password 
+baru valid 
+Password berhasil 
+diperbarui 
+Mengubah 
+password dengan 
+password lama 
+salah 
+Password lama 
+tidak sesuai 
+Sistem 
+menampilkan 
+pesan error 
+Logout Mengakhiri sesi 
+pengguna 
+Klik tombol 
+logout 
+Sistem 
+mengakhiri sesi 
+dan mengarahkan 
+ke halaman login 
+ 
+3.8.2 White Box Testing 
+White Box Testing dilakukan menggunakan teknik Basis Path Testing, yaitu 
+menguji seluruh jalur logika independen dalam kode program berdasarkan grafik 
+alur ( flow graph ) dan nilai kompleksitas siklomatis ( cyclomatic complexity ). 
+Pengujian ini dilakukan pada fungsi autentikasi login (do_login()) pada backend 
+sistem, karena fungsi tersebut memiliki beberapa titik keputusan ( decision point) 
+yang representatif untuk diuji. 
+1. Menggambarkan Flow Graph 
+Berdasarkan hasil analisis terhadap struktur logika fungsi do_login(), setiap 
+baris kode program dikelompokkan menjadi beberapa node sesuai dengan titik 
+
+--- PAGE 87 ---
+74 
+ 
+ 
+keputusan ( decision point ) yang terdapat di dalamnya. Pengelompokan tersebut 
+kemudian digunakan untuk menggambarkan alur logika program dalam bentuk flow 
+graph, yang terdiri atas node dan edge sebagai berikut: 
+Tabel 3.7 Flow Graph 
+Node Keterangan 
+N1 Ambil data login & buat 
+koneksi database 
+N2 Decision: apakah koneksi 
+database gagal? 
+N3 Return error "gagal terhubung 
+ke database" 
+N4 Eksekusi query pencarian user 
+N5 Decision: apakah user 
+ditemukan? 
+N6 Set session & return sukses 
+login 
+N7 Return error "username atau 
+password salah" 
+N8 Exception handler (kesalahan 
+saat query) 
+N9 Akhir fungsi 
+ 
+Edge: N1→N2, N2→N3 (ya), N2→N4 (tidak), N4→N5, N5→N6 (ya), N5→N7 
+(tidak), N4→N8 (exception), N3→N9, N6→N9, N7→N9, N8→N9. 
+2. Menghitung Cyclomatic Complexity 
+V(G)=E−N+2=11−9+2=4 
+Atau dapat dihitung melalui jumlah predikat/decision point + 1 = 3 + 1 = 4. Nilai 
+ini menunjukkan terdapat 4 jalur independen yang perlu diuji. 
+3. Menentukan Jalur Independen (Independent Path) 
+
+--- PAGE 88 ---
+75 
+ 
+ 
+Berdasarkan nilai cyclomatic complexity  yang telah dihitung sebelumnya, 
+diperoleh 4 jalur independen yang harus diuji untuk mencakup seluruh 
+kemungkinan alur logika pada fungsi do_login(). Keempat jalur tersebut 
+ditampilkan pada Tabel 3.8 berikut. 
+3.8 Tabel  Jalur Independen 
+Jalur Alur Node Skenario 
+Path 1 N1-N2-N3-N9 Koneksi ke database 
+gagal 
+Path 2 N1-N2-N4-N5-N6-N9 Login berhasil 
+(username & password 
+benar) 
+Path 3 N1-N2-N4-N5-N7-N9 Login gagal 
+(username/password 
+salah) 
+Path 4 N1-N2-N4-N8-N9 Terjadi exception saat 
+proses query database 
+ 
+Berdasarkan Tabel 3.8, keempat jalur independen tersebut merepresentasikan 
+seluruh kemungkinan alur eksekusi pada fungsi do_login(), mulai dari kondisi 
+kegagalan koneksi database, keberhasilan login, kegagalan login akibat kesalahan 
+username atau password,  hingga terjadinya exception pada saat proses query 
+database dijalankan. Keempat jalur ini selanjutnya dijadikan dasar dalam 
+merancang skenario pengujian ( test case ) pada tahap White Box Testing, guna 
+memastikan bahwa setiap kemungkinan alur logika pada fungsi tersebut telah 
+tercakup dan berjalan sesuai dengan yang diharapkan. 
+4. Rancangan Test Case Berdasarkan Jalur Independen 
+Berdasarkan keempat jalur independen yang telah ditentukan sebelumnya, 
+disusun rancangan test case untuk masing-masing jalur, yang mencakup data uji 
+
+--- PAGE 89 ---
+76 
+ 
+ 
+serta hasil yang diharapkan dari setiap skenario pengujian. Rancangan test case 
+tersebut ditampilkan pada Tabel 3.9. 
+3.9 Tabel Test Case 
+Path Data Uji Hasil yang Diharapkan 
+Path 1 
+Koneksi database 
+diputus/tidak aktif 
+Sistem mengembalikan 
+pesan error "Gagal 
+terhubung ke database" 
+Path 2 
+Username dan 
+password sesuai data di 
+tabel users 
+Sistem membuat session 
+dan mengembalikan 
+status success: 
+true 
+Path 3 
+Username terdaftar 
+namun password salah 
+Sistem mengembalikan 
+pesan "Username atau 
+password salah" 
+Path 4 
+Query database 
+mengalami gangguan 
+(misalnya tabel 
+terkunci) 
+Sistem menangkap 
+exception dan 
+mengembalikan pesan 
+error tanpa aplikasi crash 
+ 
+Rancangan test case pada Tabel 3.9 tersebut selanjutnya akan digunakan 
+sebagai acuan dalam pelaksanaan pengujian White Box Testing pada tahap 
+implementasi dan pengujian sistem, yang hasilnya akan dijelaskan lebih lanjut pada 
+Bab IV. 
+3.8.3 Pengujian Implementasi Metode K-Means Clustering 
+Pengujian implementasi metode K -Means Clustering dilakukan untuk 
+memastikan bahwa algoritma yang diimplementasikan pada aplikasi menghasilkan 
+keluaran yang konsisten dengan proses pengolahan data yang telah dilakukan pada 
+tahap perancangan menggunakan Jupy ter Notebook. Pengujian dilakukan dengan 
+membandingkan hasil clustering yang dihasilkan oleh aplikasi, meliputi 
+
+--- PAGE 90 ---
+77 
+ 
+ 
+pembentukan label cluster, distribusi data pada setiap cluster, serta visualisasi hasil 
+clustering. Selain itu, dilakukan pengecekan terhadap nilai centroid dan hasil 
+analisis yang ditampilkan pada dashboard maupun halaman analisis tren untuk 
+memastikan bahwa seluruh proses perhitungan telah sesuai dengan implementasi 
+metode K-Means Clustering yang digunakan dalam penelitian. 
+  
+
+--- PAGE 91 ---
+78 
+ 
+ 
