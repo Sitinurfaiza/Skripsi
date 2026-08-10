@@ -4,28 +4,28 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Jadwal Kegiatan Penelitian}}{23}{table.caption.11}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan Perangkat Lunak (Software)}}{25}{table.caption.12}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Kebutuhan Perangkat Keras (Hardware)}}{26}{table.caption.13}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Kebutuhan Fungsional Sistem}}{32}{table.caption.15}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Use Case Login dan Logout}}{35}{table.caption.18}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Use Case Import Dataset}}{36}{table.caption.19}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces Use Case Preprocessing Data}}{37}{table.caption.20}%
-\contentsline {table}{\numberline {3.8}{\ignorespaces Use Case Pelatihan Model LightGBM}}{38}{table.caption.21}%
-\contentsline {table}{\numberline {3.9}{\ignorespaces Use Case Pengujian Model}}{39}{table.caption.22}%
-\contentsline {table}{\numberline {3.10}{\ignorespaces Use Case Melihat Hasil Akurasi}}{40}{table.caption.23}%
-\contentsline {table}{\numberline {3.11}{\ignorespaces Tabel Jalur Independen}}{52}{table.caption.42}%
-\contentsline {table}{\numberline {3.12}{\ignorespaces Tabel Test Case}}{52}{table.caption.43}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Jadwal Kegiatan Penelitian}}{25}{table.caption.11}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Kebutuhan Perangkat Lunak (Software)}}{27}{table.caption.12}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Kebutuhan Perangkat Keras (Hardware)}}{28}{table.caption.13}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Kebutuhan Fungsional Sistem}}{34}{table.caption.15}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Use Case Login dan Logout}}{37}{table.caption.18}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Use Case Import Dataset}}{38}{table.caption.19}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Use Case Preprocessing Data}}{39}{table.caption.20}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Use Case Pelatihan Model LightGBM}}{40}{table.caption.21}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Use Case Pengujian Model}}{41}{table.caption.22}%
+\contentsline {table}{\numberline {3.10}{\ignorespaces Use Case Melihat Hasil Akurasi}}{42}{table.caption.23}%
+\contentsline {table}{\numberline {3.11}{\ignorespaces Tabel Jalur Independen}}{58}{table.caption.42}%
+\contentsline {table}{\numberline {3.12}{\ignorespaces Tabel Test Case}}{59}{table.caption.43}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Statistik Deskriptif Variabel Numerik}}{63}{table.caption.50}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Distribusi Golongan Tarif}}{63}{table.caption.51}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Distribusi Status Kepemilikan Rumah}}{63}{table.caption.52}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Distribusi Status Penerima Bantuan Sosial}}{63}{table.caption.53}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Distribusi Pekerjaan Kepala Keluarga}}{64}{table.caption.54}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Distribusi Target Label Kelayakan}}{64}{table.caption.55}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Konfigurasi Hyperparameter Model LightGBM}}{67}{table.caption.56}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Metrik Performa Model LightGBM}}{68}{table.caption.57}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Confusion Matrix Hasil Pengujian}}{68}{table.caption.58}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Nilai Feature Importance Model LightGBM}}{69}{table.caption.59}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Hasil Pengujian Black Box Dashboard Klasifikasi}}{71}{table.caption.60}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Statistik Deskriptif Variabel Numerik}}{69}{table.caption.50}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Distribusi Golongan Tarif}}{69}{table.caption.51}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Distribusi Status Kepemilikan Rumah}}{69}{table.caption.52}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Distribusi Status Penerima Bantuan Sosial}}{69}{table.caption.53}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Distribusi Pekerjaan Kepala Keluarga}}{70}{table.caption.54}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Distribusi Target Label Kelayakan}}{70}{table.caption.55}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Konfigurasi Hyperparameter Model LightGBM}}{72}{table.caption.56}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Metrik Performa Model LightGBM}}{73}{table.caption.57}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Confusion Matrix Hasil Pengujian}}{74}{table.caption.58}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Nilai Feature Importance Model LightGBM}}{75}{table.caption.59}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Hasil Pengujian Black Box Dashboard Klasifikasi}}{76}{table.caption.60}%
 \addvspace {10\p@ }

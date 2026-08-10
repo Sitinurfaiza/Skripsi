@@ -5,32 +5,32 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Metode Light Gradient Boosting Machine}}{18}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Tahapan Penelitian}}{29}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Arsitektur Sistem}}{33}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Use Case Diagram}}{34}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Activity Diagram Login}}{41}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Activity Diagram Dashboard}}{42}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Activity Diagram Klasifikasi Manual}}{43}{figure.caption.26}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Activity Diagram Klasifikasi Batch}}{43}{figure.caption.27}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Activity Diagram Riwayat Klasifikasi}}{44}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Activity Diagram Halaman Laporan}}{44}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Activity Diagram Halaman Pengaturan Model}}{45}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Sequence Diagram Login}}{46}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Sequence Diagram Klasifikasi Manual}}{46}{figure.caption.32}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Sequence Diagram Klasifikasi Batch (CSV)}}{46}{figure.caption.33}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Sequence Diagram Lihat Laporan}}{47}{figure.caption.34}%
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Perancangan Class Diagram}}{47}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Perancangan Wireframe Halaman Login}}{48}{figure.caption.36}%
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Perancangan Wireframe Halaman Dashboard Admin}}{49}{figure.caption.37}%
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Perancangan Wireframe Halaman Klasifikasi}}{49}{figure.caption.38}%
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Perancangan Wireframe Halaman Laporan}}{50}{figure.caption.39}%
-\contentsline {figure}{\numberline {3.20}{\ignorespaces Perancangan Wireframe Halaman Kelola Akun}}{50}{figure.caption.40}%
-\contentsline {figure}{\numberline {3.21}{\ignorespaces Perancangan Wireframe Halaman Profil Pengguna}}{51}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Tahapan Penelitian}}{31}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Arsitektur Sistem}}{35}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Use Case Diagram}}{36}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Activity Diagram Login}}{43}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Activity Diagram Dashboard}}{44}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Activity Diagram Klasifikasi Manual}}{45}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Activity Diagram Klasifikasi Batch}}{45}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Activity Diagram Riwayat Klasifikasi}}{46}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Activity Diagram Halaman Laporan}}{47}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Activity Diagram Halaman Pengaturan Model}}{48}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Sequence Diagram Login}}{49}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Sequence Diagram Klasifikasi Manual}}{49}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Sequence Diagram Klasifikasi Batch (CSV)}}{50}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Sequence Diagram Lihat Laporan}}{50}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Perancangan Class Diagram}}{51}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Perancangan Wireframe Halaman Login}}{52}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Perancangan Wireframe Halaman Dashboard Admin}}{53}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Perancangan Wireframe Halaman Klasifikasi}}{54}{figure.caption.38}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Perancangan Wireframe Halaman Laporan}}{55}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Perancangan Wireframe Halaman Kelola Akun}}{56}{figure.caption.40}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Perancangan Wireframe Halaman Profil Pengguna}}{57}{figure.caption.41}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Implementasi Halaman Login}}{55}{figure.caption.44}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Implementasi Halaman Dashboard Utama}}{56}{figure.caption.45}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Implementasi Halaman Klasifikasi Baru}}{57}{figure.caption.46}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Implementasi Halaman Hasil Prediksi}}{58}{figure.caption.47}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Implementasi Halaman Laporan}}{59}{figure.caption.48}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Implementasi Halaman Pengaturan}}{60}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Implementasi Halaman Login}}{61}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Implementasi Halaman Dashboard Utama}}{62}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Implementasi Halaman Klasifikasi Baru}}{63}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Implementasi Halaman Hasil Prediksi}}{64}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Implementasi Halaman Laporan}}{65}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Implementasi Halaman Pengaturan}}{66}{figure.caption.49}%
 \addvspace {10\p@ }
